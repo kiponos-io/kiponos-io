@@ -50,9 +50,8 @@ And in your code, access the values:
 
 ```java
 Kiponos kiponos = Kiponos.createForCurrentTeam();
-String savePath = kiponos.get("save-dir-path");
 
-KiponosFolder postgresFolder = kiponos.path("Server", "DB", "PostgreSql");
+KiponosFolder postgresFolder = kiponos.path("DB", "PostgreSql");
 String dbHost = postgresFolder.get("host");
 int dbPort = postgresFolder.getInt("port");
 ```
