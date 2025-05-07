@@ -38,7 +38,18 @@ This makes dispatching changes to everyone in **light speed** - litterally!
 - Login to your Kiponos.io account and Follow the Wizard to create your first application info, environment and config.
 - Create your config items. You can create config folders to conveniently group your items.
 
-  
+## Using the SDK - Code Samples
+
+You define your DB params and you want to access their latest values in your code:
+
+```java
+Kiponos kiponos = Kiponos.createForCurrentTeam();
+String savePath = kiponos.get("save-dir-path");
+
+KiponosFolder postgresFolder = kiponos.path("Server", "DB", "PostgreSql");
+String dbHost = postgresFolder.get("host");
+int dbPort = postgresFolder.getInt("port");
+```
 
 <!---
 kiponos-io/kiponos-io is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
