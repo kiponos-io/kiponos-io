@@ -61,7 +61,11 @@ The values are guaranteed to be the latest - always - and instantly as you chang
 Without performance costs! 
 because no refresh is needed, no reloads, and obviously no restarts or redeploys!
 
-That's Kiponos.io **earthquake** in observability, in devops, in software developement, in tests, in CI/CD, in production maintainance - for all of us!
+Groundbraking? That's an **Earthquake**!
+
+That's Kiponos revolution in Config Management, in Observability, QA, CI/CD, Maintainance - for all of us! In Any Environment!
+
+[Join Us!](https://kiponos.io)
 
 <!---
 kiponos-io/kiponos-io is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
