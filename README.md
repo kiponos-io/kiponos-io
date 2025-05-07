@@ -40,7 +40,13 @@ This makes dispatching changes to everyone in **light speed** - litterally!
 
 ## Using the SDK - Code Samples
 
-You define your DB params and you want to access their latest values in your code:
+Suppose your application works with a database - like PostgresSql.  
+
+You define the DB params online in your Kiponos.io account:
+
+![image](https://github.com/user-attachments/assets/57eeca27-299b-44d0-9ff7-4fbf9206b338)
+
+And in your code, access the values:
 
 ```java
 Kiponos kiponos = Kiponos.createForCurrentTeam();
@@ -50,6 +56,13 @@ KiponosFolder postgresFolder = kiponos.path("Server", "DB", "PostgreSql");
 String dbHost = postgresFolder.get("host");
 int dbPort = postgresFolder.getInt("port");
 ```
+
+The values are guaranteed to be the latest - always - and instantly as you change them!
+
+Without performance costs! 
+because no refresh is needed, no reloads, and obviously no restarts or redeploys!
+
+That's Kiponos.io **earthquake** in observability, in devops, in software developement, in tests, in CI/CD, in production maintainance - for all of us!
 
 <!---
 kiponos-io/kiponos-io is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
