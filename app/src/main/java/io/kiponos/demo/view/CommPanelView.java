@@ -1,7 +1,6 @@
 package io.kiponos.demo.view;
 
 import io.kiponos.demo.control.CommControl;
-import io.kiponos.sdk.system.CommUtils;
 import io.kiponos.sdk.system.Log;
 
 import javax.swing.*;
@@ -25,9 +24,7 @@ public class CommPanelView extends JFrame {
             public void componentMoved(ComponentEvent e) {
                 Point locationOnScreen = getLocationOnScreen();
                 commPanelCfg.set("pos-x", String.valueOf(locationOnScreen.x));
-                CommUtils.pause(10);
                 commPanelCfg.set("pos-y", String.valueOf(locationOnScreen.y));
-                CommUtils.pause(10);
                 Log.trace("CommPanel moved to (%d, %d)", locationOnScreen.x, locationOnScreen.y);
             }
 
