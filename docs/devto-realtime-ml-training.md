@@ -4,7 +4,7 @@ published: true
 tags: python, machinelearning, devops, realtime
 description: Change learning rate, batch size, and regularization during a live training run. Kiponos pushes delta updates over WebSocket; your loop reads the latest values locally with no performance hit.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-kiponos-announcement.jpg
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ml-training.jpg
 ---
 
 Training jobs are supposed to be fire-and-forget. You pick hyperparameters, launch a GPU job, and wait hours for a learning curve that tells you what you should have changed on minute three.

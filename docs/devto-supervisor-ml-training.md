@@ -4,7 +4,7 @@ published: true
 tags: python, machinelearning, ai, realtime
 description: Run a second process that watches validation loss and gradient health, then pushes hyperparameter deltas through Kiponos while the trainer reads them locally with zero latency.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-supervisor-ml-training.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-kiponos-announcement.jpg
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-supervisor-ml.jpg
 ---
 
 In [the previous article](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j) we showed how a **training loop** can read live hyperparameters from [Kiponos.io](https://kiponos.io) with zero latency — local memory reads, WebSocket delta updates, no restart.
