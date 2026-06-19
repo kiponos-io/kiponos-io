@@ -1,84 +1,97 @@
 # Kiponos.io
-## True Real-Time Config Management.
 
+**Real-time config for Java apps — change values in your browser, see them instantly in running code. No restart. No redeploy.**
 
-#### Control your application variables in real-time with zero latency from your browser!
-
-All you need is our intuitive and simple Java SDK.
-
-- You define any variables or configurations you work with in your Kiponos.io web account.
-- Any change you make online in your Kiponos.io account, is instantly dispatched directly to your SDK memory.
-
-## How this is even possible?
-
-Kiponos uses WebSockets to instantly dispatch changes to all subscribed SDKs and online users.
-
-WebSockets connection is **permanent** - it's **always open!** (if dropped for any reason - our SDK auto-reconnect).
-
-This makes dispatching changes to everyone in **light speed** - litterally!
-
-- Want to increase that "max-queue-size" config property, but don't want to restart your server? **No Problem!**
-  - Change the value online, in your account. **That's it!** The latest value is instantly in your application memory. in runtime, in real-time.
-  - Now anytime your application use the SDK to get the value like: ` int maxQueueSize = kiponos.getInt("max-queue-size"); ` it's **always**, **already** the latest value!
-  - So whenever your code uses the SDK to access the config values, it always have the latest data. Awesome right? :)
- 
-- Can my business logic react instantly when I change anything online in my Kiponos account?
-  - **Sure!** Since the SDK react instantly, we provide custom hooks (listeners/events) you can use to program your logic on any change.
-  - For example: ` kiponos.afterValueChanged( configValueChanged -> { if (configValueChanged.getKey().equals("max-queue-size")) { ... // resize your queue ... } } `
-  - **That's It!** Anytime you change the `max-queue-size` config item in your kiponos.io account, your business logic "Queue" is resized, instantly - in real-time!
-
-- No Redeploy on config chanhge, No Restarts, Not even a refresh! Nothing! every change is instaly and automatically applied to your runtime!
+[![Java](https://img.shields.io/badge/Java-17+-blue.svg)](golden/java/)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-agentskills.io-purple.svg)](skills/kiponos/)
+[![TeamPro](https://img.shields.io/badge/TeamPro-Free-green.svg)](https://kiponos.io)
 
 ---
 
-## Getting Started
+## Start here (5 minutes)
 
-- Sign Up at Kiponos.io
-- Include the SDK in your build - Get it here: [Maven Central Repo](https://mvnrepository.com/artifact/io.kiponos/sdk-boot-3)
-- Login to your Kiponos.io account and Follow the Wizard to create your first application info, environment and config.
-- Create your config items. You can create config folders to conveniently group your items.
+### 1. Sign up — free TeamPro
 
-## Using the SDK - Code Samples
+Create a free account at **[kiponos.io](https://kiponos.io)** (TeamPro plan, no credit card). Complete the onboarding wizard: app name, release, environment, and first config items.
 
-Suppose your application works with a database - like PostgresSql.  
+### 2. Run the golden example
 
-You define the DB params online in your Kiponos.io account:
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/golden/java
+```
 
-![image](https://github.com/user-attachments/assets/57eeca27-299b-44d0-9ff7-4fbf9206b338)
+Open `build.gradle` and replace the three placeholders in the `JavaExec` block with values from your account **Connect** screen:
 
-And in your code, access the values:
+- `REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT`
+- `REPLACE_WITH_KIPONOS_ACCESS_FROM_ACCOUNT`
+- Profile defaults to `['my-app']['v1.0.0']['dev']['base']` — change if yours differs
+
+```bash
+./gradlew run
+```
+
+You should see `springBootStarterURL: https://start.spring.io` and SDK logs showing `SDK Handshake Authenticated`.
+
+**Full walkthrough:** [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md)
+
+### 3. See real-time config in action
+
+1. Keep the app running (or run again).
+2. In your Kiponos.io dashboard, change the `starter` value under `useful-urls → Development → Java → Frameworks-and-Libraries → SpringBoot`.
+3. Run `./gradlew run` again — the printed URL updates. No code change. No restart.
+
+That is the Kiponos moment.
+
+### 4. Integrate into your project (with or without AI)
+
+| Path | How |
+|------|-----|
+| **AI agent** | `./skills/install.sh` then ask: *"Integrate Kiponos SDK using skills/kiponos/SKILL.md"* |
+| **Manual** | Follow [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) integration section |
+| **Agent contract** | Read [`AGENTS.md`](AGENTS.md) |
+
+---
+
+## What is Kiponos?
+
+Kiponos is a real-time config hub. Your application connects via the Java SDK over a permanent WebSocket. Any change you make in the web dashboard is pushed instantly to every connected SDK — in memory, at runtime.
 
 ```java
 Kiponos kiponos = Kiponos.createForCurrentTeam();
-
-KiponosFolder postgresFolder = kiponos.path("DB", "PostgreSql");
-String dbHost = postgresFolder.get("host");
-int dbPort = postgresFolder.getInt("port");
+String url = kiponos.path("DB", "PostgreSql").get("host");
+int port = kiponos.path("DB", "PostgreSql").getInt("port");
+kiponos.disconnect(); // on shutdown
 ```
 
-The values are guaranteed to be the latest - always - and instantly as you change them!
+**SDK:** [Maven Central `io.kiponos:sdk-boot-3`](https://mvnrepository.com/artifact/io.kiponos/sdk-boot-3)
 
-Without performance costs! 
-because no refresh is needed, no reloads, and obviously no restarts or redeploys!
+---
 
-Groundbraking? That's an **Earthquake**!
+## Repository map
 
-That's Kiponos revolution in Config Management, in Observability, QA, CI/CD, Maintainance - for all of us! In Any Environment!
+| Path | What |
+|------|------|
+| [`golden/java/`](golden/java/) | Minimal runnable Gradle smoke test |
+| [`skills/kiponos/`](skills/kiponos/) | Agent skill (Grok, Cursor, Claude, Copilot) |
+| [`AGENTS.md`](AGENTS.md) | Machine-readable integration contract |
+| [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) | Step-by-step human onboarding |
+| [`examples/comm-panel/`](examples/comm-panel/) | Swing demo — live window position/title from config |
+| [`docs/PUBLIC-SANDBOX.md`](docs/PUBLIC-SANDBOX.md) | Planned try-before-signup public config (coming) |
 
-## Developer resources (this repo)
+**Releases:** [GitHub Releases](https://github.com/kiponos-io/kiponos-io/releases) — downloadable `golden-java.zip`
 
-| Resource | Purpose |
-|----------|---------|
-| [`golden/java/`](golden/java/) | Minimal runnable Gradle example — verify tokens + profile |
-| [`skills/kiponos/`](skills/kiponos/) | Agent skill for Grok, Cursor, Claude Code, Copilot (agentskills.io format) |
-| [`AGENTS.md`](AGENTS.md) | Integration contract for any AI agent |
-| [`skills/install.sh`](skills/install.sh) | Install skill to `~/.grok/skills/`, `~/.cursor/skills/`, etc. |
+---
 
-Ask your agent: *"Integrate Kiponos SDK into this project using skills/kiponos/SKILL.md"*
+## Coming soon
 
-[Join Us!](https://kiponos.io)
+- **Public sandbox** — read-only tokens in golden so you can `./gradlew run` before signup ([details](docs/PUBLIC-SANDBOX.md))
+- **Community config tree** — shared live values developers worldwide can read
+- **Config locks** — team admins lock folders, keys, and values (UI + server ready; metadata persistence in progress)
+- **Kiponos local agent** — MCP + skill installer for one-click integration
 
-<!---
-kiponos-io/kiponos-io is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+Questions? [Open a Discussion](https://github.com/kiponos-io/kiponos-io/discussions) or [an issue](https://github.com/kiponos-io/kiponos-io/issues).
+
+---
+
+[Join Us — free TeamPro at kiponos.io](https://kiponos.io)

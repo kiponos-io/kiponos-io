@@ -1,0 +1,32 @@
+plugins {
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    mainClass = 'io.kiponos.demo.control.CommPanelMain'
+}
+
+// Kiponos credentials — replace placeholders from Kiponos.io Connect screen.
+tasks.withType(JavaExec).configureEach {
+    environment "KIPONOS_ID", "REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT"
+    environment "KIPONOS_ACCESS", "REPLACE_WITH_KIPONOS_ACCESS_FROM_ACCOUNT"
+    systemProperty "kiponos", "['my-app']['v1.0.0']['dev']['base']"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.kiponos:sdk-boot-3:4.4.0.250319'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

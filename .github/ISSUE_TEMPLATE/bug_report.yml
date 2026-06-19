@@ -1,0 +1,32 @@
+name: Bug report
+description: Something broken in examples, docs, or skill
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: golden/java, ./gradlew run, etc.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - golden/java
+        - skills/kiponos
+        - examples/comm-panel
+        - documentation
+        - other
+    validations:
+      required: true
+  - type: input
+    id: sdk-version
+    attributes:
+      label: SDK version (if known)
+      placeholder: e.g. 4.4.0.250319

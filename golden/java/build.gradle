@@ -17,12 +17,15 @@ application {
 
 // ---------------------------------------------------------------------------
 // Kiponos credentials — replace the placeholders below before running.
-// In your Kiponos.io account: open Connect / SDK setup and copy:
-//   • KIPONOS_ID      (JWE identity token)
-//   • KIPONOS_ACCESS  (JWE access token)
-//   • Config profile  (bracket path, e.g. ['my-app']['v1.0.0']['dev']['base'])
-// This block keeps credentials self-contained in the Gradle run task and
-// unaffected by global shell environment variables.
+//
+// Sign up free at https://kiponos.io (TeamPro), then from Connect / SDK setup:
+//   • KIPONOS_ID      → replace REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT
+//   • KIPONOS_ACCESS  → replace REPLACE_WITH_KIPONOS_ACCESS_FROM_ACCOUNT
+//   • Config profile  → defaults below; change if your account differs
+//
+// Coming: public read-only sandbox tokens (try before signup). See docs/PUBLIC-SANDBOX.md
+//
+// This block keeps credentials in the Gradle run task, isolated from shell env.
 // ---------------------------------------------------------------------------
 tasks.withType(JavaExec).configureEach {
     environment "KIPONOS_ID", "REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT"

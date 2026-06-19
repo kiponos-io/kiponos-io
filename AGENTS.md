@@ -1,35 +1,40 @@
 # Agent instructions — kiponos-io
 
-This repository is the public home for Kiponos.io examples, documentation, and agent skills.
+Public repo for Kiponos.io examples, documentation, and agent skills.
 
 ## Primary task: integrate Kiponos SDK
 
 When asked to connect, integrate, or onboard Kiponos into a Java application:
 
-1. Load the skill at **`skills/kiponos/SKILL.md`** (or invoke `/kiponos` if installed).
+1. Load **`skills/kiponos/SKILL.md`** (or `/kiponos` if installed).
 2. Read **`skills/kiponos/references/integration-contract.md`** before editing the user's project.
-3. Use **`golden/java/`** as the runnable reference implementation when present.
+3. Use **`golden/java/`** as the runnable reference.
 
 ## Non-negotiable integration inputs
 
 | Input | Mechanism |
 |-------|-----------|
-| `KIPONOS_ID` | Environment variable (JWE from Kiponos.io) |
-| `KIPONOS_ACCESS` | Environment variable (JWE from Kiponos.io) |
-| Config profile | JVM property `-Dkiponos="['app']['release']['env']['profile']"` |
+| `KIPONOS_ID` | Environment variable (JWE from Kiponos.io Connect) |
+| `KIPONOS_ACCESS` | Environment variable (JWE from Kiponos.io Connect) |
+| Config profile | JVM property `-Dkiponos="['my-app']['v1.0.0']['dev']['base']"` |
 
-Never commit real tokens. For local dev, replace placeholders in `golden/java/build.gradle` `JavaExec` block (see comments there).
+**Gradle:** `tasks.withType(JavaExec)` with `environment` + `systemProperty` — see `golden/java/build.gradle`.
 
-## Repository layout (target)
+Never commit real tokens. Use `REPLACE_WITH_*` placeholders in examples.
+
+**Signup:** TeamPro at [kiponos.io](https://kiponos.io) is free. Dashboard viewing/editing requires a web user account.
+
+## Repository layout
 
 ```
-golden/java/           # Minimal runnable Gradle example
-examples/comm-panel/   # CommPanel demo app
-skills/kiponos/        # Agent skill (Grok, Cursor, Claude, Copilot, …)
-docs/                  # Human-facing guides
+golden/java/              # Minimal runnable smoke test
+examples/comm-panel/      # Swing demo
+skills/kiponos/           # Canonical agent skill
+docs/GETTING-STARTED.md   # Human onboarding
+docs/PUBLIC-SANDBOX.md    # Planned try-before-signup
 ```
 
-## Install skill locally
+## Install skill
 
 ```bash
 ./skills/install.sh

@@ -7,7 +7,7 @@ canonical_url: https://github.com/kiponos-io/kiponos-io
 
 If you've ever tried asking an AI agent to wire up a new SDK, you know the pain: half the docs are for humans, the tokens live in three different places, and the agent confidently hallucinates your config profile.
 
-We shipped something on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io) to fix that.
+We shipped open resources on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io) to fix that — with a free **TeamPro** plan at [kiponos.io](https://kiponos.io).
 
 ## What is Kiponos?
 
@@ -70,9 +70,10 @@ The golden example proves #1 and #2. The skill teaches your agent to wire them i
 
 ## What's coming
 
-- A public sandbox with shared read tokens (try before signup)
-- A system-wide Kiponos local agent (MCP + skill installer)
-- More examples and community config trees
+- **Public sandbox** — read-only tokens so golden runs before signup ([docs/PUBLIC-SANDBOX.md](https://github.com/kiponos-io/kiponos-io/blob/master/docs/PUBLIC-SANDBOX.md))
+- **Config locks** — team admins lock folders, keys, and values
+- **Kiponos local agent** — MCP + skill installer
+- Community config trees
 
 ## Try it
 
