@@ -65,6 +65,17 @@ Groundbraking? That's an **Earthquake**!
 
 That's Kiponos revolution in Config Management, in Observability, QA, CI/CD, Maintainance - for all of us! In Any Environment!
 
+## Developer resources (this repo)
+
+| Resource | Purpose |
+|----------|---------|
+| [`golden/java/`](golden/java/) | Minimal runnable Gradle example — verify tokens + profile |
+| [`skills/kiponos/`](skills/kiponos/) | Agent skill for Grok, Cursor, Claude Code, Copilot (agentskills.io format) |
+| [`AGENTS.md`](AGENTS.md) | Integration contract for any AI agent |
+| [`skills/install.sh`](skills/install.sh) | Install skill to `~/.grok/skills/`, `~/.cursor/skills/`, etc. |
+
+Ask your agent: *"Integrate Kiponos SDK into this project using skills/kiponos/SKILL.md"*
+
 [Join Us!](https://kiponos.io)
 
 <!---

@@ -1,0 +1,8 @@
+// Copy to kiponos.local.gradle (gitignored) and fill from Kiponos.io Connect screen.
+// Or use public sandbox read tokens when available.
+
+tasks.withType(JavaExec).configureEach {
+    environment "KIPONOS_ID", "PASTE_KIPONOS_ID_FROM_ACCOUNT"
+    environment "KIPONOS_ACCESS", "PASTE_KIPONOS_ACCESS_FROM_ACCOUNT"
+    systemProperty "kiponos", "['your-app']['your-release']['your-env']['your-profile']"
+}
