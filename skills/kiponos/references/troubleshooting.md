@@ -3,6 +3,7 @@
 ## Handshake / auth failures
 
 - Confirm `KIPONOS_ID` and `KIPONOS_ACCESS` are set in the **process** environment (not only the parent shell).
+- In the golden example, ensure placeholders in `build.gradle` were replaced with real tokens from Kiponos.io Connect.
 - Tokens expire — regenerate from Kiponos.io Connect screen.
 - Check for trailing whitespace when pasting JWE strings.
 
@@ -14,7 +15,7 @@
 
 ## Global env pollution
 
-Local dev machines may have `KIPONOS_*` in shell profile. Gradle `JavaExec` `environment` overrides per-task — prefer explicit task config or `kiponos.local.gradle` for reproducible runs.
+Local dev machines may have `KIPONOS_*` in shell profile. Gradle `JavaExec` `environment` in `build.gradle` overrides per-task — prefer explicit task config for reproducible runs.
 
 ## SLF4J warnings
 
@@ -26,5 +27,5 @@ If an agent fails to integrate despite this skill:
 
 1. Confirm it read `references/integration-contract.md`.
 2. Confirm it did not skip the profile JVM property.
-3. Confirm tokens were not committed and then redacted mid-session.
+3. Confirm real tokens were not committed to git.
 4. File an issue: https://github.com/kiponos-io/kiponos-io/issues

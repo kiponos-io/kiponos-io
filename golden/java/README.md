@@ -4,10 +4,16 @@ Minimal runnable example: connect to Kiponos.io, read one config value, print it
 
 ## Quick start
 
-```bash
-cp kiponos.local.gradle.example kiponos.local.gradle
-# Edit kiponos.local.gradle with tokens + profile from Kiponos.io Connect
+1. Open `build.gradle` and replace the three placeholders in the `JavaExec` block:
+   - `REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT`
+   - `REPLACE_WITH_KIPONOS_ACCESS_FROM_ACCOUNT`
+   - `['your-app']['your-release']['your-env']['your-profile']`
 
+   Copy values from your Kiponos.io account → **Connect** / SDK setup screen.
+
+2. Run:
+
+```bash
 ./gradlew run
 ```
 
@@ -22,7 +28,7 @@ springBootStarterURL: https://start.spring.io
 - `Kiponos.createForCurrentTeam()` — team-scoped client from env tokens
 - `kiponos.path(...).get("key")` — folder-based config lookup
 - `kiponos.disconnect()` — clean shutdown
-- `kiponos.local.gradle` — self-contained credentials without polluting shell env
+- `tasks.withType(JavaExec)` — self-contained credentials in `build.gradle`, isolated from global shell env
 
 ## Agent integration
 

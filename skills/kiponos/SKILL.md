@@ -22,7 +22,7 @@ Integrate [Kiponos.io](https://kiponos.io) real-time config into the user's **ex
 ## Before you change anything
 
 1. Read [references/integration-contract.md](references/integration-contract.md) — the non-negotiable contract.
-2. If tokens or profile are missing, ask the user to copy them from their Kiponos.io account **Connect** screen (or from a downloaded `kiponos.local.gradle`). Never invent tokens.
+2. If tokens or profile are missing, ask the user to copy them from their Kiponos.io account **Connect** screen and paste into `build.gradle` placeholders (see `golden/java/build.gradle`). Never invent tokens.
 3. Optionally verify connectivity using the golden example at `golden/java/` in this repo (`./gradlew run`).
 
 ## Integration workflow
@@ -45,11 +45,9 @@ Add dependency: `io.kiponos:sdk-boot-3:<version>` — use the latest from [Maven
 | `KIPONOS_ACCESS` | Environment variable | JWE from Kiponos.io Connect UI |
 | Config profile | JVM system property `kiponos` | `['my-app']['v1.0.0']['dev']['base']` |
 
-**Gradle run tasks:** set env + `systemProperty "kiponos", "..."` on `JavaExec` (see golden example).
+**Gradle run tasks:** add a `tasks.withType(JavaExec)` block with `environment` + `systemProperty "kiponos"` — use placeholders until the user supplies real values. See [`golden/java/build.gradle`](../../golden/java/build.gradle).
 
-**Production:** use env vars from secrets manager / K8s secrets — never commit tokens.
-
-Use [assets/kiponos.local.gradle.example](assets/kiponos.local.gradle.example) for local dev; keep `kiponos.local.gradle` gitignored.
+**Production:** use env vars from secrets manager / K8s secrets — never commit real tokens to git.
 
 ### 3. Add application code
 
@@ -80,7 +78,7 @@ Report: dependency added, where tokens/profile are configured, code entry point,
 
 ## Rules
 
-- **Never commit** `KIPONOS_ID`, `KIPONOS_ACCESS`, or filled `kiponos.local.gradle`.
+- **Never commit** real `KIPONOS_ID` or `KIPONOS_ACCESS` values (placeholders in public examples are fine).
 - **Always call** `disconnect()` on application shutdown.
 - **Prefer** `path("folder", ...).get("key")` over hard-coding JSON paths — the SDK resolves from the profile root.
 - **Match** existing project style (package layout, DI framework, logging).
