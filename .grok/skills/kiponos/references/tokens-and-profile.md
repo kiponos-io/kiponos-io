@@ -13,13 +13,14 @@ Kiponos.io issues two JWE tokens per application connection:
 
 Both are long `eyJ...` strings. The SDK sends them during the WebSocket handshake.
 
-**Where users get them:** Kiponos.io account → application → **Connect** / SDK setup screen → copy icons (or future one-click download).
+**Where users get them:** Kiponos.io account → application → **Connect** / SDK setup screen → copy icons.
 
-**How agents should configure them:**
+**How to configure them:**
 
-- Local dev: `kiponos.local.gradle` (gitignored) or IDE run configuration env vars
-- CI/CD: secret store (GitHub Actions secrets, K8s Secret, etc.)
-- Never: hard-coded in committed `build.gradle` or source files
+- **Golden / local dev:** replace placeholders in `build.gradle` `JavaExec` block (see `golden/java/build.gradle`)
+- **IDE run config:** environment variables on the run configuration
+- **CI/CD:** secret store (GitHub Actions secrets, K8s Secret, etc.)
+- **Never:** commit real tokens to a public repo (use placeholders in examples; public sandbox read tokens when available)
 
 ## 2. Config profile (JVM property `kiponos`)
 
@@ -31,7 +32,7 @@ Format uses bracket notation (copied from Kiponos.io):
 ['my-app']['v1.0.0']['dev']['base']
 ```
 
-Gradle:
+Gradle (`build.gradle`):
 
 ```groovy
 tasks.withType(JavaExec).configureEach {

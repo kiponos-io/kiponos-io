@@ -8,7 +8,7 @@ Ready-to-use [Agent Skills](https://agentskills.io) for integrating Kiponos.io i
 skills/kiponos/
 ├── SKILL.md                 # Main instructions (agentskills.io format)
 ├── references/              # Integration contract, Gradle, Maven, Spring Boot
-├── assets/                  # kiponos.local.gradle.example
+├── references/              # Gradle, Maven, integration contract
 └── scripts/
 ```
 
@@ -39,7 +39,7 @@ Grok Build also discovers `~/.cursor/skills/` and `~/.claude/skills/` for compat
 
 After install, ask your agent:
 
-> Integrate Kiponos SDK into this project. Tokens and profile are in kiponos.local.gradle.
+> Integrate Kiponos SDK into this project. I'll paste tokens and profile from Kiponos.io Connect into build.gradle.
 
 Or invoke explicitly: `/kiponos` (Grok), or mention "integrate kiponos" in Cursor/Claude.
 

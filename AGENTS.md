@@ -18,7 +18,7 @@ When asked to connect, integrate, or onboard Kiponos into a Java application:
 | `KIPONOS_ACCESS` | Environment variable (JWE from Kiponos.io) |
 | Config profile | JVM property `-Dkiponos="['app']['release']['env']['profile']"` |
 
-Never commit tokens. Use `kiponos.local.gradle` (gitignored) for local dev.
+Never commit real tokens. For local dev, replace placeholders in `golden/java/build.gradle` `JavaExec` block (see comments there).
 
 ## Repository layout (target)
 
