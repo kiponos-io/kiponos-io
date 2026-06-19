@@ -1,8 +1,10 @@
 ---
 title: "We Just Open-Sourced the Fastest Way to Integrate Kiponos (and Teach Your AI Agent How)"
 published: false
-tags: java, ai, opensource, devtools, configuration
+tags: java, ai, opensource, devtools
+description: Golden Java example plus Agent Skills for real-time Kiponos.io SDK integration — free TeamPro.
 canonical_url: https://github.com/kiponos-io/kiponos-io
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-kiponos-announcement.jpg
 ---
 
 If you've ever tried asking an AI agent to wire up a new SDK, you know the pain: half the docs are for humans, the tokens live in three different places, and the agent confidently hallucinates your config profile.
