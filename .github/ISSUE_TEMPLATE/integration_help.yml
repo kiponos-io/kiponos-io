@@ -1,0 +1,33 @@
+name: SDK integration help
+description: Trouble connecting, auth, profile, or agent integration
+labels: ["integration"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: dropdown
+    id: build
+    attributes:
+      label: Build tool
+      options:
+        - Gradle
+        - Maven
+        - Spring Boot
+        - Other
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: What have you tried?
+      options:
+        - label: Replaced placeholders in build.gradle
+        - label: Ran golden/java successfully
+        - label: Used skills/kiponos with an AI agent
+        - label: Read docs/GETTING-STARTED.md
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant SDK logs (redact tokens!)
+      description: e.g. Handshake Authenticated / auth failure

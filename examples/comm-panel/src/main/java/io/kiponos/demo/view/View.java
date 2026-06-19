@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class View {
     public static JPanel createHeaderPane() {
-        JPanel pane = createCommSubPane("#9b7200", "#222");
-        pane.setBackground(Color.decode("#246"));
+        JPanel pane = createCommSubPane("#9b7200", "#202020");
+        pane.setBackground(Color.decode("#204060"));
         return pane;
     }
 
     public static JPanel createCommSubPane() {
-        return createCommSubPane("#9b7200", "#222");
+        return createCommSubPane("#9b7200", "#202020");
     }
 
     public static JPanel createCommSubPane(String borderColor, String bgColor) {
@@ -25,6 +25,7 @@ public class View {
     public static JPanel createMainPane() {
         JPanel pane = new JPanel(new GridBagLayout());
         pane.setBackground(Color.BLACK);
+        pane.setBorder(BorderFactory.createLineBorder(Color.decode("#f0a000"), 4));
         return pane;
     }
 
@@ -55,9 +56,10 @@ public class View {
     public static GridBagConstraints createBufferConstraints() {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.NORTH;
         gbc.gridx = 0;
-        gbc.gridy = 4;
-        gbc.weighty = 1.0;
+        gbc.gridy = 3;
+        gbc.weighty = 5.0;
         gbc.weightx = 1.0;
 
         return gbc;
@@ -70,7 +72,14 @@ public class View {
 
     public static JPanel createTogglesPane() {
         JPanel pane = createCommSubPane();
-        pane.setBackground(Color.decode("#123"));
+        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+        pane.setBackground(Color.decode("#102030"));
+        return pane;
+    }
+
+    public static JPanel createTranslationBETAPane() {
+        JPanel pane = createCommSubPane();
+        pane.setBackground(Color.decode("#e0c050"));
         return pane;
     }
 
@@ -79,15 +88,28 @@ public class View {
         gbc.insets = new Insets(8,16,8,16);
         gbc.weighty = 1.0;
         gbc.weightx = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.NORTH;
         return gbc;
+    }
+
+    public static GridBagConstraints gbc(int x, int y, int w) {
+        GridBagConstraints gbc = createDefault();
+        gbc.gridx = x;
+        gbc.gridy = y;
+        gbc.gridwidth = w;
+        return gbc;
+    }
+
+    public static GridBagConstraints gbc(int x, int y) {
+        return gbc(x,y, 1);
     }
 
     public static GridBagConstraints createTogglesConstraints() {
         GridBagConstraints c = createDefault();
         c.gridx = 0;
         c.gridy = 1;
-        c.anchor = GridBagConstraints.NORTH;
+//        c.anchor = GridBagConstraints.NORTH;
         return c;
     }
 
