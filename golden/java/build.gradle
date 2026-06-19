@@ -1,0 +1,47 @@
+plugins {
+    id 'application'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+group = 'io.kiponos'
+version = '1.0-SNAPSHOT'
+
+application {
+    mainClass.set("io.kiponos.Main")
+}
+
+def kiponosLocal = rootProject.file('kiponos.local.gradle')
+if (kiponosLocal.exists()) {
+    apply from: kiponosLocal
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.kiponos:sdk-boot-3:4.4.0.250319'
+
+    testImplementation platform('org.junit:junit-bom:6.0.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'io.kiponos.Main'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+test {
+    useJUnitPlatform()
+}
