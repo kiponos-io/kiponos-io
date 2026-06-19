@@ -17,7 +17,7 @@ Replace placeholders in the `JavaExec` block. Reference: [`golden/java/build.gra
 tasks.withType(JavaExec).configureEach {
     environment "KIPONOS_ID", "REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT"
     environment "KIPONOS_ACCESS", "REPLACE_WITH_KIPONOS_ACCESS_FROM_ACCOUNT"
-    systemProperty "kiponos", "['your-app']['your-release']['your-env']['your-profile']"
+    systemProperty "kiponos", "['my-app']['v1.0.0']['dev']['base']"
 }
 ```
 
