@@ -3,7 +3,7 @@ title: "waitDurationInOpenState=30s Kept Us Open Too Long — Changed Live (Resi
 published: false
 tags: java, springboot, resilience, devops
 description: Circuit breaker open-state wait duration feels frozen in YAML. When recovery is fast, wait seconds are operational — Kiponos feeds live half-open timing.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-circuit-wait-open.md
+canonical_url: https://dev.to/kiponos/waitdurationinopenstate30s-kept-us-open-too-long-changed-live-resilience4j-kiponos-48a7
 main_image: https://files.catbox.moe/id94bo.jpg
 ---
 

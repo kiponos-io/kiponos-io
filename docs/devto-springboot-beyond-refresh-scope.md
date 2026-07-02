@@ -3,7 +3,7 @@ title: "Spring Boot 3 Operational Config — Beyond @RefreshScope and Actuator R
 published: false
 tags: java, springboot, architecture, devops
 description: Senior Spring teams still restart pods to change timeouts, pool sizes, and resilience thresholds. This guide maps @ConfigurationProperties limits and wires Kiponos for zero-latency reads on the request path.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-springboot-beyond-refresh-scope.md
+canonical_url: https://dev.to/kiponos/spring-boot-3-operational-config-beyond-refreshscope-and-actuator-restarts-2aj7
 main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 
@@ -180,7 +180,7 @@ With `spring.threads.virtual.enabled=true`, **carrier thread pool** and **Tomcat
 4. Leave URLs and secrets in Spring config / sealed secrets
 5. Game day: measure tweak latency vs `@RefreshScope` refresh
 
-Related: [rate limits & circuit breakers](https://dev.to/kiponos/change-api-rate-limits-and-circuit-breakers-at-runtime-no-java-redeploy-kiponos-sdk-3d94), [JDBC pools live](https://dev.to/kiponos/tune-jdbc-and-http-connection-pools-at-runtime-kiponos-java-sdk-4d2l), [GitOps boundary](https://dev.to/kiponos/gitops-vs-live-operational-config-where-kiponos-fits-in-platform-architecture-2nbb).
+Related: [rate limits & circuit breakers](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md), [JDBC pools live](https://dev.to/kiponos/tune-jdbc-and-http-connection-pools-at-runtime-kiponos-java-sdk-4d2l), [GitOps boundary](https://dev.to/kiponos/gitops-vs-live-operational-config-where-kiponos-fits-in-platform-architecture-2nbb).
 
 Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
 

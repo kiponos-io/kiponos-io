@@ -3,7 +3,7 @@ title: "PAGE_SIZE = 50 Was a Constant Since 2018 — We Changed It During the Da
 published: false
 tags: java, springboot, api, devops
 description: API page sizes and SQL LIMIT values feel like API contracts frozen in code. During a heavy migration, page size is operational — Kiponos feeds live pagination policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-pagination-page-size.md
+canonical_url: https://dev.to/kiponos/pagesize-50-was-a-constant-since-2018-we-changed-it-during-the-data-migration-spring-boot-48oe
 main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 

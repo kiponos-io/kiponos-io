@@ -27,7 +27,7 @@ That `8000` usually comes from:
 2. **Env vars in Helm** — change means rolling twelve deployments
 3. **Shared DB config table** — poll per step adds latency and coupling
 
-Saga steps are **high-frequency reads** inside workflow engines. You need local memory reads and async updates — the same contract as [live API rate limits](https://dev.to/kiponos/change-api-rate-limits-and-circuit-breakers-at-runtime-no-java-redeploy-kiponos-sdk-3d94).
+Saga steps are **high-frequency reads** inside workflow engines. You need local memory reads and async updates — the same contract as [live API rate limits](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md).
 
 ## Architecture: one tree, many participants
 

@@ -3,7 +3,7 @@ title: "Strangler Fig Migrations With Live Traffic Shift Keys (Kiponos Java SDK)
 published: false
 tags: java, architecture, refactoring, devops
 description: Gradually replace a legacy monolith by routing feature slices through live Kiponos flags and percentage weights — no big-bang cutover, no redeploy to roll back.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-strangler-fig-migration.md
+canonical_url: https://dev.to/kiponos/strangler-fig-migrations-with-live-traffic-shift-keys-kiponos-java-sdk-e8p
 main_image: https://files.catbox.moe/yath7q.jpg
 ---
 

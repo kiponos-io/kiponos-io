@@ -3,7 +3,7 @@ title: "spring.lifecycle.timeout-per-shutdown-phase=30s Was Untouched for Years 
 published: false
 tags: java, springboot, kubernetes, devops
 description: Graceful shutdown timeouts feel like platform bootstrap config. During a bad deploy, drain seconds are operational — Kiponos feeds live shutdown policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-graceful-shutdown.md
+canonical_url: https://dev.to/kiponos/springlifecycletimeout-per-shutdown-phase30s-was-untouched-for-years-spring-boot-kiponos-30ee
 main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 

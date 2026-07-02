@@ -1,0 +1,744 @@
+{
+  "on_github_canonical": [
+    {
+      "file": "devto-ab-checkout-weights.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ab-checkout-weights.md"
+    },
+    {
+      "file": "devto-accounting-month-end.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-accounting-month-end.md"
+    },
+    {
+      "file": "devto-accounting-tax-rates.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-accounting-tax-rates.md"
+    },
+    {
+      "file": "devto-announcement.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-announcement.md"
+    },
+    {
+      "file": "devto-automation-no-env.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-automation-no-env.md"
+    },
+    {
+      "file": "devto-banking-aml-monitoring.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-banking-aml-monitoring.md"
+    },
+    {
+      "file": "devto-banking-loan-approval.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-banking-loan-approval.md"
+    },
+    {
+      "file": "devto-cdn-edge-rules.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-cdn-edge-rules.md"
+    },
+    {
+      "file": "devto-ci-test-tuning.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ci-test-tuning.md"
+    },
+    {
+      "file": "devto-cybersecurity-waf.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-cybersecurity-waf.md"
+    },
+    {
+      "file": "devto-energy-grid.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-energy-grid.md"
+    },
+    {
+      "file": "devto-fraud-payment-routing.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fraud-payment-routing.md"
+    },
+    {
+      "file": "devto-game-server-balance.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-game-server-balance.md"
+    },
+    {
+      "file": "devto-hospital-triage-routing.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-hospital-triage-routing.md"
+    },
+    {
+      "file": "devto-insurance-underwriting.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-insurance-underwriting.md"
+    },
+    {
+      "file": "devto-iot-sensor-calibration.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-iot-sensor-calibration.md"
+    },
+    {
+      "file": "devto-k8s-multitenant.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-multitenant.md"
+    },
+    {
+      "file": "devto-k8s-no-configmaps.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-configmaps.md"
+    },
+    {
+      "file": "devto-k8s-no-restart.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-restart.md"
+    },
+    {
+      "file": "devto-k8s-sdk-per-pod.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-sdk-per-pod.md"
+    },
+    {
+      "file": "devto-llm-inference-serving.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-llm-inference-serving.md"
+    },
+    {
+      "file": "devto-logistics-routing.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-logistics-routing.md"
+    },
+    {
+      "file": "devto-microservices-collaboration.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-collaboration.md"
+    },
+    {
+      "file": "devto-microservices-event-routing.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-event-routing.md"
+    },
+    {
+      "file": "devto-microservices-handoff.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-handoff.md"
+    },
+    {
+      "file": "devto-microservices-saga.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-saga.md"
+    },
+    {
+      "file": "devto-qa-zero-config.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-qa-zero-config.md"
+    },
+    {
+      "file": "devto-rate-limits-circuit-breakers.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md"
+    },
+    {
+      "file": "devto-realestate-valuation.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realestate-valuation.md"
+    },
+    {
+      "file": "devto-realtime-ml-training.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md"
+    },
+    {
+      "file": "devto-saas-multitenant.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-saas-multitenant.md"
+    },
+    {
+      "file": "devto-staging-live-profile.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-staging-live-profile.md"
+    },
+    {
+      "file": "devto-supervisor-ml-training.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-supervisor-ml-training.md"
+    },
+    {
+      "file": "devto-telecom-qos.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-telecom-qos.md"
+    },
+    {
+      "file": "devto-trading-bot-risk.md",
+      "github": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-trading-bot-risk.md"
+    }
+  ],
+  "not_on_github_need_devto": [
+    {
+      "file": "devto-aha-batch-chunk.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-batch-chunk.md",
+      "devto": "https://dev.to/kiponos/spring-batch-chunk500-was-wrong-for-six-hours-we-changed-it-mid-job-java-kiponos-22c1"
+    },
+    {
+      "file": "devto-aha-bulkhead-concurrent.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-bulkhead-concurrent.md",
+      "devto": "https://dev.to/kiponos/bulkheadmaxconcurrentcalls25-was-untouchable-we-reallocated-capacity-live-spring-boot-fd5"
+    },
+    {
+      "file": "devto-aha-cache-ttl.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-cache-ttl.md",
+      "devto": "https://dev.to/kiponos/cache-ttl-was-3600-seconds-in-code-flash-sale-did-not-wait-for-a-deploy-java-kiponos-3101"
+    },
+    {
+      "file": "devto-aha-canary-percent.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-canary-percent.md",
+      "devto": "https://dev.to/kiponos/canarypercent-5-was-a-constant-we-ramped-to-40-live-without-a-mesh-spring-boot-4f1h"
+    },
+    {
+      "file": "devto-aha-circuit-breaker-threshold.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-circuit-breaker-threshold.md",
+      "devto": "https://dev.to/kiponos/resilience4j-failureratethreshold50-was-sacred-yaml-we-changed-it-mid-outage-spring-boot-33do"
+    },
+    {
+      "file": "devto-aha-circuit-wait-open.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-circuit-wait-open.md",
+      "devto": "https://dev.to/kiponos/waitdurationinopenstate30s-kept-us-open-too-long-changed-live-resilience4j-kiponos-48a7"
+    },
+    {
+      "file": "devto-aha-cors-max-age.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-cors-max-age.md",
+      "devto": "https://dev.to/kiponos/access-control-max-age3600-was-cors-religion-spring-boot-kiponos-3114"
+    },
+    {
+      "file": "devto-aha-debounce-ms.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-debounce-ms.md",
+      "devto": "https://dev.to/kiponos/debouncems-300-felt-like-ux-design-we-changed-it-during-the-search-meltdown-java-1p3c"
+    },
+    {
+      "file": "devto-aha-executor-queue-capacity.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-executor-queue-capacity.md",
+      "devto": "https://dev.to/kiponos/threadpoolexecutor-queue-capacity100-was-architecture-java-kiponos-5aad"
+    },
+    {
+      "file": "devto-aha-graceful-shutdown.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-graceful-shutdown.md",
+      "devto": "https://dev.to/kiponos/springlifecycletimeout-per-shutdown-phase30s-was-untouched-for-years-spring-boot-kiponos-30ee"
+    },
+    {
+      "file": "devto-aha-health-poll-interval.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-health-poll-interval.md",
+      "devto": "https://dev.to/kiponos/health-check-every-5-seconds-hammered-the-db-we-slowed-polls-live-spring-boot-3937"
+    },
+    {
+      "file": "devto-aha-hikari-pool-max.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-hikari-pool-max.md",
+      "devto": "https://dev.to/kiponos/hikari-maximumpoolsize20-was-tattooed-in-application-prodyml-spring-boot-kiponos-1f4b"
+    },
+    {
+      "file": "devto-aha-http-timeout.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-http-timeout.md",
+      "devto": "https://dev.to/kiponos/webclient-readtimeout-felt-permanent-until-the-partner-outage-spring-boot-kiponos-38d0"
+    },
+    {
+      "file": "devto-aha-idempotency-window.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-idempotency-window.md",
+      "devto": "https://dev.to/kiponos/idempotencywindowhours-24-was-compliance-code-java-kiponos-22i8"
+    },
+    {
+      "file": "devto-aha-jwt-leeway.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-jwt-leeway.md",
+      "devto": "https://dev.to/kiponos/jwt-clockskewseconds60-was-security-policy-in-code-spring-boot-kiponos-5cgk"
+    },
+    {
+      "file": "devto-aha-kafka-max-poll.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-kafka-max-poll.md",
+      "devto": "https://dev.to/kiponos/maxpollrecords500-was-kafka-gospel-we-lowered-it-live-during-the-lag-spike-java-37l1"
+    },
+    {
+      "file": "devto-aha-log-levels.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-log-levels.md",
+      "devto": "https://dev.to/kiponos/change-logginglevel-in-production-without-restarting-the-jvm-spring-boot-kiponos-38i3"
+    },
+    {
+      "file": "devto-aha-pagination-page-size.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-pagination-page-size.md",
+      "devto": "https://dev.to/kiponos/pagesize-50-was-a-constant-since-2018-we-changed-it-during-the-data-migration-spring-boot-48oe"
+    },
+    {
+      "file": "devto-aha-python-pool-workers.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-pool-workers.md",
+      "devto": "https://dev.to/kiponos/processpoolexecutormaxworkers4-survived-three-hardware-generations-python-kiponos-1pha"
+    },
+    {
+      "file": "devto-aha-python-request-timeout.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-request-timeout.md",
+      "devto": "https://dev.to/kiponos/requeststimeout5-was-module-folklore-we-extended-it-during-the-api-storm-python-12em"
+    },
+    {
+      "file": "devto-aha-python-semaphore.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-semaphore.md",
+      "devto": "https://dev.to/kiponos/asynciosemaphore10-at-module-level-was-forever-we-changed-concurrency-mid-outage-python-30ln"
+    },
+    {
+      "file": "devto-aha-python-worker-concurrency.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-worker-concurrency.md",
+      "devto": "https://dev.to/kiponos/celeryworkerconcurrency4-survived-every-scale-up-python-kiponos-m63"
+    },
+    {
+      "file": "devto-aha-rate-limiter.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-rate-limiter.md",
+      "devto": "https://dev.to/kiponos/the-rate-limiter-was-hard-coded-to-10-reqs-on-launch-day-change-permits-live-spring-boot-4k02"
+    },
+    {
+      "file": "devto-aha-retry-attempts.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-retry-attempts.md",
+      "devto": "https://dev.to/kiponos/retryablemaxattempts3-should-not-require-a-release-change-retry-policy-live-spring-boot-35b"
+    },
+    {
+      "file": "devto-aha-scheduled-fixed-delay.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-scheduled-fixed-delay.md",
+      "devto": "https://dev.to/kiponos/scheduledfixeddelay60000-should-not-require-a-deploy-to-speed-up-spring-boot-1g08"
+    },
+    {
+      "file": "devto-aha-session-timeout.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-session-timeout.md",
+      "devto": "https://dev.to/kiponos/serverservletsessiontimeout30m-felt-permanent-we-extended-sessions-during-the-outage-spring-k0n"
+    },
+    {
+      "file": "devto-aha-shed-load-threshold.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-shed-load-threshold.md",
+      "devto": "https://dev.to/kiponos/cpu-85-meant-shed-load-the-threshold-was-hard-coded-java-kiponos-184c"
+    },
+    {
+      "file": "devto-aha-sql-query-limit.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-sql-query-limit.md",
+      "devto": "https://dev.to/kiponos/sql-limit-1000-was-baked-into-the-report-job-we-throttled-it-live-java-kiponos-3ind"
+    },
+    {
+      "file": "devto-aha-tomcat-threads.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-tomcat-threads.md",
+      "devto": "https://dev.to/kiponos/your-servertomcatthreadsmax200-is-not-architecture-change-it-live-while-traffic-runs-spring-kn8"
+    },
+    {
+      "file": "devto-aha-upload-max-size.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-upload-max-size.md",
+      "devto": "https://dev.to/kiponos/springservletmultipartmax-file-size10mb-blocked-the-enterprise-upload-spring-boot-3ge5"
+    },
+    {
+      "file": "devto-aha-warmup-traffic.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-warmup-traffic.md",
+      "devto": "https://dev.to/kiponos/warmuptrafficpercent-10-slowed-our-recovery-spring-boot-kiponos-1gho"
+    },
+    {
+      "file": "devto-aha-webhook-retry.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-webhook-retry.md",
+      "devto": "https://dev.to/kiponos/webhook-retry-backoff-was-just-constants-we-changed-it-during-the-outage-python-kiponos-1okp"
+    },
+    {
+      "file": "devto-arch-canary-traffic-weights.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-canary-traffic-weights.md",
+      "devto": "https://dev.to/kiponos/canary-releases-without-a-service-mesh-live-traffic-weights-in-kiponos-java-sdk-3i38"
+    },
+    {
+      "file": "devto-arch-circuit-breaker-bulkhead.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-circuit-breaker-bulkhead.md",
+      "devto": "https://dev.to/kiponos/circuit-breaker-and-bulkhead-thresholds-you-can-tune-live-kiponos-java-sdk-1hai"
+    },
+    {
+      "file": "devto-arch-config-chaos-multi-env.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-chaos-multi-env.md",
+      "devto": "https://dev.to/kiponos/escape-multi-environment-configuration-chaos-with-one-kiponos-profile-per-env-java-sdk-4ik4"
+    },
+    {
+      "file": "devto-arch-config-schema-versioning.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-schema-versioning.md",
+      "devto": "https://dev.to/kiponos/zero-downtime-schema-for-config-trees-versioning-validation-and-rollback-java-sdk-3ioj"
+    },
+    {
+      "file": "devto-arch-connection-pool-live.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-connection-pool-live.md",
+      "devto": "https://dev.to/kiponos/tune-jdbc-and-http-connection-pools-at-runtime-kiponos-java-sdk-4d2l"
+    },
+    {
+      "file": "devto-arch-cost-control-runtime.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-cost-control-runtime.md",
+      "devto": "https://dev.to/kiponos/cost-control-at-runtime-autoscale-caps-gpu-budget-and-token-limits-for-llm-fleets-kiponos-495n"
+    },
+    {
+      "file": "devto-arch-disaster-recovery-live-config.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-disaster-recovery-live-config.md",
+      "devto": "https://dev.to/kiponos/disaster-recovery-runbooks-as-live-config-flip-readonly-drain-and-fallback-endpoints-in-one-4373"
+    },
+    {
+      "file": "devto-arch-feature-flags-vs-config-hub.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-feature-flags-vs-config-hub.md",
+      "devto": "https://dev.to/kiponos/feature-flags-vs-a-live-config-hub-when-kiponos-is-the-better-primitive-architecture-4pb"
+    },
+    {
+      "file": "devto-arch-gitops-vs-live-config.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-gitops-vs-live-config.md",
+      "devto": "https://dev.to/kiponos/gitops-vs-live-operational-config-where-kiponos-fits-in-platform-architecture-2nbb"
+    },
+    {
+      "file": "devto-arch-multi-region-active-active.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-multi-region-active-active.md",
+      "devto": "https://dev.to/kiponos/multi-region-active-active-config-consistent-trees-partition-behavior-and-stale-read-bounds-2g9"
+    },
+    {
+      "file": "devto-arch-observability-thresholds.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-observability-thresholds.md",
+      "devto": "https://dev.to/kiponos/live-observability-alert-thresholds-stop-redeploying-for-every-slo-tweak-kiponos-python-sdk-1dfl"
+    },
+    {
+      "file": "devto-arch-opentelemetry-slo-thresholds.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-opentelemetry-slo-thresholds.md",
+      "devto": "https://dev.to/kiponos/opentelemetry-slo-burn-rate-windows-you-can-retune-live-without-redeploying-alert-rules-kiponos-2cm"
+    },
+    {
+      "file": "devto-arch-retry-backoff-live.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-retry-backoff-live.md",
+      "devto": "https://dev.to/kiponos/retry-and-exponential-backoff-policies-that-change-while-jobs-run-kiponos-python-sdk-3e1i"
+    },
+    {
+      "file": "devto-arch-sidecar-vs-embedded-sdk.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-sidecar-vs-embedded-sdk.md",
+      "devto": "https://dev.to/kiponos/sidecar-vs-embedded-kiponos-sdk-when-to-colocate-the-config-reader-in-kubernetes-architecture-pfl"
+    },
+    {
+      "file": "devto-arch-strangler-fig-migration.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-strangler-fig-migration.md",
+      "devto": "https://dev.to/kiponos/strangler-fig-migrations-with-live-traffic-shift-keys-kiponos-java-sdk-e8p"
+    },
+    {
+      "file": "devto-getting-started-developer-guide.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-getting-started-developer-guide.md",
+      "devto": "https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo"
+    },
+    {
+      "file": "devto-mind-reader-live-ops.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-mind-reader-live-ops.md",
+      "devto": "https://dev.to/kiponos/the-mind-reader-demo-trick-same-zero-latency-config-that-changes-icu-parameters-live-spring-boot-17oj"
+    },
+    {
+      "file": "devto-springboot-beyond-refresh-scope.md",
+      "github_would_404": "https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-springboot-beyond-refresh-scope.md",
+      "devto": "https://dev.to/kiponos/spring-boot-3-operational-config-beyond-refreshscope-and-actuator-restarts-2aj7"
+    }
+  ],
+  "special_devto_only": [
+    {
+      "name": "Product tour (Getting Started with Kiponos.io)",
+      "reason": "No docs/*.md source on GitHub",
+      "devto": "https://dev.to/kiponos/getting-started-with-kiponosio-p5k"
+    },
+    {
+      "name": "devto-getting-started-developer-guide.md",
+      "reason": "Committed locally (7acfc85) but not pushed to origin/master",
+      "devto": "https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo"
+    }
+  ],
+  "covers_on_github": [
+    {
+      "file": "devto-cover-ab-checkout.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ab-checkout.jpg"
+    },
+    {
+      "file": "devto-cover-accounting-close.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-accounting-close.jpg"
+    },
+    {
+      "file": "devto-cover-accounting-tax.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-accounting-tax.jpg"
+    },
+    {
+      "file": "devto-cover-automation-no-env.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-automation-no-env.jpg"
+    },
+    {
+      "file": "devto-cover-banking-aml.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-banking-aml.jpg"
+    },
+    {
+      "file": "devto-cover-banking-loan.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-banking-loan.jpg"
+    },
+    {
+      "file": "devto-cover-cdn.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-cdn.jpg"
+    },
+    {
+      "file": "devto-cover-ci-testing.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ci-testing.jpg"
+    },
+    {
+      "file": "devto-cover-energy.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-energy.jpg"
+    },
+    {
+      "file": "devto-cover-fraud-routing.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-fraud-routing.jpg"
+    },
+    {
+      "file": "devto-cover-game-server.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-game-server.jpg"
+    },
+    {
+      "file": "devto-cover-hospital-triage.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-hospital-triage.jpg"
+    },
+    {
+      "file": "devto-cover-insurance.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-insurance.jpg"
+    },
+    {
+      "file": "devto-cover-iot-sensors.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-iot-sensors.jpg"
+    },
+    {
+      "file": "devto-cover-k8s-multitenant.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-multitenant.jpg"
+    },
+    {
+      "file": "devto-cover-k8s-no-configmaps.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-no-configmaps.jpg"
+    },
+    {
+      "file": "devto-cover-k8s-no-restart.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-no-restart.jpg"
+    },
+    {
+      "file": "devto-cover-k8s-sdk-per-pod.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-sdk-per-pod.jpg"
+    },
+    {
+      "file": "devto-cover-llm-serving.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-llm-serving.jpg"
+    },
+    {
+      "file": "devto-cover-logistics.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-logistics.jpg"
+    },
+    {
+      "file": "devto-cover-microservices-collab.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-collab.jpg"
+    },
+    {
+      "file": "devto-cover-microservices-events.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-events.jpg"
+    },
+    {
+      "file": "devto-cover-microservices-handoff.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-handoff.jpg"
+    },
+    {
+      "file": "devto-cover-microservices-saga.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-saga.jpg"
+    },
+    {
+      "file": "devto-cover-ml-training.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ml-training.jpg"
+    },
+    {
+      "file": "devto-cover-qa-zero-config.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-qa-zero-config.jpg"
+    },
+    {
+      "file": "devto-cover-rate-limits.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-rate-limits.jpg"
+    },
+    {
+      "file": "devto-cover-realestate.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-realestate.jpg"
+    },
+    {
+      "file": "devto-cover-saas.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-saas.jpg"
+    },
+    {
+      "file": "devto-cover-staging-profile.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-staging-profile.jpg"
+    },
+    {
+      "file": "devto-cover-supervisor-ml.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-supervisor-ml.jpg"
+    },
+    {
+      "file": "devto-cover-telecom.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-telecom.jpg"
+    },
+    {
+      "file": "devto-cover-trading-bot.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-trading-bot.jpg"
+    },
+    {
+      "file": "devto-cover-waf.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-waf.jpg"
+    },
+    {
+      "file": "devto-kiponos-announcement.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-kiponos-announcement.jpg"
+    }
+  ],
+  "covers_not_on_github": [
+    {
+      "file": "devto-cover-aha-batch-chunk.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-batch-chunk.jpg"
+    },
+    {
+      "file": "devto-cover-aha-bulkhead-concurrent.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-bulkhead-concurrent.jpg"
+    },
+    {
+      "file": "devto-cover-aha-cache-ttl.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-cache-ttl.jpg"
+    },
+    {
+      "file": "devto-cover-aha-canary-percent.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-canary-percent.jpg"
+    },
+    {
+      "file": "devto-cover-aha-circuit-breaker-threshold.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-circuit-breaker-threshold.jpg"
+    },
+    {
+      "file": "devto-cover-aha-circuit-wait-open.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-circuit-wait-open.jpg"
+    },
+    {
+      "file": "devto-cover-aha-cors-max-age.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-cors-max-age.jpg"
+    },
+    {
+      "file": "devto-cover-aha-debounce-ms.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-debounce-ms.jpg"
+    },
+    {
+      "file": "devto-cover-aha-executor-queue-capacity.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-executor-queue-capacity.jpg"
+    },
+    {
+      "file": "devto-cover-aha-graceful-shutdown.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-graceful-shutdown.jpg"
+    },
+    {
+      "file": "devto-cover-aha-health-poll-interval.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-health-poll-interval.jpg"
+    },
+    {
+      "file": "devto-cover-aha-hikari-pool-max.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-hikari-pool-max.jpg"
+    },
+    {
+      "file": "devto-cover-aha-http-timeout.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-http-timeout.jpg"
+    },
+    {
+      "file": "devto-cover-aha-idempotency-window.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-idempotency-window.jpg"
+    },
+    {
+      "file": "devto-cover-aha-jwt-leeway.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-jwt-leeway.jpg"
+    },
+    {
+      "file": "devto-cover-aha-kafka-max-poll.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-kafka-max-poll.jpg"
+    },
+    {
+      "file": "devto-cover-aha-log-levels.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-log-levels.jpg"
+    },
+    {
+      "file": "devto-cover-aha-pagination-page-size.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-pagination-page-size.jpg"
+    },
+    {
+      "file": "devto-cover-aha-python-pool-workers.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-pool-workers.jpg"
+    },
+    {
+      "file": "devto-cover-aha-python-request-timeout.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-request-timeout.jpg"
+    },
+    {
+      "file": "devto-cover-aha-python-semaphore.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-semaphore.jpg"
+    },
+    {
+      "file": "devto-cover-aha-python-worker-concurrency.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-worker-concurrency.jpg"
+    },
+    {
+      "file": "devto-cover-aha-rate-limiter.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-rate-limiter.jpg"
+    },
+    {
+      "file": "devto-cover-aha-retry-attempts.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-retry-attempts.jpg"
+    },
+    {
+      "file": "devto-cover-aha-scheduled-fixed-delay.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-scheduled-fixed-delay.jpg"
+    },
+    {
+      "file": "devto-cover-aha-session-timeout.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-session-timeout.jpg"
+    },
+    {
+      "file": "devto-cover-aha-shed-load-threshold.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-shed-load-threshold.jpg"
+    },
+    {
+      "file": "devto-cover-aha-sql-query-limit.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-sql-query-limit.jpg"
+    },
+    {
+      "file": "devto-cover-aha-tomcat-threads.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-tomcat-threads.jpg"
+    },
+    {
+      "file": "devto-cover-aha-upload-max-size.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-upload-max-size.jpg"
+    },
+    {
+      "file": "devto-cover-aha-warmup-traffic.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-warmup-traffic.jpg"
+    },
+    {
+      "file": "devto-cover-aha-webhook-retry.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-webhook-retry.jpg"
+    },
+    {
+      "file": "devto-cover-arch-canary.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-canary.jpg"
+    },
+    {
+      "file": "devto-cover-arch-config-schema-versioning.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-config-schema-versioning.jpg"
+    },
+    {
+      "file": "devto-cover-arch-cost-control-runtime.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-cost-control-runtime.jpg"
+    },
+    {
+      "file": "devto-cover-arch-disaster-recovery-live-config.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-disaster-recovery-live-config.jpg"
+    },
+    {
+      "file": "devto-cover-arch-feature-flags.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-feature-flags.jpg"
+    },
+    {
+      "file": "devto-cover-arch-multi-env.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-multi-env.jpg"
+    },
+    {
+      "file": "devto-cover-arch-multi-region.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-multi-region.jpg"
+    },
+    {
+      "file": "devto-cover-arch-observability.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-observability.jpg"
+    },
+    {
+      "file": "devto-cover-arch-opentelemetry-slo.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-opentelemetry-slo.jpg"
+    },
+    {
+      "file": "devto-cover-arch-pools.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-pools.jpg"
+    },
+    {
+      "file": "devto-cover-arch-resilience.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-resilience.jpg"
+    },
+    {
+      "file": "devto-cover-arch-retry.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-retry.jpg"
+    },
+    {
+      "file": "devto-cover-arch-sidecar-vs-embedded-sdk.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-sidecar-vs-embedded-sdk.jpg"
+    },
+    {
+      "file": "devto-cover-arch-strangler.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-strangler.jpg"
+    },
+    {
+      "file": "devto-cover-getting-started-developer-guide.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-getting-started-developer-guide.jpg"
+    },
+    {
+      "file": "devto-cover-mind-reader-live-ops.jpg",
+      "github_raw": "https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-mind-reader-live-ops.jpg"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=Kiponos dev.to publish watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/work/kiponos-io
+ExecStart=/usr/bin/bash scripts/publish-devto-watchdog.sh
+Restart=always
+RestartSec=60
+Environment=LOG_DIR=%h/.config/devto
+
+StandardOutput=append:%h/.config/devto/watchdog-nohup.log
+StandardError=append:%h/.config/devto/watchdog-nohup.log
+
+[Install]
+WantedBy=default.target

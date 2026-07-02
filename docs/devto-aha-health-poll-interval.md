@@ -3,7 +3,7 @@ title: "Health Check Every 5 Seconds Hammered the DB — We Slowed Polls Live (S
 published: false
 tags: java, springboot, observability, devops
 description: Custom health poller intervals feel like monitoring constants. When dependencies struggle, poll frequency is operational — Kiponos feeds live health check cadence.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-health-poll-interval.md
+canonical_url: https://dev.to/kiponos/health-check-every-5-seconds-hammered-the-db-we-slowed-polls-live-spring-boot-3937
 main_image: https://files.catbox.moe/87bzmo.jpg
 ---
 

@@ -3,7 +3,7 @@ title: "Hikari maximumPoolSize=20 Was Tattooed in application-prod.yml (Spring B
 published: false
 tags: java, springboot, database, devops
 description: Connection pool max size feels like DBA-signed architecture. When the database struggles, maximumPoolSize is operational — Kiponos resizes Hikari live without pod restart.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-hikari-pool-max.md
+canonical_url: https://dev.to/kiponos/hikari-maximumpoolsize20-was-tattooed-in-application-prodyml-spring-boot-kiponos-1f4b
 main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 

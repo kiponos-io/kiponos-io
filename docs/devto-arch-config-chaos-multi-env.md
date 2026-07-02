@@ -3,7 +3,7 @@ title: "Escape Multi-Environment Configuration Chaos With One Kiponos Profile Pe
 published: false
 tags: java, devops, architecture, config
 description: Local, QA, CI, staging, and prod should not mean five YAML forks. Same Java binary, different Kiponos profile paths — live updates without env-var matrices.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-chaos-multi-env.md
+canonical_url: https://dev.to/kiponos/escape-multi-environment-configuration-chaos-with-one-kiponos-profile-per-env-java-sdk-4ik4
 main_image: https://files.catbox.moe/y1msbh.jpg
 ---
 

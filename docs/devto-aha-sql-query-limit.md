@@ -3,7 +3,7 @@ title: "SQL LIMIT 1000 Was Baked Into the Report Job — We Throttled It Live (J
 published: false
 tags: java, database, batch, devops
 description: Query row limits feel like SQL safety constants in repository code. When replicas lag, LIMIT is operational — Kiponos feeds live query caps with zero-latency reads.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-sql-query-limit.md
+canonical_url: https://dev.to/kiponos/sql-limit-1000-was-baked-into-the-report-job-we-throttled-it-live-java-kiponos-3ind
 main_image: https://files.catbox.moe/l631hl.jpg
 ---
 

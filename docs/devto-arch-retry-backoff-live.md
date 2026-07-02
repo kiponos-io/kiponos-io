@@ -3,7 +3,7 @@ title: "Retry and Exponential Backoff Policies That Change While Jobs Run (Kipon
 published: false
 tags: python, architecture, distributed, devops
 description: Hard-coded max_retries and backoff caps fail when downstream is flaky. Python workers read live retry policy from Kiponos — tune during incident without killing queues.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-retry-backoff-live.md
+canonical_url: https://dev.to/kiponos/retry-and-exponential-backoff-policies-that-change-while-jobs-run-kiponos-python-sdk-3e1i
 main_image: https://files.catbox.moe/w2vd1k.jpg
 ---
 

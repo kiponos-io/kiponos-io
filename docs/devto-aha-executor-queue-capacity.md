@@ -3,7 +3,7 @@ title: "ThreadPoolExecutor Queue Capacity=100 Was Architecture (Java + Kiponos)"
 published: false
 tags: java, concurrency, performance, devops
 description: Executor queue capacities feel like threading design frozen at startup. Under burst, queue size is operational — Kiponos feeds live executor policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-executor-queue-capacity.md
+canonical_url: https://dev.to/kiponos/threadpoolexecutor-queue-capacity100-was-architecture-java-kiponos-5aad
 main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 

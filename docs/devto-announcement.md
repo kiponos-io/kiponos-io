@@ -3,7 +3,7 @@ title: "We Just Open-Sourced the Fastest Way to Integrate Kiponos (and Teach You
 published: false
 tags: java, ai, opensource, devtools
 description: Golden Java example plus Agent Skills for real-time Kiponos.io SDK integration — free TeamPro.
-canonical_url: https://github.com/kiponos-io/kiponos-io
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-announcement.md
 main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-kiponos-announcement.jpg
 ---
 

@@ -3,7 +3,7 @@ title: "CPU > 85% Meant Shed Load — The Threshold Was Hard-Coded (Java + Kipon
 published: false
 tags: java, performance, sre, devops
 description: Load-shedding CPU thresholds feel like SRE constants in code. During heat waves, shed threshold is operational — Kiponos feeds live admission control.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-shed-load-threshold.md
+canonical_url: https://dev.to/kiponos/cpu-85-meant-shed-load-the-threshold-was-hard-coded-java-kiponos-184c
 main_image: https://files.catbox.moe/j9f0ym.jpg
 ---
 

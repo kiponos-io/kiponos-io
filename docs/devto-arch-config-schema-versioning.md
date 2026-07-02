@@ -3,7 +3,7 @@ title: "Zero-Downtime Schema for Config Trees — Versioning, Validation, and Ro
 published: false
 tags: api, schema, platform, java
 description: Platform teams evolve config tree shapes without pod restarts. Version keys, validate deltas before they hit the hot path, and roll back in seconds — compared honestly to Protobuf contracts and feature-store schemas.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-schema-versioning.md
+canonical_url: https://dev.to/kiponos/zero-downtime-schema-for-config-trees-versioning-validation-and-rollback-java-sdk-3ioj
 main_image: https://files.catbox.moe/y1msbh.jpg
 ---
 

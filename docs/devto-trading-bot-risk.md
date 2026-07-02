@@ -50,7 +50,7 @@ risk/
 | Supervisor algo | Set `halt_new_entries: true` when VaR exceeds limit |
 | Trader | Per-symbol caps without restarting bot process |
 
-Same pattern as [live ML hyperparameter tuning](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j): writers update Kiponos, readers stay in the hot loop.
+Same pattern as [live ML hyperparameter tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md): writers update Kiponos, readers stay in the hot loop.
 
 ## Performance
 

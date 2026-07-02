@@ -3,7 +3,7 @@ title: "WARMUP_TRAFFIC_PERCENT = 10 Slowed Our Recovery (Spring Boot + Kiponos)"
 published: false
 tags: java, springboot, performance, devops
 description: JVM warmup traffic percentages feel like deployment scripts frozen in code. After cold starts, warmup percent is operational — Kiponos feeds live admission policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-warmup-traffic.md
+canonical_url: https://dev.to/kiponos/warmuptrafficpercent-10-slowed-our-recovery-spring-boot-kiponos-1gho
 main_image: https://files.catbox.moe/x854ey.jpg
 ---
 

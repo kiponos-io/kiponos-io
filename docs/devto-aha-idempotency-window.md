@@ -3,7 +3,7 @@ title: "IDEMPOTENCY_WINDOW_HOURS = 24 Was Compliance Code (Java + Kiponos)"
 published: false
 tags: java, payments, architecture, devops
 description: Duplicate-detection windows feel like domain invariants cast in stone. During replay incidents, idempotency window hours are operational — Kiponos feeds live dedup policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-idempotency-window.md
+canonical_url: https://dev.to/kiponos/idempotencywindowhours-24-was-compliance-code-java-kiponos-22i8
 main_image: https://files.catbox.moe/lzraul.jpg
 ---
 

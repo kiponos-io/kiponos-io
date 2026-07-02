@@ -3,7 +3,7 @@ title: "The Rate Limiter Was Hard-Coded to 10 req/s on Launch Day — Change Per
 published: false
 tags: java, springboot, api, devops
 description: Resilience4j RateLimiter permits feel permanent once they ship. Launch traffic proves otherwise. Kiponos feeds permit limits with zero-latency local reads on every request.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-rate-limiter.md
+canonical_url: https://dev.to/kiponos/the-rate-limiter-was-hard-coded-to-10-reqs-on-launch-day-change-permits-live-spring-boot-4k02
 main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 
@@ -179,7 +179,7 @@ public class LiveRateLimitFilter extends OncePerRequestFilter {
 
 Launch surge? Ops sets `permits_per_second: 40`. **Next HTTP request** sees it. DDoS-ish retry storm from one tenant? Tighten `partner_acme/permits_per_second` without touching public API limits.
 
-Related: [API rate limits and circuit breakers article](https://dev.to/kiponos/change-api-rate-limits-and-circuit-breakers-at-runtime-no-java-redeploy-kiponos-sdk-3d94).
+Related: [API rate limits and circuit breakers article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md).
 
 ## Real scenarios
 
