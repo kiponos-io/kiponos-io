@@ -1,24 +1,75 @@
 ---
 title: "Control Accounting Month-End Close Rules at Runtime (Kiponos Java SDK)"
 published: true
-tags: java, accounting, enterprise, realtime
-description: Adjust reconciliation tolerances, close period gates, and posting rules in Java GL systems without redeploy. Kiponos local reads with live delta updates.
+tags: java, accounting, fintech, realtime
+description: Tune accrual thresholds, close calendars, and posting hold rules in Java ERP services during month-end crunch — Kiponos WebSocket deltas, zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-accounting-month-end.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-accounting-close.jpg
+main_image: https://files.catbox.moe/l631hl.jpg
 ---
 
-Month-end close is a controlled chaos of **tolerance tweaks**, **posting holds**, and **last-minute journal policy**. Finance ops should change those knobs without opening a ticket for a Java redeploy.
+Month-end close is controlled chaos. Controllers need to **freeze AP postings**, **extend accrual windows**, or **route exceptions to a manual queue** — at 11 PM on the last business day. Static ERP config means waking the on-call engineer to edit properties and restart Java posting services.
 
-[Kiponos.io](https://kiponos.io) exposes close controls as live config:
+[Kiponos.io](https://kiponos.io) exposes close **control knobs** in a live tree: period status, module freeze flags, tolerance thresholds, and escalation timers — read locally by every posting JVM.
+
+## Close gate in the posting path
 
 ```java
-var close = kiponos.path("accounting", "close");
-if (close.getBool("period_locked")) rejectPosting(entry);
-if (Math.abs(variance) > close.getDouble("recon_tolerance")) routeToReview(entry);
+public PostingResult post(JournalEntry entry) {
+    var close = kiponos.path("close", entry.ledgerId());
+    if (close.getBool("posting_frozen")) {
+        return PostingResult.rejected("period_frozen");
+    }
+    if (entry.amount().abs().compareTo(close.getBigDecimal("auto_post_max")) > 0) {
+        return PostingResult.routeToWorkflow("amount_exceeds_auto_limit");
+    }
+    if (close.getBool("require_secondary_approval")) {
+        return PostingResult.pendingApproval();
+    }
+    return ledger.post(entry);
+}
 ```
 
-Controllers adjust tolerances in the dashboard; the next journal line sees new values. Static close calendars can remain in ERP — **operational thresholds** live in Kiponos.
+Controllers flip `posting_frozen` in Kiponos — **not** via emergency deploy.
 
-Ideal for shared services processing intercompany eliminations across regions.
+## Close control tree
 
-[kiponos.io](https://kiponos.io) · [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+```yaml
+close/
+  us-gaap/
+    posting_frozen: false
+    auto_post_max: 50000
+    require_secondary_approval: false
+    accrual_cutoff_hour: 18
+    exception_queue_sla_hours: 4
+  ifrs/
+    posting_frozen: false
+    auto_post_max: 25000
+  global/
+    month_end_mode: active
+    notify_controller_on_hold: true
+```
+
+## Real-world scenarios
+
+| Scenario | Live action |
+|----------|-------------|
+| Sub-ledger still reconciling | `posting_frozen: true` for US GAAP only |
+| Large vendor invoice spike | Lower `auto_post_max` |
+| Audit request | `require_secondary_approval: true` |
+| Extended close window | Push `accrual_cutoff_hour` |
+
+## Performance
+
+Posting engines run high volume — config reads must be **in-memory**. Delta updates when controllers adjust tolerances mid-close.
+
+## Getting started
+
+1. [kiponos.io](https://kiponos.io) — profile `close/*` per ledger
+2. Externalize freeze flags from ERP properties
+3. Dry-run close: toggle `month_end_mode`; verify posting behavior
+
+Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+
+---
+
+*Kiponos.io — real-time config for Java. Month-end controls when controllers need them — not when deploy windows allow.*

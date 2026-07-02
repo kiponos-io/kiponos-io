@@ -1,0 +1,9 @@
+# Wave 12 — Aha moments (#59-66)
+devto-aha-circuit-breaker-threshold.md
+devto-aha-scheduled-fixed-delay.md
+devto-aha-pagination-page-size.md
+devto-aha-session-timeout.md
+devto-aha-kafka-max-poll.md
+devto-aha-bulkhead-concurrent.md
+devto-aha-hikari-pool-max.md
+devto-aha-python-semaphore.md

@@ -1,0 +1,9 @@
+# Wave 13 — Aha moments (#67-74)
+devto-aha-graceful-shutdown.md
+devto-aha-jwt-leeway.md
+devto-aha-upload-max-size.md
+devto-aha-circuit-wait-open.md
+devto-aha-python-pool-workers.md
+devto-aha-debounce-ms.md
+devto-aha-canary-percent.md
+devto-aha-health-poll-interval.md

@@ -1,0 +1,12 @@
+# Wave 11 — Aha Moments batch (~2.25h cadence, 18h coverage)
+# Pattern: hard-coded pain → live change Aha → websocket/delta/local reads
+# Publish: scripts/publish-aha-article.sh <md>
+
+devto-aha-tomcat-threads.md      # 51 Tomcat maxThreads
+devto-aha-retry-attempts.md      # 52 @Retryable maxAttempts
+devto-aha-log-levels.md          # 53 logging.level.*
+devto-aha-batch-chunk.md         # 54 Spring Batch chunk size
+devto-aha-rate-limiter.md        # 55 RateLimiter permits
+devto-aha-cache-ttl.md           # 56 Caffeine TTL
+devto-aha-http-timeout.md        # 57 WebClient timeout
+devto-aha-webhook-retry.md       # 58 Python webhook backoff

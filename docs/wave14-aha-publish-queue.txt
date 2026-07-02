@@ -1,0 +1,9 @@
+# Wave 14 — Aha moments (#75-82)
+devto-aha-sql-query-limit.md
+devto-aha-executor-queue-capacity.md
+devto-aha-python-request-timeout.md
+devto-aha-idempotency-window.md
+devto-aha-warmup-traffic.md
+devto-aha-shed-load-threshold.md
+devto-aha-python-worker-concurrency.md
+devto-aha-cors-max-age.md

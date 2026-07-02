@@ -25,7 +25,7 @@ Traditionally these values ship in JSON bundles or DB seeds. Hotfixing means:
 
 ## Live balance with Kiponos
 
-```
+```yaml
 balance/
   loot/
     legendary_rate: 0.02

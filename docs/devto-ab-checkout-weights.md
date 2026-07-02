@@ -27,7 +27,7 @@ Those cutoffs (50, 80) usually live in config files. Changing 50→60→70 means
 
 ## Live weight model
 
-```
+```yaml
 experiments/
   checkout_q2/
     variant_a_weight: 40

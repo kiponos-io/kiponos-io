@@ -1,0 +1,6 @@
+# Wave 7 — Platform & architecture (2h 15m cadence)
+# Publish: scripts/publish-wave-scheduled.sh docs/wave7-publish-queue.txt
+
+# Wave 7 complete (2026-07-02)
+# #4052935 OpenTelemetry, #4052951 multi-region, #4052960 config-schema
+# #4053762 sidecar, #4053769 cost-control, #4053786 DR

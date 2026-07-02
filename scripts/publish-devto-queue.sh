@@ -3,6 +3,7 @@
 set -euo pipefail
 
 POST_SCRIPT="${POST_SCRIPT:-$HOME/.grok/skills/devto/scripts/post.py}"
+NOTIFY_SCRIPT="${NOTIFY_SCRIPT:-$(cd "$(dirname "$0")" && pwd)/notify-devto-whatsapp.sh}"
 LOG_DIR="${LOG_DIR:-$HOME/.config/devto}"
 QUEUE_FILE="${QUEUE_FILE:-$LOG_DIR/publish-queue.txt}"
 MANIFEST="${MANIFEST:-$LOG_DIR/published-manifest.json}"
@@ -52,15 +53,28 @@ publish_one() {
   local md="$1"
   if [[ "$(already_published "$md")" == "yes" ]]; then
     log "SKIP (already published): $md"
+    echo "skipped"
     return 0
   fi
   log "Publishing: $md"
   if out=$(python3 "$POST_SCRIPT" "$md" --publish 2>&1); then
     log "OK: $out"
     record_published "$md" "$out" | tee -a "$LOG_FILE"
+    if [[ -x "$NOTIFY_SCRIPT" || -f "$NOTIFY_SCRIPT" ]]; then
+      pub_id=$(echo "$out" | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))" 2>/dev/null || true)
+      pub_url=$(echo "$out" | python3 -c "import sys,json; print(json.load(sys.stdin).get('url',''))" 2>/dev/null || true)
+      pub_title=$(echo "$out" | python3 -c "import sys,json; print(json.load(sys.stdin).get('title',''))" 2>/dev/null || true)
+      if bash "$NOTIFY_SCRIPT" "$pub_title" "$pub_url" "$pub_id" "$md" 2>&1 | tee -a "$LOG_FILE"; then
+        log "WhatsApp notify OK"
+      else
+        log "WARN: WhatsApp notify failed (daemon down?)"
+      fi
+    fi
+    echo "published"
     return 0
   else
     log "FAILED: $out"
+    echo "failed"
     return 1
   fi
 }
@@ -68,17 +82,13 @@ publish_one() {
 mapfile -t ARTICLES < <(grep -v '^\s*#' "$QUEUE_FILE" | grep -v '^\s*$' || true)
 log "=== Queue publish started (${#ARTICLES[@]} entries, gap ${MIN_GAP_SEC}-${MAX_GAP_SEC}s) ==="
 
-published_count=0
 for i in "${!ARTICLES[@]}"; do
   md="${ARTICLES[$i]}"
-  if publish_one "$md"; then
-    if [[ "$(already_published "$md")" == "yes" ]]; then
-      ((published_count++)) || true
-    fi
-  else
+  result=$(publish_one "$md" | tail -1)
+  if [[ "$result" == "failed" ]]; then
     log "WARN: failed $md — continuing after gap"
   fi
-  if (( i < ${#ARTICLES[@]} - 1 )); then
+  if [[ "$result" == "published" ]] && (( i < ${#ARTICLES[@]} - 1 )); then
     gap=$(random_gap)
     log "Waiting ${gap}s (~$(( gap / 3600 ))h $(( (gap % 3600) / 60 ))m) before next..."
     sleep "$gap"

@@ -127,6 +127,11 @@ Then: *"Integrate Kiponos SDK into this project per skills/kiponos/SKILL.md"*
 
 Do not commit real tokens. Use CI/CD secrets or your platform's secret manager for `KIPONOS_ID` and `KIPONOS_ACCESS`.
 
+## Also on dev.to
+
+- [Kiponos.io Developer Quickstart — Java, Python, and Your First Live Config Change](https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo) — developer-focused walkthrough (this repo linked at the end)
+- [Getting Started with Kiponos.io](https://dev.to/kiponos/getting-started-with-kiponosio-p5k) — product tour and dashboard screenshots
+
 ## Next steps
 
 - [`examples/comm-panel/`](../examples/comm-panel/) — richer Swing demo

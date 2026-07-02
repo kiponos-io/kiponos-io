@@ -35,18 +35,7 @@ Kiponos does exactly that.
 
 ## How Kiponos stays out of your way
 
-```
-┌─────────────────┐     WebSocket (delta updates)     ┌──────────────────┐
-│  Kiponos.io UI  │ ────────────────────────────────► │  Python SDK      │
-│  (or API client)│                                   │  in-memory cache │
-└─────────────────┘                                   └────────┬─────────┘
-                                                               │ .get() — local read
-                                                               ▼
-                                                    ┌──────────────────┐
-                                                    │  training loop   │
-                                                    │  (no I/O wait)   │
-                                                    └──────────────────┘
-```
+![Architecture diagram](https://files.catbox.moe/hmzlxd.png)
 
 1. **Connect once** at trainer startup — `Kiponos.create_for_current_team()` opens `wss://kiponos.io/api/io-kiponos-sdk`.
 2. **Initial tree load** — full config snapshot for your profile (e.g. `['ml-trainer']['v1']['prod']['hparams']`).
@@ -59,7 +48,7 @@ The training loop never blocks on config. The WebSocket worker applies changes i
 
 Organize training parameters under a Kiponos profile folder:
 
-```
+```yaml
 training/
   optimizer/
     learning_rate: 0.0003

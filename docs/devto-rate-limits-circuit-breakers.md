@@ -28,7 +28,7 @@ Kiponos pattern: connect once, read `kiponos.path("limits", tenantId).getInt("rp
 
 ## Config tree example
 
-```
+```yaml
 limits/
   default/
     rpm: 1200
