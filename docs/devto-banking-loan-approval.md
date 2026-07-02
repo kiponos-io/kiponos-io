@@ -9,7 +9,7 @@ main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/
 
 Loan origination is a pipeline of **policy thresholds**: minimum FICO, max debt-to-income, regional caps, promotional rate eligibility. Risk committee moves cutoffs after macro shifts — usually meaning **weeks** until IT deploys new `application.yml` across origination, underwriting, and pricing services.
 
-[Kiponos.io](https://kiponos.io) centralizes approval policy in a live tree every Java service reads locally. Risk edits `min_fico` in the dashboard; the next application evaluation sees it — same pattern as [live fraud thresholds](https://dev.to/kiponos/retune-fraud-thresholds-and-payment-routes-in-real-time-no-java-restart-kiponos-sdk-13nf).
+[Kiponos.io](https://kiponos.io) centralizes approval policy in a live tree every Java service reads locally. Risk edits `min_fico` in the dashboard; the next application evaluation sees it — same pattern as [live fraud thresholds](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fraud-payment-routing.md).
 
 ## Origination hot path
 

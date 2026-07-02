@@ -56,7 +56,7 @@ waf/
 
 ## Performance
 
-Per-request WAF must use **local gets** — same as [rate limits article](https://dev.to/kiponos/change-api-rate-limits-and-circuit-breakers-at-runtime-no-java-redeploy-kiponos-sdk-3d94).
+Per-request WAF must use **local gets** — same as [rate limits article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md).
 
 ## Getting started
 

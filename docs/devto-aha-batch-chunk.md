@@ -3,7 +3,7 @@ title: "Spring Batch chunk(500) Was Wrong for Six Hours — We Changed It Mid-Jo
 published: false
 tags: java, springboot, batch, devops
 description: Chunk size feels baked into @EnableBatchProcessing forever. When the database coughs, 500-row chunks are the wrong hammer — Kiponos lets you retune chunk size while the job keeps running.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-batch-chunk.md
+canonical_url: https://dev.to/kiponos/spring-batch-chunk500-was-wrong-for-six-hours-we-changed-it-mid-job-java-kiponos-22c1
 main_image: https://files.catbox.moe/l631hl.jpg
 ---
 

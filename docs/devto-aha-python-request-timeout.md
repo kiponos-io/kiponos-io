@@ -3,7 +3,7 @@ title: "requests.timeout=5 Was Module Folklore — We Extended It During the API
 published: false
 tags: python, api, devops, resilience
 description: HTTP client timeouts as module constants feel permanent. When upstream latency spikes, timeout seconds are operational — Kiponos feeds live requests policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-request-timeout.md
+canonical_url: https://dev.to/kiponos/requeststimeout5-was-module-folklore-we-extended-it-during-the-api-storm-python-12em
 main_image: https://files.catbox.moe/srkslu.jpg
 ---
 

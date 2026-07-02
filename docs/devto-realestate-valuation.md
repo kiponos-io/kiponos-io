@@ -9,7 +9,7 @@ main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/
 
 Automated valuation models (AVMs) combine **feature weights**, **comp search radius**, **cap rates**, and **regional adjustments**. Markets move weekly; model risk wants to **dial down condo exposure** or **widen comp radius** in rural ZIPs — without redeploying Python scoring services.
 
-[Kiponos.io](https://kiponos.io) holds AVM parameters in a live tree scoring workers read per property valuation — same philosophy as [live ML hyperparameter tuning](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j).
+[Kiponos.io](https://kiponos.io) holds AVM parameters in a live tree scoring workers read per property valuation — same philosophy as [live ML hyperparameter tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md).
 
 ## Valuation path
 

@@ -3,7 +3,7 @@ title: "Access-Control-Max-Age=3600 Was CORS Religion (Spring Boot + Kiponos)"
 published: false
 tags: java, springboot, api, webdev
 description: CORS preflight cache max-age feels like web platform config frozen in a @Bean. During API churn, max-age seconds are operational — Kiponos feeds live CORS policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-cors-max-age.md
+canonical_url: https://dev.to/kiponos/access-control-max-age3600-was-cors-religion-spring-boot-kiponos-3114
 main_image: https://files.catbox.moe/i8rg0m.jpg
 ---
 

@@ -3,7 +3,7 @@ title: "spring.servlet.multipart.max-file-size=10MB Blocked the Enterprise Uploa
 published: false
 tags: java, springboot, api, devops
 description: Multipart size limits feel like servlet bootstrap config set once. When a key client needs larger uploads today, max file size is operational — Kiponos feeds live upload policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-upload-max-size.md
+canonical_url: https://dev.to/kiponos/springservletmultipartmax-file-size10mb-blocked-the-enterprise-upload-spring-boot-3ge5
 main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 

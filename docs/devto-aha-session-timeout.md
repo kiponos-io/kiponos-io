@@ -3,7 +3,7 @@ title: "server.servlet.session.timeout=30m Felt Permanent — We Extended Sessio
 published: false
 tags: java, springboot, security, devops
 description: Session timeouts are bootstrap config in application.yml. When identity provider latency spikes, session duration is operational — Kiponos feeds live session policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-session-timeout.md
+canonical_url: https://dev.to/kiponos/serverservletsessiontimeout30m-felt-permanent-we-extended-sessions-during-the-outage-spring-k0n
 main_image: https://files.catbox.moe/z65ex6.jpg
 ---
 

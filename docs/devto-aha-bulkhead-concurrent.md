@@ -3,7 +3,7 @@ title: "bulkhead.maxConcurrentCalls=25 Was Untouchable — We Reallocated Capaci
 published: false
 tags: java, springboot, resilience, devops
 description: Bulkhead concurrency limits feel like capacity planning cast in Resilience4j YAML. During a traffic shift, maxConcurrentCalls is operational — Kiponos feeds live bulkhead policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-bulkhead-concurrent.md
+canonical_url: https://dev.to/kiponos/bulkheadmaxconcurrentcalls25-was-untouchable-we-reallocated-capacity-live-spring-boot-fd5
 main_image: https://files.catbox.moe/id94bo.jpg
 ---
 

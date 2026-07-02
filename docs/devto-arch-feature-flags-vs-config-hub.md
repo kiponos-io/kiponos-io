@@ -3,7 +3,7 @@ title: "Feature Flags vs a Live Config Hub — When Kiponos Is the Better Primit
 published: false
 tags: architecture, devops, config, java
 description: Feature-flag SaaS solves boolean rollouts. Kiponos solves the whole live config surface — floats, trees, cross-service collaboration, and zero-latency reads. Architecture guide for platform teams.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-feature-flags-vs-config-hub.md
+canonical_url: https://dev.to/kiponos/feature-flags-vs-a-live-config-hub-when-kiponos-is-the-better-primitive-architecture-4pb
 main_image: https://files.catbox.moe/ejz860.jpg
 ---
 

@@ -3,8 +3,8 @@ title: "Cost Control at Runtime — Autoscale Caps, GPU Budget, and Token Limits
 published: true
 tags: finops, ai, python, architecture
 description: FinOps knobs trapped in Terraform and Helm cannot react when an LLM fleet burns GPU budget at 2 AM. Kiponos feeds autoscale caps, daily spend limits, and per-tenant token ceilings to Python inference workers — live reads, no pod restart.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-cost-control-runtime.md
-main_image: https://litter.catbox.moe/8xtald.jpg
+canonical_url: https://dev.to/kiponos/cost-control-at-runtime-autoscale-caps-gpu-budget-and-token-limits-for-llm-fleets-kiponos-495n
+main_image: https://litter.catbox.moe/840kea.jpg
 cover_image: /home/moshe/work/kiponos-io/docs/devto-cover-arch-cost-control-runtime.jpg
 ---
 

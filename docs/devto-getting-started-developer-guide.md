@@ -3,7 +3,7 @@ title: "Kiponos.io Developer Quickstart — Java, Python, and Your First Live Co
 published: false
 tags: java, python, tutorial, devops
 description: Step-by-step for developers new to Kiponos — signup, profile paths, SDK connect, local zero-latency reads, delta WebSocket updates, and your first live change without restart.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-getting-started-developer-guide.md
+canonical_url: https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo
 main_image: https://files.catbox.moe/4p1gxw.jpg
 ---
 
@@ -231,8 +231,8 @@ No polling. No per-request HTTP to Kiponos on the read path.
 Use-case deep dives (hard-coded pain → live change):
 
 - [Mind reader demo + ICU live config](https://dev.to/kiponos/the-mind-reader-demo-trick-same-zero-latency-config-that-changes-icu-parameters-live-spring-boot-17oj)
-- [Change API rate limits at runtime](https://dev.to/kiponos/change-api-rate-limits-and-circuit-breakers-at-runtime-no-java-redeploy-kiponos-sdk-3d94)
-- [Tune model training in real time (Python)](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j)
+- [Change API rate limits at runtime](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md)
+- [Tune model training in real time (Python)](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md)
 
 ## Reference links
 

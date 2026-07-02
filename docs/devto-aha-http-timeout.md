@@ -3,7 +3,7 @@ title: "WebClient readTimeout Felt Permanent Until the Partner Outage (Spring Bo
 published: false
 tags: java, springboot, resilience, microservices
 description: HTTP client timeouts are buried in @Bean factories and treated as integration constants. When a partner slows down, timeout seconds are operational — Kiponos feeds WebClient policy with zero-latency reads.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-http-timeout.md
+canonical_url: https://dev.to/kiponos/webclient-readtimeout-felt-permanent-until-the-partner-outage-spring-boot-kiponos-38d0
 main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 

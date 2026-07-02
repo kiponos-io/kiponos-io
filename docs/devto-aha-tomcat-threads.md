@@ -3,7 +3,7 @@ title: "Your server.tomcat.threads.max=200 Is Not Architecture — Change It Liv
 published: false
 tags: java, springboot, performance, devops
 description: Senior teams treat Tomcat maxThreads and acceptCount as one-time YAML decisions. When Black Friday hits, that is the wrong abstraction — Kiponos lets you tune the servlet container live with zero-latency SDK reads.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-tomcat-threads.md
+canonical_url: https://dev.to/kiponos/your-servertomcatthreadsmax200-is-not-architecture-change-it-live-while-traffic-runs-spring-kn8
 main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 

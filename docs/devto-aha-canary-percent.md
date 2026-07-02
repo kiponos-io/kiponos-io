@@ -3,7 +3,7 @@ title: "CANARY_PERCENT = 5 Was a Constant — We Ramped to 40 Live Without a Mes
 published: false
 tags: java, springboot, deployment, devops
 description: Canary traffic percentages feel like deployment pipeline config. During a confident rollout, traffic weight is operational — Kiponos feeds live routing weights with zero-latency reads.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-canary-percent.md
+canonical_url: https://dev.to/kiponos/canarypercent-5-was-a-constant-we-ramped-to-40-live-without-a-mesh-spring-boot-4f1h
 main_image: https://files.catbox.moe/68lli5.jpg
 ---
 

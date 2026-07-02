@@ -3,7 +3,7 @@ title: "ProcessPoolExecutor(max_workers=4) Survived Three Hardware Generations (
 published: false
 tags: python, performance, devops, architecture
 description: Worker pool sizes are often module constants. When CPU count doubles on new nodes, max_workers is operational — Kiponos feeds live pool policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-pool-workers.md
+canonical_url: https://dev.to/kiponos/processpoolexecutormaxworkers4-survived-three-hardware-generations-python-kiponos-1pha
 main_image: https://files.catbox.moe/s42jq2.jpg
 ---
 

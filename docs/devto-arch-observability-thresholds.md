@@ -3,7 +3,7 @@ title: "Live Observability Alert Thresholds — Stop Redeploying for Every SLO T
 published: false
 tags: python, devops, monitoring, architecture
 description: Error-rate and latency alert thresholds trapped in Prometheus YAML or Python constants need live tuning. Kiponos feeds alert evaluators — calm false alarms during incidents without editing rules files.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-observability-thresholds.md
+canonical_url: https://dev.to/kiponos/live-observability-alert-thresholds-stop-redeploying-for-every-slo-tweak-kiponos-python-sdk-1dfl
 main_image: https://files.catbox.moe/87bzmo.jpg
 ---
 
@@ -59,7 +59,7 @@ deploy/
 
 ## Closed loop with supervisor
 
-Supervisor bot watches 24h variance, **writes** Kiponos when noise floor shifts — same architecture as [ML supervisor tuning](https://dev.to/kiponos/a-supervisor-algorithm-that-retunes-your-model-training-in-real-time-kiponos-python-sdk-3hg9):
+Supervisor bot watches 24h variance, **writes** Kiponos when noise floor shifts — same architecture as [ML supervisor tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-supervisor-ml-training.md):
 
 ```python
 if rolling_std("payments_error_rate") < 0.001:

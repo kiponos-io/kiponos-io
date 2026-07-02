@@ -7,7 +7,7 @@ canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-s
 main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-supervisor-ml.jpg
 ---
 
-In [the previous article](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j) we showed how a **training loop** can read live hyperparameters from [Kiponos.io](https://kiponos.io) with zero latency — local memory reads, WebSocket delta updates, no restart.
+In [the previous article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md) we showed how a **training loop** can read live hyperparameters from [Kiponos.io](https://kiponos.io) with zero latency — local memory reads, WebSocket delta updates, no restart.
 
 This article goes one level deeper: a **supervisor algorithm** — a separate process — that watches the run and **writes** parameter adjustments back through Kiponos while training keeps going.
 
@@ -167,7 +167,7 @@ Same WebSocket, same delta semantics, same zero-latency reads.
 ## Getting started
 
 1. [Free TeamPro at kiponos.io](https://kiponos.io) — one profile for `training/*`
-2. Wire the trainer with read-only `get_*` in the loop (see [previous article](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j))
+2. Wire the trainer with read-only `get_*` in the loop (see [previous article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md))
 3. Run a supervisor script on CPU with your policy rules and `set()` calls
 4. Open the dashboard — watch values change live as both processes run
 

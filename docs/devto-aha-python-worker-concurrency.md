@@ -3,7 +3,7 @@ title: "CELERY_WORKER_CONCURRENCY=4 Survived Every Scale-Up (Python + Kiponos)"
 published: false
 tags: python, celery, devops, performance
 description: Task worker concurrency env vars feel set-once at deploy. When queue depth spikes, concurrency is operational — Kiponos feeds live worker policy.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-worker-concurrency.md
+canonical_url: https://dev.to/kiponos/celeryworkerconcurrency4-survived-every-scale-up-python-kiponos-m63
 main_image: https://files.catbox.moe/ifp0w3.jpg
 ---
 

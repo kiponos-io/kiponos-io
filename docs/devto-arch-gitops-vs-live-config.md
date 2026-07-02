@@ -3,7 +3,7 @@ title: "GitOps vs Live Operational Config — Where Kiponos Fits in Platform Arc
 published: false
 tags: architecture, gitops, devops, config
 description: GitOps owns desired state. Production still needs live thresholds, emergency overrides, and cross-service coordination. A architecture guide for platform teams drawing the boundary.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-gitops-vs-live-config.md
+canonical_url: https://dev.to/kiponos/gitops-vs-live-operational-config-where-kiponos-fits-in-platform-architecture-2nbb
 main_image: https://files.catbox.moe/y1msbh.jpg
 ---
 

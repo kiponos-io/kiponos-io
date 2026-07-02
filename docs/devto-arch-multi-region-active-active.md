@@ -3,7 +3,7 @@ title: "Multi-Region Active-Active Config — Consistent Trees, Partition Behavi
 published: false
 tags: distributed, architecture, java, devops
 description: Run the same Java binary in eu-west and us-east with identical config tree shapes. When the hub link partitions, bound staleness and safe defaults beat silent drift. Kiponos SDK architecture guide.
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-multi-region-active-active.md
+canonical_url: https://dev.to/kiponos/multi-region-active-active-config-consistent-trees-partition-behavior-and-stale-read-bounds-2g9
 main_image: https://files.catbox.moe/68lli5.jpg
 ---
 
@@ -242,8 +242,8 @@ In load tests, Kiponos reads are noise on the authorization path; the expensive 
 - [Product tour](https://dev.to/kiponos/getting-started-with-kiponosio-p5k)
 - [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/docs/GETTING-STARTED.md)
 - [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
-- Related: [GitOps vs live operational config](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-gitops-vs-live-config.md)
-- Related: [Multi-environment profile paths](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-chaos-multi-env.md)
+- Related: [GitOps vs live operational config](https://dev.to/kiponos/gitops-vs-live-operational-config-where-kiponos-fits-in-platform-architecture-2nbb)
+- Related: [Multi-environment profile paths](https://dev.to/kiponos/escape-multi-environment-configuration-chaos-with-one-kiponos-profile-per-env-java-sdk-4ik4)
 
 ---
 

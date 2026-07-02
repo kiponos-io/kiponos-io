@@ -61,7 +61,7 @@ serving/
 
 Every inference worker holds the same Kiponos connection profile. One dashboard change → **delta broadcast** → all workers update locally. No rolling restart across the GPU pool.
 
-Related patterns: [ML training tuning](https://dev.to/kiponos/tune-model-training-in-real-time-zero-latency-zero-restarts-kiponos-python-sdk-510j), [supervisor orchestration](https://dev.to/kiponos/a-supervisor-algorithm-that-retunes-your-model-training-in-real-time-kiponos-python-sdk-3hg9).
+Related patterns: [ML training tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md), [supervisor orchestration](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-supervisor-ml-training.md).
 
 Try [kiponos.io](https://kiponos.io). Repo: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
 
