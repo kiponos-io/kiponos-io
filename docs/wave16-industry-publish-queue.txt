@@ -1,0 +1,12 @@
+# Wave 16 — Industry verticals round 2
+
+devto-retail-dynamic-pricing.md
+devto-retail-inventory-reorder.md
+devto-media-bitrate-ladder.md
+devto-travel-overbooking-limits.md
+devto-pharma-trial-enrollment.md
+devto-public-sector-permit-sla.md
+devto-agriculture-irrigation-schedule.md
+devto-edtech-exam-proctoring.md
+devto-construction-dispatch-radius.md
+devto-sports-live-odds-caps.md

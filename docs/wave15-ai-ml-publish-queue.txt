@@ -1,0 +1,14 @@
+# Wave 15 — AI / ML / LLM platform (publish first)
+# Java (Spring Boot) + Python only. 2h 15m cadence: publish-wave-scheduled.sh
+# Skip files already published — write before queueing.
+
+devto-ai-rag-chunk-topk.md
+devto-ai-agent-tool-budgets.md
+devto-ai-model-routing-weights.md
+devto-ai-embedding-cache-ttl.md
+devto-ai-drift-detection-threshold.md
+devto-ai-inference-batch-size.md
+devto-ai-prompt-guardrails-live.md
+devto-ai-finetune-hyperparams-live.md
+devto-ai-vector-index-refresh.md
+devto-ai-ml-feature-serving-split.md

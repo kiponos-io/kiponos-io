@@ -1,0 +1,8 @@
+# Wave 19 — Microservices & distributed systems round 2
+
+devto-microservices-outbox-poll-interval.md
+devto-microservices-saga-retry-policy.md
+devto-microservices-api-gateway-timeout.md
+devto-microservices-discovery-grace-period.md
+devto-microservices-cqrs-projection-lag.md
+devto-microservices-distributed-lock-ttl.md

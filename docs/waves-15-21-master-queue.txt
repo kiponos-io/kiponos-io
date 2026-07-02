@@ -1,0 +1,73 @@
+# Master publish queue: Waves 15 → 21 (skip other-language SDKs)
+# Run: bash scripts/publish-wave-scheduled.sh docs/waves-15-21-master-queue.txt
+# Each entry must exist on disk before the scheduler reaches it.
+
+# --- Wave 15: AI / ML / LLM ---
+devto-ai-rag-chunk-topk.md
+devto-ai-agent-tool-budgets.md
+devto-ai-model-routing-weights.md
+devto-ai-embedding-cache-ttl.md
+devto-ai-drift-detection-threshold.md
+devto-ai-inference-batch-size.md
+devto-ai-prompt-guardrails-live.md
+devto-ai-finetune-hyperparams-live.md
+devto-ai-vector-index-refresh.md
+devto-ai-ml-feature-serving-split.md
+
+# --- Wave 16: Industry round 2 ---
+devto-retail-dynamic-pricing.md
+devto-retail-inventory-reorder.md
+devto-media-bitrate-ladder.md
+devto-travel-overbooking-limits.md
+devto-pharma-trial-enrollment.md
+devto-public-sector-permit-sla.md
+devto-agriculture-irrigation-schedule.md
+devto-edtech-exam-proctoring.md
+devto-construction-dispatch-radius.md
+devto-sports-live-odds-caps.md
+
+# --- Wave 17: Aha infrastructure ---
+devto-aha-rabbitmq-prefetch.md
+devto-aha-redis-pool-max.md
+devto-aha-grpc-deadline.md
+devto-aha-feign-read-timeout.md
+devto-aha-elasticsearch-scroll-timeout.md
+devto-aha-sqs-visibility-timeout.md
+devto-aha-graphql-query-depth.md
+devto-aha-oauth-token-ttl.md
+devto-aha-trace-sampling-rate.md
+devto-aha-quartz-misfire-threshold.md
+
+# --- Wave 18: K8s & cloud ---
+devto-k8s-hpa-target-live.md
+devto-k8s-scale-down-stabilization.md
+devto-serverless-concurrency-cap.md
+devto-k8s-partner-timeout-no-mesh.md
+devto-k8s-secrets-vs-config-boundary.md
+devto-k8s-edge-worker-cpu-cap.md
+
+# --- Wave 19: Microservices ---
+devto-microservices-outbox-poll-interval.md
+devto-microservices-saga-retry-policy.md
+devto-microservices-api-gateway-timeout.md
+devto-microservices-discovery-grace-period.md
+devto-microservices-cqrs-projection-lag.md
+devto-microservices-distributed-lock-ttl.md
+
+# --- Wave 20: SRE & arch ---
+devto-arch-error-budget-burn-alert.md
+devto-arch-chaos-blast-radius.md
+devto-arch-blue-green-switch-percent.md
+devto-arch-pci-velocity-checks.md
+devto-arch-hipaa-audit-sampling.md
+devto-arch-flink-checkpoint-interval.md
+devto-arch-llm-token-budget-per-user.md
+devto-arch-black-friday-runbook-live.md
+
+# --- Wave 21: Compare ---
+devto-vs-spring-cloud-config.md
+devto-vs-launchdarkly-feature-flags.md
+devto-vs-aws-appconfig.md
+devto-vs-consul-etcd.md
+devto-vs-refresh-scope-deep-dive.md
+devto-when-gitops-when-live-config.md

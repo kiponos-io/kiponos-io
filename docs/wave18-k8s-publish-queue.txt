@@ -1,0 +1,8 @@
+# Wave 18 — Kubernetes & cloud round 2
+
+devto-k8s-hpa-target-live.md
+devto-k8s-scale-down-stabilization.md
+devto-serverless-concurrency-cap.md
+devto-k8s-partner-timeout-no-mesh.md
+devto-k8s-secrets-vs-config-boundary.md
+devto-k8s-edge-worker-cpu-cap.md

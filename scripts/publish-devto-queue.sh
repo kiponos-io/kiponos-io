@@ -49,6 +49,8 @@ print(json.dumps(data[md], indent=2))
 PY
 }
 
+PUBLISH_SCRIPT="${PUBLISH_SCRIPT:-$(cd "$(dirname "$0")" && pwd)/publish-aha-article.sh}"
+
 publish_one() {
   local md="$1"
   if [[ "$(already_published "$md")" == "yes" ]]; then
@@ -56,19 +58,21 @@ publish_one() {
     echo "skipped"
     return 0
   fi
-  log "Publishing: $md"
-  if out=$(python3 "$POST_SCRIPT" "$md" --publish 2>&1); then
+  log "Publishing (dev.to + Crunchbase + WhatsApp): $md"
+  if out=$("$PUBLISH_SCRIPT" "$md" 2>&1); then
     log "OK: $out"
-    record_published "$md" "$out" | tee -a "$LOG_FILE"
-    if [[ -x "$NOTIFY_SCRIPT" || -f "$NOTIFY_SCRIPT" ]]; then
-      pub_id=$(echo "$out" | python3 -c "import sys,json; print(json.load(sys.stdin).get('id',''))" 2>/dev/null || true)
-      pub_url=$(echo "$out" | python3 -c "import sys,json; print(json.load(sys.stdin).get('url',''))" 2>/dev/null || true)
-      pub_title=$(echo "$out" | python3 -c "import sys,json; print(json.load(sys.stdin).get('title',''))" 2>/dev/null || true)
-      if bash "$NOTIFY_SCRIPT" "$pub_title" "$pub_url" "$pub_id" "$md" 2>&1 | tee -a "$LOG_FILE"; then
-        log "WhatsApp notify OK"
-      else
-        log "WARN: WhatsApp notify failed (daemon down?)"
-      fi
+    pub_json=$(echo "$out" | python3 -c "
+import re,sys,json,urllib.request,os
+m=re.search(r'dev\.to id (\d+)', sys.stdin.read())
+if not m: raise SystemExit(1)
+aid=m.group(1)
+key=open(os.path.expanduser('~/.config/devto/api_key')).read().strip()
+req=urllib.request.Request(f'https://dev.to/api/articles/{aid}', headers={'api-key':key})
+data=json.loads(urllib.request.urlopen(req,timeout=30).read())
+print(json.dumps({'id':data['id'],'url':data['url'],'title':data['title']}))
+" 2>/dev/null || echo '{}')
+    if [[ "$pub_json" != "{}" ]]; then
+      record_published "$md" "$pub_json" | tee -a "$LOG_FILE"
     fi
     echo "published"
     return 0

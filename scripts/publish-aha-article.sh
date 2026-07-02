@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# Publish one dev.to article + Crunchbase press ref (Brave CDP pipeline).
+# Publish one dev.to article + Crunchbase press ref + WhatsApp notify (Brave CDP pipeline).
 set -euo pipefail
 
-MD="${1:?Usage: publish-aha-article.sh path/to/devto-aha-*.md}"
+MD="${1:?Usage: publish-aha-article.sh path/to/devto-*.md}"
 
 export BRAVE_USER_DATA_DIR="${BRAVE_USER_DATA_DIR:-$HOME/.config/crunchbase/brave-cdp-profile}"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PIPELINE="$HOME/.grok/skills/devto-press-pipeline/scripts/pipeline_after_publish.py"
 
-
+echo "==> Pre-publish checks"
+bash "$SCRIPT_DIR/pre-publish-check.sh" "$MD"
 
 echo "==> Diagram embed: $MD"
 python3 << PY
@@ -30,30 +33,9 @@ OUT=$(python3 ~/.grok/skills/devto/scripts/post.py "$MD" --publish)
 echo "$OUT"
 ID=$(echo "$OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
 
-echo "==> Crunchbase pipeline (article id $ID)"
-~/.grok/skills/devto-press-pipeline/scripts/pipeline_after_publish.py "$ID"
+echo "==> Crunchbase + WhatsApp (article id $ID)"
+python3 "$PIPELINE" "$ID" --md "$MD"
 
 python3 ~/.grok/skills/crunchbase-news/scripts/list_press_gaps.py
-
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-QUALITY_DOC=~/.grok/skills/devto-press-pipeline/references/ARTICLE_QUALITY_STANDARD.md
-if [[ -f "$QUALITY_DOC" ]] && [[ "$MD" == *devto-aha-* ]]; then
-  LINES=$(wc -l < "$MD")
-  if (( LINES < 160 )); then
-    echo "ERROR: $MD has $LINES lines — minimum 160 per $QUALITY_DOC" >&2
-    exit 1
-  fi
-fi
-TITLE=$(echo "$OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['title'])")
-URL=$(echo "$OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['url'])")
-TAGS=$(python3 -c "
-import re, pathlib
-t = pathlib.Path('$MD').read_text(encoding='utf-8')
-m = re.search(r'^tags:\s*(.+)$', t, re.M)
-print(m.group(1).strip() if m else '')
-")
-EXTRA=""
-[[ -n "$TAGS" ]] && EXTRA="tags: $TAGS"
-bash "$SCRIPT_DIR/notify-devto-whatsapp.sh" "$TITLE" "$URL" "$ID" "$MD" "done" "$EXTRA"
 
 echo "Done: $MD (dev.to id $ID)"

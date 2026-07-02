@@ -105,12 +105,37 @@ Also published: Mind reader + ICU blended (`devto-mind-reader-live-ops.md` #4045
 |-------|------|-----------|--------|
 | Java + Python quickstart | `devto-getting-started-developer-guide.md` | #4047302 | published |
 
-Links: [Developer Quickstart (dev.to)](https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo) · [Product tour (dev.to)](https://dev.to/kiponos/getting-started-with-kiponosio-p5k) · [GETTING-STARTED.md (GitHub)](https://github.com/kiponos-io/kiponos-io/blob/master/docs/GETTING-STARTED.md)
+Links: [Developer Quickstart (GitHub)](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-getting-started-developer-guide.md) · [Product tour (dev.to)](https://dev.to/kiponos/getting-started-with-kiponosio-p5k) · [GETTING-STARTED.md (GitHub)](https://github.com/kiponos-io/kiponos-io/blob/master/docs/GETTING-STARTED.md)
 
 Wave 12–14 articles expanded with newcomer primer + inline getting started (2026-07-02).
 
-**Total: 76+ articles** | Gap between publishes: 2–3 hours (random)
+## Wave 7 — Platform (complete 2026-07-02)
+
+GitOps, Spring Boot beyond RefreshScope, OpenTelemetry SLO, multi-region, config schema, sidecar, DR, cost control.
+
+## Waves 15–21 — Planned (56 articles)
+
+**SDKs:** Java (Spring Boot 3 + legacy SB2) and Python only.  
+**Pipeline:** `publish-aha-article.sh` → dev.to + Crunchbase + WhatsApp.  
+**Master queue:** `waves-15-21-master-queue.txt`
+
+| Wave | Theme | Count | Queue file |
+|------|-------|-------|------------|
+| 15 | AI / ML / LLM platform | 10 | `wave15-ai-ml-publish-queue.txt` |
+| 16 | Industry verticals round 2 | 10 | `wave16-industry-publish-queue.txt` |
+| 17 | Aha — messaging, data, RPC | 10 | `wave17-aha-infra-publish-queue.txt` |
+| 18 | Kubernetes & cloud round 2 | 6 | `wave18-k8s-publish-queue.txt` |
+| 19 | Microservices round 2 | 6 | `wave19-microservices-publish-queue.txt` |
+| 20 | SRE, compliance, runbooks | 8 | `wave20-sre-arch-publish-queue.txt` |
+| 21 | Compare & position | 6 | `wave21-compare-publish-queue.txt` |
+
+Ideas & angles: `~/.grok/skills/devto-press-pipeline/references/article-ideas.md`
+
+**Total published: 84** on dev.to | **85** sources on GitHub | Gap: 2h 15m (`publish-wave-scheduled.sh`)
 
 **Scripts:**
-- Publish queue: `scripts/publish-devto-queue.sh`
-- Push fixes to live posts: `scripts/update-published-devto.sh`
+- Full pipeline: `scripts/publish-aha-article.sh`
+- Pre-check: `scripts/pre-publish-check.sh`
+- Scheduled wave: `scripts/publish-wave-scheduled.sh`
+- GitHub links: `scripts/restore-github-links.py`
+- Push live fixes: `scripts/update-all-devto-from-map.sh`

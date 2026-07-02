@@ -1,0 +1,8 @@
+# Wave 21 — Compare & position (thought leadership)
+
+devto-vs-spring-cloud-config.md
+devto-vs-launchdarkly-feature-flags.md
+devto-vs-aws-appconfig.md
+devto-vs-consul-etcd.md
+devto-vs-refresh-scope-deep-dive.md
+devto-when-gitops-when-live-config.md

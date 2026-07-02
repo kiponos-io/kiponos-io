@@ -1,0 +1,12 @@
+# Wave 17 — Aha moments: messaging, data, RPC (NOT other languages)
+
+devto-aha-rabbitmq-prefetch.md
+devto-aha-redis-pool-max.md
+devto-aha-grpc-deadline.md
+devto-aha-feign-read-timeout.md
+devto-aha-elasticsearch-scroll-timeout.md
+devto-aha-sqs-visibility-timeout.md
+devto-aha-graphql-query-depth.md
+devto-aha-oauth-token-ttl.md
+devto-aha-trace-sampling-rate.md
+devto-aha-quartz-misfire-threshold.md

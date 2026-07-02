@@ -1,0 +1,10 @@
+# Wave 20 — Architecture, SRE & compliance round 2
+
+devto-arch-error-budget-burn-alert.md
+devto-arch-chaos-blast-radius.md
+devto-arch-blue-green-switch-percent.md
+devto-arch-pci-velocity-checks.md
+devto-arch-hipaa-audit-sampling.md
+devto-arch-flink-checkpoint-interval.md
+devto-arch-llm-token-budget-per-user.md
+devto-arch-black-friday-runbook-live.md
