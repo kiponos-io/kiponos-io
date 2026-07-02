@@ -3,8 +3,8 @@ title: "Cache TTL Was 3600 Seconds in Code — Flash Sale Did Not Wait for a Dep
 published: false
 tags: java, springboot, performance, ecommerce
 description: Caffeine expireAfterWrite feels like a performance constant baked into @Bean config. When pricing changes every five minutes, TTL is operational — Kiponos feeds cache policy with zero-latency reads.
-canonical_url: https://dev.to/kiponos/cache-ttl-was-3600-seconds-in-code-flash-sale-did-not-wait-for-a-deploy-java-kiponos-3101
-main_image: https://files.catbox.moe/dlkkmj.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-cache-ttl.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-cache-ttl.jpg
 ---
 
 Flash sale Friday, 9:07 AM. Merchandising pushes a new price matrix every **five minutes** — flash tiers, bundle discounts, inventory-linked markdowns. Your catalog service caches product cards with Caffeine `expireAfterWrite(3600, TimeUnit.SECONDS)` because someone copy-pasted "one hour is fine" into a `@Bean` method during a calm sprint in 2020.
@@ -201,7 +201,7 @@ Sale starts? Merchandising sets `ttl_seconds: 30`. **Next cache miss** uses thir
 | Search facet explosion | Emergency branch per environment | Hub profile `catalog/sale-weekend` |
 | Legal audit of advertised price | Forensics on deploy timing | Hub audit trail shows who changed TTL when |
 
-Pair with [live Tomcat thread tuning](https://dev.to/kiponos/your-servertomcatthreadsmax200-is-not-architecture-change-it-live-while-traffic-runs-spring-kn8) — catalog slowness and thread exhaustion often arrive together during sale traffic.
+Pair with [live Tomcat thread tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-tomcat-threads.md) — catalog slowness and thread exhaustion often arrive together during sale traffic.
 
 ## Compare to alternatives
 

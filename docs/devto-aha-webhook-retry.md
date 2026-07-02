@@ -3,8 +3,8 @@ title: "Webhook Retry Backoff Was Just Constants — We Changed It During the Ou
 published: false
 tags: python, webdev, devops, resilience
 description: MAX_RETRIES = 5 and BACKOFF_SECONDS = [1,2,4,8] feel permanent at the top of webhook_worker.py. When the endpoint flakes, retry policy is operational — Kiponos feeds backoff live with zero-latency reads.
-canonical_url: https://dev.to/kiponos/webhook-retry-backoff-was-just-constants-we-changed-it-during-the-outage-python-kiponos-1okp
-main_image: https://files.catbox.moe/srkslu.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-webhook-retry.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-webhook-retry.jpg
 ---
 
 Wednesday 2:05 PM. Your webhook delivery fleet is drowning. A major customer endpoint returns `502 Bad Gateway` for roughly half of their traffic — intermittent, mean, and just healthy enough to keep your workers honest. The queue depth graph looks like a skateboard ramp. The DLQ is filling faster than customer success can apologize.
@@ -175,7 +175,7 @@ Maintenance window? Ops sets `webhook/maintenance/enabled: false` and `webhook/d
 | High-priority tenant SLA | Fork code per customer | `webhook/high_priority/*` profile |
 | Load test | Branch per backoff curve | Profile `webhooks/loadtest/delivery` |
 
-Pair with [live HTTP timeout tuning](https://dev.to/kiponos/webclient-readtimeout-felt-permanent-until-the-partner-outage-spring-boot-kiponos-38d0) — retries and timeouts are siblings on outbound integration paths.
+Pair with [live HTTP timeout tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-http-timeout.md) — retries and timeouts are siblings on outbound integration paths.
 
 ## Compare to alternatives
 

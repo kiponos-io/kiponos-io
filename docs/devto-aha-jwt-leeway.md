@@ -3,8 +3,8 @@ title: "JWT clockSkewSeconds=60 Was Security Policy in Code (Spring Boot + Kipon
 published: false
 tags: java, springboot, security, devops
 description: JWT leeway and clock skew tolerance feel like immutable security constants. During NTP incidents, skew seconds are operational — Kiponos feeds live JWT validation policy.
-canonical_url: https://dev.to/kiponos/jwt-clockskewseconds60-was-security-policy-in-code-spring-boot-kiponos-5cgk
-main_image: https://files.catbox.moe/wswv2d.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-jwt-leeway.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-jwt-leeway.jpg
 ---
 
 Thursday 9:02 AM. Half your mobile users cannot log in. JWT validation fails on `exp` — not because tokens are stolen, but because **NTP drifted** on two rack switches overnight. Your auth service still allows **60 seconds** of clock skew because `clockSkewSeconds = 60` has been a `private static final` in `JwtValidator` since the MVP.

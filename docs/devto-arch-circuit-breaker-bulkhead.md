@@ -3,7 +3,7 @@ title: "Circuit Breaker and Bulkhead Thresholds You Can Tune Live (Kiponos Java 
 published: false
 tags: java, architecture, resilience, devops
 description: Resilience4j thresholds stuck in YAML fail during incidents. Kiponos feeds circuit breaker, bulkhead, and retry limits to Java services — local reads, WebSocket deltas.
-canonical_url: https://dev.to/kiponos/circuit-breaker-and-bulkhead-thresholds-you-can-tune-live-kiponos-java-sdk-1hai
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-circuit-breaker-bulkhead.md
 main_image: https://files.catbox.moe/id94bo.jpg
 ---
 

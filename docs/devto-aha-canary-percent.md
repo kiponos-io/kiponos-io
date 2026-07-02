@@ -3,8 +3,8 @@ title: "CANARY_PERCENT = 5 Was a Constant — We Ramped to 40 Live Without a Mes
 published: false
 tags: java, springboot, deployment, devops
 description: Canary traffic percentages feel like deployment pipeline config. During a confident rollout, traffic weight is operational — Kiponos feeds live routing weights with zero-latency reads.
-canonical_url: https://dev.to/kiponos/canarypercent-5-was-a-constant-we-ramped-to-40-live-without-a-mesh-spring-boot-4f1h
-main_image: https://files.catbox.moe/68lli5.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-canary-percent.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-canary-percent.jpg
 ---
 
 The new payments service survived four hours at **5% canary**. Error rate flat. P99 latency down 18%. The platform lead still cannot send more traffic — because `private static final int CANARY_PERCENT = 5` is compiled into the edge routing filter, and Helm values for Istio require a change window that opens tomorrow.

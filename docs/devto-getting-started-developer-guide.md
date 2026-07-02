@@ -3,8 +3,8 @@ title: "Kiponos.io Developer Quickstart — Java, Python, and Your First Live Co
 published: false
 tags: java, python, tutorial, devops
 description: Step-by-step for developers new to Kiponos — signup, profile paths, SDK connect, local zero-latency reads, delta WebSocket updates, and your first live change without restart.
-canonical_url: https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo
-main_image: https://files.catbox.moe/4p1gxw.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-getting-started-developer-guide.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-getting-started-developer-guide.jpg
 ---
 
 You heard that [Kiponos.io](https://kiponos.io) changes application behavior **while the process keeps running** — no redeploy, no restart, no refresh. This guide is for **developers integrating the SDK for the first time**. Product tour and screenshots: [Getting Started with Kiponos.io (dev.to)](https://dev.to/kiponos/getting-started-with-kiponosio-p5k). Clone-and-run golden example: [GETTING-STARTED.md on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/GETTING-STARTED.md).
@@ -230,7 +230,7 @@ No polling. No per-request HTTP to Kiponos on the read path.
 
 Use-case deep dives (hard-coded pain → live change):
 
-- [Mind reader demo + ICU live config](https://dev.to/kiponos/the-mind-reader-demo-trick-same-zero-latency-config-that-changes-icu-parameters-live-spring-boot-17oj)
+- [Mind reader demo + ICU live config](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-mind-reader-live-ops.md)
 - [Change API rate limits at runtime](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md)
 - [Tune model training in real time (Python)](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realtime-ml-training.md)
 

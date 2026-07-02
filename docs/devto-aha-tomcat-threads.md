@@ -3,8 +3,8 @@ title: "Your server.tomcat.threads.max=200 Is Not Architecture — Change It Liv
 published: false
 tags: java, springboot, performance, devops
 description: Senior teams treat Tomcat maxThreads and acceptCount as one-time YAML decisions. When Black Friday hits, that is the wrong abstraction — Kiponos lets you tune the servlet container live with zero-latency SDK reads.
-canonical_url: https://dev.to/kiponos/your-servertomcatthreadsmax200-is-not-architecture-change-it-live-while-traffic-runs-spring-kn8
-main_image: https://files.catbox.moe/ffnuj2.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-tomcat-threads.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-tomcat-threads.jpg
 ---
 
 Black Friday minute 37. P99 latency climbs. Thread dump shows **all 200 Tomcat worker threads busy** — a number someone chose in `application-prod.yml` eighteen months ago during a calm sprint planning session.
@@ -147,7 +147,7 @@ Keep **only** team id, access key, and profile path in `application.yml` — not
 | Load test week | New branch per knob | Same JAR, hub profile `loadtest/live` |
 | Post-incident | Debate "correct" thread count | Tune with audit trail in hub |
 
-Pair Tomcat with [live Hikari resize](https://dev.to/kiponos/tune-jdbc-and-http-connection-pools-at-runtime-kiponos-java-sdk-4d2l) — thread exhaustion and pool exhaustion often arrive together.
+Pair Tomcat with [live Hikari resize](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-connection-pool-live.md) — thread exhaustion and pool exhaustion often arrive together.
 
 ## Before / after
 

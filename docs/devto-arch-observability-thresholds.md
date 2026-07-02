@@ -3,7 +3,7 @@ title: "Live Observability Alert Thresholds — Stop Redeploying for Every SLO T
 published: false
 tags: python, devops, monitoring, architecture
 description: Error-rate and latency alert thresholds trapped in Prometheus YAML or Python constants need live tuning. Kiponos feeds alert evaluators — calm false alarms during incidents without editing rules files.
-canonical_url: https://dev.to/kiponos/live-observability-alert-thresholds-stop-redeploying-for-every-slo-tweak-kiponos-python-sdk-1dfl
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-observability-thresholds.md
 main_image: https://files.catbox.moe/87bzmo.jpg
 ---
 

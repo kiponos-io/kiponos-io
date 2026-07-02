@@ -3,8 +3,8 @@ title: "Disaster Recovery Runbooks as Live Config — Flip read_only, Drain, and
 published: false
 tags: java, resilience, sre, architecture
 description: DR runbooks trapped in Confluence mean rolling restarts during outages. Kiponos holds mode=read_only, drain flags, and fallback endpoints in one live tree — SRE flips knobs while JVMs keep running.
-canonical_url: https://dev.to/kiponos/disaster-recovery-runbooks-as-live-config-flip-readonly-drain-and-fallback-endpoints-in-one-4373
-main_image: https://litter.catbox.moe/5hr9rl.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-disaster-recovery-live-config.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-disaster-recovery-live-config.jpg
 ---
 
 Thursday 03:41 UTC. **us-east-1** primary Postgres stops accepting writes — storage subsystem fault, ETA unknown. The on-call SRE opens the disaster recovery runbook: step 4 says *"set `READ_ONLY_MODE=true` in `values-prod.yaml`, commit, and rolling restart checkout pods."* Step 7 says *"point `PAYMENT_API_URL` at the DR endpoint in us-west-2."* Step 9 says *"enable `DRAIN_NEW_ORDERS` on the ingress layer."*
@@ -300,8 +300,8 @@ In load tests, Kiponos reads are noise on the order path; card-network and ledge
 - [Product tour](https://dev.to/kiponos/getting-started-with-kiponosio-p5k)
 - [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/docs/GETTING-STARTED.md)
 - [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
-- Related: [Graceful shutdown drain policy](https://dev.to/kiponos/springlifecycletimeout-per-shutdown-phase30s-was-untouched-for-years-spring-boot-kiponos-30ee)
-- Related: [Multi-region active-active bounds](https://dev.to/kiponos/multi-region-active-active-config-consistent-trees-partition-behavior-and-stale-read-bounds-2g9)
+- Related: [Graceful shutdown drain policy](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-graceful-shutdown.md)
+- Related: [Multi-region active-active bounds](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-multi-region-active-active.md)
 
 ---
 

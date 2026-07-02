@@ -3,8 +3,8 @@ title: "Health Check Every 5 Seconds Hammered the DB — We Slowed Polls Live (S
 published: false
 tags: java, springboot, observability, devops
 description: Custom health poller intervals feel like monitoring constants. When dependencies struggle, poll frequency is operational — Kiponos feeds live health check cadence.
-canonical_url: https://dev.to/kiponos/health-check-every-5-seconds-hammered-the-db-we-slowed-polls-live-spring-boot-3937
-main_image: https://files.catbox.moe/87bzmo.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-health-poll-interval.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-health-poll-interval.jpg
 ---
 
 Database incident minute 12. Postgres CPU pegged. Your **synthetic health checker** still runs `SELECT 1` every **five seconds** — because `HEALTH_POLL_INTERVAL_SEC = 5` was copied from a monitoring bootstrap class in 2020 when "aggressive polling meant we care."

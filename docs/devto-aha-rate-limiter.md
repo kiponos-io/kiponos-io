@@ -3,8 +3,8 @@ title: "The Rate Limiter Was Hard-Coded to 10 req/s on Launch Day — Change Per
 published: false
 tags: java, springboot, api, devops
 description: Resilience4j RateLimiter permits feel permanent once they ship. Launch traffic proves otherwise. Kiponos feeds permit limits with zero-latency local reads on every request.
-canonical_url: https://dev.to/kiponos/the-rate-limiter-was-hard-coded-to-10-reqs-on-launch-day-change-permits-live-spring-boot-4k02
-main_image: https://files.catbox.moe/uiggaj.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-rate-limiter.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-rate-limiter.jpg
 ---
 
 Launch day, 10:00 AM sharp. Product doubled the marketing spend without telling platform — again. Your public API `RateLimiter` allows **10 permits per second** because `@RateLimiter(name = "publicApi", fallbackMethod = "queue")` was configured once in `application.yml` during beta when ten concurrent users felt optimistic.

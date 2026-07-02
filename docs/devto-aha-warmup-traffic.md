@@ -3,8 +3,8 @@ title: "WARMUP_TRAFFIC_PERCENT = 10 Slowed Our Recovery (Spring Boot + Kiponos)"
 published: false
 tags: java, springboot, performance, devops
 description: JVM warmup traffic percentages feel like deployment scripts frozen in code. After cold starts, warmup percent is operational — Kiponos feeds live admission policy.
-canonical_url: https://dev.to/kiponos/warmuptrafficpercent-10-slowed-our-recovery-spring-boot-kiponos-1gho
-main_image: https://files.catbox.moe/x854ey.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-warmup-traffic.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-warmup-traffic.jpg
 ---
 
 Deploy wave 3 of 12. Twelve new pods join the cart cluster during peak. Each pod runs a `WarmupFilter` that admits only **10%** of requests — `WARMUP_TRAFFIC_PERCENT = 10` set when someone worried about C2 compilation on cold JVMs.

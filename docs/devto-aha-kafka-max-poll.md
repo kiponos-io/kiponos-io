@@ -3,8 +3,8 @@ title: "max.poll.records=500 Was Kafka Gospel — We Lowered It Live During the 
 published: false
 tags: java, kafka, streaming, devops
 description: Kafka consumer max.poll.records feels like broker tuning set once in properties. When consumer lag explodes, batch size is operational — Kiponos feeds live consumer policy.
-canonical_url: https://dev.to/kiponos/maxpollrecords500-was-kafka-gospel-we-lowered-it-live-during-the-lag-spike-java-37l1
-main_image: https://files.catbox.moe/e166i8.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-kafka-max-poll.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-kafka-max-poll.jpg
 ---
 
 Orders topic. Consumer lag crosses six figures on the dashboard — red long enough that paging escalates to the VP of engineering. Each `poll()` returns up to **500 records** because `max.poll.records=500` has lived in `consumer.properties` since the first deployment template.
