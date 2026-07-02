@@ -3,7 +3,7 @@ title: "Canary Releases Without a Service Mesh — Live Traffic Weights in Kipon
 published: false
 tags: java, architecture, deployment, devops
 description: Shift traffic between v1 and v2 using live weight keys read in your Java router — no Istio, no second deployment mid-incident. Kiponos zero-latency reads.
-canonical_url: https://dev.to/kiponos/canary-releases-without-a-service-mesh-live-traffic-weights-in-kiponos-java-sdk-3i38
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-canary-traffic-weights.md
 main_image: https://files.catbox.moe/68lli5.jpg
 ---
 

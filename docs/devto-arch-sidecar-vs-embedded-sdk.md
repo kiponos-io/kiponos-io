@@ -3,8 +3,8 @@ title: "Sidecar vs Embedded Kiponos SDK — When to Colocate the Config Reader i
 published: false
 tags: kubernetes, performance, architecture, java
 description: Embedded SDK gives zero-hop reads inside the JVM. A Kiponos reader sidecar isolates WebSocket churn and serves polyglot pods — at a localhost latency cost. Latency, blast radius, and K8s placement patterns.
-canonical_url: https://dev.to/kiponos/sidecar-vs-embedded-kiponos-sdk-when-to-colocate-the-config-reader-in-kubernetes-architecture-pfl
-main_image: https://litter.catbox.moe/5ojtkf.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-sidecar-vs-embedded-sdk.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-sidecar-vs-embedded-sdk.jpg
 cover_image: /home/moshe/work/kiponos-io/docs/devto-cover-arch-sidecar-vs-embedded-sdk.jpg
 ---
 
@@ -231,7 +231,7 @@ func (r *RuntimeLimits) RPM(tenantID string) int {
 | Bad `KIPONOS_ACCESS` rotation | App logs handshake failure; single container restart | Sidecar CrashLoopBackOff; app fails closed on stale cache |
 | HPA adds pod at peak | New JVM connects; snapshot + deltas | Sidecar + app both start; share startup ordering |
 | JVM GC pause storm | SDK read unaffected — same heap | App unaffected; sidecar may miss push tick — bounded staleness |
-| Mesh mTLS rollout | One container to drain | **Two** containers must pass preStop — coordinate with [graceful shutdown](https://dev.to/kiponos/springlifecycletimeout-per-shutdown-phase30s-was-untouched-for-years-spring-boot-kiponos-30ee) |
+| Mesh mTLS rollout | One container to drain | **Two** containers must pass preStop — coordinate with [graceful shutdown](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-graceful-shutdown.md) |
 | Platform adds Rust + Java in same pod | Two SDK connections (wasteful) | **One sidecar**, two consumers — saves hub connections |
 
 ## Performance: latency and blast radius

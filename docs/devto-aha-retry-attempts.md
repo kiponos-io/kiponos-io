@@ -3,8 +3,8 @@ title: "@Retryable(maxAttempts=3) Should Not Require a Release — Change Retry 
 published: false
 tags: java, springboot, resilience, devops
 description: Retry counts and backoff delays feel like compile-time philosophy. When a partner API flakes, maxAttempts=3 is operational — not architecture. Kiponos feeds live retry policy with zero-latency reads.
-canonical_url: https://dev.to/kiponos/retryablemaxattempts3-should-not-require-a-release-change-retry-policy-live-spring-boot-35b
-main_image: https://files.catbox.moe/w2vd1k.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-retry-attempts.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-retry-attempts.jpg
 ---
 
 Tuesday 2:14 AM. Your payment adapter throws `503` from a partner gateway. Spring Retry exhausts **three attempts** — because `@Retryable(maxAttempts = 3)` was copied from a blog post in 2022 and nobody has touched it since.
@@ -149,7 +149,7 @@ kiponos.afterValueChanged(c ->
 | Load test | Branch per backoff curve | Profile `loadtest/retry` |
 | Cost control | Retries amplify billable API calls | Toggle `enabled: false` break-glass |
 
-Pair with [circuit breaker thresholds live](https://dev.to/kiponos/circuit-breaker-and-bulkhead-thresholds-you-can-tune-live-kiponos-java-sdk-1hai) — retries and breakers are siblings in resilience ops.
+Pair with [circuit breaker thresholds live](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-circuit-breaker-bulkhead.md) — retries and breakers are siblings in resilience ops.
 
 ## Before / after
 

@@ -3,8 +3,8 @@ title: "Zero-Downtime Schema for Config Trees — Versioning, Validation, and Ro
 published: false
 tags: api, schema, platform, java
 description: Platform teams evolve config tree shapes without pod restarts. Version keys, validate deltas before they hit the hot path, and roll back in seconds — compared honestly to Protobuf contracts and feature-store schemas.
-canonical_url: https://dev.to/kiponos/zero-downtime-schema-for-config-trees-versioning-validation-and-rollback-java-sdk-3ioj
-main_image: https://files.catbox.moe/y1msbh.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-schema-versioning.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-config-schema-versioning.jpg
 ---
 
 Thursday 11:42. The platform team ships **schema v4** of the shared `payments` config tree: `fraud_block_score` becomes `fraud/block_score`, a new `routing_weights` map arrives, and `review_score` is now a float. Three Java services read the old flat keys on every authorization. Two pods already picked up the dashboard edit. One lagging replica still calls `getInt("fraud_block_score")` and returns **0** — the default for a missing key.

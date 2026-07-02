@@ -3,7 +3,7 @@ title: "Tune JDBC and HTTP Connection Pools at Runtime (Kiponos Java SDK)"
 published: false
 tags: java, architecture, performance, devops
 description: Pool sizes and timeouts baked into HikariCP config cannot react to DB failover or traffic spikes. Kiponos feeds live pool parameters — resize on afterValueChanged without pod restart.
-canonical_url: https://dev.to/kiponos/tune-jdbc-and-http-connection-pools-at-runtime-kiponos-java-sdk-4d2l
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-connection-pool-live.md
 main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 

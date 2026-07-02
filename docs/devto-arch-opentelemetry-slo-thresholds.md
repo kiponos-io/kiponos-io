@@ -3,7 +3,7 @@ title: "OpenTelemetry SLO Burn-Rate Windows You Can Retune Live — Without Rede
 published: false
 tags: python, observability, slo, devops
 description: Error-budget burn-rate windows and paging thresholds trapped in Prometheus YAML or OTel collector config need live tuning during incidents. Kiponos feeds SLO evaluators — change burn windows without editing alert rules.
-canonical_url: https://dev.to/kiponos/opentelemetry-slo-burn-rate-windows-you-can-retune-live-without-redeploying-alert-rules-kiponos-2cm
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-opentelemetry-slo-thresholds.md
 main_image: https://files.catbox.moe/87bzmo.jpg
 cover_image: /home/moshe/work/kiponos-io/docs/devto-cover-arch-opentelemetry-slo.jpg
 ---
@@ -205,7 +205,7 @@ while True:
 ## Further reading
 
 - [Developer Quickstart](https://dev.to/kiponos/kiponosio-developer-quickstart-java-python-and-your-first-live-config-change-3kjo)
-- [Live observability thresholds (related)](https://dev.to/kiponos/live-observability-alert-thresholds-stop-redeploying-for-every-slo-tweak-kiponos-python-sdk-1dfl)
+- [Live observability thresholds (related)](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-observability-thresholds.md)
 - [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/docs/GETTING-STARTED.md)
 - [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
 

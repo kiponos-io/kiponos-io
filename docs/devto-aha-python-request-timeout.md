@@ -3,8 +3,8 @@ title: "requests.timeout=5 Was Module Folklore — We Extended It During the API
 published: false
 tags: python, api, devops, resilience
 description: HTTP client timeouts as module constants feel permanent. When upstream latency spikes, timeout seconds are operational — Kiponos feeds live requests policy.
-canonical_url: https://dev.to/kiponos/requeststimeout5-was-module-folklore-we-extended-it-during-the-api-storm-python-12em
-main_image: https://files.catbox.moe/srkslu.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-request-timeout.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-request-timeout.jpg
 ---
 
 Partner billing API minute 19. P99 latency crosses **12 seconds** — their status page still says "investigating." Your integration worker still passes `timeout=5` because `TIMEOUT = 5` sits at line 4 of `client.py`, copied from the README when the partner averaged 180ms.

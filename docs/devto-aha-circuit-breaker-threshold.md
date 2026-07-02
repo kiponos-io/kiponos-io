@@ -3,8 +3,8 @@ title: "Resilience4j failureRateThreshold=50 Was Sacred YAML — We Changed It M
 published: false
 tags: java, springboot, resilience, devops
 description: Circuit breaker thresholds feel like resilience architecture frozen in application.yml. When payments brown out, failureRateThreshold is operational — Kiponos feeds live Resilience4j policy with zero-latency reads.
-canonical_url: https://dev.to/kiponos/resilience4j-failureratethreshold50-was-sacred-yaml-we-changed-it-mid-outage-spring-boot-33do
-main_image: https://files.catbox.moe/id94bo.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-circuit-breaker-threshold.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-circuit-breaker-threshold.jpg
 ---
 
 Tuesday 14:07. The card processor returns intermittent 503s — a known brownout, not a full outage. Your payment service wraps every authorization in a Resilience4j circuit breaker named `payments`. Within four minutes the breaker opens. Legitimate customers start seeing `CallNotPermittedException` because half of recent calls failed.

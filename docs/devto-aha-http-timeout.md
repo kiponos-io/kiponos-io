@@ -3,8 +3,8 @@ title: "WebClient readTimeout Felt Permanent Until the Partner Outage (Spring Bo
 published: false
 tags: java, springboot, resilience, microservices
 description: HTTP client timeouts are buried in @Bean factories and treated as integration constants. When a partner slows down, timeout seconds are operational — Kiponos feeds WebClient policy with zero-latency reads.
-canonical_url: https://dev.to/kiponos/webclient-readtimeout-felt-permanent-until-the-partner-outage-spring-boot-kiponos-38d0
-main_image: https://files.catbox.moe/ffnuj2.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-http-timeout.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-http-timeout.jpg
 ---
 
 Monday 11:15 AM. Partner API latency jumps from a comfortable **200ms P99** to **8 seconds** — brownout, not hard down. Their status page says "investigating elevated response times." Your integration service uses Reactor Netty `responseTimeout(Duration.ofSeconds(3))` — set in a `@Bean` factory when the partner was healthy and you wanted to fail fast and protect your thread budget.
@@ -196,7 +196,7 @@ public class PartnerChargeClient {
 
 Partner recovered overnight? Tighten `read_timeout_ms` back to `3000` from the dashboard — circuit closes, false timeouts disappear, **same running pods**.
 
-Pair with [live connection pool tuning](https://dev.to/kiponos/tune-jdbc-and-http-connection-pools-at-runtime-kiponos-java-sdk-4d2l) — timeout and pool exhaustion often arrive together during partner brownouts.
+Pair with [live connection pool tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-connection-pool-live.md) — timeout and pool exhaustion often arrive together during partner brownouts.
 
 ## Real scenarios
 

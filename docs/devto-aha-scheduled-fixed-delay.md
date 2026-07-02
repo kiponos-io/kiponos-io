@@ -3,8 +3,8 @@ title: "@Scheduled(fixedDelay=60000) Should Not Require a Deploy to Speed Up (Sp
 published: false
 tags: java, springboot, scheduling, devops
 description: Polling intervals feel permanent once @Scheduled ships. When reconciliation lags, fixedDelay is operational — Kiponos feeds live scheduler policy with zero-latency reads.
-canonical_url: https://dev.to/kiponos/scheduledfixeddelay60000-should-not-require-a-deploy-to-speed-up-spring-boot-1g08
-main_image: https://files.catbox.moe/ifp0w3.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-scheduled-fixed-delay.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-scheduled-fixed-delay.jpg
 ---
 
 Month-end close, hour three. The reconciliation queue depth graph looks like a staircase — 48,000 rows waiting, climbing every minute. Your ledger poller runs on `@Scheduled(fixedDelay = 60_000)`: one pass per minute, fine for normal Tuesdays, catastrophic when finance needs books closed by midnight.

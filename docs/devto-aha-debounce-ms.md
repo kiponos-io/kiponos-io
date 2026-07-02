@@ -3,8 +3,8 @@ title: "DEBOUNCE_MS = 300 Felt Like UX Design — We Changed It During the Searc
 published: false
 tags: java, springboot, api, ux
 description: Event debounce delays feel like product UX constants in code. When search backends overload, debounce milliseconds are operational — Kiponos feeds live debounce policy.
-canonical_url: https://dev.to/kiponos/debouncems-300-felt-like-ux-design-we-changed-it-during-the-search-meltdown-java-1p3c
-main_image: https://files.catbox.moe/n1iaiq.jpg
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-debounce-ms.md
+main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-debounce-ms.jpg
 ---
 
 Search meltdown hour 2. Elasticsearch cluster yellow; query latency tripled. Your BFF still fires a typeahead request **300 milliseconds** after each keystroke because `private static final int DEBOUNCE_MS = 300` shipped with the React companion and the Java `TypeaheadController` three years ago.
