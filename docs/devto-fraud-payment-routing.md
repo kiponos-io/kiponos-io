@@ -35,18 +35,7 @@ The authorization path runs thousands of times per second. You need **local read
 
 ## How Kiponos fits payment routing
 
-```
-┌──────────────────┐   WebSocket deltas    ┌─────────────────────┐
-│  Kiponos.io UI   │ ────────────────────► │  Java SDK (in-mem)  │
-│  fraud ops team  │                       │  payment service    │
-└──────────────────┘                       └──────────┬──────────┘
-                                                      │ .get() — local
-                                                      ▼
-                                           ┌─────────────────────┐
-                                           │  authorize(txn)     │
-                                           │  route(txn)         │
-                                           └─────────────────────┘
-```
+![Architecture diagram](https://files.catbox.moe/0uthng.png)
 
 1. **Connect once** at service startup — `Kiponos.createForCurrentTeam()`
 2. **Organize config** under a profile like `['payments']['v2']['prod']['fraud']`
@@ -55,7 +44,7 @@ The authorization path runs thousands of times per second. You need **local read
 
 ## Example config tree
 
-```
+```yaml
 fraud/
   thresholds/
     block_score: 85

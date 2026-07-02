@@ -4,7 +4,7 @@ published: true
 tags: java, healthcare, ops, realtime
 description: Update queue routing, acuity thresholds, and department capacity rules in live Java triage systems without downtime. Kiponos delivers local zero-latency config reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-hospital-triage-routing.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-hospital-triage.jpg
+main_image: https://files.catbox.moe/17rgai.jpg
 ---
 
 Emergency departments change protocols when flu season hits, a trauma surge arrives, or a ward goes offline. Operational rules should not wait for a **scheduled Java deployment**.
@@ -31,7 +31,7 @@ public Department route(PatientEvent event) {
 
 ## Operational config tree
 
-```
+```yaml
 triage/
   routing/
     trauma_threshold: 8

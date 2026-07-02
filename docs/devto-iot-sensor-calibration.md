@@ -4,7 +4,7 @@ published: true
 tags: python, iot, edge, realtime
 description: Calibrate alert thresholds and sampling rates across an IoT fleet without redeploying edge agents. Kiponos Python SDK reads live values locally with zero latency.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-iot-sensor-calibration.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-iot-sensors.jpg
+main_image: https://files.catbox.moe/viceuc.jpg
 ---
 
 A heatwave shifts baseline temperatures. A factory line change alters vibration norms. You need **new alert thresholds** on 10,000 edge collectors **today** — not after an OTA firmware cycle.
@@ -29,7 +29,7 @@ Called on every sample batch. Reads must be **local** — no cloud round-trip pe
 
 ## Fleet config tree
 
-```
+```yaml
 sensors/
   boiler_12/
     alert_high: 92.5

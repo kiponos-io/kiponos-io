@@ -27,7 +27,7 @@ Every `get_*` is a **local read** — no HTTP between your bot and the exchange 
 
 ## Risk config tree
 
-```
+```yaml
 risk/
   intraday/
     max_position_usd: 25000

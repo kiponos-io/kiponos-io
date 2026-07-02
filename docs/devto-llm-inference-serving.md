@@ -28,7 +28,7 @@ No object-store fetch. No Redis per request. Local cache read.
 
 ## Serving config tree
 
-```
+```yaml
 serving/
   chat/
     model: gpt-4o-mini

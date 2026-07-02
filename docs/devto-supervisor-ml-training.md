@@ -15,15 +15,7 @@ Two processes. One config hub. The trainer never blocks on I/O.
 
 ## The architecture
 
-```
-┌────────────────────┐         metrics (loss, grad norm)        ┌─────────────────────┐
-│  Trainer process   │ ─────────────────────────────────────────► │  Supervisor process │
-│  (GPU, hot loop)   │                                          │  (CPU, policy logic) │
-│                    │ ◄── WebSocket deltas (read local .get())   │                     │
-│  kiponos.get(lr)   │         Kiponos.io in-memory tree          │  writes new lr, etc │
-└────────────────────┘ ◄────────────────────────────────────────── └─────────────────────┘
-                              delta patches via WebSocket / UI
-```
+![Architecture diagram](https://files.catbox.moe/ehz7wa.png)
 
 | Role | Responsibility | Performance constraint |
 |------|----------------|------------------------|
@@ -48,7 +40,7 @@ Separating supervisor from trainer keeps the hot path minimal: `kiponos.path("tr
 
 Structure the Kiponos profile so both processes use the same namespace:
 
-```
+```yaml
 training/
   optimizer/
     learning_rate: 0.0003
