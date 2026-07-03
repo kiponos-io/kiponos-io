@@ -72,22 +72,7 @@ Updates are **async deltas**. No redeploy. No cross-network read on the hot path
 
 ## Architecture
 
-```mermaid
-flowchart TB
-    subgraph offline["Offline tree — Python trainer"]
-        TRAIN_OPS["ML researcher<br/>Kiponos dashboard"] -->|delta| PY_SDK["Python SDK<br/>profile offline/features"]
-        PY_SDK -->|"get_int aggregation_days"| SPARK["Feature engineering<br/>batch / streaming job"]
-        SPARK --> STORE[(Feature store / warehouse)]
-    end
-    subgraph online["Online tree — Java serving"]
-        SRE["Serving on-call<br/>Kiponos dashboard"] -->|delta| JAVA_SDK["Java SDK<br/>profile online/features"]
-        JAVA_SDK -->|"get_int cache_ttl_sec"| SVC["Inference service<br/>FeatureAssembler"]
-        SVC --> MODEL["Model scoring<br/>hot path"]
-    end
-    STORE --> SVC
-    CONTRACT["Git: schema_version<br/>feature_set_id"] -.-> PY_SDK
-    CONTRACT -.-> JAVA_SDK
-```
+![Architecture diagram](https://litter.catbox.moe/xzcsj2.png)
 
 **Bootstrap in Git, operate in hub.** Git declares `feature_set_id` and contract version. Day-2 tuning happens in the correct tree with ACL — offline keys never accidentally patch serving fallbacks.
 
