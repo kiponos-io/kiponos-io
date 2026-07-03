@@ -4,7 +4,7 @@ published: false
 tags: python, media, streaming, cdn
 description: Change max bitrate rungs, congestion backoff, and device-tier ladders in Python transcoding workers while viewers watch live. Kiponos local reads on every manifest generation.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-media-bitrate-ladder.md
-main_image: https://files.catbox.moe/media-bitrate-cover.jpg
+main_image: https://files.catbox.moe/i8rg0m.jpg
 ---
 
 Championship overtime minute 3. Concurrent viewers cross **2.1 million** on your live HLS feed. CDN rebuffer rates spike in the US-East PoP. Your manifest generator still caps the top rung at `max_bitrate_mbps: 8.0` — copied into `ladder.py` when your average live event drew 400k viewers.
@@ -60,13 +60,7 @@ Updates are **async deltas** — changing `max_bitrate_mbps` patches one key in 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["Stream ops / CDN team<br/>Kiponos.io dashboard"] -->|WebSocket deltas| SDK["Python ladder worker<br/>Kiponos SDK in-memory tree"]
-    SDK -->|"get_float max_bitrate_mbps — local"| LADDER["build_ladder()<br/>manifest generator"]
-    LADDER --> CDN["CDN edge / HLS playlist"]
-    VIEWERS["Live viewers"] --> CDN
-```
+![Architecture diagram](https://litter.catbox.moe/mncpo4.png)
 
 ## Example config tree
 
