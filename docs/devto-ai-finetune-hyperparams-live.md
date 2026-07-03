@@ -90,14 +90,7 @@ Optional `after_value_changed` logs who changed LR and when — critical for exp
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    RESEARCH["ML researcher<br/>Kiponos dashboard"] -->|WebSocket deltas| SDK["Python SDK in-mem<br/>fine-tune trainer"]
-    SDK -->|"get_float learning_rate — local"| LOOP["training loop<br/>optimizer step"]
-    LOOP --> GPU["CUDA backward pass<br/>LoRA adapters"]
-    GPU --> CKPT["checkpoint writer"]
-    SDK -->|after_value_changed| AUDIT["experiment audit log"]
-```
+![Architecture diagram](https://litter.catbox.moe/dhd81j.png)
 
 1. **Connect once** at `torchrun` startup.
 2. **Full tree snapshot** for fine-tune profile.
