@@ -4,7 +4,7 @@ published: false
 tags: java, travel, aviation, operations
 description: Change overbooking ratios, standby caps, and route-specific inventory buffers in Java revenue management services while bookings continue. Kiponos local reads on every availability check.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-travel-overbooking-limits.md
-main_image: https://files.catbox.moe/travel-overbooking-cover.jpg
+main_image: https://files.catbox.moe/2xo4es.jpg
 ---
 
 Nor'easter day 2. **340 flights** cancelled across your East Coast hub. No-show rates collapse — everyone who still has a seat shows up. Your availability service still sells against `overbook_ratio: 1.08` baked into `inventory-policy.yml` since the summer schedule publish.
@@ -63,13 +63,7 @@ Keep **fare rules and cabin mapping** in code and RM systems. Move **operational
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    RM["Revenue mgmt / network ops<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Availability JVM<br/>Kiponos SDK in-memory tree"]
-    SDK -->|".getFloat overbook_ratio — local"| CHECK["AvailabilityService.check()"]
-    CHECK --> GDS["Booking / GDS hold API"]
-    PAX["Passenger rebooking traffic"] --> GDS
-```
+![Architecture diagram](https://litter.catbox.moe/r0lym1.png)
 
 ## Example config tree
 
