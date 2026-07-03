@@ -97,15 +97,7 @@ No restart. No redeploy. No per-query remote fetch. Profile path: `['app']['rele
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    MERCH["Merchandising ops<br/>Kiponos dashboard"] -->|WebSocket deltas| SDK["Java SDK in-mem<br/>vector search service"]
-    SDK -->|"getInt partial_refresh_percent — local"| SCHED["VectorIndexScheduler<br/>@Scheduled ticks"]
-    SCHED --> IDX["HNSW index<br/>partial / full rebuild"]
-    SDK -->|"getInt on query path"| QUERY["SearchController<br/>staleness routing"]
-    QUERY --> USER["Storefront / API clients"]
-    IDX --> EMBED["Embedding worker fleet"]
-```
+![Architecture diagram](https://litter.catbox.moe/m64rbm.png)
 
 1. **Connect once** at Spring Boot startup.
 2. **Full tree snapshot** for index profile.
