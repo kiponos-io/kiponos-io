@@ -4,7 +4,7 @@ published: false
 tags: python, ai, embeddings, performance
 description: Embedding cache TTL feels like a performance constant set at worker boot. During re-index events TTL is operational freshness policy — Kiponos feeds live cache knobs with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-embedding-cache-ttl.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-embedding-cache-ttl.jpg
+main_image: https://litter.catbox.moe/8bffgr.jpg
 ---
 
 Monday 4:00 AM. Search engineering kicks off a full re-embed of 18 million product descriptions — new embedding model, new vector dimension, new HNSW index building in parallel. Your ingestion workers cache text→vector results in Redis with `EMBEDDING_CACHE_TTL = 86400` because "one day is fine" landed in `cache.py` during a prototype sprint.
@@ -89,15 +89,7 @@ Git keeps **embedding client wiring**. The hub keeps **how stale vectors may be 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    SEARCH["Search ops<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Embed worker<br/>Kiponos Python SDK"]
-    SDK -->|".get_int ttl_seconds — local"| EMBED["get_embedding(text)"]
-    EMBED --> LRU["In-process LRU"]
-    LRU --> REDIS["Redis embed cache"]
-    REDIS -->|miss| API["Embedding API"]
-    API --> INDEX["HNSW re-index pipeline"]
-```
+![Architecture diagram](https://litter.catbox.moe/z1sol7.png)
 
 1. **Connect once** at worker boot.
 2. **Snapshot** for `['search-embed']['prod']['embed_cache']`.
