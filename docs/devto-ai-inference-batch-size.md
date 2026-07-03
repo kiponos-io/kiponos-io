@@ -4,7 +4,7 @@ published: false
 tags: python, ai, inference, gpu
 description: Dynamic batching max-wait and batch size feel like compile-time constants. When GPU queues back up, those knobs are operational — Kiponos lets Python inference workers retune batching without restarts.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-inference-batch-size.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-inference-batch-size.jpg
+main_image: https://litter.catbox.moe/slede2.jpg
 ---
 
 Embedding surge minute 14. Your `/v1/embed` fleet shows **P99 queue wait at 180ms** while GPU utilization sits at 41%. Someone tuned `MAX_BATCH_WAIT_MS = 50` during a cost sprint because smaller batches meant higher throughput per dollar — on paper.
@@ -91,13 +91,7 @@ Optional `after_value_changed` logs policy flips or increments a Prometheus coun
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["ML platform on-call<br/>Kiponos dashboard"] -->|WebSocket deltas| SDK["Python SDK in-mem<br/>embedding worker"]
-    SDK -->|"get_int max_batch_wait_ms — local"| BATCH["collect_batch()<br/>async queue drain"]
-    BATCH --> GPU["CUDA forward pass<br/>batched tensors"]
-    GPU --> CLIENT["RAG / search clients"]
-```
+![Architecture diagram](https://litter.catbox.moe/yi1q9g.png)
 
 1. **Connect once** at worker startup — one WebSocket per process lifetime.
 2. **Full tree snapshot** loads for your inference profile.
