@@ -4,7 +4,7 @@ published: false
 tags: java, retail, inventory, supplychain
 description: Tune reorder points, safety stock days, and supplier lead-time buffers in Java inventory services while purchase orders keep generating. Kiponos local reads on every stock evaluation.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-retail-inventory-reorder.md
-main_image: https://files.catbox.moe/retail-inventory-cover.jpg
+main_image: https://litter.catbox.moe/bxi8vw.jpg
 ---
 
 Black Friday hour 6. Your **#2 bestseller** hits zero on-hand in the East DC while the replenishment worker still uses `safety_stock_days: 14` from `inventory-policy.yml` — a number supply chain set in August when lead times averaged nine days.
@@ -68,13 +68,7 @@ Separate **wiring** (team credentials in `application.yml`) from **operational p
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    PLANNER["Supply chain planner<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Inventory JVM<br/>Kiponos SDK in-memory tree"]
-    SDK -->|".getInt safety_stock_days — local"| EVAL["ReorderEvaluator.evaluate()"]
-    EVAL --> PO["Purchase order / ASN generator"]
-    WMS["WMS on-hand feed"] --> EVAL
-```
+![Architecture diagram](https://litter.catbox.moe/om2qdq.png)
 
 ## Example config tree
 
