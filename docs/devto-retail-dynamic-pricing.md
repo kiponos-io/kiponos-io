@@ -4,7 +4,7 @@ published: false
 tags: java, retail, pricing, realtime
 description: Change markup floors, competitor-match deltas, and category surge multipliers in your Java pricing engine while checkout traffic runs. Kiponos delivers local zero-latency reads on every price quote.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-retail-dynamic-pricing.md
-main_image: https://files.catbox.moe/retail-pricing-cover.jpg
+main_image: https://files.catbox.moe/dlkkmj.jpg
 ---
 
 Tuesday 10:14 AM. Your largest competitor drops **30% off electronics** with no warning. Your pricing service still serves quotes from `application-prod.yml` where `electronics.markup_multiplier` has been **1.18** since last quarter's planning review.
@@ -97,13 +97,7 @@ That matters on the pricing hot path: every PDP impression, cart recalculation, 
 
 ## Architecture — how quotes pick up live multipliers
 
-```mermaid
-flowchart LR
-    MERCH["Merchandising / pricing ops<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Pricing JVM<br/>Kiponos SDK in-memory tree"]
-    SDK -->|".getFloat markup_multiplier — local"| QUOTE["PricingEngine.quotePrice()"]
-    QUOTE --> CART["PDP / cart / marketplace feed"]
-    COMP["Competitor price API"] --> QUOTE
-```
+![Architecture diagram](https://litter.catbox.moe/im78cy.png)
 
 1. **Connect once** at startup — `Kiponos.createForCurrentTeam()`.
 2. **Full tree snapshot** loads for profile `['retail']['prod']['pricing']`.
