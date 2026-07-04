@@ -71,14 +71,7 @@ Git keeps **partner base URL and OAuth wiring**; the hub keeps **read millisecon
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  OPS[Integration on-call] -->|extend read_timeout| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|getInt per Feign call| Interceptor[LiveFeignOptionsInterceptor]
-  Interceptor --> Client[TaxPartnerClient]
-  Client --> Partner[(Government partner API)]
-```
+![Architecture diagram](https://litter.catbox.moe/97n6a1.png)
 
 ## Config tree
 
