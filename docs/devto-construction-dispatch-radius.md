@@ -4,7 +4,7 @@ published: false
 tags: python, construction, logistics, fieldops
 description: Change dispatch radius kilometers, urgency multipliers, and trade-specific travel caps in Python job assignment workers while crews are on site. Kiponos local reads on every dispatch evaluation.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-construction-dispatch-radius.md
-main_image: https://files.catbox.moe/construction-dispatch-cover.jpg
+main_image: https://litter.catbox.moe/y1e3l2.jpg
 ---
 
 Tuesday 6:45 AM. A lane closure on the I-95 connector adds **90 minutes** to cross-town routes. Three emergency HVAC jobs sit unassigned while your dispatch worker still matches crews within `DISPATCH_RADIUS_KM = 25` — a constant in `dispatch_policy.py` from when the fleet was half its current size.
@@ -65,13 +65,7 @@ Updates are **async deltas** — changing `urgent_radius_km` patches one key in 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["Field ops superintendent<br/>Kiponos.io dashboard"] -->|WebSocket deltas| SDK["Python dispatch worker<br/>Kiponos SDK in-memory tree"]
-    SDK -->|"get_float dispatch_radius_km — local"| ASSIGN["assign_job()<br/>crew matcher"]
-    ASSIGN --> CREW["Crew mobile / GPS fleet"]
-    JOBS["Work order queue"] --> ASSIGN
-```
+![Architecture diagram](https://litter.catbox.moe/hzi13m.png)
 
 ## Example config tree
 
