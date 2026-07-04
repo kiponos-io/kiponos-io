@@ -4,7 +4,7 @@ published: false
 tags: java, pharma, healthcare, clinicaltrials
 description: Change per-site enrollment limits, eligibility score floors, and screening pause flags in Java trial orchestration services while patients keep enrolling. Kiponos local reads on every intake evaluation.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pharma-trial-enrollment.md
-main_image: https://files.catbox.moe/pharma-trial-cover.jpg
+main_image: https://files.catbox.moe/17rgai.jpg
 ---
 
 Phase III site 14 hits **50 enrolled** at 9:22 AM — the cap hard-coded in `trial-enrollment.yml` since protocol amendment v3. Meanwhile site 7 has idle capacity and a waiting list of screened patients who qualify.
@@ -67,13 +67,7 @@ Kiponos connects your Spring Boot enrollment service to a live config tree. Prof
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    CRA["Clinical ops / CRA lead<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Enrollment JVM<br/>Kiponos SDK in-memory tree"]
-    SDK -->|".getInt max_enrollment — local"| EVAL["EnrollmentGate.evaluate()"]
-    EVAL --> EDC["EDC / randomization API"]
-    PATIENT["Patient intake portal"] --> EVAL
-```
+![Architecture diagram](https://litter.catbox.moe/ets88q.png)
 
 ## Example config tree
 
