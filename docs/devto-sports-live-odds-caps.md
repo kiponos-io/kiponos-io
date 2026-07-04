@@ -4,7 +4,7 @@ published: false
 tags: java, sports, betting, fintech
 description: Change max decimal odds, market suspension thresholds, and per-event liability caps in Java sportsbook pricing services while matches stay in play. Kiponos local reads on every quote update.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sports-live-odds-caps.md
-main_image: https://files.catbox.moe/sports-odds-cover.jpg
+main_image: https://litter.catbox.moe/00t07a.jpg
 ---
 
 Champions League semifinal minute 78. A red card flips win probability and your in-play engine offers **14.5 decimal** on the underdog — three ticks above `max_odds_decimal: 12.0` from `sportsbook-limits.yml`, but the constant was never the problem. The **liability cap** on that market was already breached two goals ago, and traders still cannot tighten limits without a Java rolling restart.
@@ -67,13 +67,7 @@ Kiponos connects your Spring Boot in-play pricing service to a live config tree.
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    TRADER["Trading desk / risk<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Pricing JVM<br/>Kiponos SDK in-memory tree"]
-    SDK -->|".getFloat max_odds_decimal — local"| CAP["OddsCapService.capQuote()"]
-    CAP --> FEED["Sportsbook feed / bet slip API"]
-    MATCH["Live match events"] --> CAP
-```
+![Architecture diagram](https://litter.catbox.moe/2obj0j.png)
 
 ## Example config tree
 
