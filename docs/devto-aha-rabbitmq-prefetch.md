@@ -147,15 +147,7 @@ That `getInt()` is a **local memory read** — safe in tight loops, no HTTP, no 
 
 ## Step 3 — How it fits together (the mechanism senior teams need)
 
-```mermaid
-flowchart LR
-  SRE[SRE / messaging on-call] -->|enable flood_mode| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|afterValueChanged| Binder[LiveRabbitPrefetchBinder]
-  Binder -->|setPrefetchCount| Container[SimpleMessageListenerContainer]
-  Container --> Broker[(RabbitMQ)]
-  SDK -->|getInt per metric tick| Metrics[ConsumerMetrics]
-```
+![Architecture diagram](https://litter.catbox.moe/jo0mmx.png)
 
 1. **Connect once** at startup — `Kiponos.createForCurrentTeam()`.
 2. **Full tree snapshot** loads for your profile path.
