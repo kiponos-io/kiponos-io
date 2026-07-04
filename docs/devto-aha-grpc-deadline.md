@@ -55,14 +55,7 @@ Or worse — a single `ManagedChannel` built once with a global interceptor dead
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  OPS[Fulfillment on-call] -->|tighten deadline| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|getInt per RPC| Client[PricingGrpcClient]
-  Client -->|withDeadlineAfter| Stub[gRPC stub]
-  Stub --> Pricing[(Pricing service)]
-```
+![Architecture diagram](https://litter.catbox.moe/pcoo5a.png)
 
 ## Config tree
 
