@@ -4,7 +4,7 @@ published: false
 tags: java, government, civictech, operations
 description: Change permit processing SLA days, escalation thresholds, and department queue caps in Java permitting services while applications keep flowing. Kiponos local reads on every routing decision.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-public-sector-permit-sla.md
-main_image: https://files.catbox.moe/permit-sla-cover.jpg
+main_image: https://files.catbox.moe/l631hl.jpg
 ---
 
 Construction boom month 4. Building permit applications up **47%** year-over-year. Your SLA dashboard bleeds red — median review time crossed **26 business days** while the workflow engine still escalates at `sla_business_days: 21` from `permit-ops.yml` set before the housing initiative launched.
@@ -69,13 +69,7 @@ Kiponos controls **operational SLA thresholds and queue routing flags**, not sta
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["Permitting ops / city PM<br/>Kiponos.io dashboard"] -->|WebSocket delta| SDK["Permit workflow JVM<br/>Kiponos SDK in-memory tree"]
-    SDK -->|".getInt sla_business_days — local"| ROUTE["PermitRouter.route()"]
-    ROUTE --> QUEUE["Reviewer queues / escalation"]
-    CITIZEN["Citizen portal submissions"] --> ROUTE
-```
+![Architecture diagram](https://litter.catbox.moe/jlhmyt.png)
 
 ## Example config tree
 
