@@ -151,15 +151,7 @@ int maxActive = kiponos.path("redis", "lettuce", "session").getInt("max_active")
 
 ## Step 3 — Architecture
 
-```mermaid
-flowchart LR
-  OPS[Storefront on-call] -->|stampede_mode on| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|afterValueChanged| Binder[LiveLettucePoolBinder]
-  Binder -->|setMaxTotal| Pool[Lettuce GenericObjectPool]
-  Pool --> Redis[(Redis session cluster)]
-  SDK -->|getInt in filter metrics| Filter[SessionHydrationFilter]
-```
+![Architecture diagram](https://litter.catbox.moe/nyh4iy.png)
 
 1. **Connect once** at startup.
 2. **Full tree snapshot** for profile `['storefront']['prod']['redis']`.
