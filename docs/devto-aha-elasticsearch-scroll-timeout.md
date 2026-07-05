@@ -64,14 +64,7 @@ Git keeps **index names and mapping versions**; the hub keeps **scroll seconds t
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  OPS[Search on-call] -->|extend scroll_timeout| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|getInt per scroll| Job[ProductReindexJob]
-  Job -->|scroll + bulk| ES[(Elasticsearch cluster)]
-  Job --> V2[(products_v2 index)]
-```
+![Architecture diagram](https://litter.catbox.moe/uh8m0e.png)
 
 ## Config tree
 
