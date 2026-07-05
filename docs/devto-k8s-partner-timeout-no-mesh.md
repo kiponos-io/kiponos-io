@@ -76,14 +76,7 @@ Git keeps **base URLs and mTLS** reviewed. The hub keeps **operational patience*
 
 ## Architecture — no sidecar, no mesh control plane
 
-```mermaid
-flowchart LR
-    OPS["Integration ops<br/>Kiponos dashboard"] -->|WebSocket deltas| POD["checkout-api pod<br/>Kiponos SDK"]
-    POD -->|afterValueChanged| FACTORY["LiveWebClientFactory<br/>per partner"]
-    FACTORY --> TAX["tax.partner.example"]
-    FACTORY --> FRAUD["fraud.partner.example"]
-    ING["NGINX Ingress"] --> POD
-```
+![Architecture diagram](https://litter.catbox.moe/3yuugn.png)
 
 One container per pod ([embedded SDK vs sidecar](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-sidecar-vs-embedded-sdk.md)). No Envoy filter chain. No xDS subscription.
 
