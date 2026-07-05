@@ -66,15 +66,7 @@ Git keeps **JDBC job store URL and thread pool count**; the hub keeps **misfire 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  OPS[Finance ops on-call] -->|tighten misfire_threshold| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|afterValueChanged| Binder[LiveQuartzMisfireBinder]
-  Binder -->|setMisfireThreshold| Scheduler[Quartz Scheduler]
-  Scheduler --> DB[(QRTZ_* tables)]
-  Scheduler --> ERP[ERP ingestion jobs]
-```
+![Architecture diagram](https://litter.catbox.moe/8pl7gl.png)
 
 ## Config tree
 
