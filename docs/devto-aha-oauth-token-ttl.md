@@ -75,14 +75,7 @@ Git keeps **issuer URL, signing keys, and client registrations**; the hub keeps 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  SEC[Security incident lead] -->|shorten TTL| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|getInt per token| Customizer[LiveTokenValidityCustomizer]
-  Customizer --> AuthServer[Spring Authorization Server]
-  AuthServer --> Clients[Mobile / SPA clients]
-```
+![Architecture diagram](https://litter.catbox.moe/tgr1sd.png)
 
 ## Config tree
 
