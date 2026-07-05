@@ -75,14 +75,7 @@ Checkout pods keep using Kiponos for business config ([no restart updates](https
 
 ## Architecture — HPA reads live targets, not Helm
 
-```mermaid
-flowchart LR
-    OPS["Platform ops<br/>Kiponos dashboard"] -->|WebSocket deltas| BRIDGE["scaling-bridge JVM<br/>Kiponos SDK"]
-    BRIDGE -->|"/actuator/prometheus<br/>kiponos_hpa_target_*"| PROM["Prometheus / adapter"]
-    PROM --> HPA["HorizontalPodAutoscaler<br/>external metric target"]
-    HPA --> DEP["checkout-api Deployment<br/>pods scale"]
-    DEP --> SDK["Checkout pods<br/>Kiponos SDK business config"]
-```
+![Architecture diagram](https://litter.catbox.moe/c6dobo.png)
 
 The bridge is **not** on the checkout request path. It is a low-QPS control-plane reader — one WebSocket, local reads, gauge export every 15s.
 
