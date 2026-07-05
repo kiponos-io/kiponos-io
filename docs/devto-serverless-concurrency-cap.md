@@ -66,14 +66,7 @@ Pair with [Python semaphore tuning](https://github.com/kiponos-io/kiponos-io/blo
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["On-call ops<br/>Kiponos dashboard"] -->|WebSocket deltas| LAMBDA["invoice-events Lambda<br/>Python SDK in-memory"]
-    OPS -->|same tree| ADJ["concurrency-adjuster<br/>Python cron / layer"]
-    ADJ -->|put_function_concurrency| AWS["AWS Lambda control plane"]
-    LAMBDA -->|Semaphore max_inflight — local read| PG["Postgres / RDS"]
-    SQS["SQS invoice queue"] --> LAMBDA
-```
+![Architecture diagram](https://litter.catbox.moe/5fxyxr.png)
 
 ## Config tree
 
