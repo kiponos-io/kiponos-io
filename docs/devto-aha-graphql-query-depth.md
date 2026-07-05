@@ -66,15 +66,7 @@ Git keeps **schema files and resolver wiring**; the hub keeps **depth limit this
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  OPS[API platform on-call] -->|lower max_query_depth| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|getInt per query| Instrumentation[LiveDepthInstrumentation]
-  Instrumentation --> Engine[Spring GraphQL engine]
-  Engine --> Resolvers[Resolver beans]
-  Resolvers --> DB[(Order / Product DB)]
-```
+![Architecture diagram](https://litter.catbox.moe/lozmh4.png)
 
 ## Config tree
 
