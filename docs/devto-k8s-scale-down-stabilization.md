@@ -65,13 +65,7 @@ Checkout pods keep serving traffic with their embedded SDK; only the controller 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["FinOps / SRE<br/>Kiponos dashboard"] -->|WebSocket deltas| CTRL["hpa-behavior-controller<br/>Java + Kiponos SDK"]
-    CTRL -->|patch spec.behavior| HPA["HPA checkout-api"]
-    HPA --> DEP["checkout-api pods<br/>scale down"]
-    DEP --> SDK["App pods<br/>business config unchanged"]
-```
+![Architecture diagram](https://litter.catbox.moe/ag24vv.png)
 
 ## Config tree
 
