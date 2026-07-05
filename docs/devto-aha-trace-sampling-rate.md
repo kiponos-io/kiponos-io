@@ -65,15 +65,7 @@ Git keeps **exporter endpoint and service name**; the hub keeps **sampling ratio
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  SRE[SRE on-call] -->|raise sampling ratio| Hub[Kiponos hub]
-  Hub -->|WebSocket delta| SDK[Kiponos SDK]
-  SDK -->|getDouble per shouldSample| Sampler[LiveRatioSampler]
-  Sampler --> Tracer[OpenTelemetry Tracer]
-  Tracer --> Collector[(OTel collector)]
-  Collector --> Jaeger[(Jaeger UI)]
-```
+![Architecture diagram](https://litter.catbox.moe/3bkjsr.png)
 
 ## Config tree
 
