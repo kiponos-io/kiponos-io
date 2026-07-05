@@ -58,13 +58,7 @@ Updates are **async deltas** — changing `visibility_timeout_sec` patches one k
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["Media on-call<br/>Kiponos dashboard"] -->|raise visibility| SDK["Python SDK in-mem<br/>resize worker"]
-    SDK -->|"get_int visibility_timeout_sec"| Poll["receive_message()<br/>poll_once()"]
-    Poll --> SQS[(SQS resize queue)]
-    Poll --> GPU["GPU resize handler"]
-```
+![Architecture diagram](https://litter.catbox.moe/sssdyo.png)
 
 ## Config tree
 
