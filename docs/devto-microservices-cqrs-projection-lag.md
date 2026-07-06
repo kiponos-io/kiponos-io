@@ -61,16 +61,7 @@ Lag checks run on **every projector tick** and on **read API guard paths**. You 
 
 ## Architecture: one tree, projectors and read API
 
-```mermaid
-flowchart LR
-    OPS["Platform ops<br/>Kiponos dashboard"] -->|WebSocket delta| PROJ["Python projector<br/>Kiponos SDK"]
-    OPS -->|same delta| API["Read API worker<br/>Kiponos SDK"]
-    PROJ -->|get_int max_lag_sec| LOOP["projection_loop"]
-    LOOP --> KAFKA["Kafka<br/>domain events"]
-    LOOP --> READDB["Read model DB"]
-    API -->|get_int pause_serve_lag_sec| GUARD["staleness guard"]
-    GUARD --> READDB
-```
+![Architecture diagram](https://litter.catbox.moe/h91plg.png)
 
 When ops raises `pause_serve_lag_sec`, **read API and projector** share the same live policy.
 
