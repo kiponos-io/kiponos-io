@@ -67,14 +67,7 @@ Same JVM that runs transforms holds the SDK — no sidecar hop on localhost ([em
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["Edge ops<br/>Kiponos dashboard"] -->|WebSocket deltas| EDGE["edge-transform pod<br/>Java SDK"]
-    EDGE -->|admit / shed| TRANS["Transform pool<br/>threads + CPU gate"]
-    CDN["CDN cache miss"] --> EDGE
-    EDGE -->|throttled fetch| ORIGIN["Origin API"]
-    NODE["Regional K8s node<br/>cpu 2 limit"] --> EDGE
-```
+![Architecture diagram](https://litter.catbox.moe/wyki9q.png)
 
 ## Config tree
 
