@@ -81,16 +81,7 @@ Spring still owns `DataSource` bean creation. Kiponos owns **the integers you mu
 
 ## Architecture — refresh scope vs SDK read path
 
-```mermaid
-flowchart TB
-    YAML["application-prod.yml<br/>Git / Config Server"] -->|startup| CP["@ConfigurationProperties<br/>bootstrap only"]
-    ACT["/actuator/refresh"] -->|destroy + recreate| RS["@RefreshScope beans<br/>context churn"]
-    RS --> JVM["Spring Boot JVM<br/>under load"]
-    HUB["Kiponos hub"] -->|WebSocket delta| SDK["Kiponos SDK<br/>outside refresh scope"]
-    SDK -->|local getInt| FILTER["RateLimitFilter<br/>every request"]
-    SDK -->|afterValueChanged| BIND["LiveOpsBinder<br/>pool / breaker"]
-    BIND --> JVM
-```
+![Architecture diagram](https://files.catbox.moe/37q2nu.png)
 
 ## Config tree — operational layer
 

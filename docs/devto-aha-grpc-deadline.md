@@ -55,7 +55,7 @@ Or worse — a single `ManagedChannel` built once with a global interceptor dead
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/pcoo5a.png)
+![Architecture diagram](https://files.catbox.moe/vwj0r1.png)
 
 ## Config tree
 

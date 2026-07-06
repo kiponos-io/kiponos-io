@@ -61,7 +61,7 @@ Lock acquire runs on **every contested resource path**. TTL reads must be local 
 
 ## Architecture: one tree, lock-holding workers
 
-![Architecture diagram](https://litter.catbox.moe/ssit0w.png)
+![Architecture diagram](https://files.catbox.moe/l430rj.png)
 
 When ops lowers `lock_ttl_sec`, **next acquire** on every worker uses the new lease — in-flight locks expire under previous TTL naturally.
 

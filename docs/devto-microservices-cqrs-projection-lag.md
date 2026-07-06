@@ -61,7 +61,7 @@ Lag checks run on **every projector tick** and on **read API guard paths**. You 
 
 ## Architecture: one tree, projectors and read API
 
-![Architecture diagram](https://litter.catbox.moe/h91plg.png)
+![Architecture diagram](https://files.catbox.moe/1fea8c.png)
 
 When ops raises `pause_serve_lag_sec`, **read API and projector** share the same live policy.
 

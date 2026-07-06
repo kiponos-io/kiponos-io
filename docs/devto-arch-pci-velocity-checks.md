@@ -89,7 +89,7 @@ No restart. No redeploy. No `@RefreshScope` bean recycle.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/0xwzfh.png)
 
 **Compliance docs describe intent; the tree enforces live limits.** Keep policy prose in your PCI packet — but the **authoritative velocity values** live in Kiponos where tightening them takes seconds with dashboard ACL.
 

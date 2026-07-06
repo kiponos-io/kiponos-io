@@ -58,7 +58,7 @@ Lease renewal runs on **heartbeat threads** and shutdown hooks. The effective gr
 
 ## Architecture: one tree, registering services
 
-![Architecture diagram](https://litter.catbox.moe/coi7mw.png)
+![Architecture diagram](https://files.catbox.moe/7mweqi.png)
 
 When ops enables `deploy_mode` and raises grace seconds, **all registering pods** adopt the new timing without a new image.
 

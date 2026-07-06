@@ -89,7 +89,7 @@ Git keeps **which tools exist in code**. The hub keeps **how many steps and doll
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/xhptcs.png)
+![Architecture diagram](https://files.catbox.moe/92lsj0.png)
 
 1. **Connect once** at worker boot.
 2. **Snapshot** for `['ops-agent']['prod']['agent']`.

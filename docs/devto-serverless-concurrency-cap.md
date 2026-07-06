@@ -66,7 +66,7 @@ Pair with [Python semaphore tuning](https://github.com/kiponos-io/kiponos-io/blo
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/5fxyxr.png)
+![Architecture diagram](https://files.catbox.moe/k70exj.png)
 
 ## Config tree
 

@@ -111,7 +111,7 @@ No restart. No redeploy. No ConfigMap reload. The hub pushes; the reader — emb
 
 ## Architecture: embedded vs sidecar in one pod
 
-![Architecture diagram](https://litter.catbox.moe/roxtor.png)
+![Architecture diagram](https://files.catbox.moe/9dts5e.png)
 
 **HPA sees one pod** in both cases. Embedded: one container. Sidecar: two containers, **one shared network namespace** — `127.0.0.1` is valid. Do not confuse this with a **cluster-wide config service**; per-pod cache is the scale pattern ([SDK per pod](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-sdk-per-pod.md)).
 

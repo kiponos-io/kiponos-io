@@ -65,7 +65,7 @@ Git keeps **exporter endpoint and service name**; the hub keeps **sampling ratio
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/3bkjsr.png)
+![Architecture diagram](https://files.catbox.moe/rnhazd.png)
 
 ## Config tree
 

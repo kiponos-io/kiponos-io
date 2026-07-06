@@ -90,7 +90,7 @@ Optional `after_value_changed` logs who changed LR and when — critical for exp
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/dhd81j.png)
+![Architecture diagram](https://files.catbox.moe/5rftdr.png)
 
 1. **Connect once** at `torchrun` startup.
 2. **Full tree snapshot** for fine-tune profile.

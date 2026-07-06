@@ -151,7 +151,7 @@ int maxActive = kiponos.path("redis", "lettuce", "session").getInt("max_active")
 
 ## Step 3 — Architecture
 
-![Architecture diagram](https://litter.catbox.moe/nyh4iy.png)
+![Architecture diagram](https://files.catbox.moe/93ggtw.png)
 
 1. **Connect once** at startup.
 2. **Full tree snapshot** for profile `['storefront']['prod']['redis']`.

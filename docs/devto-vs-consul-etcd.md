@@ -73,16 +73,7 @@ You stop writing `consul watch → parse JSON → update AtomicInteger` boilerpl
 
 ## Architecture — KV watch vs hub deltas
 
-```mermaid
-flowchart TB
-    OPS["Ops engineer"] -->|etcdctl / consul kv| KV["Consul / etcd<br/>flat KV"]
-    KV -->|long-poll / watch| SIDE["Custom watcher<br/>per service"]
-    SIDE -->|parse + cache| JVM["Java service<br/>stale risk"]
-    OPS2["Ops dashboard"] --> HUB["Kiponos hub"]
-    HUB -->|WebSocket delta| SDK["SDK in-memory tree"]
-    SDK -->|local getInt| HOT["Authorization hot path"]
-    CONSUL["Consul SD"] -->|health + catalog only| MESH["Service mesh"]
-```
+![Architecture diagram](https://files.catbox.moe/khqqwl.png)
 
 ## Config tree — structured ops, not slash-separated KV keys
 

@@ -84,7 +84,7 @@ Pair with [LLM inference serving](https://github.com/kiponos-io/kiponos-io/blob/
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/zz4dtl.png)
+![Architecture diagram](https://files.catbox.moe/i6hwsj.png)
 
 **Billing stays in your cloud console.** Kiponos holds **policy** — when to stop admitting, how many replicas the supervisor may request, how many tokens each tenant may emit. Optional: a small FinOps bot writes `current_day_spend_usd` into the tree from CUR data; workers react via `afterValueChanged`.
 

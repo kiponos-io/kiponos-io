@@ -85,7 +85,7 @@ No restart. No redeploy. No `@RefreshScope` bean recycle.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/t04vad.png)
 
 **Alerts inform humans; the tree gates machines.** Keep burn-rate graphs in Grafana for context — but the **authoritative thresholds** live in Kiponos where tightening them takes seconds.
 

@@ -71,7 +71,7 @@ See also: [pods without ConfigMaps](https://github.com/kiponos-io/kiponos-io/blo
 
 ## Architecture — credential plane vs behavior plane
 
-![Architecture diagram](https://litter.catbox.moe/shfio6.png)
+![Architecture diagram](https://files.catbox.moe/hsj783.png)
 
 ## Boundary table — decide in your platform RFC
 

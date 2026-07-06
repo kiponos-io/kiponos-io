@@ -66,7 +66,7 @@ Git keeps **schema files and resolver wiring**; the hub keeps **depth limit this
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/lozmh4.png)
+![Architecture diagram](https://files.catbox.moe/rbb423.png)
 
 ## Config tree
 

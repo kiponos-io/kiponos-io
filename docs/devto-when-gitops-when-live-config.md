@@ -76,23 +76,7 @@ It does **not** replace Argo CD, Terraform, or LaunchDarkly's cohort targeting �
 
 ## Architecture — three lanes, one reference diagram
 
-```mermaid
-flowchart TB
-    subgraph gitops ["GitOps lane — desired state"]
-        GIT["Git repo"] --> ARGO["Argo CD / Flux"]
-        ARGO --> K8S["Deployments Ingress RBAC<br/>bootstrap secrets refs"]
-    end
-    subgraph live ["Live ops lane — Kiponos"]
-        OPS["SRE / fraud / ML ops"] --> HUB["Kiponos hub"]
-        HUB -->|WebSocket delta| SDK["SDK in each process"]
-        SDK -->|local getInt| SVC["Java + Python services"]
-    end
-    subgraph flags ["Product lane — feature flags"]
-        PM["Product / growth"] --> LD["LaunchDarkly or Kiponos bool"]
-        LD -->|cohort / experiment| UI["User-facing features"]
-    end
-    K8S --> SVC
-```
+![Architecture diagram](https://files.catbox.moe/mqutl2.png)
 
 ## Decision matrix — where does this key live?
 

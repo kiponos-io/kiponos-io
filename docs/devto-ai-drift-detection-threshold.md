@@ -4,7 +4,7 @@ published: false
 tags: python, ai, mlops, monitoring
 description: PSI and KS drift thresholds feel like statistical constants checked into monitoring code. During distribution shifts they are operational alert policy — Kiponos feeds live cutoffs with zero-latency reads per batch.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-drift-detection-threshold.md
-main_image: https://litter.catbox.moe/1wshy8.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Wednesday 1:15 PM. Your fraud scoring service runs nightly drift checks — PSI on `transaction_amount`, KS on `merchant_category`, population stability on geolocation buckets. `monitor.py` exports `PSI_ALERT = 0.25`, `KS_PVALUE_CUTOFF = 0.01`, and `RETRAIN_COOLDOWN_HOURS = 24` because the data science lead picked "textbook" cutoffs during model v3 launch.
@@ -84,7 +84,7 @@ Git keeps **which features you monitor**. The hub keeps **when PSI constitutes a
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/yia3f8.png)
+![Architecture diagram](https://files.catbox.moe/9gdmhn.png)
 
 1. **Connect once** at worker boot.
 2. **Snapshot** for `['fraud-ml']['prod']['drift']`.

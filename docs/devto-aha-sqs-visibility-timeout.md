@@ -58,7 +58,7 @@ Updates are **async deltas** — changing `visibility_timeout_sec` patches one k
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/sssdyo.png)
+![Architecture diagram](https://files.catbox.moe/lgdto8.png)
 
 ## Config tree
 

@@ -85,7 +85,7 @@ Kiponos holds routing policy in memory for profile `['inference']['prod']['routi
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/7k3sgo.png)
+![Architecture diagram](https://files.catbox.moe/4eomt0.png)
 
 1. **Connect once** at Uvicorn startup.
 2. **Snapshot** for `['inference']['prod']['routing']`.

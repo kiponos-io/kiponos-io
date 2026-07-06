@@ -87,7 +87,7 @@ No restart. No redeploy. No recycling the worker pool.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/r3tpir.png)
 
 **Tier matrix documents intent; the tree enforces live caps.** Keep commercial pricing prose in your finance wiki — but the **authoritative token ceilings** live in Kiponos where tightening them takes seconds.
 

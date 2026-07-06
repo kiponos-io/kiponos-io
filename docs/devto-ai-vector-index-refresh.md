@@ -97,7 +97,7 @@ No restart. No redeploy. No per-query remote fetch. Profile path: `['app']['rele
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/m64rbm.png)
+![Architecture diagram](https://files.catbox.moe/f43c9t.png)
 
 1. **Connect once** at Spring Boot startup.
 2. **Full tree snapshot** for index profile.

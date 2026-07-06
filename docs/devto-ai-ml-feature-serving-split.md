@@ -72,7 +72,7 @@ Updates are **async deltas**. No redeploy. No cross-network read on the hot path
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/xzcsj2.png)
+![Architecture diagram](https://files.catbox.moe/l1i4hk.png)
 
 **Bootstrap in Git, operate in hub.** Git declares `feature_set_id` and contract version. Day-2 tuning happens in the correct tree with ACL — offline keys never accidentally patch serving fallbacks.
 

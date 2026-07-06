@@ -63,7 +63,7 @@ Keep **fare rules and cabin mapping** in code and RM systems. Move **operational
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/r0lym1.png)
+![Architecture diagram](https://files.catbox.moe/muaxcn.png)
 
 ## Example config tree
 

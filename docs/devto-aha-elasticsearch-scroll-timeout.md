@@ -64,7 +64,7 @@ Git keeps **index names and mapping versions**; the hub keeps **scroll seconds t
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/uh8m0e.png)
+![Architecture diagram](https://files.catbox.moe/essvkb.png)
 
 ## Config tree
 

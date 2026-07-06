@@ -4,7 +4,7 @@ published: false
 tags: java, edtech, security, education
 description: Change suspicion score thresholds, review queue caps, and integrity pause flags in Java proctoring services while exams stay in session. Kiponos local reads on every behavior evaluation.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-edtech-exam-proctoring.md
-main_image: https://litter.catbox.moe/q99m57.jpg
+main_image: https://files.catbox.moe/4p1gxw.jpg
 ---
 
 Finals week hour 2. Your integrity dashboard shows a **340% spike** in tab-switch events across the organic chemistry cohort. The proctoring service still flags sessions at `suspicion_score_threshold: 0.72` — unchanged since the pilot semester when false positives were the bigger risk.
@@ -68,7 +68,7 @@ Kiponos connects your Spring Boot proctoring service to a live config tree. Prof
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/lf7uq6.png)
+![Architecture diagram](https://files.catbox.moe/21l445.png)
 
 ## Example config tree
 

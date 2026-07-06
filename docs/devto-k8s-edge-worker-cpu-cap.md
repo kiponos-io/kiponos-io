@@ -67,7 +67,7 @@ Same JVM that runs transforms holds the SDK — no sidecar hop on localhost ([em
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/wyki9q.png)
+![Architecture diagram](https://files.catbox.moe/49alat.png)
 
 ## Config tree
 

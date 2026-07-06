@@ -4,7 +4,7 @@ published: false
 tags: python, ai, rag, devops
 description: Chunk size, top-k, and rerank weights feel like offline tuning constants. During retrieval storms they are operational — Kiponos feeds live RAG policy with zero-latency reads on every query.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-rag-chunk-topk.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-rag-chunk-topk.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Tuesday 2:14 PM. Legal drops a 400-page policy addendum into the knowledge base. Your support RAG stack ingests it overnight — but the retrieval service still runs with `CHUNK_SIZE = 512`, `TOP_K = 8`, and `RERANK_WEIGHT = 0.35` from `constants.py`, values chosen during a calm pilot when documents averaged twelve pages.
@@ -96,7 +96,7 @@ That matters on the retrieval hot path: hundreds of concurrent support lookups, 
 
 ## Architecture — how retrieval policy flows without redeploy
 
-![Architecture diagram](https://litter.catbox.moe/6450l6.png)
+![Architecture diagram](https://files.catbox.moe/zo4t40.png)
 
 1. **Connect once** at worker boot — `Kiponos.create_for_current_team()`.
 2. **Full tree snapshot** loads for profile `['support-rag']['prod']['retrieval']`.

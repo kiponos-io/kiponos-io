@@ -69,7 +69,7 @@ Kiponos controls **operational SLA thresholds and queue routing flags**, not sta
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/jlhmyt.png)
+![Architecture diagram](https://files.catbox.moe/k33sgv.png)
 
 ## Example config tree
 

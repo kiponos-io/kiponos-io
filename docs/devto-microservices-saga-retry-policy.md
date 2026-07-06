@@ -55,7 +55,7 @@ On each retry decision, `kiponos.path("sagas", "checkout", "payment").getInt("ma
 
 ## Architecture: one tree, orchestrator and participants
 
-![Architecture diagram](https://litter.catbox.moe/05eo0e.png)
+![Architecture diagram](https://files.catbox.moe/3swxa9.png)
 
 When ops raises `payment.max_retries`, **every JVM** in the checkout saga profile sees the new budget on the next attempt.
 

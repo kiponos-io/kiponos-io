@@ -75,7 +75,7 @@ Git keeps **issuer URL, signing keys, and client registrations**; the hub keeps 
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/tgr1sd.png)
+![Architecture diagram](https://files.catbox.moe/79zxj4.png)
 
 ## Config tree
 

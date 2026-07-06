@@ -76,7 +76,7 @@ Git keeps **base URLs and mTLS** reviewed. The hub keeps **operational patience*
 
 ## Architecture — no sidecar, no mesh control plane
 
-![Architecture diagram](https://litter.catbox.moe/3yuugn.png)
+![Architecture diagram](https://files.catbox.moe/ensaw8.png)
 
 One container per pod ([embedded SDK vs sidecar](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-sidecar-vs-embedded-sdk.md)). No Envoy filter chain. No xDS subscription.
 

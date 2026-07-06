@@ -66,7 +66,7 @@ Git keeps **JDBC job store URL and thread pool count**; the hub keeps **misfire 
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/8pl7gl.png)
+![Architecture diagram](https://files.catbox.moe/ka6nkg.png)
 
 ## Config tree
 

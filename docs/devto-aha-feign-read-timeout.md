@@ -71,7 +71,7 @@ Git keeps **partner base URL and OAuth wiring**; the hub keeps **read millisecon
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/97n6a1.png)
+![Architecture diagram](https://files.catbox.moe/tpmjbk.png)
 
 ## Config tree
 

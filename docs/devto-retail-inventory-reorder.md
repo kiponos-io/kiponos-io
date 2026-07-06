@@ -68,7 +68,7 @@ Separate **wiring** (team credentials in `application.yml`) from **operational p
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/om2qdq.png)
+![Architecture diagram](https://files.catbox.moe/2gxy5w.png)
 
 ## Example config tree
 

@@ -92,7 +92,7 @@ No restart. No redeploy. No `@RefreshScope` bean recycle.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/5kj1gt.png)
 
 **Compliance policy describes intent; the tree drives live capture.** Keep BAA and retention prose in your compliance packet — but the **authoritative sample rates** live in Kiponos where raising them takes seconds with dashboard ACL.
 

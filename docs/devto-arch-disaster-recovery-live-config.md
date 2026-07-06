@@ -88,7 +88,7 @@ No restart. No redeploy. No `@RefreshScope` bean recycle.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/5212yb.png)
 
 **Runbook documents the tree; the tree drives behavior.** Keep prose in Confluence for context and escalation — but the **authoritative values** live in Kiponos where flipping them takes seconds.
 

@@ -75,7 +75,7 @@ Checkout pods keep using Kiponos for business config ([no restart updates](https
 
 ## Architecture — HPA reads live targets, not Helm
 
-![Architecture diagram](https://litter.catbox.moe/c6dobo.png)
+![Architecture diagram](https://files.catbox.moe/9mqtp5.png)
 
 The bridge is **not** on the checkout request path. It is a low-QPS control-plane reader — one WebSocket, local reads, gauge export every 15s.
 

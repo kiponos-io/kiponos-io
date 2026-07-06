@@ -60,15 +60,7 @@ Product booleans and ops floats live in the **same tree** if you want consolidat
 
 ## Architecture — product flags vs ops hub
 
-```mermaid
-flowchart TB
-    PM["Product / growth<br/>cohort experiments"] --> LD["LaunchDarkly<br/>user targeting"]
-    LD -->|network eval| APP["Checkout UI service"]
-    SRE["SRE / fraud / ML ops"] --> HUB["Kiponos hub"]
-    HUB -->|WebSocket delta| SDK["SDK in-memory tree"]
-    SDK -->|local getInt| PAY["Payments authorization<br/>12k TPS hot path"]
-    SDK -->|local getInt| ML["Python embedding worker"]
-```
+![Architecture diagram](https://files.catbox.moe/15mwua.png)
 
 Hybrid is common: LD for **identity-bound** UI experiments; Kiponos for **system-bound** thresholds both Java and Python read.
 

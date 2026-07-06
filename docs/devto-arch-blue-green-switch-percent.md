@@ -96,7 +96,7 @@ No restart. No redeploy. No `@RefreshScope` bean recycle.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/h3pjks.png)
 
 **Terraform provisions colors; the tree drives live percent.** Keep ALB target groups in IaC — but the **authoritative cutover weight** lives in Kiponos where rollback takes seconds.
 

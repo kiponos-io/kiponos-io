@@ -60,15 +60,7 @@ Works the same on EKS, bare EC2, and developer laptops — not region-locked to 
 
 ## Architecture — AppConfig deployments vs Kiponos deltas
 
-```mermaid
-flowchart LR
-    AWS["AWS AppConfig<br/>hosted configuration"] -->|poll + deploy strategy| AGENT["AppConfig agent<br/>sidecar"]
-    AGENT --> LAMBDA["Lambda / ECS task"]
-    OPS["SRE dashboard"] --> HUB["Kiponos hub"]
-    HUB -->|WebSocket delta| SDK["Embedded SDK<br/>in-memory tree"]
-    SDK -->|local read| JAVA["Java payments pod<br/>EKS"]
-    SDK -->|local read| PY["Python fraud worker<br/>EC2"]
-```
+![Architecture diagram](https://files.catbox.moe/9687wk.png)
 
 ## Config tree
 

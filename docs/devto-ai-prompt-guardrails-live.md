@@ -4,7 +4,7 @@ published: false
 tags: python, ai, llm, security
 description: Max tokens, temperature ceilings, and blocked topics feel like policy code. When abuse spikes, guardrails are operational — Kiponos lets Python API gateways retune limits without restarts.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-prompt-guardrails-live.md
-main_image: https://litter.catbox.moe/fuhk5v.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Compliance review minute 22. Legal forwards a screenshot: a customer used your **creative writing endpoint** to produce step-by-step instructions your acceptable-use policy explicitly forbids. The model complied at `temperature=0.9` with `max_tokens=4096` — values someone copied from a "maximize engagement" experiment last quarter.
@@ -95,7 +95,7 @@ Optional `after_value_changed` emits structured audit events when legal ops upda
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/vuhm45.png)
+![Architecture diagram](https://files.catbox.moe/izvhbg.png)
 
 1. **Connect once** at gateway startup.
 2. **Full tree snapshot** for guardrail profile.

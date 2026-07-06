@@ -67,7 +67,7 @@ Kiponos connects your Spring Boot enrollment service to a live config tree. Prof
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/ets88q.png)
+![Architecture diagram](https://files.catbox.moe/am6k6e.png)
 
 ## Example config tree
 

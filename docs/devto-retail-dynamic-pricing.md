@@ -97,7 +97,7 @@ That matters on the pricing hot path: every PDP impression, cart recalculation, 
 
 ## Architecture — how quotes pick up live multipliers
 
-![Architecture diagram](https://litter.catbox.moe/im78cy.png)
+![Architecture diagram](https://files.catbox.moe/yn62aw.png)
 
 1. **Connect once** at startup — `Kiponos.createForCurrentTeam()`.
 2. **Full tree snapshot** loads for profile `['retail']['prod']['pricing']`.

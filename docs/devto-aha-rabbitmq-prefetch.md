@@ -147,7 +147,7 @@ That `getInt()` is a **local memory read** — safe in tight loops, no HTTP, no 
 
 ## Step 3 — How it fits together (the mechanism senior teams need)
 
-![Architecture diagram](https://litter.catbox.moe/jo0mmx.png)
+![Architecture diagram](https://files.catbox.moe/exjzv9.png)
 
 1. **Connect once** at startup — `Kiponos.createForCurrentTeam()`.
 2. **Full tree snapshot** loads for your profile path.

@@ -4,7 +4,7 @@ published: false
 tags: python, agriculture, iot, sustainability
 description: Change soil moisture thresholds, zone schedules, and pump duty caps in Python irrigation controllers while pivots keep running. Kiponos local reads on every sensor evaluation loop.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agriculture-irrigation-schedule.md
-main_image: https://litter.catbox.moe/em0tjj.jpg
+main_image: https://files.catbox.moe/j9f0ym.jpg
 ---
 
 County drought advisory level **2** issued Thursday. Your almond blocks in sector 7 still irrigate when soil moisture drops below `0.32` — a constant in `irrigation_policy.py` calibrated for a normal rainfall year.
@@ -60,7 +60,7 @@ Updates are **async deltas** — changing `soil_moisture_trigger` patches one ke
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/eheoj8.png)
+![Architecture diagram](https://files.catbox.moe/htbpfn.png)
 
 ## Example config tree
 

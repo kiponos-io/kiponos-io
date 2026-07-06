@@ -72,14 +72,7 @@ Spring Cloud Config still delivers `spring.datasource.url` and `kiponos.team-id`
 
 ## Architecture — bootstrap vs live layer
 
-```mermaid
-flowchart LR
-    GIT["Git repo<br/>bootstrap YAML"] --> SCC["Spring Cloud Config Server"]
-    SCC -->|startup + refresh| JVM["Spring Boot JVM"]
-    HUB["Kiponos hub<br/>dashboard + ACL"] -->|WebSocket delta| SDK["Kiponos SDK<br/>in-memory tree"]
-    SDK --> JVM
-    JVM -->|".getInt() local"| HOT["Authorization hot path"]
-```
+![Architecture diagram](https://files.catbox.moe/bctknw.png)
 
 1. **Bootstrap** — Config Server → `application.yml` keys for wiring and Kiponos credentials.
 2. **Connect** — SDK handshake once per process.

@@ -60,7 +60,7 @@ Updates are **async deltas** — changing `max_bitrate_mbps` patches one key in 
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/mncpo4.png)
+![Architecture diagram](https://files.catbox.moe/p0c2ma.png)
 
 ## Example config tree
 

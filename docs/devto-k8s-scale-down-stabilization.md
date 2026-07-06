@@ -65,7 +65,7 @@ Checkout pods keep serving traffic with their embedded SDK; only the controller 
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/ag24vv.png)
+![Architecture diagram](https://files.catbox.moe/r4oau3.png)
 
 ## Config tree
 

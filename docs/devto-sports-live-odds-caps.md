@@ -67,7 +67,7 @@ Kiponos connects your Spring Boot in-play pricing service to a live config tree.
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/2obj0j.png)
+![Architecture diagram](https://files.catbox.moe/rxzvgu.png)
 
 ## Example config tree
 

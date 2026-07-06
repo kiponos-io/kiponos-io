@@ -62,7 +62,7 @@ On each request, `kiponos.path("routes", "pricing").getLong("response_timeout_ms
 
 ## Architecture: one tree, edge gateways
 
-![Architecture diagram](https://litter.catbox.moe/w070be.png)
+![Architecture diagram](https://files.catbox.moe/46722d.png)
 
 When NOC lowers `pricing.response_timeout_ms`, **all gateway pods** enforce the new budget on the next request.
 

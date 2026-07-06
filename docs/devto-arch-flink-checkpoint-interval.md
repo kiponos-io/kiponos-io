@@ -89,7 +89,7 @@ No cancel. No resubmit. No TaskManager rolling restart for policy alone.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/6i135m.png)
 
 **Submit args bootstrap the job; the tree drives live checkpoint policy.** Keep parallelism and state backend choice in GitOps — but the **authoritative interval values** live in Kiponos where stretching them takes seconds.
 
