@@ -58,14 +58,7 @@ Lease renewal runs on **heartbeat threads** and shutdown hooks. The effective gr
 
 ## Architecture: one tree, registering services
 
-```mermaid
-flowchart LR
-    OPS["Platform ops<br/>Kiponos dashboard"] -->|WebSocket delta| SDK["payment-service JVM<br/>Kiponos SDK"]
-    SDK -->|getInt lease_expiration_sec| HB["Eureka heartbeat<br/>renewal thread"]
-    HB --> REG["Eureka registry"]
-    GW["API gateway / clients"] --> REG
-    SDK -->|getInt shutdown_grace_sec| SHUT["Graceful shutdown hook"]
-```
+![Architecture diagram](https://litter.catbox.moe/coi7mw.png)
 
 When ops enables `deploy_mode` and raises grace seconds, **all registering pods** adopt the new timing without a new image.
 
