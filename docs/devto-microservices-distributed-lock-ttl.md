@@ -61,14 +61,7 @@ Lock acquire runs on **every contested resource path**. TTL reads must be local 
 
 ## Architecture: one tree, lock-holding workers
 
-```mermaid
-flowchart LR
-    OPS["Warehouse ops<br/>Kiponos dashboard"] -->|WebSocket delta| W1["Celery worker A<br/>Kiponos SDK"]
-    OPS -->|same delta| W2["Celery worker B<br/>Kiponos SDK"]
-    W1 -->|get_int lock_ttl_sec| ACQ["acquire_aisle_lock"]
-    W2 --> ACQ
-    ACQ --> REDIS["Redis<br/>lock keys"]
-```
+![Architecture diagram](https://litter.catbox.moe/ssit0w.png)
 
 When ops lowers `lock_ttl_sec`, **next acquire** on every worker uses the new lease — in-flight locks expire under previous TTL naturally.
 
