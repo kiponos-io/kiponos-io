@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, resilience, devops
 description: Retry counts and backoff delays feel like compile-time philosophy. When a partner API flakes, maxAttempts=3 is operational — not architecture. Kiponos feeds live retry policy with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-retry-attempts.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-retry-attempts.jpg
+main_image: https://files.catbox.moe/w2vd1k.jpg
 ---
 
 Tuesday 2:14 AM. Your payment adapter throws `503` from a partner gateway. Spring Retry exhausts **three attempts** — because `@Retryable(maxAttempts = 3)` was copied from a blog post in 2022 and nobody has touched it since.

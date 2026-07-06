@@ -4,7 +4,7 @@ published: false
 tags: python, asyncio, devops, performance
 description: Module-level semaphores cap concurrency once at import time. When an upstream API slows, permit count is operational — Kiponos feeds live concurrency policy with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-semaphore.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-semaphore.jpg
+main_image: https://files.catbox.moe/srkslu.jpg
 ---
 
 Partner catalog scraper, 03:22 UTC. Forty asyncio workers flood a vendor pricing API. Module import created `SEM = asyncio.Semaphore(10)` — ten concurrent calls felt generous when the partner allowed 100 req/s in the sandbox.

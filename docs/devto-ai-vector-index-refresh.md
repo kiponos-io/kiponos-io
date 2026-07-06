@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, ai, search
 description: Vector index rebuild interval and partial refresh percent feel like infrastructure constants. When merchandising drops 40k SKUs, refresh policy is operational — Kiponos lets Java search services retune index cadence without restarts.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-vector-index-refresh.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-vector-index-refresh.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Merchandising drop minute 8. Forty thousand new SKUs hit the product feed while your vector search still serves embeddings indexed **yesterday at 03:00** — because `REBUILD_INTERVAL_HOURS = 24` was "approved by search platform" eighteen months ago when the catalog changed weekly, not hourly.

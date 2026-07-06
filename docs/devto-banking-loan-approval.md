@@ -4,7 +4,7 @@ published: true
 tags: java, banking, fintech, realtime
 description: Change credit score cutoffs, DTI limits, and product-specific approval rules in Java origination services while applications keep flowing. Kiponos local reads, WebSocket deltas.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-banking-loan-approval.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-banking-loan.jpg
+main_image: https://files.catbox.moe/7sylk3.jpg
 ---
 
 Loan origination is a pipeline of **policy thresholds**: minimum FICO, max debt-to-income, regional caps, promotional rate eligibility. Risk committee moves cutoffs after macro shifts — usually meaning **weeks** until IT deploys new `application.yml` across origination, underwriting, and pricing services.

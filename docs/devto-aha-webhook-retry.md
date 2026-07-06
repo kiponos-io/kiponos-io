@@ -4,7 +4,7 @@ published: false
 tags: python, webdev, devops, resilience
 description: MAX_RETRIES = 5 and BACKOFF_SECONDS = [1,2,4,8] feel permanent at the top of webhook_worker.py. When the endpoint flakes, retry policy is operational — Kiponos feeds backoff live with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-webhook-retry.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-webhook-retry.jpg
+main_image: https://files.catbox.moe/srkslu.jpg
 ---
 
 Wednesday 2:05 PM. Your webhook delivery fleet is drowning. A major customer endpoint returns `502 Bad Gateway` for roughly half of their traffic — intermittent, mean, and just healthy enough to keep your workers honest. The queue depth graph looks like a skateboard ramp. The DLQ is filling faster than customer success can apologize.

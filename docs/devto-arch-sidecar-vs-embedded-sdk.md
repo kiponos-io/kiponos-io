@@ -4,7 +4,7 @@ published: false
 tags: kubernetes, performance, architecture, java
 description: Embedded SDK gives zero-hop reads inside the JVM. A Kiponos reader sidecar isolates WebSocket churn and serves polyglot pods — at a localhost latency cost. Latency, blast radius, and K8s placement patterns.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-sidecar-vs-embedded-sdk.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-sidecar-vs-embedded-sdk.jpg
+main_image: https://files.catbox.moe/id94bo.jpg
 cover_image: /home/moshe/work/kiponos-io/docs/devto-cover-arch-sidecar-vs-embedded-sdk.jpg
 ---
 

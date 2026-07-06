@@ -4,7 +4,7 @@ published: true
 tags: java, telecom, networking, realtime
 description: Live QoS class weights, bandwidth caps, and congestion policies in Java network control planes. NOC edits Kiponos; edge controllers read locally via WebSocket deltas.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-telecom-qos.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-telecom.jpg
+main_image: https://files.catbox.moe/tl9vrp.jpg
 ---
 
 Congestion is measured in seconds. NOC needs to **elevate voice**, **cap bulk transfers**, and **shift peering preference** while Java control-plane services push policies to thousands of edge elements. Static policy files mean minutes-to-hours propagation.

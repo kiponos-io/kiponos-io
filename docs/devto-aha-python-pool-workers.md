@@ -4,7 +4,7 @@ published: false
 tags: python, performance, devops, architecture
 description: Worker pool sizes are often module constants. When CPU count doubles on new nodes, max_workers is operational — Kiponos feeds live pool policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-pool-workers.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-pool-workers.jpg
+main_image: https://files.catbox.moe/s42jq2.jpg
 ---
 
 The data platform team migrated ETL workers from 4-core VMs to **32-core Kubernetes nodes**. Throughput barely moved. Profiling shows CPU at 18% while a queue of 40,000 parquet files waits — because `ProcessPoolExecutor(max_workers=4)` has been a module constant since someone prototyped on a laptop in 2018.

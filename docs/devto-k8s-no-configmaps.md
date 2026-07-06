@@ -4,7 +4,7 @@ published: true
 tags: java, kubernetes, devops, realtime
 description: Remove ConfigMaps, envFrom walls, and volume-mounted YAML from pods. Each container reads live config from the Kiponos SDK — delta updates without reload operators or rolling restarts.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-configmaps.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-no-configmaps.jpg
+main_image: https://files.catbox.moe/geqada.jpg
 ---
 
 Kubernetes taught us to inject config through ConfigMaps, Secrets-as-files, `envFrom`, and Reloader annotations that trigger **rolling restarts** when someone fixes a typo in `application.yml`. For Java services that need **mid-day tuning**, that model is backwards.

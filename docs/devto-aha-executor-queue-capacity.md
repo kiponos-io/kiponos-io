@@ -4,7 +4,7 @@ published: false
 tags: java, concurrency, performance, devops
 description: Executor queue capacities feel like threading design frozen at startup. Under burst, queue size is operational — Kiponos feeds live executor policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-executor-queue-capacity.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-executor-queue-capacity.jpg
+main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 
 Flash sale minute 4. Push notifications spike **40×**. Your `@Async` notification executor still uses `new LinkedBlockingQueue<>(100)` — capacity picked during a threading design review when SMS volume was a rounding error.

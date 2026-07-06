@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, architecture, devops
 description: A Spring Boot sales demo that "reads minds" is the same Kiponos pattern ICU services use to change ventilation parameters mid-loop — WebSocket deltas, in-memory reads, no restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-mind-reader-live-ops.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-mind-reader-live-ops.jpg
+main_image: https://files.catbox.moe/ey1ybz.jpg
 ---
 
 The investor leans forward. You ask for their kid's pet name — something only they would know. Your colleague, laptop half-closed, types it into a dashboard. You announce that your platform is *extremely* adaptive.

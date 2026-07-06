@@ -4,7 +4,7 @@ published: false
 tags: java, ai, opensource, devtools
 description: Golden Java example plus Agent Skills for real-time Kiponos.io SDK integration — free TeamPro.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-announcement.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-kiponos-announcement.jpg
+main_image: https://files.catbox.moe/lbowqg.jpg
 ---
 
 If you've ever tried asking an AI agent to wire up a new SDK, you know the pain: half the docs are for humans, the tokens live in three different places, and the agent confidently hallucinates your config profile.

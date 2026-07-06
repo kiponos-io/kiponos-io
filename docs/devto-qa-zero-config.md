@@ -4,7 +4,7 @@ published: true
 tags: java, testing, qa, devops
 description: Eliminate application-qa.yml and 40-variable env matrices. QA JVMs read dependencies, stubs, and feature flags from Kiponos — live updates without redeploy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-qa-zero-config.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-qa-zero-config.jpg
+main_image: https://files.catbox.moe/4p1gxw.jpg
 ---
 
 QA environments are where configuration goes to die. `application-qa.yml`, `.env.qa`, Docker Compose overrides, Helm values for "qa-staging-2", and a wiki page listing **40 environment variables** nobody updates. Add one microservice and the matrix doubles.

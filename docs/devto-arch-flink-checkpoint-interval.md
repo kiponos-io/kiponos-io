@@ -4,7 +4,7 @@ published: false
 tags: java, flink, architecture, streaming
 description: Checkpoint intervals frozen in job args mean lag spikes need cancel-and-resubmit. Kiponos holds interval ms, min pause, and aligned snapshot flags in one live tree — SRE tunes recovery while TaskManagers keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-flink-checkpoint-interval.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-flink-checkpoint-interval.jpg
+main_image: https://files.catbox.moe/e166i8.jpg
 ---
 
 Thursday 21:16 UTC. **order-events** Flink job processing **180k events/sec** shows checkpoint duration climbing to **4.2 minutes** — interval is still **60 seconds** from `flink run -Dexecution.checkpointing.interval=60000` baked into the deployment manifest six months ago.

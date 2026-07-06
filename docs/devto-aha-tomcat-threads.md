@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, performance, devops
 description: Senior teams treat Tomcat maxThreads and acceptCount as one-time YAML decisions. When Black Friday hits, that is the wrong abstraction — Kiponos lets you tune the servlet container live with zero-latency SDK reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-tomcat-threads.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-tomcat-threads.jpg
+main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 
 Black Friday minute 37. P99 latency climbs. Thread dump shows **all 200 Tomcat worker threads busy** — a number someone chose in `application-prod.yml` eighteen months ago during a calm sprint planning session.

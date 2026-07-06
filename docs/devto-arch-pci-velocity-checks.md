@@ -4,7 +4,7 @@ published: false
 tags: java, pci, architecture, fintech
 description: Velocity limits frozen in application.yml mean fraud spikes need emergency deploys. Kiponos holds per-MCC thresholds, block scores, and override flags in one live tree — risk ops tunes limits while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-pci-velocity-checks.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-pci-velocity-checks.jpg
+main_image: https://files.catbox.moe/574r3o.jpg
 ---
 
 Sunday 04:17 UTC. Fraud ops detects a **card-testing ring** — 14,000 micro-authorizations against MCC 5816 in ninety minutes. The runbook says step 3: *"lower `MAX_AUTH_PER_CARD_PER_HOUR` from 25 to 8 in `application-pci.yml`, open PR, wait for change advisory board sign-off."*

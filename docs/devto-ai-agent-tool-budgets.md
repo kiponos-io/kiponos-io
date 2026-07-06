@@ -4,7 +4,7 @@ published: false
 tags: python, ai, agents, devops
 description: Agent max steps, spend caps, and allowed tools feel like safety constants baked at import. During cost spikes they are operational — Kiponos feeds live agent policy with zero-latency reads per turn.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-agent-tool-budgets.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-agent-tool-budgets.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Thursday 11:38 AM. Your internal ops agent handles ticket triage — read Slack, query Postgres, draft Jira comments, call a summarization endpoint. `config.py` ships with `MAX_AGENT_STEPS = 12`, `TOOL_BUDGET_USD = 2.50`, and `ALLOWED_TOOLS = frozenset({"sql_read", "slack_post", "jira_draft"})` because security signed off on that tuple in Q1.

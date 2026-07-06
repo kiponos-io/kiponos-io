@@ -4,7 +4,7 @@ published: true
 tags: java, security, devops, realtime
 description: Adjust WAF scores, block thresholds, and OWASP rule sensitivity in Java security gateways at runtime. Kiponos WebSocket deltas with zero-latency reads per request.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-cybersecurity-waf.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-waf.jpg
+main_image: https://files.catbox.moe/wswv2d.jpg
 ---
 
 During an attack, security teams **tighten WAF thresholds**. During false-positive storms, they **loosen** the same rules. Java API gateways embedded with WAF logic usually encode sensitivity in YAML — change means **rolling restart** while traffic is hostile.

@@ -4,7 +4,7 @@ published: false
 tags: python, ai, llm, devops
 description: Model routing weights and shadow traffic feel like release-time constants. When a primary endpoint degrades, routing is operational — Kiponos feeds live inference policy with zero-latency reads per request.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-model-routing-weights.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-model-routing-weights.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Saturday 6:52 PM. Your Python inference gateway routes chat traffic between `gpt-4o` (primary) and `gpt-4o-mini` (fallback). `routing.py` hard-codes `PRIMARY_WEIGHT = 0.85`, `FALLBACK_WEIGHT = 0.15`, and `SHADOW_TRAFFIC_PCT = 0.05` for the candidate `claude-sonnet` endpoint you are evaluating quietly.

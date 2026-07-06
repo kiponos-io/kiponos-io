@@ -4,7 +4,7 @@ published: false
 tags: java, hipaa, architecture, healthcare
 description: Audit sampling rates frozen in YAML mean breach investigations miss PHI access trails. Kiponos holds sample percent, field redaction, and break-glass capture flags in one live tree — compliance tunes policy while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-hipaa-audit-sampling.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-hipaa-audit-sampling.jpg
+main_image: https://files.catbox.moe/17rgai.jpg
 ---
 
 Tuesday 08:53 UTC. Security operations opens a **suspected insider access** ticket — a clinician account queried 340 patient records in six hours. The HIPAA audit pipeline only retained **10% sampled** access events because `AUDIT_SAMPLE_PCT=10` was set in `application-hipaa.yml eighteen months ago to control Elasticsearch costs.

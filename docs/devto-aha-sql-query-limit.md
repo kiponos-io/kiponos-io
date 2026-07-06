@@ -4,7 +4,7 @@ published: false
 tags: java, database, batch, devops
 description: Query row limits feel like SQL safety constants in repository code. When replicas lag, LIMIT is operational — Kiponos feeds live query caps with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-sql-query-limit.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-sql-query-limit.jpg
+main_image: https://files.catbox.moe/l631hl.jpg
 ---
 
 Tuesday 14:22. The analytics replica is **45 minutes behind** primary. Disk I/O on the read node is flat red. The nightly revenue export is still paging through **1000 rows at a time** — a `LIMIT` someone copied from a Stack Overflow answer in 2022 and never revisited.

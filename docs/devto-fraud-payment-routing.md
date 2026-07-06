@@ -4,7 +4,7 @@ published: true
 tags: java, fintech, security, realtime
 description: Change fraud scores, routing rules, and block thresholds in your payment service while transactions keep flowing. Kiponos Java SDK reads live values locally with zero latency.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fraud-payment-routing.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-fraud-routing.jpg
+main_image: https://files.catbox.moe/lzraul.jpg
 ---
 
 Payment systems are the worst place for a **deploy cycle**. Fraud patterns shift hourly. Processors go degraded. A/B routing experiments need mid-day course correction. Yet most Java payment services still bake thresholds into `application.yml` and require a restart to change a single risk score.

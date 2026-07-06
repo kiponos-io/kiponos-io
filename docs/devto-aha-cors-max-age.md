@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, api, webdev
 description: CORS preflight cache max-age feels like web platform config frozen in a @Bean. During API churn, max-age seconds are operational — Kiponos feeds live CORS policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-cors-max-age.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-cors-max-age.jpg
+main_image: https://files.catbox.moe/i8rg0m.jpg
 ---
 
 API gateway migration week. You cut traffic from `api-v1` to `api-v2` every afternoon. Browsers still cache preflight responses for **3600 seconds** — because `maxAge(3600)` sits in your `CorsFilter` `@Bean` from 2021 when origins rarely changed.

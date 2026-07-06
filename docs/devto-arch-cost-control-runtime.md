@@ -4,7 +4,7 @@ published: true
 tags: finops, ai, python, architecture
 description: FinOps knobs trapped in Terraform and Helm cannot react when an LLM fleet burns GPU budget at 2 AM. Kiponos feeds autoscale caps, daily spend limits, and per-tenant token ceilings to Python inference workers — live reads, no pod restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-cost-control-runtime.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-cost-control-runtime.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 cover_image: /home/moshe/work/kiponos-io/docs/devto-cover-arch-cost-control-runtime.jpg
 ---
 

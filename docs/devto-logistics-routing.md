@@ -4,7 +4,7 @@ published: true
 tags: python, logistics, optimization, realtime
 description: Change route cost weights, SLA penalties, and depot capacity limits in Python fleet optimizers while vehicles are on the road. Kiponos local reads, WebSocket deltas.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-logistics-routing.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-logistics.jpg
+main_image: https://files.catbox.moe/2xo4es.jpg
 ---
 
 Fleet routing optimizers balance **fuel cost**, **driver hours**, **customer SLA**, and **depot capacity**. A bridge closure at 4 PM should change weights immediately — not after batch jobs restart with new `config/routing.yaml`.

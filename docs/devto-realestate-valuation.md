@@ -4,7 +4,7 @@ published: true
 tags: python, machinelearning, realestate, realtime
 description: Tune feature weights, comp-radius, and cap rates in Python AVM services while appraisers and models run. Kiponos local reads, WebSocket deltas — no model redeploy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realestate-valuation.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-realestate.jpg
+main_image: https://files.catbox.moe/gt1fik.jpg
 ---
 
 Automated valuation models (AVMs) combine **feature weights**, **comp search radius**, **cap rates**, and **regional adjustments**. Markets move weekly; model risk wants to **dial down condo exposure** or **widen comp radius** in rural ZIPs — without redeploying Python scoring services.

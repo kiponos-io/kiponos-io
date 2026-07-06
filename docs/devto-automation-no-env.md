@@ -4,7 +4,7 @@ published: true
 tags: python, testing, automation, devops
 description: Replace brittle env-var matrices in test runners with a live Kiponos profile. Python pytest suites read URLs, credentials scopes, and chaos toggles locally — update mid-run from the dashboard.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-automation-no-env.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-automation-no-env.jpg
+main_image: https://files.catbox.moe/srkslu.jpg
 ---
 
 Automation engineers love pytest. They hate maintaining `export API_URL=...` in six CI jobs, `.env.test`, `tox.ini`, GitHub Actions secrets, and a Confluence table that is wrong by Tuesday.

@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, architecture, realtime
 description: Services coordinate through a live shared config hub — handoff flags, capacity signals, and workflow state with zero-latency local reads. No inter-service config polling.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-collaboration.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-collab.jpg
+main_image: https://files.catbox.moe/xvnh3m.jpg
 ---
 
 Microservices are sold as independent. Operationally they are **tightly coupled** — inventory waits on payment, shipping waits on fraud, support waits on everyone. Teams coordinate with Slack, ad-hoc REST calls, and "just check Redis" hacks that become production dependencies.

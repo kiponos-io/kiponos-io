@@ -4,7 +4,7 @@ published: false
 tags: python, ai, llm, architecture
 description: Token limits frozen in constants.py mean usage spikes need worker restarts. Kiponos holds per-tier budgets, burst multipliers, and throttle flags in one live tree — ops tunes caps while FastAPI workers keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-llm-token-budget-per-user.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-llm-token-budget-per-user.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Wednesday 16:44 UTC. Finance pings `#ai-platform`: **OpenAI invoice** trending **340% above forecast** — a product team shipped a summarization feature without telling anyone. Your FastAPI inference gateway still enforces `MAX_TOKENS_PER_USER_PER_DAY = 50_000` from `limits.py`, a constant chosen during pilot when eight internal users tested the stack.

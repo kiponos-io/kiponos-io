@@ -4,7 +4,7 @@ published: true
 tags: java, kubernetes, devops, realtime
 description: ConfigMap changes usually mean rolling restarts. Kiponos WebSocket deltas update in-memory config inside running pods — tune Java services during incidents without touching Deployments.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-restart.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-no-restart.jpg
+main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
 The default Kubernetes config story ends with **`kubectl rollout restart`**. You fixed a rate limit in a ConfigMap; now you are waiting for twelve pods to cycle during peak traffic. Java services with Spring refresh scopes help for some beans — not for everything, and not without engineering ceremony.

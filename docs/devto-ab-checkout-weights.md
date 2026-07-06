@@ -4,7 +4,7 @@ published: true
 tags: java, ecommerce, abtesting, realtime
 description: Rebalance checkout experiment variants during live traffic without redeploying your Java storefront. Kiponos delivers variant weights via WebSocket deltas with zero-latency local reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ab-checkout-weights.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ab-checkout.jpg
+main_image: https://files.catbox.moe/dlkkmj.jpg
 ---
 
 A/B tests are supposed to be scientific. Reality: variant B is crushing it at 10 AM, variant C is hurting conversion at 2 PM, and marketing wants to **reweight the split before the weekend rush** — without a deploy window.

@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, distributed, realtime
 description: Tune saga step timeouts, retry budgets, and compensation triggers across Java services without redeploy. Shared Kiponos tree with zero-latency local reads on every step.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-saga.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-saga.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 A checkout saga spans inventory, payment, shipping, and loyalty. Downstream latency shifts every hour. Black Friday is not the day to discover your **payment step timeout** is baked into `application.yml` across twelve Spring Boot services.

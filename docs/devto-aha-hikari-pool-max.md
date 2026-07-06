@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, database, devops
 description: Connection pool max size feels like DBA-signed architecture. When the database struggles, maximumPoolSize is operational — Kiponos resizes Hikari live without pod restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-hikari-pool-max.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-hikari-pool-max.jpg
+main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 
 Primary Postgres CPU: 98%. Active connections from application tier: 1,840 — ninety-two pods each holding a Hikari pool capped at **twenty** because `maximum-pool-size: 20` was blessed in a 2023 architecture review and copied into every `application-prod.yml` since.

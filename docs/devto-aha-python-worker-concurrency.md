@@ -4,7 +4,7 @@ published: false
 tags: python, celery, devops, performance
 description: Task worker concurrency env vars feel set-once at deploy. When queue depth spikes, concurrency is operational — Kiponos feeds live worker policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-python-worker-concurrency.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-python-worker-concurrency.jpg
+main_image: https://files.catbox.moe/ifp0w3.jpg
 ---
 
 Invoice export backlog: **52,000** messages in RabbitMQ. Your Celery workers still run `--concurrency=4` because `CELERY_WORKER_CONCURRENCY=4` was written into `.env` when the fleet lived on a single `t3.small`.

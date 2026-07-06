@@ -4,7 +4,7 @@ published: true
 tags: python, fintech, trading, realtime
 description: Change position sizes, stop-loss, and max drawdown while your Python trading bot runs. Kiponos pushes risk deltas over WebSocket; the bot reads locally with zero latency.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-trading-bot-risk.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-trading-bot.jpg
+main_image: https://files.catbox.moe/6orbpk.jpg
 ---
 
 Markets move faster than deploy pipelines. Your bot is live, volatility spikes, and you need to **cut position size**, **tighten stop-loss**, or **halt new entries** — now, not after the next release.

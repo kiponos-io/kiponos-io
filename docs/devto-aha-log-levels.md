@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, debugging, devops
 description: Every senior engineer knows you cannot flip DEBUG in prod without a restart — until you treat log levels as live operational state. Kiponos feeds Logback levels with zero-latency reads and async apply.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-log-levels.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-log-levels.jpg
+main_image: https://files.catbox.moe/87bzmo.jpg
 ---
 
 Thursday 3:22 AM. Production is on fire — duplicate charges on a subset of Visa BINs. You need `com.acme.payments.reconcile` at **DEBUG** for twenty minutes to trace idempotency key collisions. Everyone on the bridge knows the rule:

@@ -4,7 +4,7 @@ published: false
 tags: java, payments, architecture, devops
 description: Duplicate-detection windows feel like domain invariants cast in stone. During replay incidents, idempotency window hours are operational — Kiponos feeds live dedup policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-idempotency-window.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-idempotency-window.jpg
+main_image: https://files.catbox.moe/lzraul.jpg
 ---
 
 Thursday 09:00. Processor replay dumps **18 hours** of duplicate authorization attempts into your webhook queue. Support tickets multiply. Your dedup store still expires keys after **24 hours** — because `IDEMPOTENCY_WINDOW_HOURS = 24` has been a `public static final` since the PCI review blessed it.

@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, deployment, devops
 description: Blue-green cutover trapped in ALB rules means rollback waits on Terraform. Kiponos holds green weight, drain flags, and sticky session policy in one live tree — SRE shifts traffic while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-blue-green-switch-percent.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-blue-green-switch-percent.jpg
+main_image: https://files.catbox.moe/68lli5.jpg
 ---
 
 Friday 11:34 UTC. **payments-green** passed smoke tests. The release manager opens the blue-green runbook: step 5 says *"update `green_weight` in `alb-rules.tf` from 0 to 10, apply Terraform."* Step 8 says *"watch error rate for 30 minutes, then 50, then 100."* Step 12 — rollback — says *"revert Terraform commit."*

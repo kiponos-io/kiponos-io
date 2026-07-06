@@ -4,7 +4,7 @@ published: true
 tags: java, kubernetes, architecture, realtime
 description: Every pod runs its own SDK with an in-memory config cache. Reads are local at any replica count — WebSocket deltas keep the fleet consistent without a central config bottleneck.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-sdk-per-pod.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-sdk-per-pod.jpg
+main_image: https://files.catbox.moe/3ewr05.jpg
 ---
 
 At 200 replicas, "just poll the config server" becomes a **thundering herd**. Central Redis for config sounds fine until every pod hits it on cache miss during an incident. Kubernetes wants **horizontal scale**; your config layer must not become a **serial bottleneck**.

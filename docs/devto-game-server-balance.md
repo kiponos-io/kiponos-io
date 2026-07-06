@@ -4,7 +4,7 @@ published: true
 tags: java, gamedev, realtime, server
 description: Tune drop rates, spawn multipliers, and event rewards on running Java game shards without restarts. Kiponos delivers balance patches via WebSocket deltas with zero-latency local reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-game-server-balance.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-game-server.jpg
+main_image: https://files.catbox.moe/tngzui.jpg
 ---
 
 Players do not wait for your deploy window. A boss is overtuned, a loot drop is economy-breaking, or a weekend event needs a **+20% spawn buff** — live, on every shard.

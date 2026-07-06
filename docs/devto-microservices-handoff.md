@@ -4,7 +4,7 @@ published: true
 tags: python, microservices, architecture, realtime
 description: Coordinate service handoffs with live flags and lease TTLs in a shared Kiponos tree. Python workers read locally; ops flips workflow state without redeploy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-handoff.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-handoff.jpg
+main_image: https://files.catbox.moe/hkgx7a.jpg
 ---
 
 Microservices handoffs are where systems get fragile: "Payment captured — who tells shipping?" Teams bolt on **extra REST calls**, **SQS fan-out**, or **Redis locks** that each need their own config, monitoring, and deploy cycle.

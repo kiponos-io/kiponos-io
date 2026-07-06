@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, api, devops
 description: Multipart size limits feel like servlet bootstrap config set once. When a key client needs larger uploads today, max file size is operational — Kiponos feeds live upload policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-upload-max-size.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-upload-max-size.jpg
+main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 
 Monday 2:47 PM. Your largest enterprise customer uploads 18MB compliance PDFs to the document API. Spring rejects them at the servlet boundary — `max-file-size: 10MB` has lived in `application.yml` since 2019 when "ten megabytes felt generous."

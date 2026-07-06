@@ -4,7 +4,7 @@ published: false
 tags: java, retail, architecture, sre
 description: Peak-season knobs trapped in Confluence mean midnight deploys on Thanksgiving. Kiponos holds rate limits, cache TTLs, and queue thresholds in one live tree — SRE flips peak posture while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-black-friday-runbook-live.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-black-friday-runbook-live.jpg
+main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 
 Friday 00:01 UTC — **Black Friday**. **cart-api** traffic is **4.2×** normal and climbing. The seasonal runbook page 14 says: *"set `RATE_LIMIT_PER_IP=120` in `values-peak.yaml`, extend `PRODUCT_CACHE_TTL_SEC` to 300, raise `CHECKOUT_QUEUE_MAX` to 8000 — commit and rolling restart all cart pods by 23:00 Thanksgiving."*

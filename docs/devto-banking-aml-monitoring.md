@@ -4,7 +4,7 @@ published: true
 tags: java, banking, security, realtime
 description: Live AML velocity limits, CTR thresholds, and SAR triggers in Java transaction monitoring. Kiponos WebSocket deltas with zero-latency reads on every screened event.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-banking-aml-monitoring.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-banking-aml.jpg
+main_image: https://files.catbox.moe/574r3o.jpg
 ---
 
 AML typologies evolve faster than quarterly releases. A new smurfing pattern appears Tuesday; compliance needs **tighter velocity caps**, a **lower CTR threshold**, and **enhanced country monitoring** — while your Java event fabric processes millions of transactions per hour.

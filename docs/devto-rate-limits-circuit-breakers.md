@@ -4,7 +4,7 @@ published: true
 tags: java, devops, api, realtime
 description: Tune per-tenant rate limits and circuit breaker thresholds while your API gateway keeps serving traffic. Kiponos Java SDK delivers local reads with zero latency.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-rate-limits.jpg
+main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 
 An incident at 3 AM is the wrong time to discover your rate limits are in `application.yml`. You need to **throttle a noisy tenant**, **open a circuit** on a failing downstream, or **raise limits** for a launch partner — without rolling pods.

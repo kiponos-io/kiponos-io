@@ -4,7 +4,7 @@ published: true
 tags: java, kubernetes, saas, architecture
 description: SaaS tenants in separate K8s namespaces connect to tenant-scoped Kiponos profile slices. Platform ops tunes per-tenant limits live — same hub, isolated trees, local reads in every pod.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-multitenant.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-multitenant.jpg
+main_image: https://files.catbox.moe/lunm7v.jpg
 ---
 
 Multi-tenant SaaS on Kubernetes often means **namespace per customer**, **Helm values per tenant**, and a Git repo that does not scale past 50 logos. Platform team needs **per-tenant limits and feature entitlements** that change **today** — not after a values.yaml PR per tenant.

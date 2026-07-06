@@ -4,7 +4,7 @@ published: false
 tags: python, machinelearning, finetuning, ai
 description: Fine-tune learning rate and warmup steps feel frozen at job submit. Experimental runs need mid-epoch course correction — Kiponos lets Python trainers read live hyperparameters without killing GPU progress.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-finetune-hyperparams-live.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-finetune-hyperparams-live.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Fine-tune run `ft-support-bot-v7` hour 6. Loss flattened after epoch 2 — validation perplexity stuck at 4.1 while your target was 3.6 before the executive demo Friday. The run used `LEARNING_RATE = 2e-5` and `WARMUP_STEPS = 100`, copied from a successful legal-domain fine-tune that had **ten times more training data**.

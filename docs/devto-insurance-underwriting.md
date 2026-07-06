@@ -4,7 +4,7 @@ published: true
 tags: java, insurance, fintech, realtime
 description: Adjust auto-decline scores, referral bands, and product-specific underwriting rules in Java policy engines at runtime. Kiponos zero-latency reads on every quote.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-insurance-underwriting.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-insurance.jpg
+main_image: https://files.catbox.moe/m1b27m.jpg
 ---
 
 Underwriting models output a score; policy engines apply **cutoffs**: auto-bind below 40, refer 40–65, decline above 80. Actuarial shifts those bands after loss experience — usually trapped in spreadsheet → IT ticket → **deploy cycle** while agents still quote stale rules.

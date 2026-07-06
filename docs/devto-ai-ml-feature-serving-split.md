@@ -4,7 +4,7 @@ published: false
 tags: architecture, machinelearning, java, python
 description: Training pipelines and inference services need different config trees, change cadence, and ownership. An architecture guide for splitting offline feature engineering from online serving with Kiponos Java and Python SDKs.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ai-ml-feature-serving-split.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-ai-ml-feature-serving-split.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 Model launch week. Training reports **0.91 AUC** offline. Production serving shows **0.74** by Thursday. The postmortem finds the same `features.yaml` mounted in both the Spark batch job and the Java inference service — but training used a **seven-day aggregation window** baked into the offline job code while serving read `aggregation_days: 1` from a shared config file someone "fixed" during a latency sprint without retraining.

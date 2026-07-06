@@ -4,7 +4,7 @@ published: true
 tags: python, ai, llm, realtime
 description: Change temperature, max tokens, model routing weights, and rate limits on live Python inference workers without restarts. Kiponos WebSocket deltas, zero-latency local reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-llm-inference-serving.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-llm-serving.jpg
+main_image: https://files.catbox.moe/n1iaiq.jpg
 ---
 
 LLM serving is never "set and forget." Costs spike, a model degrades, you need to **route 80% traffic to the backup**, **lower max tokens**, or **raise temperature** for a creative endpoint — while GPUs are hot.

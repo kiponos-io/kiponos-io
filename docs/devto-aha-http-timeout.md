@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, resilience, microservices
 description: HTTP client timeouts are buried in @Bean factories and treated as integration constants. When a partner slows down, timeout seconds are operational — Kiponos feeds WebClient policy with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-http-timeout.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-http-timeout.jpg
+main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 
 Monday 11:15 AM. Partner API latency jumps from a comfortable **200ms P99** to **8 seconds** — brownout, not hard down. Their status page says "investigating elevated response times." Your integration service uses Reactor Netty `responseTimeout(Duration.ofSeconds(3))` — set in a `@Bean` factory when the partner was healthy and you wanted to fail fast and protect your thread budget.

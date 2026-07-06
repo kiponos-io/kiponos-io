@@ -4,7 +4,7 @@ published: false
 tags: java, resilience, sre, architecture
 description: DR runbooks trapped in Confluence mean rolling restarts during outages. Kiponos holds mode=read_only, drain flags, and fallback endpoints in one live tree — SRE flips knobs while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-disaster-recovery-live-config.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-disaster-recovery-live-config.jpg
+main_image: https://files.catbox.moe/id94bo.jpg
 ---
 
 Thursday 03:41 UTC. **us-east-1** primary Postgres stops accepting writes — storage subsystem fault, ETA unknown. The on-call SRE opens the disaster recovery runbook: step 4 says *"set `READ_ONLY_MODE=true` in `values-prod.yaml`, commit, and rolling restart checkout pods."* Step 7 says *"point `PAYMENT_API_URL` at the DR endpoint in us-west-2."* Step 9 says *"enable `DRAIN_NEW_ORDERS` on the ingress layer."*
