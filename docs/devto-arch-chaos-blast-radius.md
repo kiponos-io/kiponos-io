@@ -99,7 +99,7 @@ No restart. No redeploy. No `@RefreshScope` bean recycle.
 
 ## Reference architecture
 
-![Architecture diagram](https://litter.catbox.moe/6ceglb.png)
+![Architecture diagram](https://files.catbox.moe/bf3ktv.png)
 
 **Experiment YAML documents intent; the tree controls live radius.** Keep hypothesis prose in Confluence — but the **authoritative blast values** live in Kiponos where shrinking them takes seconds.
 
