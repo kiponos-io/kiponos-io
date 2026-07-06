@@ -56,13 +56,7 @@ On each scheduler tick, `kiponos.path("relay", "orders").getLong("poll_interval_
 
 ## Architecture: one tree, many relay workers
 
-```mermaid
-flowchart LR
-    OPS["Platform ops<br/>Kiponos dashboard"] -->|WebSocket delta| SDK["Java SDK in-mem<br/>outbox relay pod"]
-    SDK -->|getLong poll_interval_ms| TICK["OutboxRelayScheduler<br/>@Scheduled tick"]
-    TICK --> DB["PostgreSQL<br/>outbox_events SKIP LOCKED"]
-    TICK --> KAFKA["Kafka<br/>domain events"]
-```
+![Architecture diagram](https://litter.catbox.moe/vladi9.png)
 
 Every relay connects to profile `['orders']['v2']['prod']['outbox']`. When NOC raises `poll_interval_ms` during a DB incident, **all relay JVMs** see the new cadence on the next tick — no config server poll, no inter-service "what is interval now?" REST calls.
 
