@@ -4,7 +4,7 @@ published: false
 tags: java, kubernetes, springboot, resilience
 description: Teams without Istio or Linkerd freeze WebClient timeouts in Spring @Bean factories. Partner brownouts need live patience per dependency — Kiponos feeds timeout policy to Java pods with local reads, no VirtualService PR.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-partner-timeout-no-mesh.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-partner-timeout-no-mesh.jpg
+main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
 Wednesday 09:22 UTC. Tax calculation partner latency climbs to **7–9 seconds** — elevated, not down. Your checkout fleet runs on **plain Kubernetes**: no Istio, no Linkerd, no ambient mesh. Outbound calls use Spring `WebClient` with `responseTimeout(Duration.ofSeconds(3))` baked into a `@Bean` at image build time.

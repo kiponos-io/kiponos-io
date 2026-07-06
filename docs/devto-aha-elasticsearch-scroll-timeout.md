@@ -4,7 +4,7 @@ published: false
 tags: java, elasticsearch, search, devops
 description: Elasticsearch scroll timeout feels like index policy set once in query code. When reindex jobs hit slow shards, scroll keepalive is operational — Kiponos feeds live search batch policy without job restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-elasticsearch-scroll-timeout.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-elasticsearch-scroll-timeout.jpg
+main_image: https://files.catbox.moe/xvnh3m.jpg
 ---
 
 Catalog reindex job hour 3. The nightly `products_v2` migration is 62% complete when shard recovery on node `es-data-07` slows bulk indexing. Scroll contexts start expiring — `search_phase_execution_exception: search context missing` — because every batch uses `Time.of(t -> t.time("1m"))` copied from the original reindex playbook when batches finished in twenty seconds.

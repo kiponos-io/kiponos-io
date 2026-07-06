@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, springboot, realtime
 description: Eureka lease and shutdown grace seconds frozen in YAML cause 503 storms during rolls. Kiponos feeds live discovery timing to Java services — zero-latency reads on registration heartbeats.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-discovery-grace-period.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-discovery.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Friday deploy. You roll payment-service v2.3.1 — forty pods, maxUnavailable 25%. Within ninety seconds, checkout logs **503 NO_INSTANCES_AVAILABLE** spikes. Eureka still lists terminating pods because `eureka.instance.lease-expiration-duration-in-seconds` and Spring's **shutdown grace** were copied from a 2019 template and never revisited.

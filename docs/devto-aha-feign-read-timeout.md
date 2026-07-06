@@ -4,7 +4,7 @@ published: false
 tags: java, springcloud, openfeign, resilience
 description: OpenFeign readTimeout feels like platform policy frozen in application.yml. When partner APIs slow down, read timeout milliseconds are operational — Kiponos feeds live Feign policy without service restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-feign-read-timeout.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-feign-read-timeout.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Tax filing integration minute 31. The government partner API still returns HTTP 200 — eventually — but **p99 crosses 18 seconds** while your orchestration service fails at 5 seconds because `feign.client.config.default.readTimeout=5000` ships in the org-wide Spring Cloud starter every team inherits without reading.

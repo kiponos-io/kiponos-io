@@ -4,7 +4,7 @@ published: true
 tags: python, microservices, architecture, realtime
 description: Read-model staleness limits frozen in worker constants hide real incidents. Kiponos feeds live projection lag budgets and pause flags to Python projectors — zero-latency reads every poll loop.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-cqrs-projection-lag.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-cqrs.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Customer support pulls order history from the **read model**. The write side processed the refund twenty minutes ago; the dashboard still shows "shipped" because the `order-summary` projector fell behind — and your worker still considers **30 seconds** "healthy" because `MAX_PROJECTION_LAG_SEC = 30` was set when daily event volume was a tenth of today's.

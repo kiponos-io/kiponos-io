@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, resilience, devops
 description: Bulkhead concurrency limits feel like capacity planning cast in Resilience4j YAML. During a traffic shift, maxConcurrentCalls is operational — Kiponos feeds live bulkhead policy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-bulkhead-concurrent.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-bulkhead-concurrent.jpg
+main_image: https://files.catbox.moe/id94bo.jpg
 ---
 
 Flash sale redirect. Marketing sends two million users to checkout — inventory p99 is 120ms, but checkout p99 is 4.2s because Resilience4j allows only **25 concurrent** inventory calls. `maxConcurrentCalls: 25` was "capacity architecture" signed off in Q2.

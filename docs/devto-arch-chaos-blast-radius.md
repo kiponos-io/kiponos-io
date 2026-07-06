@@ -4,7 +4,7 @@ published: false
 tags: java, chaos, architecture, resilience
 description: Chaos experiment scope frozen in YAML means aborting a game day requires pod restarts. Kiponos holds blast radius, target percentages, and kill-switch flags in one live tree — SRE shrinks scope while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-chaos-blast-radius.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-chaos-blast-radius.jpg
+main_image: https://files.catbox.moe/id94bo.jpg
 ---
 
 Wednesday 15:08 UTC. The platform team runs **Game Day 47** — inject 800ms latency on `inventory-api` calls from **10%** of checkout pods. Within twenty minutes, cart abandonment spikes beyond the rehearsal budget. The chaos engineer opens the runbook: step 6 says *"set `BLAST_PCT=0` in `chaos-values.yaml`, commit, rolling restart experiment sidecars."*

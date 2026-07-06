@@ -4,7 +4,7 @@ published: false
 tags: architecture, kubernetes, security, devops
 description: Teams stuff JDBC URLs and rate limits into the same SealedSecret. Platform architecture needs a clear line — K8s holds credentials; Kiponos holds operational knobs Java and Python pods read locally.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-secrets-vs-config-boundary.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-secrets-vs-config-boundary.jpg
+main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
 Friday 16:00 UTC. Security audit flags Deployment `payments-api`: **47 keys** in one SealedSecret, rotated quarterly "as a bundle." Half the values are not secrets — `RATE_LIMIT_RPM`, `FRAUD_BLOCK_SCORE`, `PARTNER_TIMEOUT_MS`. The other half are **actual credentials** mixed with config because "one Secret is easier than two systems."

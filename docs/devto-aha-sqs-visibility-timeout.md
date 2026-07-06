@@ -4,7 +4,7 @@ published: false
 tags: python, aws, sqs, devops
 description: SQS visibility timeout feels like queue infrastructure set once in Terraform. When message handlers slow down, visibility seconds are operational — Kiponos feeds live consumer policy without worker restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-sqs-visibility-timeout.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-sqs-visibility-timeout.jpg
+main_image: https://files.catbox.moe/srkslu.jpg
 ---
 
 Image processing queue minute 47. CloudWatch shows **duplicate resize jobs** climbing — same `s3_key` processed three times in ten minutes. Your Lambda-alternative worker still uses `VisibilityTimeout=30` because `VISIBILITY_TIMEOUT = 30` sits at line 9 of `sqs_worker.py`, matching the Terraform module from when thumbnails averaged four seconds.

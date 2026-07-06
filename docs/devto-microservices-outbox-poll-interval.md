@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, eventdriven, realtime
 description: Outbox relay workers hammer the database when poll_ms is frozen in YAML. Kiponos feeds live poll cadence and batch size to every Java relay JVM — zero-latency reads on each scheduler tick.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-outbox-poll-interval.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-outbox.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Order placement writes to `orders` and `outbox_events` in one transaction. A separate **outbox relay** polls unpublished rows, publishes to Kafka, marks them sent. During month-end close, the outbox table grows to six million rows — and your relay still wakes every **200 milliseconds** because `outbox.poll_interval_ms` shipped in `application-prod.yml` three quarters ago.

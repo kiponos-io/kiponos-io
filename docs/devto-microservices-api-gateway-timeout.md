@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, springboot, realtime
 description: connectTimeout and responseTimeout frozen in gateway YAML amplify cascades. Kiponos feeds live upstream budgets to Java API gateways — zero-latency reads on every proxied request.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-api-gateway-timeout.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-gateway.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Mobile clients time out at 30 seconds. Your Spring Cloud Gateway still waits **120 seconds** for the legacy pricing service — because `response-timeout: 120s` landed in `gateway-routes.yml` when that team promised a rewrite "next quarter."

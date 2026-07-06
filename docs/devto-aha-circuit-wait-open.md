@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, resilience, devops
 description: Circuit breaker open-state wait duration feels frozen in YAML. When recovery is fast, wait seconds are operational — Kiponos feeds live half-open timing.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-circuit-wait-open.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-circuit-wait-open.jpg
+main_image: https://files.catbox.moe/id94bo.jpg
 ---
 
 Payments partner blips for six seconds — a transient TLS handshake stall. Your Resilience4j circuit opens correctly. Then it **stays open for thirty seconds** because `waitDurationInOpenState: 30s` was copied from a resilience template and blessed as "architecture."

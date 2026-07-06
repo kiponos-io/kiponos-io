@@ -4,7 +4,7 @@ published: false
 tags: java, kubernetes, devops, performance
 description: HPA targetCPUUtilizationPercentage is frozen in YAML until someone merges Helm. When latency saturates before CPU hits 70%, the scaling target is operational — Kiponos feeds a Java metrics bridge that HPA watches.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-hpa-target-live.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-hpa-target-live.jpg
+main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
 Tuesday 14:40 UTC. Checkout latency P99 crosses **1.8 seconds** while CPU sits at **52%**. Your HPA is configured for `targetCPUUtilizationPercentage: 70` — written in `charts/checkout/values-prod.yaml` six months ago when the service was CPU-bound, not I/O-bound on fraud and tax partners.

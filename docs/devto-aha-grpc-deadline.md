@@ -4,7 +4,7 @@ published: false
 tags: java, grpc, microservices, devops
 description: gRPC stub deadlines feel like API contracts frozen in client bootstrap. When downstream latency spikes, deadline seconds are operational — Kiponos feeds live call policy without client restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-grpc-deadline.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-grpc-deadline.jpg
+main_image: https://files.catbox.moe/hkgx7a.jpg
 ---
 
 Inventory service minute 8. The pricing gRPC dependency crosses **45 seconds p99** — their JVM is garbage-collecting under a bad deploy. Your fulfillment service still attaches `Deadline.after(30, SECONDS)` because `static final long PRICING_DEADLINE_SEC = 30` has lived in `PricingGrpcClient.java` since the proto package was first generated.

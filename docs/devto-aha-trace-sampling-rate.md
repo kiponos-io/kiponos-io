@@ -4,7 +4,7 @@ published: false
 tags: java, opentelemetry, observability, devops
 description: OpenTelemetry trace sampling ratio feels like observability budget frozen in agent config. When incidents demand full visibility, sampling rate is operational — Kiponos feeds live tracing policy without JVM restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-trace-sampling-rate.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-trace-sampling-rate.jpg
+main_image: https://files.catbox.moe/87bzmo.jpg
 ---
 
 Checkout outage minute 23. Support tickets flood in but Jaeger shows **three spans** for the failing path — because `otel.traces.sampler.arg=0.1` has been production gospel since FinOps capped observability spend at 10% sampling. The on-call SRE cannot reconstruct the failure chain.

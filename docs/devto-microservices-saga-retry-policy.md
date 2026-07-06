@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, distributed, realtime
 description: max_retries and retry_backoff_ms baked into saga coordinators fail when partners flake. Kiponos shares live retry budgets across Java participants — zero-latency reads on every step attempt.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-saga-retry-policy.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-saga-retry.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Payment capture returns `503` for the fourth hour. Your checkout saga still allows **two retries** with **500ms backoff** — because `RetryPolicy` was compiled into the orchestrator when the card processor averaged 120ms p99.

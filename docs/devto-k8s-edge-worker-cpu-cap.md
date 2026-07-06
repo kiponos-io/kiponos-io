@@ -4,7 +4,7 @@ published: false
 tags: java, kubernetes, edge, performance
 description: Edge transform pods hard-code thread pools and CPU throttle percentages in JVM args. When regional traffic spikes overload edge nodes, CPU policy is operational — Kiponos feeds live caps to Java edge workers on Kubernetes.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-edge-worker-cpu-cap.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-edge-worker-cpu-cap.jpg
+main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
 Saturday 11:05 UTC. APAC edge region `ap-southeast-2` sees a viral campaign clip. Your **edge-transform** Deployment — image resize, signed URL rewrite, lightweight auth — runs on **regional K8s edge nodes** with `limits.cpu: "2"` per pod. Node CPU pegs at **98%** across the pool. Latency for cache misses spikes; origin shielding fails because workers spend all cycles on transforms instead of shedding load.

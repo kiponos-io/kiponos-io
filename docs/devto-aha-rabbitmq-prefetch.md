@@ -4,7 +4,7 @@ published: false
 tags: java, rabbitmq, springboot, devops
 description: RabbitMQ prefetch feels like broker tuning set once in Spring YAML. When consumer memory spikes and ack lag grows, prefetch is operational — Kiponos feeds live listener policy without pod restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-rabbitmq-prefetch.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-rabbitmq-prefetch.jpg
+main_image: https://files.catbox.moe/e166i8.jpg
 ---
 
 Notification dispatch minute 14. RabbitMQ management UI shows **47,000 unacked messages** pinned to twelve consumers — each pod prefetched **250 messages** because `spring.rabbitmq.listener.simple.prefetch=250` shipped in the platform starter three years ago when throughput labs looked great on synthetic load.

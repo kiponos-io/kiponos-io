@@ -4,7 +4,7 @@ published: false
 tags: java, oauth, springsecurity, devops
 description: OAuth access token TTL feels like security policy frozen in authorization server config. When leak response demands shorter-lived tokens, validity seconds are operational — Kiponos feeds live token policy without auth server restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-oauth-token-ttl.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-oauth-token-ttl.jpg
+main_image: https://files.catbox.moe/wswv2d.jpg
 ---
 
 Security bridge call minute 12. Threat intel confirms **active abuse** of long-lived mobile tokens issued before the patch. Your authorization server still mints access tokens with **3600 seconds** validity because `accessTokenValiditySeconds=3600` lives in `AuthorizationServerSettings` configuration blessed in last year's security baseline audit.

@@ -4,7 +4,7 @@ published: false
 tags: java, kubernetes, devops, finops
 description: stabilizationWindowSeconds is buried in HPA behavior YAML. After a traffic spike ends, five-minute scale-down windows burn budget; during noisy metrics you need longer windows — Kiponos feeds a Java HPA behavior reconciler.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-scale-down-stabilization.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-k8s-scale-down-stabilization.jpg
+main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
 Sunday 23:10 UTC. The flash sale ends. Checkout RPS drops from **18,000** to **3,200** in twelve minutes. Your HPA scaled to **38 pods** at peak. Now CPU is **22%** on every replica — but pod count will not move for another **four minutes** because `behavior.scaleDown.stabilizationWindowSeconds: 300` is baked into the manifest.

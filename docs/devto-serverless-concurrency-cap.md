@@ -4,7 +4,7 @@ published: false
 tags: python, serverless, aws, finops
 description: reserved_concurrency and in-process parallelism are frozen in Terraform and handler code. When a webhook flood threatens downstream Postgres, concurrency is operational — Kiponos feeds live caps to Python Lambda handlers.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-serverless-concurrency-cap.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-serverless-concurrency-cap.jpg
+main_image: https://files.catbox.moe/srkslu.jpg
 ---
 
 Thursday 02:06 UTC. A partner misconfigured their webhook retry policy. Your `invoice-events` Lambda fleet jumps from **200 invocations/minute** to **14,000**. Downstream Postgres connection count hits **max_connections** before CloudWatch alarms wake anyone. Terraform still says `reserved_concurrency = 500` — written when this function was a trickle, not a firehose.

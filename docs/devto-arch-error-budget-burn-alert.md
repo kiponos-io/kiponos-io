@@ -4,7 +4,7 @@ published: false
 tags: java, sre, architecture, observability
 description: Burn-rate alerts trapped in Prometheus YAML cannot gate deploys mid-incident. Kiponos holds burn thresholds, release pause flags, and escalation tiers in one live tree — SRE tightens policy while JVMs keep running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-error-budget-burn-alert.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-arch-error-budget-burn-alert.jpg
+main_image: https://files.catbox.moe/87bzmo.jpg
 ---
 
 Monday 09:22 UTC. **checkout-api** error budget for the monthly availability SLO is **62% consumed** with eighteen days left in the window. PagerDuty fires a 2-hour burn alert — good. But the deploy pipeline still promotes **payments-v2** canary from 25% → 50% because the release gate reads a **static** `MAX_BURN_RATE=3.0` baked into `ReleaseGate.java` since last quarter's tuning exercise.

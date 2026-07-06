@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, performance, ecommerce
 description: Caffeine expireAfterWrite feels like a performance constant baked into @Bean config. When pricing changes every five minutes, TTL is operational — Kiponos feeds cache policy with zero-latency reads.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-cache-ttl.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-cache-ttl.jpg
+main_image: https://files.catbox.moe/dlkkmj.jpg
 ---
 
 Flash sale Friday, 9:07 AM. Merchandising pushes a new price matrix every **five minutes** — flash tiers, bundle discounts, inventory-linked markdowns. Your catalog service caches product cards with Caffeine `expireAfterWrite(3600, TimeUnit.SECONDS)` because someone copy-pasted "one hour is fine" into a `@Bean` method during a calm sprint in 2020.

@@ -4,7 +4,7 @@ published: false
 tags: java, graphql, springboot, security
 description: GraphQL max query depth feels like API governance frozen in schema config. When expensive resolver chains spike CPU, depth limit is operational — Kiponos feeds live GraphQL policy without service restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-graphql-query-depth.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-graphql-query-depth.jpg
+main_image: https://files.catbox.moe/uiggaj.jpg
 ---
 
 Public GraphQL gateway minute 5. P99 resolver time crosses **8 seconds** while CPU on `graphql-api` pods pins at 94%. A mobile client release shipped a nested `user → orders → items → product → reviews → author` query — depth 12 — but your gateway still enforces `maxQueryDepth=10` only in theory because the **actual** limit of `10` was baked into `GraphQlSource` builder code six months ago and never wired to anything ops can touch.

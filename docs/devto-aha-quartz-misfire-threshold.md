@@ -4,7 +4,7 @@ published: false
 tags: java, quartz, scheduling, devops
 description: Quartz misfire threshold feels like scheduler infrastructure frozen in properties. When job backlog grows and misfire detection lags, threshold milliseconds are operational — Kiponos feeds live Quartz policy without scheduler restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-quartz-misfire-threshold.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-quartz-misfire-threshold.jpg
+main_image: https://files.catbox.moe/ifp0w3.jpg
 ---
 
 Billing close window minute 58. Quartz admin UI shows **1,240 misfired triggers** for `nightly-invoice-rollup` while downstream ERP ingestion crawls at 4× normal latency. Jobs scheduled every five minutes stack up — but your cluster still uses `org.quartz.jobStore.misfireThreshold=60000` because that value shipped in `quartz.properties` when the scheduler was first containerized and "60 seconds felt safe."

@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, batch, devops
 description: Chunk size feels baked into @EnableBatchProcessing forever. When the database coughs, 500-row chunks are the wrong hammer — Kiponos lets you retune chunk size while the job keeps running.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-batch-chunk.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-batch-chunk.jpg
+main_image: https://files.catbox.moe/l631hl.jpg
 ---
 
 Tuesday 11:40 PM. The nightly billing extract has been running for **six hours**. DBA Slack lights up: redo logs are screaming, replication lag is climbing, and finance needs the `invoices` table unlocked by 7 AM for month-end close.

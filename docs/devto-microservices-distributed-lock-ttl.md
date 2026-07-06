@@ -4,7 +4,7 @@ published: true
 tags: python, microservices, distributed, realtime
 description: Redis lock TTL frozen in worker code causes split-brain or stale holds. Kiponos feeds live lease seconds and renewal policy to Python workers — zero-latency reads on every acquire attempt.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-distributed-lock-ttl.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-microservices-lock.jpg
+main_image: https://files.catbox.moe/0hvbli.jpg
 ---
 
 Warehouse allocation runs on twelve Celery workers. One worker dies mid-pick holding the `aisle-7` lock. Inventory stays frozen for **45 seconds** — because `LOCK_TTL_SEC = 45` was chosen when average pick took eight seconds. Today picks average thirty-five; another worker steals the lock at second 46 while the first worker **was only slow, not dead**.

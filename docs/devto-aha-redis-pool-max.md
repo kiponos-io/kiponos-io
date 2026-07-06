@@ -4,7 +4,7 @@ published: false
 tags: java, redis, springboot, performance
 description: Lettuce pool max-active feels like Redis client wiring set once in YAML. When session lookups spike and pool wait times explode, max-active is operational — Kiponos resizes the pool live without JVM restart.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-redis-pool-max.md
-main_image: https://raw.githubusercontent.com/kiponos-io/kiponos-io/master/docs/devto-cover-aha-redis-pool-max.jpg
+main_image: https://files.catbox.moe/ffnuj2.jpg
 ---
 
 Flash sale minute 22. Redis latency is fine — **12ms p99** — but your storefront pods report `RedisConnectionException: Pool exhausted` because every instance caps Lettuce at **8 active connections** (`spring.data.redis.lettuce.pool.max-active=8`), a number copied from a "safe defaults" internal wiki page when Redis was still a cache sidecar.
