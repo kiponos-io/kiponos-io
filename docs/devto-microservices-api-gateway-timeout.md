@@ -62,14 +62,7 @@ On each request, `kiponos.path("routes", "pricing").getLong("response_timeout_ms
 
 ## Architecture: one tree, edge gateways
 
-```mermaid
-flowchart LR
-    OPS["API platform ops<br/>Kiponos dashboard"] -->|WebSocket delta| GW["Spring Cloud Gateway<br/>Kiponos SDK in-mem"]
-    GW -->|getLong response_timeout_ms| FILTER["TimeoutGatewayFilter"]
-    FILTER --> PRICING["pricing-service"]
-    FILTER --> CHECKOUT["checkout-service"]
-    CLIENT["Mobile / web clients"] --> GW
-```
+![Architecture diagram](https://litter.catbox.moe/w070be.png)
 
 When NOC lowers `pricing.response_timeout_ms`, **all gateway pods** enforce the new budget on the next request.
 
