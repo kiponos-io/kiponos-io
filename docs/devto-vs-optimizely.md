@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, java, python
 description: Optimizely excels at statistically rigorous A/B tests and full-stack experimentation. Kiponos excels at fraud thresholds, circuit breakers, and pool sizes with zero-latency reads on saturated hot paths. Honest comparison — complementary, not competitive.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-optimizely.md
-main_image: https://files.catbox.moe/nxbszi.png
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Thursday 10:47. The growth team ships a **full-stack checkout experiment** in Optimizely Feature Experimentation — variation `checkout_v3_simplified`, 12% traffic, sequential testing enabled, conversion metrics wired to the experimentation dashboard. Same war room, the card-acquiring partner reports elevated decline codes: the payments SRE needs `failure_rate_threshold` at 22, `fraud.block_score` at 76, and the Python embedding service needs `worker_pool_size` cut from 56 to 20 before GPUs throw CUDA OOM.
@@ -82,15 +82,7 @@ Product experiments stay in Optimizely. Operational knobs live beside them in Ki
 
 ## Architecture — Optimizely experiment plane vs Kiponos ops plane
 
-```mermaid
-flowchart LR
-    PM["Product / Marketing<br/>Optimizely console"] -->|variations + audiences| OZ["Optimizely SDK<br/>checkout service"]
-    OZ -->|impression events| BI["Experimentation<br/>dashboard + stats"]
-    SRE["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>authorization API"]
-    SRE -->|same profile| KP["Python SDK<br/>embedding worker"]
-    KJ -->|"getInt block_score — local"| AUTH["16k TPS<br/>auth path"]
-    KP -->|"getInt pool_size — local"| ML["GPU worker pool"]
-```
+![Architecture diagram](https://files.catbox.moe/a941bt.png)
 
 Hybrid is the norm: Optimizely owns **identity-bound** experiments with statistical governance; Kiponos owns **system-bound** thresholds both runtimes read.
 
