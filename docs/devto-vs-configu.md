@@ -4,7 +4,7 @@ published: false
 tags: configops, devops, java, python
 description: Configu excels at .cfgu schemas, environment promotion, and CI-driven ConfigOps across stores. It was never built for sub-second float reads on Java payment filters. Honest comparison with Spring Boot 3 and Python patterns.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-configu.md
-main_image: https://files.catbox.moe/z2kn7r.png
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Thursday 09:47. Platform engineering adopted **[Configu](https://configu.com)** for ConfigOps: `.cfgu` schemas in Git, orchestrator promoting `staging → production`, CLI validating keys before merge. The fraud squad applauds — until authorization holds at 9k TPS during a BIN attack and someone tries to lower `fraud/block_score` through the promotion pipeline.
@@ -87,32 +87,7 @@ Everything under `payments_ops/` is hub-native. JDBC URLs and API keys still flo
 
 ## Architecture — ConfigOps orchestration vs Kiponos runtime hub
 
-```mermaid
-flowchart TB
-    subgraph ConfigOps["Configu ConfigOps"]
-        GIT[Git + .cfgu schemas]
-        CLI[Configu CLI / CI]
-        ORCH[Orchestrator]
-        STORE[(SSM / Vault / dotenv)]
-        GIT --> CLI
-        CLI --> ORCH
-        ORCH -->|upsert evaluated config| STORE
-    end
-
-    subgraph Runtime["Kiponos runtime layer"]
-        DASH[Ops Dashboard]
-        HUB[Kiponos WebSocket Hub]
-        JVM[Spring Boot 3 Service]
-        PY[Python Fraud Worker]
-        DASH -->|delta patch| HUB
-        HUB -->|snapshot + deltas| JVM
-        HUB -->|snapshot + deltas| PY
-    end
-
-    STORE -->|bootstrap at startup| JVM
-    JVM -->|local getInt 9k TPS| FILTER[Authorization Filter]
-    PY -->|local getInt| VELOCITY[Velocity Check]
-```
+![Architecture diagram](https://files.catbox.moe/2yyhxv.png)
 
 ## Config tree — runtime ops alongside Configu-managed bootstrap
 
