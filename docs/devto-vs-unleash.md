@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, java, python, opensource
 description: Unleash excels at open-source feature toggles and gradual user-segment rollouts. Kiponos excels at nested operational config trees with zero-latency reads for fraud, pools, and circuit breakers. Honest comparison for platform teams.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-unleash.md
-main_image: https://files.catbox.moe/nxbszi.png
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Thursday 14:22. Platform finished migrating to **self-hosted Unleash** — feature toggles in Git, gradual rollout strategies, activation strategies per `userId` and `tenantId`. The mobile team loves it. Then incident response hits: a card-testing ring triggers fraud pages, the payments circuit needs `failure_rate_threshold` at 30, connection pools are exhausted, and ops wants `tomcat.max_threads` and `hikari.maximum_pool_size` bumped **without** a rolling restart across twelve Spring Boot pods.
@@ -85,15 +85,7 @@ Unleash remains your **OSS feature-flag control plane** for product. Kiponos bec
 
 ## Architecture — Unleash product toggles vs Kiponos ops hub
 
-```mermaid
-flowchart LR
-    PROD["Product team<br/>Unleash Admin UI"] -->|toggle strategies| UN["Unleash SDK<br/>BFF / web app"]
-    UN -->|isEnabled per userId| UI["User-facing<br/>feature rollout"]
-    OPS["SRE / Platform<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>Spring Boot 3 pods"]
-    OPS -->|same profile| KP["Python SDK<br/>fraud scoring worker"]
-    KJ -->|"getInt pool_size — local"| POOL["Hikari pool<br/>live resize hook"]
-    KJ -->|"getInt block_score — local"| AUTH["11k TPS<br/>authorization"]
-```
+![Architecture diagram](https://files.catbox.moe/lzfj61.png)
 
 Self-hosted Unleash stays on **user-bound** paths. Kiponos serves **system-bound** values both runtimes share.
 
