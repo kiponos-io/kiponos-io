@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, java, python
 description: Split.io excels at traffic allocation, kill switches, and user-facing experiments. Kiponos excels at fraud thresholds, circuit breakers, and pool sizes with zero-latency reads on backend hot paths. Honest comparison — complementary, not competitive.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-split-io.md
-main_image: https://files.catbox.moe/staging-profile.jpg
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Thursday 14:22. The marketplace team runs a **Split treatment** on `new_seller_dashboard` — 12% traffic allocation, impression events flowing to the warehouse, kill switch ready if conversion dips. In the same incident bridge, the ledger service pages: a partner API is timing out and the SRE needs `ledger/partner_timeout_ms` dropped from 8000 to 3500, `fraud/velocity_cap` raised to 22, and the Python reconciliation worker needs `batch_commit_size` cut from 500 to 120 before the queue backs up into Kafka.
@@ -85,15 +85,7 @@ User-facing feature treatments stay in Split. Backend operational knobs live in 
 
 ## Architecture — Split feature delivery vs Kiponos ops plane
 
-```mermaid
-flowchart LR
-    PM["Product / Growth<br/>Split console"] -->|treatments + kill switch| SC["Split SDK<br/>seller dashboard API"]
-    SC -->|impression events| WH["Warehouse<br/>experiment metrics"]
-    SRE["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>ledger service"]
-    SRE -->|same profile| KP["Python SDK<br/>reconciliation worker"]
-    KJ -->|"getInt velocity_cap — local"| LEDGER["11k TPS<br/>ledger path"]
-    KP -->|"getInt batch_commit_size — local"| RECON["Kafka consumer<br/>commit batching"]
-```
+![Architecture diagram](https://files.catbox.moe/f1gzlm.png)
 
 Hybrid is the norm: Split owns **identity-bound** feature delivery and experiments; Kiponos owns **system-bound** thresholds both runtimes read.
 
