@@ -109,31 +109,7 @@ Everything under `payments_ops/` is hub-native and **non-sensitive**. JDBC passw
 
 ## Architecture — Doppler secrets plane vs Kiponos ops plane
 
-```mermaid
-flowchart TB
-    subgraph Doppler["Doppler secrets layer"]
-        DP[Doppler Console]
-        OP[Doppler Operator / CLI]
-        SEC[(K8s Secret<br/>injected env)]
-        DP --> OP
-        OP -->|deploy / bootstrap sync| SEC
-    end
-
-    subgraph Kiponos["Kiponos ops layer"]
-        DASH[Ops Dashboard]
-        HUB[Kiponos WebSocket Hub]
-        JVM[Spring Boot 3 Service]
-        PY[Python Fraud Worker]
-        DASH -->|delta patch| HUB
-        HUB -->|snapshot + deltas| JVM
-        HUB -->|snapshot + deltas| PY
-    end
-
-    SEC -->|DATABASE_URL, API keys,<br/>KIPONOS_ACCESS at startup| JVM
-    SEC -->|worker credentials| PY
-    JVM -->|local getInt 12k TPS| AUTH[Authorization Filter]
-    PY -->|local getInt| VELOCITY[Velocity Scoring]
-```
+![Architecture diagram](https://files.catbox.moe/mjhj1c.png)
 
 Doppler owns **credential injection**. Kiponos owns **live operational floats** — complementary layers, not replacements.
 
