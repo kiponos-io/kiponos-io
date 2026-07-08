@@ -89,15 +89,7 @@ Product flags and remote config stay in Flagsmith. Operational knobs live in Kip
 
 ## Architecture — Flagsmith product plane vs Kiponos ops plane
 
-```mermaid
-flowchart LR
-    PM["Product / Mobile<br/>Flagsmith console"] -->|flags + remote config| FS["Flagsmith SDK<br/>checkout BFF"]
-    FS -->|identity segments| UI["User-facing<br/>feature rollout"]
-    SRE["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>authorization API"]
-    SRE -->|same profile| KP["Python SDK<br/>velocity worker"]
-    KJ -->|"getInt block_score — local"| AUTH["12k TPS<br/>auth path"]
-    KP -->|"getInt velocity_limit — local"| FRAUD["Batch velocity<br/>scoring"]
-```
+![Architecture diagram](https://files.catbox.moe/paslye.png)
 
 Hybrid is the norm: Flagsmith owns **identity-bound** product config; Kiponos owns **system-bound** thresholds both runtimes read.
 
