@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, java, python
 description: Harness Feature Flags excel at enterprise rollout pipelines tied to CI/CD deployments. Kiponos excels at fraud thresholds, circuit breakers, and rate limits SREs change during incidents outside the release train. Honest comparison for platform teams.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-harness-feature-flags.md
-main_image: https://files.catbox.moe/staging-profile.jpg
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Monday 03:17. The enterprise platform team ships through **Harness CD** — every production deploy triggers a **Feature Flag pipeline stage**: `new_billing_module` rolls from 0% → 5% → 25% on a schedule wired to the release train. Governance loves it. At 03:17 the card processor degrades and the incident commander needs `resilience/processor_failure_rate` at 30, `limits/issuer_rpm` dropped to 4200, and the Python dispute worker needs `ocr_batch_size` cut from 200 to 50 — **now**, while the Harness pipeline for last night's billing deploy is still at 25% and change advisory won't approve an emergency FF promotion until standup.
@@ -87,15 +87,7 @@ Profile path for this comparison:
 
 ## Architecture — Harness rollout pipeline vs Kiponos incident plane
 
-```mermaid
-flowchart LR
-    REL["Release manager<br/>Harness CD pipeline"] -->|stage-gated FF rollout| HF["Harness FF SDK<br/>billing service"]
-    HF -->|0% → 5% → 25%| USERS["Enterprise users<br/>new_billing_module"]
-    SRE["On-call SRE<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>authorization API"]
-    SRE -->|same profile| KP["Python SDK<br/>dispute OCR worker"]
-    KJ -->|"getInt issuer_rpm — local"| AUTH["10k TPS<br/>auth path"]
-    KP -->|"getInt ocr_batch_size — local"| OCR["Dispute queue<br/>batch OCR"]
-```
+![Architecture diagram](https://files.catbox.moe/94mm8e.png)
 
 Mature estates run both: Harness owns **release-governed** feature promotion; Kiponos owns **incident-governed** system thresholds.
 
