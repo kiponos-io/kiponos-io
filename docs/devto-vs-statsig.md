@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, java, python
 description: Statsig excels at gates, experiments, and product analytics. Kiponos excels at fraud thresholds, circuit breakers, and pool sizes with zero-latency reads on saturated hot paths. Honest comparison — complementary, not competitive.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-statsig.md
-main_image: https://files.catbox.moe/nxbszi.png
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Tuesday 09:14. Growth ships a **checkout experiment** in Statsig — gate `new_payment_sheet`, 8% exposure, funnel metrics wired to the warehouse. Same standup, the payments SRE reports processor latency spiking: they need `failure_rate_threshold` at 28, `fraud.block_score` at 79, and the Python embedding service needs `worker_pool_size` cut from 48 to 24 before GPUs OOM.
@@ -81,15 +81,7 @@ Product gates stay in Statsig. Operational knobs live beside them in Kiponos if 
 
 ## Architecture — Statsig product plane vs Kiponos ops plane
 
-```mermaid
-flowchart LR
-    PM["Product / Growth<br/>Statsig console"] -->|gates + experiments| SG["Statsig SDK<br/>checkout service"]
-    SG -->|exposure events| WH["Warehouse<br/>funnel metrics"]
-    SRE["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>authorization API"]
-    SRE -->|same profile| KP["Python SDK<br/>embedding worker"]
-    KJ -->|"getInt block_score — local"| AUTH["14k TPS<br/>auth path"]
-    KP -->|"getInt pool_size — local"| ML["GPU worker pool"]
-```
+![Architecture diagram](https://files.catbox.moe/fhg1ax.png)
 
 Hybrid is the norm: Statsig owns **identity-bound** experiments; Kiponos owns **system-bound** thresholds both runtimes read.
 
