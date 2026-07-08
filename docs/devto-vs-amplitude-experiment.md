@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, java, python
 description: Amplitude Experiment excels at warehouse-native funnel analysis and cohort-based product tests. Kiponos excels at fraud thresholds, circuit breakers, and pool sizes with zero-latency reads on saturated hot paths. Honest comparison — complementary, not competitive.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-amplitude-experiment.md
-main_image: https://files.catbox.moe/nxbszi.png
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Monday 14:22. The product analytics team reviews **checkout funnel lift** from an Amplitude Experiment — flag `express_shipping_default`, 10% exposure, results joined to warehouse events for signup-to-purchase conversion. Same afternoon, fraud detects a coordinated card-testing wave: they need `block_score` at 74, `velocity_per_hour` at 12, and the Python scoring worker needs `batch_size` reduced from 128 to 48 because inference queues are backing up.
@@ -86,15 +86,7 @@ Product experiments stay in Amplitude. Operational knobs live beside them in Kip
 
 ## Architecture — Amplitude experiment plane vs Kiponos ops plane
 
-```mermaid
-flowchart LR
-    PM["Product / Analytics<br/>Amplitude console"] -->|flags + cohorts| AM["Amplitude SDK<br/>checkout service"]
-    AM -->|exposure events| WH["Warehouse<br/>funnel metrics"]
-    SRE["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>fraud scoring API"]
-    SRE -->|same profile| KP["Python SDK<br/>inference worker"]
-    KJ -->|"getInt block_score — local"| FRAUD["11k TPS<br/>scoring path"]
-    KP -->|"getInt batch_size — local"| ML["GPU inference pool"]
-```
+![Architecture diagram](https://files.catbox.moe/9qb5fp.png)
 
 Hybrid is the norm: Amplitude owns **identity-bound** experiments with warehouse analytics; Kiponos owns **system-bound** thresholds both runtimes read.
 
