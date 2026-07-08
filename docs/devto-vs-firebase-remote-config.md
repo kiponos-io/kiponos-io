@@ -4,7 +4,7 @@ published: false
 tags: firebase, java, python, architecture
 description: Firebase Remote Config excels at mobile and web fetch-based rollouts with A/B experiments. It was never built for JVM payment filters at 9k TPS. Honest comparison with Spring Boot 3 and Python integration patterns.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-firebase-remote-config.md
-main_image: https://files.catbox.moe/staging-profile.jpg
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Wednesday 11:08. The mobile squad ships a checkout redesign using **Firebase Remote Config** — `show_bnpl_banner`, `min_app_version`, A/B cohorts. Product loves the dashboard. Then payments pages: a processor brownout needs `partner_failure_rate_threshold` dropped from 48 to 32 **while authorization holds at 9k TPS** on Spring Boot pods in GKE.
@@ -74,30 +74,7 @@ Firebase Remote Config still owns **client-visible flags** tied to Analytics aud
 
 ## Architecture — Firebase fetch/cache vs Kiponos deltas
 
-```mermaid
-flowchart LR
-    subgraph Firebase["Firebase Remote Config"]
-        FC[Firebase Console]
-        FAPI[Remote Config REST]
-        MOB[Mobile / Web SDK]
-        FC --> FAPI
-        FAPI -->|fetch + cache TTL| MOB
-    end
-
-    subgraph Kiponos["Kiponos.io"]
-        DASH[Ops Dashboard]
-        WS[WebSocket Hub]
-        JVM[Spring Boot 3 JVM]
-        PY[Python Worker]
-        DASH -->|delta patch| WS
-        WS -->|snapshot + deltas| JVM
-        WS -->|snapshot + deltas| PY
-        JVM -->|local getInt on hot path| AUTH[Authorization Filter]
-    end
-
-    MOB -->|UI flags only| APP[Checkout App]
-    AUTH -->|9k TPS| PROC[Payment Processor]
-```
+![Architecture diagram](https://files.catbox.moe/v8gcwn.png)
 
 ## Config tree — server ops separate from client flags
 
