@@ -4,7 +4,7 @@ published: false
 tags: graphql, java, architecture, devops
 description: Apollo Studio excels at GraphQL schema registry, federation checks, and operation safelists. Kiponos excels at live gateway timeouts, rate limits, and resolver pool knobs during incidents. Honest complementary comparison for platform teams.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-apollo-studio.md
-main_image: https://files.catbox.moe/staging-profile.jpg
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Wednesday 11:08. The federated commerce graph just passed **Apollo Studio** contract checks — `inventory` subgraph composition green, `@key` directives validated, operation safelist approved for the mobile BFF. Then checkout P99 explodes: the `orders` subgraph resolver pool is saturated, gateway upstream timeouts are still **45 seconds** from last quarter's YAML, and a partner integration is hammering the public endpoint at 4k RPM.
@@ -86,17 +86,7 @@ Works the same on router pods, subgraph JVMs, and Python enrichment workers — 
 
 ## Architecture — Apollo schema plane vs Kiponos gateway ops plane
 
-```mermaid
-flowchart LR
-    DEV["Subgraph teams<br/>Git + CI"] -->|schema publish| AP["Apollo Studio / GraphOS<br/>composition + contract checks"]
-    AP -->|approved SDL| SUB["Federated subgraphs<br/>inventory / orders / users"]
-    AP -->|safelist / persisted ops| ROUTER["GraphQL router / gateway"]
-    OPS["SRE / GraphQL platform<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>gateway + subgraph pods"]
-    OPS -->|same profile| KP["Python SDK<br/>enrichment worker"]
-    KJ -->|"getLong timeout — local"| GW["Per-route upstream<br/>timeout filter"]
-    KJ -->|"getInt pool_size — local"| POOL["Resolver executor<br/>live resize"]
-    ROUTER --> SUB
-```
+![Architecture diagram](https://files.catbox.moe/9xfep3.png)
 
 Apollo validates **what fields exist**. Kiponos tunes **how long the gateway waits and how hard it throttles**.
 
