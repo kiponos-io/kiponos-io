@@ -95,15 +95,7 @@ PostHog remains your **product analytics and experimentation plane** for surface
 
 ## Architecture — PostHog product plane vs Kiponos ops hub
 
-```mermaid
-flowchart LR
-    PM["Product / Growth<br/>PostHog console"] -->|flags + replay| PH["PostHog SDK<br/>checkout BFF / web"]
-    PH -->|capture events| CH["ClickHouse<br/>funnels + replay"]
-    OPS["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>auth filter — no analytics"]
-    OPS -->|same profile| KP["Python SDK<br/>BIN velocity worker"]
-    KJ -->|"getInt block_score — local"| AUTH["15k TPS<br/>authorization"]
-    KJ -->|"getInt failure_rate_threshold — local"| CB["Resilience4j<br/>payments circuit"]
-```
+![Architecture diagram](https://files.catbox.moe/w3u6wc.png)
 
 PostHog stays on **product-facing** paths with analytics context. Kiponos serves **system-bound** values on paths that must stay analytics-free.
 
