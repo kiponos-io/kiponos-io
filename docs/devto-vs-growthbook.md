@@ -95,15 +95,7 @@ GrowthBook remains your **OSS experimentation control plane** for product. Kipon
 
 ## Architecture — GrowthBook product experiments vs Kiponos ops hub
 
-```mermaid
-flowchart LR
-    PM["Product / Data<br/>GrowthBook console"] -->|variant assignment| GB["GrowthBook SDK<br/>checkout BFF"]
-    GB -->|exposure events| WH["Snowflake<br/>Bayesian metrics"]
-    OPS["SRE / Fraud ops<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>Spring Boot 3 pods"]
-    OPS -->|same profile| KP["Python SDK<br/>velocity scoring worker"]
-    KJ -->|"getInt block_score — local"| AUTH["13k TPS<br/>authorization"]
-    KJ -->|"getInt failure_rate_threshold — local"| CB["Resilience4j<br/>payments circuit"]
-```
+![Architecture diagram](https://files.catbox.moe/q2hz2g.png)
 
 GrowthBook stays on **user-bound** experiment paths. Kiponos serves **system-bound** values both runtimes share.
 
