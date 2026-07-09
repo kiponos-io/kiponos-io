@@ -4,7 +4,7 @@ published: false
 tags: architecture, devops, security, java
 description: HashiCorp Boundary excels at identity-based secure access to SSH, RDP, and database targets. Kiponos excels at live operational knobs — timeouts, pools, rate limits — once services are running. Honest platform toolbox comparison.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-vs-hashicorp-boundary.md
-main_image: https://files.catbox.moe/staging-profile.jpg
+main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
 Sunday 02:17. Payments is red. The on-call SRE authenticates through **HashiCorp Boundary**, gets a scoped session to the `payments-api` bastion, and SSHs into the pod to confirm thread pools are exhausted. Access worked perfectly — identity verified, session recorded, target scoped to `prod-payments-eks`.
@@ -67,16 +67,7 @@ Vault holds **secrets**. Boundary holds **access paths**. Kiponos holds **operat
 
 ## Architecture — Boundary access plane vs Kiponos behavior plane
 
-```mermaid
-flowchart LR
-    SRE["On-call engineer<br/>OIDC identity"] -->|authenticated session| BD["HashiCorp Boundary<br/>broker + audit"]
-    BD -->|scoped SSH / RDP / DB| HOST["payments-api pod<br/>inventory worker VM"]
-    OPS["Platform / SRE<br/>Kiponos dashboard"] -->|WebSocket deltas| KJ["Java SDK<br/>Spring Boot 3 pods"]
-    OPS -->|same profile| KP["Python SDK<br/>fraud scoring worker"]
-    KJ -->|"getInt threshold — local"| CB["Resilience4j circuit<br/>live threshold"]
-    KJ -->|"getInt pool_size — local"| HK["HikariCP<br/>live resize hook"]
-    HOST -.->|"debug only — not config plane"| OPS
-```
+![Architecture diagram](https://files.catbox.moe/ncuiai.png)
 
 Boundary gets engineers **to** the target. Kiponos changes **behavior across all replicas** without shell on each pod.
 
