@@ -7,11 +7,11 @@ description: Building a live control plane for AI agents, I reached for systemd.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agent-live-config-mcp-skill-mindshift.md
 ---
 
-Tuesday night, pipeline green: articles publishing every two hours, Crunchbase press refs in sync, WhatsApp pings after each cycle. I wanted the **same numbers** on a live dashboard — queue progress, last article URL, Crunchbase rank — without restarting anything when they changed.
+I was pair-building with an AI coding agent on a **shared ops board**: incident severity, which dependency was throttled, and a free-text “operator note” the human typed from a phone. I wanted those values on a **live dashboard** the whole team could open — and I wanted the agent to **see changes the moment a human edited them**, without restarting the agent, redeploying a service, or refreshing a browser.
 
 I already had a **Skill** that told the agent *how* to talk to Kiponos. I wrote a thin Python client. I set keys. The dashboard updated **without a page refresh**. That part still feels like cheating.
 
-Then I wanted **bidirectional** control: if a human flipped `waves-paused` on the web UI, the publisher should stop. My first instinct as a systems engineer was pure 2014:
+Then I wanted **bidirectional** control: if a human flipped `incident/paused` on the web UI, the agent’s long-running remediation loop should stop proposing restarts. My first instinct as a systems engineer was pure 2014:
 
 > “I’ll install a **systemd user service** that keeps the SDK connected and runs handlers forever.”
 
@@ -28,7 +28,7 @@ Agents are different processes:
 | Process | Lifetime | What it needs |
 |---------|----------|---------------|
 | Interactive agent session | Minutes to hours | Skill instructions + tools **now** |
-| Overnight wave publisher | Days | Pause flags, status writes |
+| Long job (train, migrate, remediate) | Hours to days | Live knobs + pause flags |
 | Human on dashboard | Continuous | Instant visual feedback |
 
 A **Skill** alone dies when the session ends. That is expected.  
@@ -36,7 +36,7 @@ A **raw SDK** is correct but every agent re-implements connect, auth errors, and
 
 So I created `kiponos-control-watcher.service`. The agent “had a daemon.” Handlers ran. I felt clever.
 
-Then the user asked the question that unblocked the design:
+Then the collaborator asked the question that unblocked the design:
 
 > Why a service? The SDK already has a listener for value changed.
 
@@ -64,6 +64,55 @@ Agent  ──tools──►  Kiponos MCP  ──SDK──►  kiponos.io  ◄─
 
 No custom unit file. No reinventing lifecycle for every host (Grok, Cursor, Claude Code all speak MCP).
 
+## Demonstration scenario — shared incident board
+
+Instead of a private automation story, use a scenario every on-call team recognizes.
+
+**Tree under a free-tier profile:**
+
+```
+ops/incident/
+  severity          # info | warn | critical
+  focus-service     # payments | catalog | search
+  agent-mode        # observe | remediate | pause
+  operator-note     # free text from human
+  last-agent-action # free text from agent
+```
+
+**Human** (laptop or phone dashboard):
+
+1. Sets `severity` to `critical`  
+2. Sets `focus-service` to `payments`  
+3. Types `operator-note`: “card-testing spike; prefer throttle over restart”  
+
+**Agent** (MCP connected):
+
+1. Polls or receives deltas via `kiponos_poll_events` / `on_change`  
+2. Switches playbook to payments throttle  
+3. Writes `last-agent-action`: “raised bulkhead; awaiting human un-pause”  
+4. If `agent-mode` flips to `pause`, **stops** proposing restarts  
+
+Everyone watching the same profile sees both sides update **without F5**. That is the product demo — not a secret pipeline.
+
+```python
+from kiponos import Kiponos
+
+with Kiponos.connect() as k:
+    k.ensure_path("ops/incident")
+    k.set("ops/incident/severity", "critical")
+    k.set("ops/incident/focus-service", "payments")
+    k.set("ops/incident/agent-mode", "remediate")
+    k.set("ops/incident/last-agent-action", "board created by agent")
+
+    def on_change(key, value, folders, source, delta):
+        path = "/".join(list(folders) + [key])
+        if path.endswith("agent-mode") and value == "pause":
+            # Enqueue stop — never block the STOMP listener with set()
+            print("human requested pause")
+
+    k.on_change(on_change)
+```
+
 ## What we built — free Agent Kit
 
 Open source under the [kiponos-io](https://github.com/kiponos-io/kiponos-io) repo: directory **`agent-kit/`**.
@@ -76,12 +125,12 @@ Clean surface informed by real agent work (not a scaffold):
 from kiponos import Kiponos
 
 with Kiponos.connect() as k:  # env: KIPONOS_ID, KIPONOS_ACCESS, KIPONOS
-    k.set("marketing/press/dev-to-crunch/queue-progress", "77/110")
-    print(k.get("marketing/press/dev-to-crunch/queue-progress"))
+    k.set("ops/incident/severity", "warn")
+    print(k.get("ops/incident/severity"))
 
     def on_change(key, value, folders, source, delta):
         # Heavy work: enqueue — never block the STOMP listener
-        print("delta", "/".join(folders + (key,)), "=", value, source)
+        print("delta", "/".join(list(folders) + [key]), "=", value, source)
 
     k.on_change(on_change)
 ```
@@ -142,7 +191,7 @@ enabled = true
 
 ## Onboarding is product, not an afterthought
 
-The first connection failures in our lab were not “SDK bugs.” They were **Unit-Tests tokens** still in the shell while the dashboard profile was **my-app / v1.0.0 / dev / base**. Same machine, wrong pair → HTTP 500 on WebSocket handshake.
+The first connection failures in our lab were not “SDK bugs.” They were **tokens from one app connection** still in the shell while the dashboard profile was **a different app’s bracket path**. Same machine, wrong pair → HTTP 500 on WebSocket handshake.
 
 So the kit teaches agents to **stop and onboard**:
 
@@ -156,25 +205,25 @@ If you only ship an SDK, developers invent tokens. If you ship Skill + MCP with 
 
 ## Real-time collaboration that feels unfair
 
-While organizing a `marketing/press/dev-to-crunch` folder we:
+While shaping the `ops/incident` board with an agent:
 
-- Wrote queue and Crunchbase status from the publish pipeline  
-- Split a fuzzy `waves-summary` into clear keys  
-- Deleted legacy keys over the wire  
+- Keys appeared as the agent created the folder path  
+- The human renamed focus from `catalog` to `payments` mid-session  
+- The agent’s `last-agent-action` updated on the same tree  
 
-The human watched the dashboard: fields appeared and disappeared **as the agent worked** — no F5. That is not a demo gimmick. It is the same delta path a Spring Boot service uses for `failure_rate_threshold` during an incident.
+The human watched the dashboard: fields appeared and changed **as the agent worked** — no F5. That is not a demo gimmick. It is the same delta path a Spring Boot service uses for `failure_rate_threshold` during an incident.
 
 For agents, that means:
 
-- **Shared ops board** without Slack paste  
+- **Shared ops board** without Slack paste of “current severity is…”  
 - **Human in the loop** who edits a value the agent can poll  
 - **Status that does not lie** after a session crash (tree is on the server)
 
-Control keys (pause waves, request sync, …) are the next layer — separate from this kit’s core CRUD. The important part is the **bus**.
+Special control values (pause, mode switches, request-once pulses) are a natural next layer — the important part of the kit is the **bus** and the **installable Skill + MCP pair**.
 
 ## Implementation note — listener thread discipline
 
-One bug taught production quality: if `on_change` runs **on the STOMP reader thread** and calls `set()` (which waits for ack), the client deadlocks. The MCP and any long-running handler must **queue** work to a worker thread. The Skill documents that; the MCP implements it for `poll_events` consumers.
+One bug taught production quality: if `on_change` runs **on the STOMP reader thread** and calls `set()` (which waits for ack), the client deadlocks. The MCP and any long-running handler must **queue** work to a worker thread. The Skill documents that; consumers of `kiponos_poll_events` should treat events as a queue, not a place to block.
 
 ```python
 # Wrong: set() inside the listener callback
@@ -197,10 +246,11 @@ cd kiponos-io/agent-kit
 ./install.sh
 export KIPONOS_ID=… KIPONOS_ACCESS=… KIPONOS="['my-app']['v1.0.0']['dev']['base']"
 python3 -m kiponos.cli status
-python3 -m kiponos.cli set demo/from-agent "hello-live"
+python3 -m kiponos.cli set ops/incident/severity critical
+python3 -m kiponos.cli set ops/incident/agent-mode observe
 ```
 
-Open the dashboard on that profile. No refresh.
+Open the dashboard on that profile. No refresh. Hand the laptop to a teammate and have them change `agent-mode` to `pause` while your agent polls events.
 
 ## Closing
 
