@@ -1,3 +1,0 @@
-[console_scripts]
-kiponos-cli = kiponos.cli:main
-kiponos-mcp = kiponos_mcp.server:main
