@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kiponos-agent-kit"
+version = "0.2.0"
+description = "Kiponos Python SDK + MCP for agent live config (get/set/subscribe)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Kiponos.io", email = "support@kiponos.io" }]
+keywords = ["kiponos", "config", "mcp", "agent", "websocket", "realtime"]
+dependencies = [
+  "websocket-client>=1.8.0,<2.0.0",
+  "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+kiponos-mcp = "kiponos_mcp.server:main"
+kiponos-cli = "kiponos.cli:main"
+
+[project.urls]
+Homepage = "https://kiponos.io"
+Repository = "https://github.com/kiponos-io/kiponos-io"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["kiponos*", "kiponos_mcp*"]

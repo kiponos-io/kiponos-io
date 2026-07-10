@@ -1,0 +1,5 @@
+websocket-client<2.0.0,>=1.8.0
+mcp>=1.0.0
+
+[dev]
+pytest>=8.0
