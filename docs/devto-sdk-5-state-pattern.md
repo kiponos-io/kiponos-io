@@ -123,7 +123,7 @@ cd kiponos-io/golden/java
 
 A libGDX arena of shapes controlled **live** from the dashboard — color, speed, pause, more:
 
-**[github.com/Avdiel/kiponos-game](https://github.com/Avdiel/kiponos-game)**  
+**[github.com/Avdiel/kiponos-game](https://github.com/kiponos-io/kiponos-game)**  
 (Already on **SDK 5.0**. Public samples will also live under the **kiponos-io** account as we grow the showcase.)
 
 Change a value in the hub. Watch the world respond. That is the product, not a slide.
@@ -179,7 +179,7 @@ Live config should feel light in the demo and steady in production. **5.0 is our
 | Product | [kiponos.io](https://kiponos.io) |
 | Maven (boot-3) | [central.sonatype.com/artifact/io.kiponos/sdk-boot-3](https://central.sonatype.com/artifact/io.kiponos/sdk-boot-3) |
 | Public docs & samples | [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io) |
-| Live game demo | [github.com/Avdiel/kiponos-game](https://github.com/Avdiel/kiponos-game) |
+| Live game demo | [github.com/Avdiel/kiponos-game](https://github.com/kiponos-io/kiponos-game) |
 | Technical What’s New | [devto-sdk-5-whats-new-guide.md](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sdk-5-whats-new-guide.md) |
 
 *Kiponos Java SDK 5.0.0.260710 — with pride.*

@@ -304,7 +304,7 @@ These are **not** blockers for adopting 5.0:
 - [ ] `disconnect()` on shutdown  
 - [ ] Optional: game demo on SDK 5.0 for stakeholder demo  
 
-Live demo: [Kiponos Game](https://github.com/Avdiel/kiponos-game)  
+Live demo: [Kiponos Game](https://github.com/kiponos-io/kiponos-game)  
 Samples hub: [kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
 
 ---
