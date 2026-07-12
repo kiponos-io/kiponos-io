@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/lbowqg.jpg
 title: "Kiponos Java SDK 5.0: Real-Time Config That Refuses to Die"
 published: false
 tags: java, springboot, opensource, devops
