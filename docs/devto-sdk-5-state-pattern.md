@@ -1,147 +1,93 @@
 ---
-main_image: https://files.catbox.moe/lbowqg.jpg
-title: "Kiponos Java SDK 5.0: Real-Time Config That Refuses to Die"
+title: "Kiponos Java SDK 5.0 Is Here — Live Config, Calmer Apps, Bigger Smile"
 published: false
 tags: java, springboot, opensource, devops
-description: "SDK 5.0 ships Ready/Offline/Safe modes + Last Known Good — live config that survives disconnects. On Maven Central now."
+description: "Proud milestone: SDK 5.0 on Maven Central with Ready, Offline, and Safe modes plus Last Known Good. Happy upgrade, real resilience."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sdk-5-state-pattern.md
+main_image: https://files.catbox.moe/lbowqg.jpg
 ---
 
-# Kiponos Java SDK 5.0: Real-Time Config That Refuses to Die
+Some product moments feel like maintenance.  
+**This one feels like a celebration.**
 
-Most configuration libraries have two moods.
+Today we are proud to ship **Kiponos Java SDK 5.0** — the release that takes everything teams loved about live dashboard config and makes the client as confident as the product story.
 
-**Mood one:** everything is fine. You `get("timeout-ms")`, life is good, the dashboard is a distant theory.
+No restart theater.  
+No “hope the socket holds.”  
+Just a calmer, happier way to run apps that stay in sync with the people operating them.
 
-**Mood two:** the network hiccups. Your “real-time” client becomes a real-time *exception factory*. Threads hang. Operators refresh. Someone whispers the forbidden words: *“just restart the pod.”*
-
-We built [Kiponos.io](https://kiponos.io) so teams never had to choose between *live* and *safe*. Today we’re shipping the Java SDK release that makes that promise structural — not aspirational.
-
-## **Kiponos Java SDK 5.0.0.260710 is on Maven Central.**
+## Maven Central — available now
 
 ```gradle
 repositories { mavenCentral() }
+
 dependencies {
-    implementation 'io.kiponos:sdk-boot-3:5.0.0.260710'  // Spring Boot 3 / Jakarta
-    // implementation 'io.kiponos:sdk-boot-2:5.0.0.260710'  // Spring Boot 2 / javax
+    // Spring Boot 3 / Jakarta (recommended)
+    implementation 'io.kiponos:sdk-boot-3:5.0.0.260710'
+
+    // Spring Boot 2 / javax (legacy)
+    // implementation 'io.kiponos:sdk-boot-2:5.0.0.260710'
 }
 ```
 
-If you only remember one thing: **5.0 is the state-pattern release.** Ready. Offline. Safe. One facade. No drama.
+**Version:** `5.0.0.260710`  
+**Group:** `io.kiponos`  
+**Artifacts:** `sdk-boot-3` · `sdk-boot-2`
 
 ---
 
-## The problem we refused to ignore
+## Why this is a happy milestone
 
-Hot-path services do not care that your config hub had a bad five seconds.
+[Kiponos.io](https://kiponos.io) has always been about **joy of control**: open the dashboard, change a value, and running apps feel it immediately over WebSocket — local reads on the hot path, zero redeploy ritual.
 
-They care that:
+With **5.0**, that joy gets a reliability backbone teams can trust in production:
 
-- a missing token must not hang the JVM forever  
-- a disconnect must not invent random defaults  
-- a reconnect must not leave half the fleet on zombie state  
+| Mode | How it feels |
+|------|----------------|
+| **Ready** | Connected, live tree, full power — the experience you demo and ship |
+| **Offline** | Network blip? Keep reading **Last Known Good** config calmly |
+| **Safe** | Nothing trustworthy yet? Fail closed, stay empty-safe, protect LKG |
 
-The old “reconnect harder” loop is not a product story. It is a prayer.
+You still hold **one** object forever: `Kiponos`.  
+Modes switch *inside* the facade. Your code stays simple. Your ops stay human.
 
-So we finished what the architecture always wanted: **modes**, not vibes.
-
----
-
-## What teams believe vs production reality
-
-| Belief | Production reality |
-|--------|--------------------|
-| “If the hub is down, fail fast and crash” | Crashing on config I/O is how you turn a blip into an incident |
-| “Cache the last value in a HashMap somewhere” | Ad-hoc caches disagree between pods and never get reviewed |
-| “We’ll add offline later” | Later is when the outage is already paging you |
-| “The SDK can just throw and the app will handle it” | The app *is* busy serving traffic — it shouldn’t re-implement config reliability |
+That design choice is intentional — and a little proud. We learned (the hard way, on an earlier branch) that handing mode objects to apps freezes them on one personality forever. **5.0 keeps the facade stable and the resilience internal.**
 
 ---
 
-## The Aha
-
-**Config availability is an operational mode of the client, not a boolean “connected.”**
-
-When the WebSocket is healthy, you are **Ready** — full live tree, hooks, the works.  
-When the connection is gone but you still have a trustworthy snapshot, you are **Offline** — read **Last Known Good**.  
-When nothing is trustworthy, you are **Safe** — fail-closed, empty-safe, no silent corruption of the good snapshot.
-
-That is not a retry policy. That is a **state machine with a product contract.**
-
----
-
-## What is Kiponos.io (in this release’s language)
-
-[Kiponos.io](https://kiponos.io) is a **real-time config hub**:
-
-1. Humans (and agents) edit hierarchical config in a web dashboard.  
-2. The server pushes **deltas over WebSocket**.  
-3. The Java SDK keeps an **in-memory tree**.  
-4. Your hot path calls `get` / `path(...).get(...)` **locally** — zero network on the read.
-
-Profile selection is explicit:
+## What you gain in one picture
 
 ```text
--Dkiponos="['MyApp']['1.0.0']['prod']['base']"
+Your app
+  └── Kiponos.createForCurrentTeam()
+        └── Ready  ·  Offline (LKG)  ·  Safe
 ```
 
-Plus Connect tokens:
-
-```text
-KIPONOS_ID=…
-KIPONOS_ACCESS=…
-```
-
-No YAML archaeology. No restart to flip a timeout.
+- Dashboard edits still flow as **live deltas**  
+- Hot path still does **local** `get` / `getInt` / `path(...)`  
+- Disconnects become **modes**, not meltdowns  
+- LKG is a first-class product feature, not a weekend hack
 
 ---
 
-## Architecture: the facade that never freezes
-
-```text
-Customer app
-  └── Kiponos          ← you hold this forever
-        └── KiponosBase
-              └── SdkState → Ready | Offline | Safe
-```
-
-**Hard rule we learned the expensive way:** never return a mode instance to the application.  
-If you hand out `OfflineMode`, the caller freezes on Offline for life. The facade switches; the reference stays.
-
-Mode transparency when you need it:
+## The API you actually write (typed, clean)
 
 ```java
-Kiponos k = Kiponos.createForCurrentTeam();
+import io.kiponos.sdk.Kiponos;
+import io.kiponos.sdk.configs.KiponosFolder;
 
-k.isReadyMode();
-k.isOfflineMode();
-k.isSafeMode();
-k.getCurrentMode();
-```
-
----
-
-## Last Known Good (LKG)
-
-Offline is not “hope the heap still has something.”
-
-5.0 persists **Last Known Good** config and reads it back through a deliberate chain (live memory → backup → disk dump). Ready path updates LKG when the live tree is trustworthy. **Safe mode dumps never overwrite LKG** — diagnostics must not poison recovery.
-
-That sentence alone is worth a major version.
-
----
-
-## Integration (Boot 3)
-
-```java
-public class App {
+public class Demo {
     public static void main(String[] args) {
         Kiponos kiponos = Kiponos.createForCurrentTeam();
         try {
-            int port = Integer.parseInt(
-                kiponos.path("server", "http").get("port")
-            );
-            System.out.println("port=" + port + " mode=" + kiponos.getCurrentMode());
+            KiponosFolder http = kiponos.getRootFolder()
+                    .path("server", "http");
+
+            int port = http.getInt("port");
+            String host = http.get("host", "localhost");
+
+            System.out.println(host + ":" + port);
+            System.out.println("mode=" + kiponos.getCurrentMode());
         } finally {
             kiponos.disconnect();
         }
@@ -149,82 +95,91 @@ public class App {
 }
 ```
 
-Gradle:
+`KiponosFolder` is the navigation surface you already know:
 
-```gradle
-implementation 'io.kiponos:sdk-boot-3:5.0.0.260710'
-```
+- `path(...)` / `folder(...)` / `folderOrCreate(...)`  
+- `get` / `getInt` / `set` / `hasKey`  
+- folder CRUD when you need it  
 
-Tokens via env; profile via `-Dkiponos=...`.
+No string-to-int gymnastics required for integers — **`getInt` is the happy path.**
 
 ---
 
-## Proof in motion: the Kiponos Game
+## Feel it in five minutes (pick your joy)
 
-We did not ship 5.0 on faith alone.
+### 1. Golden Java (minimal connect)
 
-**[Kiponos Game (Swinga)](https://github.com/Avdiel/kiponos-game)** is a libGDX 2D arena of bouncing shapes. The hero’s color, speed, pause, and more are **live Kiponos keys**. Change the dashboard; the arena obeys — same session, no restart.
-
-It runs on **`io.kiponos:sdk-boot-3:5.0.0.260710`**. That is the dogfood.
+Open-source onboarding kit:  
+[github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io) → `golden/java`
 
 ```bash
-git clone https://github.com/Avdiel/kiponos-game.git
-cd kiponos-game
-# local.properties or env: KIPONOS_ID / KIPONOS_ACCESS
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/golden/java
+# Connect tokens + profile from your Kiponos account
 ./gradlew run
 ```
 
----
+### 2. Kiponos Game (visceral demo)
 
-## Upgrade notes
+A libGDX arena of shapes controlled **live** from the dashboard — color, speed, pause, more:
 
-| From | Action |
-|------|--------|
-| 4.4.x | Bump coordinate to `5.0.0.260710`; re-test disconnect paths |
-| Custom hang-on-error wrappers | Consider deleting them — Offline/Safe are the product answer |
-| “We catch Exception around get()” | Still fine; modes reduce how often you need heroics |
+**[github.com/Avdiel/kiponos-game](https://github.com/Avdiel/kiponos-game)**  
+(Already on **SDK 5.0**. Public samples will also live under the **kiponos-io** account as we grow the showcase.)
 
-**Artifacts:**
+Change a value in the hub. Watch the world respond. That is the product, not a slide.
 
-- `io.kiponos:sdk-boot-3:5.0.0.260710`  
-- `io.kiponos:sdk-boot-2:5.0.0.260710`  
+### 3. Agent skills
 
-Source & release notes: [github.com/Avdiel/kiponos-sdk](https://github.com/Avdiel/kiponos-sdk)  
-Changelog: tag **`v5.0.0.260710`**
+If you build with AI agents, the public repo ships an installable skill + `AGENTS.md` so integration is machine-readable, not folklore.
 
 ---
 
-## What is still cooking (honest backlog)
+## For teams already on 4.x
 
-5.0 is the reliability floor, not the ceiling:
+Upgrade is mostly **additive confidence**:
 
-- richer mode-change hooks for apps (`onRecovered`, …)  
-- deeper Safe → Ready recovery policy  
-- full live multi-mode matrix in CI  
-- Boot2 parity where the facade is still thinner  
+1. Bump to `5.0.0.260710`  
+2. Keep `KIPONOS_ID` / `KIPONOS_ACCESS` and `-Dkiponos="['app']['…']['…']['…']"`  
+3. Prefer `getInt` / folder navigation over ad-hoc parsing  
+4. Optionally branch ops UI on `isReadyMode()` / `isOfflineMode()` / `isSafeMode()`  
+5. Call `disconnect()` on shutdown (same good citizenship as always)
 
-We ship majors when the contract changes. The contract changed.
-
----
-
-## Try it
-
-1. Create a free team on [kiponos.io](https://kiponos.io)  
-2. Generate Connect tokens  
-3. Drop in `sdk-boot-3:5.0.0.260710`  
-4. Flip a value on the dashboard without redeploying  
-
-Agent-friendly onboarding lives in **[kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)** (skills, golden Java, `AGENTS.md`).
+Full technical detail lives in the companion guide:  
+**[SDK 5.0 What’s New — Developer Guide](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sdk-5-whats-new-guide.md)**
 
 ---
 
-### The one-liner
+## What this says about where we’re going
 
-**Config files taught a generation of engineers to fear change.**  
-**Kiponos 5.0 teaches the JVM to stay calm when the wire blips.**
+5.0 is a **major** because the client contract matured:
 
-Ship it. Bounce nothing.
+- resilience is **productized**, not “reconnect harder”  
+- LKG is **real**  
+- modes are **observable**  
+- Boot 3 and Boot 2 ship together on Central  
+
+We’re still building (mode hooks, deeper recovery polish, richer demos).  
+But the floor just rose — and that is worth a smile.
 
 ---
 
-*Moshe Avdiel · Kiponos.io · Java SDK 5.0.0.260710 on Maven Central*
+## Thank you
+
+To everyone who signed up, clicked around, or integrated Kiponos quietly: **this release is for you.**  
+Live config should feel light in the demo and steady in production. **5.0 is our happy step toward both.**
+
+**Ship the dependency. Keep the dashboard open. Enjoy the loop.**
+
+---
+
+### Links
+
+| | |
+|--|--|
+| Product | [kiponos.io](https://kiponos.io) |
+| Maven (boot-3) | [central.sonatype.com/artifact/io.kiponos/sdk-boot-3](https://central.sonatype.com/artifact/io.kiponos/sdk-boot-3) |
+| Public docs & samples | [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io) |
+| Live game demo | [github.com/Avdiel/kiponos-game](https://github.com/Avdiel/kiponos-game) |
+| Technical What’s New | [devto-sdk-5-whats-new-guide.md](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sdk-5-whats-new-guide.md) |
+
+*Kiponos Java SDK 5.0.0.260710 — with pride.*
