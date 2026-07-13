@@ -1,0 +1,63 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+group = 'io.kiponos.examples'
+version = '1.0.0'
+
+application {
+    mainClass.set('io.kiponos.examples.killswitch.KillSwitchApp')
+}
+
+def kiponosId = System.getenv('KIPONOS_ID') ?: 'REPLACE_WITH_KIPONOS_ID_FROM_ACCOUNT'
+def kiponosAccess = System.getenv('KIPONOS_ACCESS') ?: 'REPLACE_WITH_KIPONOS_ACCESS_FROM_ACCOUNT'
+def kiponosProfile = System.getenv('KIPONOS') ?: "['my-app']['v1.0.0']['dev']['base']"
+
+// Local/CI: export KIPONOS_ID, KIPONOS_ACCESS, optional KIPONOS profile.
+// Public clone: replace REPLACE_WITH_* placeholders or set env vars.
+tasks.withType(JavaExec).configureEach {
+    environment 'KIPONOS_ID', kiponosId
+    environment 'KIPONOS_ACCESS', kiponosAccess
+    systemProperty 'kiponos', kiponosProfile
+    systemProperty 'io.kiponos.host', 'kiponos.io'
+}
+
+tasks.withType(Test).configureEach {
+    environment 'KIPONOS_ID', kiponosId
+    environment 'KIPONOS_ACCESS', kiponosAccess
+    systemProperty 'kiponos', kiponosProfile
+    systemProperty 'io.kiponos.host', 'kiponos.io'
+    // Skip live golden if placeholders still present
+    if (kiponosId.startsWith('REPLACE_WITH_')) {
+        systemProperty 'kiponos.golden.skip', 'true'
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // Public clones: 4.4.0+ on Maven Central. Local E2E may use mavenLocal 5.x.
+    implementation 'io.kiponos:sdk-boot-3:4.4.0.250319'
+
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        showStandardStreams = true
+    }
+}
