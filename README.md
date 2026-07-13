@@ -77,7 +77,7 @@ kiponos.disconnect(); // on shutdown
 | [`AGENTS.md`](AGENTS.md) | Machine-readable integration contract |
 | [`docs/GETTING-STARTED.md`](docs/GETTING-STARTED.md) | Step-by-step human onboarding |
 | [`examples/comm-panel/`](examples/comm-panel/) | Swing demo — live window position/title from config |
-| [`docs/PUBLIC-SANDBOX.md`](docs/PUBLIC-SANDBOX.md) | Planned try-before-signup public config (coming) |
+| [`examples/CATALOG.md`](examples/CATALOG.md) | Public examples catalog (runnable SDK scenarios) |
 
 **Releases:** [GitHub Releases](https://github.com/kiponos-io/kiponos-io/releases) — downloadable `golden-java.zip`
 

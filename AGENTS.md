@@ -28,10 +28,10 @@ Never commit real tokens. Use `REPLACE_WITH_*` placeholders in examples.
 
 ```
 golden/java/              # Minimal runnable smoke test
+examples/                 # Runnable public SDK scenarios + CATALOG.md
 examples/comm-panel/      # Swing demo
-skills/kiponos/           # Canonical agent skill
+skills/kiponos/           # Canonical agent skill (integrate Kiponos)
 docs/GETTING-STARTED.md   # Human onboarding
-docs/PUBLIC-SANDBOX.md    # Planned try-before-signup
 ```
 
 ## Install skill

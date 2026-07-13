@@ -1,13 +1,12 @@
 # Kiponos Public Examples Catalog
 
 **Repo:** [kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)  
-**Pipeline status:** `examples/pipeline/QUEUE.md`  
 **Goal:** One runnable example per common SDK surface, app shape, industry pain, and experience level — so almost any developer can find “their” story.
 
 **Rules (all examples):**
 - Never commit real `KIPONOS_ID` / `KIPONOS_ACCESS` (placeholders + env override for local golden runs)
 - Always `disconnect()` on shutdown
-- Each example: `README.md` (problem → Kiponos fix → run) + golden E2E test + Medium story seed
+- Each example: `README.md` (problem → Kiponos fix → run) + tests
 - Java first (model); Python parity rows marked **Python later**
 
 ---

@@ -4,3 +4,36 @@ build/
 *.iml
 examples/**/build/
 golden-java*.zip
+
+# --- Private ops / marketing automation (never commit) ---
+# Live in ~/work/kiponos-io-ops or ~/.config/{devto,crunchbase,medium-examples}
+docs/wave*
+docs/waves-*
+docs/*-publish-queue.txt
+docs/*-article-ids.json
+docs/crunchbase-pending*
+docs/devto-article-catalog.md
+docs/devto-url-map.json
+docs/github-link-audit.json
+docs/github-remote-docs.json
+docs/PUBLIC-SANDBOX.md
+docs/examples/medium-drafts/MEDIUM-FORMATTING.md
+docs/examples/medium-drafts/*.MEDIUM-PLAIN.txt
+examples/pipeline/
+ops/
+scripts/publish-*
+scripts/*watchdog*
+scripts/*wave*
+scripts/fix-devto*
+scripts/fix-diagram*
+scripts/fix-expired*
+scripts/fix-github*
+scripts/notify-devto*
+scripts/pre-publish*
+scripts/restore-github*
+scripts/setup-*-covers*
+scripts/setup-wave*
+scripts/update-*-devto*
+scripts/update-expanded*
+scripts/scaffold-waves*
+scripts/*.user.service

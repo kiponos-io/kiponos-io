@@ -19,10 +19,6 @@ Thank you for helping improve Kiponos open resources.
 3. If you change `skills/kiponos/`, run `./skills/install.sh grok-project cursor-project`.
 4. Verify golden compiles: `cd golden/java && ./gradlew compileJava`.
 
-## Public sandbox & community config (coming)
-
-We plan a read-only public config tree. Community contributions will be moderated. See [`docs/PUBLIC-SANDBOX.md`](docs/PUBLIC-SANDBOX.md).
-
 ## Questions
 
 - [GitHub Discussions](https://github.com/kiponos-io/kiponos-io/discussions) — questions and ideas
