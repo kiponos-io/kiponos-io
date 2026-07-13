@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Env file roulette vs profile identity</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(145deg, #0b1220 0%, #152238 55%, #1a2740 100%);
+    color: #e8eef7;
+    padding: 36px 48px;
+  }
+  h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .sub { color: #8fa3bf; font-size: 15px; margin-bottom: 28px; }
+  .row { display: flex; gap: 28px; height: 480px; }
+  .card {
+    flex: 1; border-radius: 16px; padding: 28px 26px;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column;
+  }
+  .old { background: rgba(180, 60, 60, 0.12); border-color: rgba(255,120,120,0.25); }
+  .new { background: rgba(40, 160, 120, 0.12); border-color: rgba(80, 220, 170, 0.28); }
+  .label {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 12px;
+  }
+  .old .label { color: #ff9b9b; }
+  .new .label { color: #7df0c4; }
+  .title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+  ol, ul { margin-left: 22px; line-height: 1.7; font-size: 17px; color: #c9d6e8; }
+  li { margin-bottom: 10px; }
+  code {
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 14px; color: #b8e0ff;
+    background: rgba(0,0,0,0.25); padding: 2px 8px; border-radius: 6px;
+  }
+  .punch { margin-top: auto; font-size: 15px; font-weight: 600; color: #f0f4fa; }
+</style>
+</head>
+<body>
+  <h1>Environment identity</h1>
+  <p class="sub">Same fat jar. Different truth about who the process is.</p>
+  <div class="row">
+    <div class="card old">
+      <div class="label">Old world</div>
+      <div class="title">File roulette</div>
+      <ol>
+        <li>application-dev.yml</li>
+        <li>application-staging.yml</li>
+        <li>application-prod.yml</li>
+        <li>Hope the right one is on disk</li>
+        <li>Incident when staging hostnames go live</li>
+      </ol>
+      <p class="punch">Identity travels as a copyable file.</p>
+    </div>
+    <div class="card new">
+      <div class="label">Kiponos</div>
+      <div class="title">Profile connection</div>
+      <ul>
+        <li>One jar</li>
+        <li><code>-Dkiponos=['…']['dev']['base']</code></li>
+        <li>Or staging / prod profile path</li>
+        <li>Hub keys: env-label, api-base-url</li>
+        <li>Values scoped to the connected profile</li>
+      </ul>
+      <p class="punch">Identity is who you connect as — not a filename.</p>
+    </div>
+  </div>
+</body>
+</html>
