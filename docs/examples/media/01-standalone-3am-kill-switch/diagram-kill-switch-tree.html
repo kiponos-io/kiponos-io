@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Kill switch config tree</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: #0c1424;
+    color: #e7eef8;
+    padding: 40px 48px;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #8ea3c0; font-size: 15px; margin-bottom: 36px; }
+  .tree {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+    font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+  }
+  .node {
+    border-radius: 12px; padding: 14px 28px; font-size: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    min-width: 280px; text-align: center;
+  }
+  .root { background: rgba(90,140,255,0.15); border-color: rgba(120,170,255,0.35); }
+  .mid { background: rgba(180,120,255,0.12); border-color: rgba(200,150,255,0.3); }
+  .leaf {
+    background: rgba(40,180,120,0.14); border-color: rgba(80,220,170,0.4);
+    min-width: 420px;
+  }
+  .leaf .key { color: #9dffe0; font-weight: 700; }
+  .leaf .val { color: #ffd28a; font-weight: 700; }
+  .vline {
+    width: 2px; height: 28px; background: rgba(255,255,255,0.18);
+  }
+  .note {
+    margin-top: 40px; text-align: center; color: #a8b9d2; font-size: 16px;
+    max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.45;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
+  .badge {
+    display: inline-block; margin-top: 18px; padding: 8px 16px;
+    border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: rgba(80,220,170,0.15); color: #9dffe0;
+    border: 1px solid rgba(80,220,170,0.35);
+  }
+</style>
+</head>
+<body>
+  <h1>Config tree the example reads</h1>
+  <p class="sub">Standalone Java · examples/java/01-standalone-3am-kill-switch</p>
+  <div class="tree">
+    <div class="node root">profile root (your -Dkiponos path)</div>
+    <div class="vline"></div>
+    <div class="node mid">examples</div>
+    <div class="vline"></div>
+    <div class="node mid">kill-switch</div>
+    <div class="vline"></div>
+    <div class="node leaf">
+      <span class="key">payments-enabled</span>
+      =
+      <span class="val">yes</span> | <span class="val">no</span>
+    </div>
+  </div>
+  <p class="note">
+    Flip the key in the Kiponos dashboard. Re-run the process.
+    The boolean is a human decision — not a release train.
+  </p>
+  <div style="text-align:center">
+    <span class="badge">Live hub · no redeploy for a kill switch</span>
+  </div>
+</body>
+</html>
