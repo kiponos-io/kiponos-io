@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Spring bean + Kiponos lifecycle</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(160deg, #0a1020 0%, #121c32 50%, #0e1830 100%);
+    color: #e8eef7;
+    padding: 40px 48px;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+  .sub { color: #8fa3bf; font-size: 15px; margin-bottom: 32px; }
+  .flow {
+    display: flex; align-items: stretch; gap: 14px; margin-bottom: 36px;
+  }
+  .box {
+    flex: 1; border-radius: 14px; padding: 22px 16px;
+    background: rgba(30, 50, 80, 0.45);
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  .box h2 { font-size: 15px; color: #7ec8ff; margin-bottom: 12px; letter-spacing: 0.02em; }
+  .box p { font-size: 14px; color: #c9d6e8; line-height: 1.5; }
+  .box code {
+    display: block; margin-top: 10px; font-size: 12px;
+    font-family: ui-monospace, monospace; color: #b8e0ff;
+    word-break: break-all;
+  }
+  .chev {
+    display: flex; align-items: center; color: #5a7090; font-size: 28px; flex: 0 0 20px;
+  }
+  .tree {
+    border-radius: 14px; padding: 24px 28px;
+    background: rgba(20, 60, 50, 0.35);
+    border: 1px solid rgba(100, 230, 180, 0.22);
+  }
+  .tree h2 { font-size: 16px; color: #7df0c4; margin-bottom: 14px; }
+  .tree code {
+    font-family: ui-monospace, monospace; font-size: 16px; line-height: 1.7;
+    color: #d4e8dc; display: block;
+  }
+  .tree .hint { margin-top: 14px; font-size: 14px; color: #8fa3bf; }
+</style>
+</head>
+<body>
+  <h1>Spring Boot 3 · Kiponos bean lifecycle</h1>
+  <p class="sub">createForCurrentTeam as @Bean · live path/get on request · disconnect on @PreDestroy</p>
+  <div class="flow">
+    <div class="box">
+      <h2>1 · Startup</h2>
+      <p>KiponosConfig creates singleton</p>
+      <code>@Bean Kiponos.createForCurrentTeam()</code>
+    </div>
+    <div class="chev">→</div>
+    <div class="box">
+      <h2>2 · Requests</h2>
+      <p>LiveOpsConfig reads hub cache</p>
+      <code>GET /api/ops · GET /api/hello</code>
+    </div>
+    <div class="chev">→</div>
+    <div class="box">
+      <h2>3 · Dashboard</h2>
+      <p>Ops flips keys anytime</p>
+      <code>no restart · no @RefreshScope</code>
+    </div>
+    <div class="chev">→</div>
+    <div class="box">
+      <h2>4 · Shutdown</h2>
+      <p>Clean WebSocket teardown</p>
+      <code>@PreDestroy disconnect()</code>
+    </div>
+  </div>
+  <div class="tree">
+    <h2>Config tree (under -Dkiponos profile)</h2>
+    <code>examples / spring-boot-rest / request-timeout-ms</code>
+    <code>examples / spring-boot-rest / greeting</code>
+    <p class="hint">Bootstrap stays in application.properties · operational knobs live in the hub</p>
+  </div>
+</body>
+</html>

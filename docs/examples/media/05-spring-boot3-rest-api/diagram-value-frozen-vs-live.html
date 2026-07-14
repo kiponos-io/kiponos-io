@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>@Value frozen vs live hub read</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(160deg, #0a1020 0%, #121c32 50%, #0e1830 100%);
+    color: #e8eef7;
+    padding: 36px 44px;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #8fa3bf; font-size: 15px; margin-bottom: 28px; }
+  .cols { display: flex; gap: 24px; height: 520px; }
+  .col {
+    flex: 1; border-radius: 16px; padding: 28px 26px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; flex-direction: column;
+  }
+  .col.old {
+    background: rgba(80, 30, 40, 0.35);
+    border-color: rgba(255, 120, 120, 0.25);
+  }
+  .col.new {
+    background: rgba(20, 60, 50, 0.4);
+    border-color: rgba(100, 230, 180, 0.28);
+  }
+  .col h2 { font-size: 20px; margin-bottom: 18px; }
+  .col.old h2 { color: #ff9a9a; }
+  .col.new h2 { color: #7df0c4; }
+  .step {
+    font-size: 15px; line-height: 1.45; color: #c9d6e8;
+    padding: 12px 14px; margin-bottom: 10px;
+    border-radius: 10px; background: rgba(0,0,0,0.22);
+  }
+  .step strong { color: #fff; font-weight: 600; }
+  .arrow { text-align: center; color: #6a7d96; font-size: 18px; margin: 2px 0; }
+  .punch {
+    margin-top: auto; padding-top: 16px; font-size: 14px;
+    color: #a8b8cc; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .punch em { color: #e8eef7; font-style: normal; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>@Value frozen until restart · vs · live hub read</h1>
+  <p class="sub">Spring Boot 3 REST — same service, different distance from human judgment</p>
+  <div class="cols">
+    <div class="col old">
+      <h2>Old world</h2>
+      <div class="step"><strong>1.</strong> Edit application.yml timeout</div>
+      <div class="arrow">↓</div>
+      <div class="step"><strong>2.</strong> PR → CI → image bake</div>
+      <div class="arrow">↓</div>
+      <div class="step"><strong>3.</strong> Rolling restart / pod recycle</div>
+      <div class="arrow">↓</div>
+      <div class="step"><strong>4.</strong> @Value re-injects once at bean birth</div>
+      <p class="punch">Judgment waits for <em>process lifecycle</em></p>
+    </div>
+    <div class="col new">
+      <h2>Kiponos</h2>
+      <div class="step"><strong>1.</strong> Flip request-timeout-ms in hub</div>
+      <div class="arrow">↓</div>
+      <div class="step"><strong>2.</strong> WebSocket delta → in-process cache</div>
+      <div class="arrow">↓</div>
+      <div class="step"><strong>3.</strong> GET /api/ops reads live (no network on hot path)</div>
+      <div class="arrow">↓</div>
+      <div class="step"><strong>4.</strong> @PreDestroy disconnect on shutdown</div>
+      <p class="punch">Judgment reaches the <em>running</em> JVM</p>
+    </div>
+  </div>
+</body>
+</html>
