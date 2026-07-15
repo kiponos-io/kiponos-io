@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>SRE degradation kill-switch tree</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: #0c1424;
+    color: #e7eef8;
+    padding: 36px 48px;
+  }
+  h1 { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #8ea3c0; font-size: 15px; margin-bottom: 28px; }
+  .layout {
+    display: flex; gap: 40px; align-items: flex-start;
+  }
+  .tree {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+    font-family: ui-monospace, "Cascadia Code", Menlo, monospace;
+    flex: 0 0 520px;
+  }
+  .node {
+    border-radius: 12px; padding: 12px 22px; font-size: 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    min-width: 260px; text-align: center;
+  }
+  .root { background: rgba(90,140,255,0.15); border-color: rgba(120,170,255,0.35); }
+  .mid { background: rgba(180,120,255,0.12); border-color: rgba(200,150,255,0.3); }
+  .leaf {
+    background: rgba(40,180,120,0.14); border-color: rgba(80,220,170,0.4);
+    min-width: 460px; text-align: left; padding: 16px 22px;
+  }
+  .leaf .row { margin: 6px 0; font-size: 15px; }
+  .leaf .key { color: #9dffe0; font-weight: 700; }
+  .leaf .val { color: #ffd28a; font-weight: 700; }
+  .vline {
+    width: 2px; height: 22px; background: rgba(255,255,255,0.18);
+  }
+  .table-wrap {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 22px 24px;
+  }
+  .table-wrap h2 {
+    font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: #8ea3c0; margin-bottom: 16px; font-weight: 700;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  th { color: #8ea3c0; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.mode { color: #9dffe0; font-weight: 700; font-family: ui-monospace, Menlo, monospace; }
+  td.off { color: #ff9b9b; }
+  td.on { color: #7df0c4; }
+  .note {
+    margin-top: 28px; text-align: center; color: #a8b9d2; font-size: 15px;
+    max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.45;
+  }
+  .badge {
+    display: inline-block; margin-top: 14px; padding: 8px 16px;
+    border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: rgba(80,220,170,0.15); color: #9dffe0;
+    border: 1px solid rgba(80,220,170,0.35);
+  }
+</style>
+</head>
+<body>
+  <h1>Config tree the example reads</h1>
+  <p class="sub">Standalone Java · examples/java/sre-degradation-mode</p>
+  <div class="layout">
+    <div class="tree">
+      <div class="node root">profile root (your -Dkiponos path)</div>
+      <div class="vline"></div>
+      <div class="node mid">examples</div>
+      <div class="vline"></div>
+      <div class="node mid">sre-degradation-mode</div>
+      <div class="vline"></div>
+      <div class="node leaf">
+        <div class="row"><span class="key">mode</span> = <span class="val">full</span> | <span class="val">read-only</span> | <span class="val">maintenance</span></div>
+        <div class="row"><span class="key">accept-writes</span> = <span class="val">yes</span> | <span class="val">no</span></div>
+        <div class="row"><span class="key">background-jobs</span> = <span class="val">yes</span> | <span class="val">no</span></div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <h2>Effective posture</h2>
+      <table>
+        <thead>
+          <tr><th>Mode</th><th>Writes</th><th>Jobs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mode">full</td><td class="on">honor knobs</td><td class="on">honor knobs</td></tr>
+          <tr><td class="mode">read-only</td><td class="off">forced off</td><td class="on">honor knob</td></tr>
+          <tr><td class="mode">maintenance</td><td class="off">forced off</td><td class="off">forced off</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="note">
+    Flip mode in the Kiponos dashboard. Re-run the process.
+    Safer posture is a human decision — not a temporary PR.
+  </p>
+  <div style="text-align:center">
+    <span class="badge">Live hub · no redeploy for read-only mode</span>
+  </div>
+</body>
+</html>
