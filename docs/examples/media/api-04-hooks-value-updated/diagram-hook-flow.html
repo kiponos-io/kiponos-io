@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>afterValueUpdated flow</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(145deg, #0b1220 0%, #152238 55%, #1a2740 100%);
+    color: #e8eef7;
+    padding: 40px 52px;
+  }
+  h1 {
+    font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .sub { color: #8fa3bf; font-size: 15px; margin-bottom: 36px; }
+  .flow {
+    display: flex; align-items: stretch; gap: 14px; height: 420px;
+  }
+  .step {
+    flex: 1;
+    border-radius: 16px;
+    padding: 22px 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .step.hub {
+    background: rgba(60, 120, 220, 0.14);
+    border-color: rgba(120, 170, 255, 0.35);
+  }
+  .step.sdk {
+    background: rgba(40, 160, 120, 0.14);
+    border-color: rgba(80, 220, 170, 0.32);
+  }
+  .step.app {
+    background: rgba(200, 140, 40, 0.12);
+    border-color: rgba(255, 190, 90, 0.30);
+  }
+  .num {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 14px; font-weight: 700;
+    background: rgba(255,255,255,0.10);
+  }
+  .hub .num { background: rgba(120,170,255,0.25); color: #cfe0ff; }
+  .sdk .num { background: rgba(80,220,170,0.22); color: #b8ffe8; }
+  .app .num { background: rgba(255,190,90,0.22); color: #ffe6b0; }
+  .t { font-size: 18px; font-weight: 700; line-height: 1.25; }
+  .d { font-size: 15px; color: #a8b8d0; line-height: 1.4; flex: 1; }
+  .path {
+    margin-top: auto;
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 13px;
+    color: #c8d6ea;
+    background: rgba(0,0,0,0.28);
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .arrow {
+    flex: 0 0 28px;
+    display: grid; place-items: center;
+    color: #6a849f; font-size: 28px; font-weight: 300;
+    align-self: center;
+  }
+  .foot {
+    margin-top: 28px;
+    font-size: 15px;
+    color: #9ab0cc;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 16px;
+  }
+  .foot strong { color: #7df0c4; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>Hook path for max-rps</h1>
+  <p class="sub">Public example tree · process stays up · judgment interrupts the worker loop</p>
+  <div class="flow">
+    <div class="step hub">
+      <div class="num">1</div>
+      <div class="t">Dashboard edit</div>
+      <div class="d">Ops sets the live rate limit in the Kiponos hub — no PR, no file on a box.</div>
+      <div class="path">max-rps → 200</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step sdk">
+      <div class="num">2</div>
+      <div class="t">SDK delivers event</div>
+      <div class="d">Connected process receives ConfigValUpdated with key and value.</div>
+      <div class="path">afterValueUpdated</div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step app">
+      <div class="num">3</div>
+      <div class="t">App applies posture</div>
+      <div class="d">Worker atomic limit updates; next tick serves under the new ceiling.</div>
+      <div class="path">50 → 200 in memory</div>
+    </div>
+  </div>
+  <p class="foot">Tree: <strong>examples / hooks-value-updated / max-rps</strong> — same moral as a kill switch, different API surface: the interrupt, not the read.</p>
+</body>
+</html>

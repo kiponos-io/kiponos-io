@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Poll loop vs afterValueUpdated</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 675px;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(145deg, #0b1220 0%, #152238 55%, #1a2740 100%);
+    color: #e8eef7;
+    padding: 36px 48px;
+  }
+  h1 {
+    font-size: 28px; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .sub { color: #8fa3bf; font-size: 15px; margin-bottom: 28px; }
+  .row { display: flex; gap: 28px; height: 480px; }
+  .card {
+    flex: 1; border-radius: 16px; padding: 28px 26px;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column;
+  }
+  .old {
+    background: rgba(180, 60, 60, 0.12);
+    border-color: rgba(255,120,120,0.25);
+  }
+  .new {
+    background: rgba(40, 160, 120, 0.12);
+    border-color: rgba(80, 220, 170, 0.28);
+  }
+  .label {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 12px;
+  }
+  .old .label { color: #ff9b9b; }
+  .new .label { color: #7df0c4; }
+  .title { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+  ol { list-style: none; flex: 1; }
+  ol li {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 16px; font-size: 17px; line-height: 1.35;
+  }
+  .n {
+    flex: 0 0 28px; height: 28px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 13px; font-weight: 700;
+  }
+  .old .n { background: rgba(255,100,100,0.25); color: #ffc9c9; }
+  .new .n { background: rgba(80,220,170,0.22); color: #b8ffe8; }
+  .foot {
+    margin-top: 8px; font-size: 14px; color: #9ab0cc;
+    border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px;
+  }
+  .old .foot { color: #ffb0b0; }
+  .new .foot { color: #a8f5d8; }
+</style>
+</head>
+<body>
+  <h1>When the rate limit must move now</h1>
+  <p class="sub">Same human judgment. Two different ways a running process finds out.</p>
+  <div class="row">
+    <div class="card old">
+      <div class="label">Old world</div>
+      <div class="title">Poll / SIGHUP</div>
+      <ol>
+        <li><span class="n">1</span><span>Edit a file or hope a signal lands</span></li>
+        <li><span class="n">2</span><span>Sleep until the next timer tick</span></li>
+        <li><span class="n">3</span><span>Re-read disk (maybe stale, maybe not)</span></li>
+        <li><span class="n">4</span><span>Replicas notice at different times</span></li>
+        <li><span class="n">5</span><span>Bounce a pod when hope fails</span></li>
+      </ol>
+      <div class="foot">Lag is policy you never wrote down.</div>
+    </div>
+    <div class="card new">
+      <div class="label">Kiponos hub</div>
+      <div class="title">afterValueUpdated</div>
+      <ol>
+        <li><span class="n">1</span><span>Open the Kiponos dashboard</span></li>
+        <li><span class="n">2</span><span>Change max-rps</span></li>
+        <li><span class="n">3</span><span>Running process receives the hook</span></li>
+        <li><span class="n">4</span><span>Live limit updates in memory</span></li>
+      </ol>
+      <div class="foot">No poll. No SIGHUP. No restart for a number.</div>
+    </div>
+  </div>
+</body>
+</html>
