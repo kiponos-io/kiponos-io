@@ -73,6 +73,8 @@ That is the whole moral.
 
 Not “real-time” as a buzzword. Real-time as **respect for the person who is awake when everyone else is asleep.**
 
+<!-- medium-img: diagram-old-vs-new.png -->
+
 ---
 
 ## The example (standalone Java, no framework costume)
@@ -94,6 +96,8 @@ and prints whether payments are enabled or refused.
 First run can create the key. Next runs honor the hub.
 
 Ops flips the dashboard. You re-run. **No jar rebuild.** No “ship of Theseus” deploy for a one-word decision.
+
+<!-- medium-img: diagram-kill-switch-tree.png -->
 
 If you want the longer catalog of every app shape and industry pain we plan to cover — libraries, Spring Boot, Kafka workers, retail, travel, health, AI ops — it lives in the same repo under `examples/CATALOG.md`. This article is only the first door.
 

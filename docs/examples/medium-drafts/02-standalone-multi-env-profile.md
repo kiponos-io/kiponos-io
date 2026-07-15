@@ -50,6 +50,8 @@ What failed was the idea that **environment identity should travel as a file tha
 
 Files are excellent at many things. They are terrible at surviving humans under pressure.
 
+<!-- medium-img: diagram-env-file-roulette.png -->
+
 So we built a public example for the simplest honest fix:
 
 **Same jar. Different Kiponos profile. Env-specific values live in the hub.**
@@ -92,6 +94,8 @@ Then you do the only exercise that matters:
 3. Confirm the values do not leak  
 
 If they do not leak, you have something files never gave you: **environment as connection identity**, not as a filename that can be fat-fingered into prod.
+
+<!-- medium-img: diagram-profile-paths.png -->
 
 The longer map of app shapes and pains lives in `examples/CATALOG.md`. This article is the second door — the one after the 3am kill switch — because after you can stop the bleeding, you still have to know **which hospital you are standing in**.
 

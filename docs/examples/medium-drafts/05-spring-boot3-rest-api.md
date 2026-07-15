@@ -84,6 +84,8 @@ New world — the one this example is for:
 
 No parade. No `@RefreshScope` prayer circle. No “we’ll take a small blip.”
 
+<!-- medium-img: diagram-value-frozen-vs-live.png -->
+
 ---
 
 ## The example (Spring Boot 3 REST, bean + disconnect)
@@ -113,6 +115,8 @@ Endpoints:
 First run can create safe defaults. Ops flips the dashboard. You `curl` again. **No jar rebuild. No pod restart.**
 
 That is the whole demonstration. Not a framework religion. A process that can still hear judgment after it has started.
+
+<!-- medium-img: diagram-bean-lifecycle.png -->
 
 If you want the longer map of app shapes and pains — standalone kill switches, multi-env profiles, Kafka workers, libraries — it lives in `examples/CATALOG.md`. This article is the Spring Boot door: the one microservice owners walk through when they are tired of shipping releases for orthography.
 
