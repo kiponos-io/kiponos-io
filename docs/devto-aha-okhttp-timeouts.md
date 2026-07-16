@@ -139,15 +139,24 @@ Pair with [Feign timeouts](https://github.com/kiponos-io/kiponos-io/blob/master/
 | Base URL environment | Deploy-time wiring |
 | Protocol change HTTP→gRPC | Architecture |
 
+## Performance notes
+
+- Rebuild OkHttpClient on delta is cheap compared to an outage; prefer that over polling a config server on every call.  
+- `getInt` / `getLong` remain O(1) local memory — safe inside retry loops.  
+- Do not put secrets, base URLs, or mTLS material in the live tree; only **operational floats**.  
+- Dispatcher thread pool sizes are a separate dial — pair with server-side thread articles when both sides thrash.
+
 ## Getting started
 
 1. Move four timeout ints + retry budget into hub  
 2. AtomicReference client rebuild on `afterValueChanged`  
 3. Game day: inject latency, tighten read timeout from dashboard  
 4. Keep base URL and certs out of the live tree  
+5. Document which profile owns card-network vs warehouse HTTP so on-call never edits the wrong tree  
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io) · [GETTING-STARTED](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
 
 ---
 
 *Kiponos.io — HTTP client timeouts are dependency health policy, not folklore.*
+
