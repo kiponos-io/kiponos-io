@@ -69,7 +69,7 @@ You keep wiring in Git (`DataSource` bean, migrations, schema). You move **opera
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/abjhnb.png)
+![Architecture diagram](https://litter.catbox.moe/z7o5vb.png)
 
 1. Connect once at startup — `Kiponos.createForCurrentTeam()` or builder with team id + access key.  
 2. Snapshot loads; `db_ops/jdbc/*` keys are already in memory.  
