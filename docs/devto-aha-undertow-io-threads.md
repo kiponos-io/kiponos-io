@@ -59,7 +59,7 @@ Git still owns "we use Undertow" and TLS wiring. The hub owns **how many IO/work
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/uh8250.png)
+![Architecture diagram](https://litter.catbox.moe/bx364h.png)
 
 1. Connect once — snapshot loads `server_ops/undertow/*`.  
 2. Ops raises `io_threads` during the storm.  
