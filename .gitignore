@@ -37,3 +37,6 @@ scripts/update-*-devto*
 scripts/update-expanded*
 scripts/scaffold-waves*
 scripts/*.user.service
+
+# Local Kiponos credentials (Gradle injects into JVM only)
+**/kiponos.local.env

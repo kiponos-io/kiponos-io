@@ -48,7 +48,7 @@ Profile: `['payments']['v3']['prod']['base']`. Hot path: local `getInt` — zero
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/rw2udv.png)
+![Architecture diagram](https://files.catbox.moe/qrkb08.png)
 
 ## Integration
 

@@ -55,7 +55,7 @@ server_ops/
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/jmmp99.png)
+![Architecture diagram](https://files.catbox.moe/j2csgk.png)
 
 ## Integration
 
