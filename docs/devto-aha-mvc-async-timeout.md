@@ -48,22 +48,7 @@ You keep wiring in Git (beans, routes, security). You move **operational floats*
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  subgraph Ops
-    D[Dashboard edit]
-  end
-  subgraph JVM
-    K[Kiponos in-memory tree]
-    H[Hot path local get]
-    B[Binder / client rebuild]
-  end
-  D -->|WebSocket delta| K
-  K --> H
-  K --> B
-  H --> App[Request / consumer path]
-  B --> App
-```
+![Architecture diagram](https://litter.catbox.moe/z7o5vb.png)
 
 1. Connect once at startup — `Kiponos.createForCurrentTeam()` or builder with team id + access key.  
 2. Snapshot loads; operational keys are already in memory.  
