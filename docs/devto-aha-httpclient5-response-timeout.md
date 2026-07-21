@@ -132,3 +132,62 @@ People should not have to ship a release to make a decision about how long they 
 
 *Kiponos — live nested config with WebSocket deltas and an in-process cache so hot paths stay local.*  
 [kiponos.io](https://kiponos.io) · [GitHub examples](https://github.com/kiponos-io/kiponos-io)
+
+
+## Deeper design notes
+
+### Why per-request config beats rebuilding the client
+
+Rebuilding `CloseableHttpClient` on every timeout change is expensive and easy to get wrong (connection pools, TLS sessions, DNS). HttpClient 5 already lets **each request** carry a `RequestConfig`. That is the correct seam for a live dial:
+
+| Approach | Cost | Risk |
+|----------|------|------|
+| New client bean + restart | Deploy train | Lost in-flight work |
+| Rebuild client in-process | Pool churn | Subtle resource leaks |
+| **Per-request `RequestConfig`** | Cheap | Timeout applies to next call |
+
+### Multi-partner trees
+
+Do not put every partner under one integer. Nest:
+
+```text
+partner/
+  acme/
+    http/
+      response-timeout-ms
+  globex/
+    http/
+      response-timeout-ms
+```
+
+Ops can limp one partner without loosening the entire estate.
+
+### Observability
+
+Whenever you change the dial, emit a structured log or metric:
+
+```text
+partner.http.response_timeout_ms{partner=acme} 3000
+```
+
+Correlate with partner p95. If you raised timeout and p95 is still 2.4s, you bought time — you did not fix the partner.
+
+### Failure modes to name in the runbook
+
+1. **Ops forgets to lower the dial** → elevated latency budget becomes the new normal.  
+2. **Default too high** → hangs mask outages.  
+3. **Default too low** → false failures under mild partner jitter.
+
+Write the return-to-baseline step into the same incident card as the raise.
+
+## Field checklist
+
+- [ ] Key exists in Kiponos with a documented default  
+- [ ] Code path uses `getInt` (or equivalent) on every request config build  
+- [ ] Dashboard ACL limited to on-call / platform  
+- [ ] Metric or log on change  
+- [ ] Post-incident: dial returned to baseline  
+
+## Closing
+
+The partner will limp again. The only question is whether your timeout is a **git ceremony** or a **decision you can make while the graph is still on screen**.
