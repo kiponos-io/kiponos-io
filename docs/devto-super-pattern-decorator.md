@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/zghigy.jpg
 title: "Your Decorator Stack Was Compiled-In — We Made the Wrapper Chain Live (Kiponos Super Patterns)"
 published: false
 tags: java, designpatterns, architecture, devops
