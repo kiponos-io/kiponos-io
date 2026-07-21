@@ -212,7 +212,24 @@ Each row is a **story-shaped** example (Java primary; Python parity later).
 
 ---
 
-## G. Example folder contract
+
+## G. Super Patterns (Gang of Four + Kiponos)
+
+Each classic pattern becomes a **Super Pattern**: same structure, selection/policy live in the hub so humans *and* remote SDKs can change behavior without redeploy.
+
+| ID | Pattern | Super Pattern | Status |
+|----|---------|---------------|--------|
+| `pattern-strategy-live-router` | Strategy | Live Strategy Router | on disk |
+| `pattern-decorator-live-chain` | Decorator | Live Decorator Chain | backlog |
+| `pattern-chain-live-fraud` | Chain of Responsibility | Live Handler Chain | backlog |
+| `pattern-state-live-order` | State | Live State Machine | backlog |
+| `pattern-factory-live-channel` | Factory Method | Live Product Factory | backlog |
+
+Full backlog: `kiponos-io-ops/docs-queues/super-patterns-gof-backlog.md` · idea: `~/.grok/ideas/kiponos-gof-super-patterns/`
+
+---
+
+## H. Example folder contract
 
 ```text
 examples/java/<id>/
@@ -229,7 +246,7 @@ examples/java/<id>/
 
 ---
 
-## H. Publish pipeline (per example)
+## I. Publish pipeline (per example)
 
 1. Implement example + golden E2E  
 2. Run golden locally with env tokens (never commit tokens)  
@@ -240,7 +257,7 @@ examples/java/<id>/
 
 ---
 
-## I. Queue order (first wave)
+## J. Queue order (first wave)
 
 1. **`01-standalone-3am-kill-switch`** ← current  
 2. `02-standalone-multi-env-profile`  

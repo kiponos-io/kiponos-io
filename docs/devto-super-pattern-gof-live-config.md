@@ -5,6 +5,7 @@ tags: java, designpatterns, architecture, devops
 description: Strategy, State, Chain of Responsibility and friends already wanted runtime flexibility. Kiponos supplies the missing operational chapter — live knobs under classic GoF structure, no redeploy.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-super-pattern-gof-live-config.md
 main_image: https://files.catbox.moe/id94bo.jpg
+---
 
 The on-call lead was staring at a pricing WAR room slide that still said **“needs a release.”**
 
