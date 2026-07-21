@@ -220,7 +220,7 @@ Each classic pattern becomes a **Super Pattern**: same structure, selection/poli
 | ID | Pattern | Super Pattern | Status |
 |----|---------|---------------|--------|
 | `pattern-strategy-live-router` | Strategy | Live Strategy Router | on disk |
-| `pattern-decorator-live-chain` | Decorator | Live Decorator Chain | backlog |
+| `pattern-decorator-live-chain` | Decorator | Live Decorator Chain | on disk |
 | `pattern-chain-live-fraud` | Chain of Responsibility | Live Handler Chain | backlog |
 | `pattern-state-live-order` | State | Live State Machine | backlog |
 | `pattern-factory-live-channel` | Factory Method | Live Product Factory | backlog |
