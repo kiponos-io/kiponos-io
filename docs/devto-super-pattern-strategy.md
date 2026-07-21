@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/zghigy.jpg
 title: "The Strategy Pattern Still Required a Deploy — Until We Made Selection Live (Kiponos Super Patterns)"
 published: false
 tags: java, designpatterns, architecture, devops
@@ -62,15 +63,7 @@ That is the Super Pattern thesis of this series:
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    OPS["Dashboard / remote SDK<br/>set active=volume"] -->|WebSocket delta| TREE["In-process Kiponos tree"]
-    TREE -->|get active — local| CTX["Checkout Context"]
-    CTX --> REG["Strategy registry"]
-    REG --> FLAT["FlatPricing"]
-    REG --> VOL["VolumePricing"]
-    REG --> LOY["LoyaltyPricing"]
-```
+![Architecture diagram](https://litter.catbox.moe/p395ho.png)
 
 1. Connect once — `Kiponos.createForCurrentTeam()`.  
 2. Ensure `patterns/strategy/checkout` defaults.  
