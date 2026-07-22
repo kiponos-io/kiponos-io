@@ -22,7 +22,12 @@
 | pattern-abstract-factory-live-region | ✅ | ⏳ | ✅ draft | ⏳ | Wave B |
 | pattern-bridge-live-implementor | ✅ | ⏳ | ✅ draft | ⏳ | Wave B |
 | pattern-facade-live-knobs | ✅ | ⏳ | ✅ draft | ⏳ | Wave B |
-| Wave C–D (observer…visitor) | planned | planned | planned | planned | see `docs-queues/super-patterns-gof-backlog.md` |
+| pattern-observer-live-bus | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
+| pattern-command-live-dispatch | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
+| pattern-template-live-steps | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
+| pattern-mediator-live-topology | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
+| pattern-interpreter-live-rules | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
+| Wave D (builder…visitor) | planned | planned | planned | planned | see super-patterns-gof-backlog |
 
 ### Reader path (every Super Pattern)
 
