@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/mssqu5.jpg
 title: "Travel Overbooking Limit Live"
 published: false
 tags: java, devops, architecture, kiponos

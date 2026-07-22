@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/iv9ar1.jpg
 title: "Composite Super Pattern — Node Weights Live"
 published: false
 tags: java, devops, architecture, kiponos

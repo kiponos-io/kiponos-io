@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/qg4k6e.jpg
 title: "Memento Super Pattern — Snapshot Retention Live"
 published: false
 tags: java, devops, architecture, kiponos

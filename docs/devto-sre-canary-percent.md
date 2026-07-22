@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/zoj6eh.jpg
 title: "Canary Percent Live"
 published: false
 tags: java, devops, architecture, kiponos

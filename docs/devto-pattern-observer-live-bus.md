@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/z3536y.jpg
 title: "Observer Super Pattern — Live Subscriber Enable List"
 published: false
 tags: java, devops, architecture, kiponos

@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/6cme0z.jpg
 title: "Media Bitrate Ceiling Live"
 published: false
 tags: java, devops, architecture, kiponos

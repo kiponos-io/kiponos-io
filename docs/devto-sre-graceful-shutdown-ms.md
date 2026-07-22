@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/9rgz4p.jpg
 title: "Graceful Shutdown Window Live"
 published: false
 tags: java, devops, architecture, kiponos

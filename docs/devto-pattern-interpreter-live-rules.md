@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/t30kr9.jpg
 title: "Interpreter Super Pattern — Fail-Closed Live Rules"
 published: false
 tags: java, devops, architecture, kiponos

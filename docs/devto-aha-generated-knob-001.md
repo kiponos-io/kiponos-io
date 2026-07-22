@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/flc3pc.jpg
 title: "Live Ops Knob 1: Tune Without Redeploy"
 published: false
 tags: java, devops, architecture, kiponos

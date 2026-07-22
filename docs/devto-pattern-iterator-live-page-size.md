@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/ugmnm4.jpg
 title: "Iterator Super Pattern — Page Size Live"
 published: false
 tags: java, devops, architecture, kiponos

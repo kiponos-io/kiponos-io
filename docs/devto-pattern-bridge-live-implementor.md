@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/wmb6fv.jpg
 title: "Bridge Super Pattern — Implementor Chosen Live"
 published: false
 tags: java, devops, architecture, kiponos

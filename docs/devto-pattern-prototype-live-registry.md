@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/5ljude.jpg
 title: "Prototype Super Pattern — Active Template Live"
 published: false
 tags: java, devops, architecture, kiponos

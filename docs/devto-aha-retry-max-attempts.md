@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/2nkdfs.jpg
 title: "Retry Max Attempts Live"
 published: false
 tags: java, devops, architecture, kiponos

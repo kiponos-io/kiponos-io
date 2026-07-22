@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/qcgqlm.jpg
 title: "Flyweight Super Pattern — Cache Cap Live"
 published: false
 tags: java, devops, architecture, kiponos

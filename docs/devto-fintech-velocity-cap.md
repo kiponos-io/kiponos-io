@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/xcg2rw.jpg
 title: "Fintech Velocity Cap Live"
 published: false
 tags: java, devops, architecture, kiponos

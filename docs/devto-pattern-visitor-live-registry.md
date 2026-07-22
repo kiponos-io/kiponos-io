@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/gug6tg.jpg
 title: "Visitor Super Pattern — Visitor Registry Live"
 published: false
 tags: java, devops, architecture, kiponos

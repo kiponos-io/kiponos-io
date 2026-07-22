@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/1824pj.jpg
 title: "Proxy That Can Close the Door Without a Deploy (Kiponos Super Patterns)"
 published: false
 tags: java, designpatterns, security, devops

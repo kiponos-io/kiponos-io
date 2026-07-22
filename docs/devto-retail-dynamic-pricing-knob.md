@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/8rkkee.jpg
 title: "Retail Dynamic Pricing Weights Live"
 published: false
 tags: java, devops, architecture, kiponos

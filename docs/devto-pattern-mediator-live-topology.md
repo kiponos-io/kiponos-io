@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/50nf5z.jpg
 title: "Mediator Super Pattern — Who Talks to Whom Live"
 published: false
 tags: java, devops, architecture, kiponos

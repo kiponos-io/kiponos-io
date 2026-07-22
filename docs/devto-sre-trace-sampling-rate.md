@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/oyfrgh.jpg
 title: "Trace Sampling Rate Live"
 published: false
 tags: java, devops, architecture, kiponos

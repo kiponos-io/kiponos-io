@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/lxoidb.jpg
 title: "Stable Facade, Live Guts (Kiponos Super Patterns)"
 published: false
 tags: java, designpatterns, architecture, devops

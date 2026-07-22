@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/hk9nl7.jpg
 title: "Abstract Factory as a Super Pattern — Region Family Live"
 published: false
 tags: java, devops, architecture, kiponos

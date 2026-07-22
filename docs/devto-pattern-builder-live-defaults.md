@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/i0to6u.jpg
 title: "Builder Super Pattern — Defaults and Severity Live"
 published: false
 tags: java, devops, architecture, kiponos

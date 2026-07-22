@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/rlh7vp.jpg
 title: "Rate Limit RPS Live"
 published: false
 tags: java, devops, architecture, kiponos

@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/57rgpw.jpg
 title: "Singleton Super Pattern — One Instance Live Policy"
 published: false
 tags: java, devops, architecture, kiponos

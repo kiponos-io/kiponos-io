@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/f1mhcb.jpg
 title: "Command Super Pattern — Dry-Run and Enable Live"
 published: false
 tags: java, devops, architecture, kiponos

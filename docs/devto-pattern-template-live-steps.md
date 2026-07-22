@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/y1b06i.jpg
 title: "Template Method Super Pattern — Optional Steps Live"
 published: false
 tags: java, devops, architecture, kiponos

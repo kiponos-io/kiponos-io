@@ -1,4 +1,5 @@
 ---
+main_image: https://litter.catbox.moe/1tcm0v.jpg
 title: "Adapter Was Always the Wrong Layer to Redeploy (Kiponos Super Patterns)"
 published: false
 tags: java, designpatterns, payments, devops
