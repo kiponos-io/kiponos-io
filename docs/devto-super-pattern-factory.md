@@ -1,28 +1,72 @@
 ---
-title: "Factory Method Whose Product Id Is Live Config"
+main_image: https://litter.catbox.moe/ve205p.jpg
+title: "Factory Method Whose Product Id Is Live Config (Kiponos Super Patterns)"
 published: false
-tags: java, designpatterns, devops, kiponos
+tags: java, designpatterns, architecture, devops
+description: email → slack mid-incident is a hub write, not a deploy. GoF Factory Method becomes a Super Pattern when product selection lives in Kiponos.
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-super-pattern-factory.md
 ---
 
-# Factory Method Whose Product Id Is Live Config
+**The Aha:** Factories create objects. Super factories create the *right* object for the next minute of production. Put `product` in [Kiponos.io](https://kiponos.io); `createNotifier()` follows.
 
-email → slack mid-incident is a hub write, not a deploy.
+## The problem: “defer instantiation” that still waits for a release
 
-This is the **dev.to** essay twin (unique prose) of the Medium Super Pattern series.
-Clone the runnable example from the public repo — do not treat this post as the full source.
+Factory Method promises: defer which class to instantiate.
 
-## Idea
+In most codebases, “defer” means “until the next release.” Email is hard-coded. Slack is a weekend branch. SMS is a comment that says `// TODO`.
 
-Gang of Four gives structure. Kiponos gives a realtime policy tree so humans and remote SDKs
-can change the pattern’s *inner selection* without redeploy.
+An incident needs pages in Slack **now**, not after pipeline green.
 
-## Try it
+## The Aha: Factory + live product id = Super Pattern
 
-See the matching `examples/java/pattern-*` folder on
-[github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io).
+```yaml
+patterns/
+  factory/
+    notify/
+      product: email          # email | sms | push | slack
+      from-email: noreply@example.com
+      slack-hook: "#ops-alerts"
+```
 
-Python parity lives under `examples/python/`.
+```java
+Notifier n = switch (read(policy, "product", "email")) {
+    case "sms" -> new SmsNotifier();
+    case "slack" -> new SlackNotifier(hook);
+    default -> new EmailNotifier(from);
+};
+```
+
+Ops sets `product=slack`. Next page uses Slack. Remote on-call bot can flip it back when the channel is noisy.
+
+## Architecture
+
+![Architecture diagram](./devto-diagram-super-pattern-factory.png)
+
+Products stay versioned code. **Selection** is hub state. Hot path is local `get()`.
+
+## Clone and run
+
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/pattern-factory-live-channel
+cp kiponos.local.env.example kiponos.local.env
+./gradlew test run --args='Warehouse delay on order 9'
+```
+
+Python: [`examples/python/pattern-factory-live-channel`](https://github.com/kiponos-io/kiponos-io/tree/master/examples/python/pattern-factory-live-channel)
+
+## Scenarios
+
+| Moment | Frozen factory | Super Pattern |
+|--------|----------------|---------------|
+| Pager channel outage | Redeploy | `product=sms` |
+| Marketing campaign | Wait for ship | `product=push` |
+| Cost control | PR | Prefer `email` live |
 
 ## Moral
 
-People should not have to ship a release to make a decision.
+Factories create objects. Super factories create the right object for the next minute of production.
+
+---
+
+*Runnable: [pattern-factory-live-channel](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-factory-live-channel)*

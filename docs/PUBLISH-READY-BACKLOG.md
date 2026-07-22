@@ -27,7 +27,8 @@
 | pattern-template-live-steps | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
 | pattern-mediator-live-topology | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
 | pattern-interpreter-live-rules | ✅ | ⏳ | ✅ draft | ⏳ | Wave C |
-| Wave D (builder…visitor) | planned | planned | planned | planned | see super-patterns-gof-backlog |
+| pattern-builder…visitor (Wave D ×8) | ✅ | ⏳ | ✅ draft | ⏳ | on disk 2026-07-22 |
+| aha-http-timeout…aha-log-levels | ✅ | ⏳ | ✅ draft | ⏳ | first aha golden batch |
 
 ### Reader path (every Super Pattern)
 
@@ -87,7 +88,7 @@ Gap to close while idle: **matching `examples/java/*` goldens** so every essay c
 
 ### Priority while idle (after Super Patterns)
 
-1. Finish Super Pattern Wave C (observer, command, template, mediator, interpreter)  
+1. ~~Waves A–D Super Patterns~~ on disk (23 pattern-* examples)  
 2. For each aha essay missing an example: scaffold `examples/java/aha-<knob>/` with one live key + logic test  
 3. Python only where the knob is language-agnostic  
 4. Keep Medium drafts thick (≥500 words traveler voice) before organic slots  

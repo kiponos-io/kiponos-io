@@ -229,7 +229,20 @@ Each classic pattern becomes a **Super Pattern**: same structure, selection/poli
 | `pattern-abstract-factory-live-region` | Abstract Factory | Live Region Family | Java |
 | `pattern-bridge-live-implementor` | Bridge | Live Implementor | Java |
 | `pattern-facade-live-knobs` | Facade | Live Facade Knobs | Java |
-| `pattern-observer-live-bus` … `pattern-visitor-live-registry` | Wave C–D | see Super Patterns backlog | planned |
+| `pattern-observer-live-bus` | Observer | Live Event Bus | Java |
+| `pattern-command-live-dispatch` | Command | Live Command Dispatch | Java |
+| `pattern-template-live-steps` | Template Method | Live Template Steps | Java |
+| `pattern-mediator-live-topology` | Mediator | Live Topology | Java |
+| `pattern-interpreter-live-rules` | Interpreter | Live Rules | Java |
+| `pattern-builder-live-defaults` | Builder | Live Builder Defaults | Java |
+| `pattern-singleton-live-policy` | Singleton | Live Singleton Policy | Java |
+| `pattern-composite-live-rules` | Composite | Live Composite Weights | Java |
+| `pattern-prototype-live-registry` | Prototype | Live Prototype Registry | Java |
+| `pattern-flyweight-live-cache` | Flyweight | Live Cache Policy | Java |
+| `pattern-memento-live-retention` | Memento | Live Snapshot Retention | Java |
+| `pattern-iterator-live-page-size` | Iterator | Live Page Size | Java |
+| `pattern-visitor-live-registry` | Visitor | Live Visitor Registry | Java |
+| `aha-http-timeout` … `aha-log-levels` | Aha knobs | Live timeout/TTL/chunk/… | Java batch |
 
 Full backlog: `kiponos-io-ops/docs-queues/super-patterns-gof-backlog.md` · idea: `~/.grok/ideas/kiponos-gof-super-patterns/`
 
