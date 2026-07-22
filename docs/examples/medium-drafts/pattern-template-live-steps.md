@@ -1,21 +1,89 @@
-# GoF Template Method as a Super Pattern — Live Policy Without Redeploy
+# Template Method Super Pattern — Optional Steps Live
 
-*Traveler note: classic structure, hub-selected behavior.*
+*A traveler’s note: pipeline steps toggled from hub.*
 
-## Clone and run
+---
+
+There is a class of production decisions that are **too small for a release** and **too important for a wiki**.
+
+pipeline steps toggled from hub
+
+Redeploying a jar to change `steps` is how teams invent 3am folklore.
+
+---
+
+## Hub tree
+
+```text
+patterns/template/onboard/steps = validate,enrich,persist,notify
+```
+
+Local `get()` on the hot path. Dashboard or remote SDK `set()` when the world changes.
+
+---
+
+## Snippet
+
+```java
+    public static void main(String[] args) throws Exception {
+        Kiponos k = Kiponos.createForCurrentTeam();
+        try {
+            Folder p = ensure(k);
+            System.out.println("steps=" + runTemplate(p, "user-1"));
+            Thread.sleep(1500);
+        } finally { k.disconnect(); }
+    }
+    static Folder ensure(Kiponos k) {
+        Folder f = k.getRootFolder().folderOrCreate("patterns").folderOrCreate("template").folderOrCreate("onboard");
+        if (!f.hasKey("steps")) f.set("steps", "validate,enrich,persist,notify");
+        return f;
+    }
+    static List<String> runTemplate(Folder policy, String id) {
+        List<String> steps = new ArrayList<>();
+        for (String s : read(policy, "steps", "validate,enrich,persist,notify").split(",")) {
+            String t = s.trim().toLowerCase(Locale.ROOT);
+            if (t.isEmpty()) continue;
+            steps.add(t + "(" + id + ")");
+        }
+        return steps;
+    }
+    static String read(Folder p, String k, String d) {
+        if (!p.hasKey(k)) return d;
+```
+
+---
+
+## Clone and run the full golden example
 
 ```bash
 git clone https://github.com/kiponos-io/kiponos-io.git
 cd kiponos-io/examples/java/pattern-template-live-steps
-cp kiponos.local.env.example kiponos.local.env
+cp kiponos.local.env.example kiponos.local.env   # tokens from kiponos.io → Connect
 ./gradlew test run
 ```
 
-Full source is the product. This draft is the story wrapper for Medium.
+Full source + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-template-live-steps](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-template-live-steps)
 
-## Moral
-
-People should not have to ship a release to make a decision.
+This article only shows the nerve. The repo is the product.
 
 ---
-*Example: https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-template-live-steps*
+
+## Old world vs Kiponos
+
+| Move | Old world | Live hub |
+|------|-----------|----------|
+| Change the knob | PR → CI → roll | Dashboard / SDK `set()` |
+| Wrong replica | Drift | Same tree, WebSocket fan-out |
+| Incident rollback | Redeploy previous | Flip the value back |
+
+---
+
+## The moral
+
+**People should not have to ship a release to make a decision.**
+
+Ship the judgment path once. Leave the jar alone.
+
+---
+
+*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-template-live-steps](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-template-live-steps)*
