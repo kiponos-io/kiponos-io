@@ -21,3 +21,7 @@ export KIPONOS="['my-app']['v1.0.0']['dev']['base']"   # your profile
 Never commit real tokens. Placeholders stay in git; local env wins.
 
 Each example has a `README.md` (problem → Kiponos fix → run) and tests. Prefer the catalog when choosing which scenario matches your stack.
+
+## Python parity
+
+See `examples/python/` — Super Pattern demos with pure logic tests and optional live hub via `agent-kit`.

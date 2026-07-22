@@ -89,7 +89,7 @@ Developers own interfaces and concrete classes. Product and ops own live decisio
 
 ## Architecture: Super Strategy under a live hub
 
-![Architecture diagram](https://litter.catbox.moe/12h1cx.png)
+![Architecture diagram](https://litter.catbox.moe/s260xe.png)
 
 | Component | Job |
 |-----------|-----|

@@ -40,3 +40,7 @@ scripts/*.user.service
 
 # Local Kiponos credentials (Gradle injects into JVM only)
 **/kiponos.local.env
+
+__pycache__/
+*.py[cod]
+

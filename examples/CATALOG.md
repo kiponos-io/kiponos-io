@@ -219,11 +219,17 @@ Each classic pattern becomes a **Super Pattern**: same structure, selection/poli
 
 | ID | Pattern | Super Pattern | Status |
 |----|---------|---------------|--------|
-| `pattern-strategy-live-router` | Strategy | Live Strategy Router | on disk |
-| `pattern-decorator-live-chain` | Decorator | Live Decorator Chain | on disk |
-| `pattern-chain-live-fraud` | Chain of Responsibility | Live Handler Chain | backlog |
-| `pattern-state-live-order` | State | Live State Machine | backlog |
-| `pattern-factory-live-channel` | Factory Method | Live Product Factory | backlog |
+| `pattern-strategy-live-router` | Strategy | Live Strategy Router | Java + Python |
+| `pattern-decorator-live-chain` | Decorator | Live Decorator Chain | Java + Python |
+| `pattern-chain-live-fraud` | Chain of Responsibility | Live Handler Chain | Java + Python |
+| `pattern-state-live-order` | State | Live State Machine | Java + Python |
+| `pattern-factory-live-channel` | Factory Method | Live Product Factory | Java + Python |
+| `pattern-adapter-live-psp` | Adapter | Live PSP Adapter | Java |
+| `pattern-proxy-live-access` | Proxy | Live Access Proxy | Java |
+| `pattern-abstract-factory-live-region` | Abstract Factory | Live Region Family | Java |
+| `pattern-bridge-live-implementor` | Bridge | Live Implementor | Java |
+| `pattern-facade-live-knobs` | Facade | Live Facade Knobs | Java |
+| `pattern-observer-live-bus` … `pattern-visitor-live-registry` | Wave C–D | see Super Patterns backlog | planned |
 
 Full backlog: `kiponos-io-ops/docs-queues/super-patterns-gof-backlog.md` · idea: `~/.grok/ideas/kiponos-gof-super-patterns/`
 
