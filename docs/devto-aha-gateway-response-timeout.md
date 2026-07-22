@@ -53,7 +53,7 @@ You keep wiring in Git (beans, routes, security). You move **operational floats*
 
 ## Architecture
 
-![Architecture diagram](https://litter.catbox.moe/z7o5vb.png)
+![Architecture diagram](https://files.catbox.moe/lqvrov.png)
 
 1. Connect once at startup — `Kiponos.createForCurrentTeam()` or builder with team id + access key.  
 2. Snapshot loads; operational keys are already in memory.  
