@@ -1,57 +1,178 @@
 ---
-title: "Strangler Fig Migrations With Live Traffic Shift Keys (Kiponos Java SDK)"
+title: "Strangler Fig Routing Weights Should Move Live — Not Per Cutover Ticket"
 published: false
-tags: java, architecture, refactoring, devops
-description: Gradually replace a legacy monolith by routing feature slices through live Kiponos flags and percentage weights — no big-bang cutover, no redeploy to roll back.
+tags: java, architecture, microservices, kiponos
+description: "Live strangler routing weights via Kiponos during migration."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-strangler-fig-migration.md
-main_image: https://files.catbox.moe/yath7q.jpg
+main_image: https://files.catbox.moe/7u3q12.jpg
 ---
 
-Strangler fig pattern: peel features off a legacy system into new services **incrementally**. The hard part is **routing** — which users hit legacy billing vs new billing? Teams hard-code `if (featureFlag)` branches fed by static config; rollback means **revert + deploy**.
+**The Aha:** `legacyWeight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) makes strangler routing **operational**:
+Migrations die in the gap between 'route 5% more' and the next green pipeline. The fig strangles on human latency.
+
+Domain: Legacy → modern cutovers, BFF routing, facade edges.
+
+## Live weights, frozen binaries
+
+Ship both implementations. Steer `legacyWeight` / `modernWeight` from the hub. Instant rollback is a number, not a revert PR.
+
+## Safety
+
+- Max step size per change
+- Automatic freeze on error-budget burn
+- Per-route folders so one endpoint does not drag the fleet
+
+
+## The problem: ceremony between judgment and effect
+
+You already know the right number. Everyone in the war room knows the right number. What you do not have is a path from **mouth → running process** that is shorter than a release train.
+
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still CI + roll |
+| "Flags cover this" | Second system, second delay |
+| "Defaults are fine" | Defaults become root causes |
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```java
-public BillingPort resolveBilling(String customerId) {
-    var mig = kiponos.path("strangler", "billing");
-    if (!mig.getBool("migration_enabled")) {
-        return legacyBilling;
-    }
-    int pct = mig.getInt("new_stack_percent");
-    if (bucket(customerId) < pct) {
-        return newBilling;
-    }
-    return legacyBilling;
-}
+Folder policy = kiponos.path("examples", "arch-strangler-fig-migration");
+int value = policy.getInt("legacyWeight");
+// use value on the decision path
 ```
 
-Increase `new_stack_percent` 5 → 20 → 50 over weeks. Bug in new stack? Set to **0** in dashboard — instant full rollback.
+Ops sets the key in the dashboard (or automation writes the same path). The **next** evaluation uses the new value. Same jar.
 
-## Strangler tree
+## What stays in the jar vs the hub
 
-```yaml
-strangler/
-  billing/
-    migration_enabled: true
-    new_stack_percent: 15
-    shadow_compare: true
-  catalog/
-    migration_enabled: false
-    new_stack_percent: 0
-  global/
-    kill_switch_new_stack: false
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima | Current posture |
+| Schema & types | Human judgment under pressure |
+
+## Architecture
+
+```
+Dashboard / automation
+        │ write
+        ▼
+   Kiponos hub tree
+        │ delta
+        ▼
+  Java SDK in-process cache ──► local get on hot path
 ```
 
-## Shadow compare mode
+No sidecar tax on every request. No second product for "just this one dial."
 
-`shadow_compare: true` — invoke new stack async, log diffs, **return legacy answer** to user. Tune confidence before raising percent.
+## Clone and run
 
-## Extreme innovation
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/arch-strangler-fig-migration   # or nearest aha-* sibling
+# follow README — KIPONOS_ID / KIPONOS_ACCESS for sandbox
+```
 
-Kiponos is the **migration control plane** — product, SRE, and architects share one UI. Legacy and new code paths read same tree; **no duplicate feature-flag vendors** per service.
+Unit-test with fixed strings. Integration-test against the public sandbox when you can.
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+## Scenarios
+
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+
+## When not to live-edit
+
+- Protocol or schema changes that need coordinated rollouts  
+- Values that compliance requires code-reviewed only  
+- Anything you cannot clamp or allowlist safely  
+
+Live knobs are for **posture**, not for inventing untested systems under fire.
+
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard roles + automation identities).  
+4. Log the **decision**, not every get.  
+5. Rehearse the flip in staging with this example module.  
+6. Document the one-line kill path (revert key).
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture on an architecture concern** — pools, cutovers, retries, circuits, canaries, thresholds — numbers humans already change verbally in war rooms.
+
+Kiponos makes that verbal decision **executable** without a second control plane tax on every request.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Cutover without heroics
+
+1. Dual-write or dual-read as the design requires (code).  
+2. Steer traffic share live (hub).  
+3. Freeze share on error-budget burn (automation).  
+4. Finish cutover when modern wins on SLOs — not when the calendar says so.
+
+## Rollback is a number
+
+`modernWeight=0` beats "revert the release" when the binary is fine and the data path is not. Know which failure mode you have before you pick the tool.
+
+## What stays in Git
+
+Service topology, network policies, and the **existence** of both implementations. Weights are posture during the strangler, not forever-config in a ConfigMap.
+
+
+
+## Closing
+
+Architecture diagrams do not absorb incidents. Steerable posture does.
+
+
+## War-room protocol
+
+1. **Name the path** in the runbook before the incident (`examples/<stem>/<key>`).  
+2. **State the clamp** out loud (min/max) before anyone types.  
+3. **Write the reason code** with the change (`sev`, `peak`, `cost`, `drill`).  
+4. **Watch two signals** for five minutes (user SLO + dependency health).  
+5. **Revert or step** — never leave an experimental value as the silent new normal.  
+6. **Postmortem line:** who moved what, from→to, and whether automation should own it next time.
+
+## Defaults when the hub is dark
+
+| Path class | Hub unreachable default |
+|------------|-------------------------|
+| Money / fraud | Fail closed or conservative floor |
+| Ingress RPS | Last-known-good or safe mid |
+| Canary share | 0% (stable binary only) |
+| Observability sample | Modest baseline (not zero on audit paths) |
+| Drain window | Compiled mid (still exit) |
+
+Dark-hub behavior is part of the design, not an afterthought.
+
+## Related reading in this library
+
+- Aha series: retries, RPS, pools, sampling — same Super Pattern spine  
+- Super Patterns: GoF shapes with live policy objects  
+- Product: [kiponos.io](https://kiponos.io) · [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+If you only remember one architecture sentence: **version the code paths; live-edit the posture.**
+
+
+## Moral
+
+Cutover share is posture. Binary versions are releases.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — strangler routing you can roll back in one slider.*
+*Runnable examples: [kiponos-io/examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java) · Product: [kiponos.io](https://kiponos.io) · Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)*

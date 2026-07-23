@@ -1,95 +1,172 @@
 ---
-title: "Escape Multi-Environment Configuration Chaos With One Kiponos Profile Per Env (Java SDK)"
+title: "Multi-Env Config Chaos Ends When Each Env Has a Live Tree"
 published: false
-tags: java, devops, architecture, config
-description: Local, QA, CI, staging, and prod should not mean five YAML forks. Same Java binary, different Kiponos profile paths — live updates without env-var matrices.
+tags: java, architecture, devops, kiponos
+description: "Live per-environment policy trees with Kiponos — stop copying YAML between envs."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-config-chaos-multi-env.md
-main_image: https://files.catbox.moe/y1msbh.jpg
+main_image: https://files.catbox.moe/ck9yq3.jpg
 ---
 
-Every new environment adds another `application-{env}.yml`, another Helm values file, another "just export these variables" wiki page. Six months later **staging does not resemble prod** and nobody knows which file CI actually used.
+**The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
 
-This is **configuration chaos** — an architecture failure, not a discipline problem. [Kiponos.io](https://kiponos.io) is a real-time config hub: connected SDKs cache the latest tree **in memory**, updated via WebSocket **deltas**. Environment separation becomes **profile path selection**, not file duplication.
+Staging lies when it runs yesterday's production numbers. Live trees per env make the lie visible — and fixable.
 
-## Profile paths replace file forks
+Domain: dev/stage/prod policy, promotion discipline.
 
+## Promote structure, not values
+
+Same key paths across envs. Different values on purpose. Promotion is a deliberate copy with audit — not a surprise YAML merge at 2am.
+
+
+## The problem: ceremony between judgment and effect
+
+You already know the right number. Everyone in the war room knows the right number. What you do not have is a path from **mouth → running process** that is shorter than a release train.
+
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still CI + roll |
+| "Flags cover this" | Second system, second delay |
+| "Defaults are fine" | Defaults become root causes |
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
+
+```java
+Folder policy = kiponos.path("examples", "arch-config-chaos-multi-env");
+int value = policy.getInt("timeoutMs");
+// use value on the decision path
 ```
-['payments']['v3']['local']['dev']
-['payments']['v3']['qa']['integration']
-['payments']['v3']['staging']['live']
-['payments']['v3']['prod']['live']
-```
 
-Same JAR everywhere:
+Ops sets the key in the dashboard (or automation writes the same path). The **next** evaluation uses the new value. Same jar.
 
-```bash
-# Only these differ per deployment
-export KIPONOS_ID=...
-export KIPONOS_ACCESS=...
-java -Dkiponos="['payments']['v3']['prod']['live']" -jar app.jar
-```
+## What stays in the jar vs the hub
 
-## The chaos pattern
-
-| Environment | Typical mess |
-|-------------|--------------|
-| Local | `.env`, docker-compose overrides |
-| QA | `application-qa.yml` + 40 env vars |
-| CI | GitHub secrets duplicating QA |
-| Staging | Outdated Helm chart |
-| Prod | CAB for YAML changes |
-
-Drift is guaranteed. Incidents start with "but staging passed."
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima | Current posture |
+| Schema & types | Human judgment under pressure |
 
 ## Architecture
 
-![Architecture diagram](https://files.catbox.moe/z2kn7r.png)
-
-## Java: no spring.profiles.active for URLs
-
-```java
-Kiponos kiponos = Kiponos.createForCurrentTeam();
-String paymentsUrl = kiponos.path("dependencies", "payments").get("base_url");
-int timeoutMs = kiponos.path("http", "client").getInt("timeout_ms");
+```
+Dashboard / automation
+        │ write
+        ▼
+   Kiponos hub tree
+        │ delta
+        ▼
+  Java SDK in-process cache ──► local get on hot path
 ```
 
-Feature flags, limits, and integration endpoints live in the tree — not in five YAML files.
+No sidecar tax on every request. No second product for "just this one dial."
 
-## Lifecycle wins
+## Clone and run
 
-| Phase | Kiponos approach |
-|-------|------------------|
-| Develop | `local/dev` profile, live tweaks |
-| QA test | Change mock URL mid-session ([QA article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-qa-zero-config.md)) |
-| Staging | Mirror prod keys with `mirror_prod_flags` ([staging article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-staging-live-profile.md)) |
-| Prod incident | Tune thresholds live — no hotfix branch |
-| Promotion | Copy reviewed keys staging → prod in dashboard |
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/arch-config-chaos-multi-env   # or nearest aha-* sibling
+# follow README — KIPONOS_ID / KIPONOS_ACCESS for sandbox
+```
 
-## What Kiponos gives you that files cannot
+Unit-test with fixed strings. Integration-test against the public sandbox when you can.
 
-- **Delta updates** — change one URL without reloading 500-key YAML
-- **Zero-latency reads** — `get()` from SDK cache on hot path
-- **Dashboard ACL** — who may edit prod vs QA
-- **Same SDK** Java and Python across services
+## Scenarios
 
-## Compare
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-| Approach | Env parity | Live mid-test tweak |
-|----------|------------|---------------------|
-| YAML per env | Drift | PR + deploy |
-| Env var matrix | Opaque | Redeploy |
-| Consul/etcd | Better | Poll or watch |
-| **Kiponos profiles** | **Same code** | **Per-profile dashboard** |
+## When not to live-edit
 
-## Getting started
+- Protocol or schema changes that need coordinated rollouts  
+- Values that compliance requires code-reviewed only  
+- Anything you cannot clamp or allowlist safely  
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — create four profile paths
-2. Inventory all keys in `application-*.yml`; migrate to hub folders
-3. CI: only `KIPONOS_ID` + `KIPONOS_ACCESS` secrets
-4. Delete env-specific YAML from repo; verify smoke per profile
+Live knobs are for **posture**, not for inventing untested systems under fire.
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard roles + automation identities).  
+4. Log the **decision**, not every get.  
+5. Rehearse the flip in staging with this example module.  
+6. Document the one-line kill path (revert key).
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture on an architecture concern** — pools, cutovers, retries, circuits, canaries, thresholds — numbers humans already change verbally in war rooms.
+
+Kiponos makes that verbal decision **executable** without a second control plane tax on every request.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Promotion checklist
+
+1. Same path structure in all envs  
+2. Diff values intentionally before promote  
+3. Audit actor + ticket on prod writes  
+4. Stage rehearsal of the exact key you will move in prod  
+
+## Secrets stay out
+
+Never put credentials in the live ops tree. Secret managers for secrets; hubs for posture; Git for durable desired state.
+
+## Drift detection
+
+Alert when stage and prod **structure** diverges (missing keys). Value divergence is often correct; structure divergence is usually a bug.
+
+
+
+## Closing
+
+Architecture diagrams do not absorb incidents. Steerable posture does.
+
+
+## War-room protocol
+
+1. **Name the path** in the runbook before the incident (`examples/<stem>/<key>`).  
+2. **State the clamp** out loud (min/max) before anyone types.  
+3. **Write the reason code** with the change (`sev`, `peak`, `cost`, `drill`).  
+4. **Watch two signals** for five minutes (user SLO + dependency health).  
+5. **Revert or step** — never leave an experimental value as the silent new normal.  
+6. **Postmortem line:** who moved what, from→to, and whether automation should own it next time.
+
+## Defaults when the hub is dark
+
+| Path class | Hub unreachable default |
+|------------|-------------------------|
+| Money / fraud | Fail closed or conservative floor |
+| Ingress RPS | Last-known-good or safe mid |
+| Canary share | 0% (stable binary only) |
+| Observability sample | Modest baseline (not zero on audit paths) |
+| Drain window | Compiled mid (still exit) |
+
+Dark-hub behavior is part of the design, not an afterthought.
+
+## Related reading in this library
+
+- Aha series: retries, RPS, pools, sampling — same Super Pattern spine  
+- Super Patterns: GoF shapes with live policy objects  
+- Product: [kiponos.io](https://kiponos.io) · [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+If you only remember one architecture sentence: **version the code paths; live-edit the posture.**
+
+
+## Moral
+
+Env parity is about structure, not frozen equal values.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — one binary, many profiles. End configuration chaos across the lifecycle.*
+*Runnable examples: [kiponos-io/examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java) · Product: [kiponos.io](https://kiponos.io) · Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)*

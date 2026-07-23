@@ -1,102 +1,169 @@
 ---
-title: "Live Observability Alert Thresholds — Stop Redeploying for Every SLO Tweak (Kiponos Python SDK)"
+title: "Alert Thresholds Are On-Call Posture — Move Them Without a Deploy"
 published: false
-tags: python, devops, monitoring, architecture
-description: Error-rate and latency alert thresholds trapped in Prometheus YAML or Python constants need live tuning. Kiponos feeds alert evaluators — calm false alarms during incidents without editing rules files.
+tags: java, architecture, observability, kiponos
+description: "Live SLO/alert thresholds via Kiponos so on-call can retune without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-observability-thresholds.md
-main_image: https://files.catbox.moe/87bzmo.jpg
+main_image: https://files.catbox.moe/cn3pj9.jpg
 ---
 
-Alert fatigue is a **configuration** problem wearing an operations mask. `error_rate > 0.01` pages during every deploy. During checkout it is too loose. On-call asks for `0.02` until the deploy finishes — and gets a Prometheus PR instead of relief.
+**The Aha:** `errorRateWarn` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) feeds **custom SLO evaluator services** and **alert bots** with live thresholds. Prometheus stays your metrics store; Kiponos becomes the **tunable policy layer** that decides when metrics become pages.
+Paging rules frozen in the last release train are how you get flappy nights or silent SEVs.
 
-## Two-layer observability
+Domain: SLO burn, error-rate alerts, latency pages.
 
-![Architecture diagram](https://files.catbox.moe/fewpug.png)
+## Live warn/crit
 
-Evaluators run every N seconds — not per HTTP request — but still benefit from **local reads** and **mid-incident edits**.
+Keep metric **identity** in code. Leave warn/crit numbers in the hub with clamps. Automation may dampen flaps; humans raise sensitivity during launches.
 
-## Evaluator code
 
-```python
-def should_page(metric: str, value: float, kiponos) -> bool:
-    t = kiponos.path("alerts", metric)
-    if kiponos.path("alerts", "global").get_bool("maintenance_mode"):
-        return False
-    if t.get_bool("silenced"):
-        return False
-    return value > t.get_float("critical_threshold")
+## The problem: ceremony between judgment and effect
 
-def should_warn(metric: str, value: float, kiponos) -> bool:
-    t = kiponos.path("alerts", metric)
-    return value > t.get_float("warning_threshold")
+You already know the right number. Everyone in the war room knows the right number. What you do not have is a path from **mouth → running process** that is shorter than a release train.
+
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still CI + roll |
+| "Flags cover this" | Second system, second delay |
+| "Defaults are fine" | Defaults become root causes |
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
+
+```java
+Folder policy = kiponos.path("examples", "arch-observability-thresholds");
+int value = policy.getInt("errorRateWarn");
+// use value on the decision path
 ```
 
-## Alert tree
+Ops sets the key in the dashboard (or automation writes the same path). The **next** evaluation uses the new value. Same jar.
 
-```yaml
-alerts/
-  payments_error_rate/
-    warning_threshold: 0.005
-    critical_threshold: 0.02
-    silenced: false
-  checkout_p99_ms/
-    warning_threshold: 800
-    critical_threshold: 1500
-  global/
-    maintenance_mode: false
-deploy/
-  active: true
-  silence_all: false
+## What stays in the jar vs the hub
+
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima | Current posture |
+| Schema & types | Human judgment under pressure |
+
+## Architecture
+
+```
+Dashboard / automation
+        │ write
+        ▼
+   Kiponos hub tree
+        │ delta
+        ▼
+  Java SDK in-process cache ──► local get on hot path
 ```
 
-## Deploy window playbook
+No sidecar tax on every request. No second product for "just this one dial."
 
-1. Set `deploy/active: true` — evaluator doubles thresholds automatically (or `silence_all`)
-2. Ship release
-3. Clear deploy flags — thresholds snap back **without git revert**
+## Clone and run
 
-## Closed loop with supervisor
-
-Supervisor bot watches 24h variance, **writes** Kiponos when noise floor shifts — same architecture as [ML supervisor tuning](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-supervisor-ml-training.md):
-
-```python
-if rolling_std("payments_error_rate") < 0.001:
-    kiponos.path("alerts", "payments_error_rate").set(
-        "warning_threshold", 0.003
-    )
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/arch-observability-thresholds   # or nearest aha-* sibling
+# follow README — KIPONOS_ID / KIPONOS_ACCESS for sandbox
 ```
 
-## Real-world scenarios
+Unit-test with fixed strings. Integration-test against the public sandbox when you can.
 
-| Scenario | Live tweak |
-|----------|------------|
-| Known deploy | `deploy/silence_all: true` |
-| Noisy neighbor service | Raise one metric's `critical_threshold` |
-| Real outage | Lower thresholds after deploy noise ends |
-| Maintenance | `global/maintenance_mode: true` |
+## Scenarios
 
-## Performance
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-Evaluators poll on interval — `get_float()` is **in-memory** per evaluation cycle.
+## When not to live-edit
 
-## Compare
+- Protocol or schema changes that need coordinated rollouts  
+- Values that compliance requires code-reviewed only  
+- Anything you cannot clamp or allowlist safely  
 
-| Approach | On-call speed | Per-metric silencing |
-|----------|---------------|----------------------|
-| Prometheus YAML | PR + reload | Edit rules file |
-| Hard-coded Python | Redeploy bot | Redeploy |
-| **Kiponos tree** | **Dashboard** | **`silenced` flag** |
+Live knobs are for **posture**, not for inventing untested systems under fire.
 
-## Getting started
+## Operational checklist
 
-1. [kiponos.io](https://kiponos.io) — `alerts/*` folders per SLO
-2. Point evaluator at Kiponos instead of constants
-3. Drill: silence one metric during fake deploy
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard roles + automation identities).  
+4. Log the **decision**, not every get.  
+5. Rehearse the flip in staging with this example module.  
+6. Document the one-line kill path (revert key).
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture on an architecture concern** — pools, cutovers, retries, circuits, canaries, thresholds — numbers humans already change verbally in war rooms.
+
+Kiponos makes that verbal decision **executable** without a second control plane tax on every request.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Flap vs silence
+
+Too tight: pages that train people to ignore. Too loose: SEVs without pages. Live thresholds let you retune after a launch without waiting for a chart PR.
+
+## Keep identity stable
+
+Metric names and label cardinality stay in code review. Only numeric thresholds move. That keeps dashboards from becoming shape-shifters.
+
+## Pair with sampling
+
+Trace/log sample rates (sister essays) and alert thresholds move together during incidents. Raise sight, then tighten pages — or the reverse when cost burns.
+
+
+
+## Closing
+
+Architecture diagrams do not absorb incidents. Steerable posture does.
+
+
+## War-room protocol
+
+1. **Name the path** in the runbook before the incident (`examples/<stem>/<key>`).  
+2. **State the clamp** out loud (min/max) before anyone types.  
+3. **Write the reason code** with the change (`sev`, `peak`, `cost`, `drill`).  
+4. **Watch two signals** for five minutes (user SLO + dependency health).  
+5. **Revert or step** — never leave an experimental value as the silent new normal.  
+6. **Postmortem line:** who moved what, from→to, and whether automation should own it next time.
+
+## Defaults when the hub is dark
+
+| Path class | Hub unreachable default |
+|------------|-------------------------|
+| Money / fraud | Fail closed or conservative floor |
+| Ingress RPS | Last-known-good or safe mid |
+| Canary share | 0% (stable binary only) |
+| Observability sample | Modest baseline (not zero on audit paths) |
+| Drain window | Compiled mid (still exit) |
+
+Dark-hub behavior is part of the design, not an afterthought.
+
+## Related reading in this library
+
+- Aha series: retries, RPS, pools, sampling — same Super Pattern spine  
+- Super Patterns: GoF shapes with live policy objects  
+- Product: [kiponos.io](https://kiponos.io) · [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+If you only remember one architecture sentence: **version the code paths; live-edit the posture.**
+
+
+## Moral
+
+Thresholds are judgment. Judgment must move at incident speed.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — SLO thresholds you tune while the pager is still warm.*
+*Runnable examples: [kiponos-io/examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java) · Product: [kiponos.io](https://kiponos.io) · Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)*

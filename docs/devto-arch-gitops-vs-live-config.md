@@ -1,129 +1,172 @@
 ---
-title: "GitOps vs Live Operational Config — Where Kiponos Fits in Platform Architecture"
+title: "GitOps Owns Desired Cluster State — Live Config Owns Minute-Scale Posture"
 published: false
-tags: architecture, gitops, devops, config
-description: GitOps owns desired state. Production still needs live thresholds, emergency overrides, and cross-service coordination. A architecture guide for platform teams drawing the boundary.
+tags: java, architecture, gitops, kiponos
+description: "Where GitOps ends and a live config hub begins for app posture."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-gitops-vs-live-config.md
-main_image: https://files.catbox.moe/y1msbh.jpg
+main_image: https://files.catbox.moe/g2pen5.jpg
 ---
 
-Platform teams adopt **GitOps** so every cluster change is reviewed, versioned, and reconciled. That is the right default for **desired infrastructure state**.
+**The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
 
-Then production asks for something Git was never meant to optimize: *"Drop the fraud block score from 90 to 85 for the next twenty minutes while we investigate."* A PR, image rebuild, and Argo sync are the wrong latency for an operational knob.
+Git is a great ledger for cluster desired state. It is a terrible pager for 'drop RPS now.'
 
-[Kiponos.io](https://kiponos.io) is a **live config hub** — not a replacement for GitOps. It is the layer **below** GitOps that holds **operational parameters** services read at runtime with zero-latency local cache.
+Domain: Platform boundaries, Argo/Flux vs app hubs.
 
-## Two different config classes
+## Boundary
 
-| Class | Examples | Right home |
-|-------|----------|------------|
-| **Declarative desired state** | Replica count, Ingress host, RBAC, image tag | Git → GitOps → cluster |
-| **Operational runtime parameters** | Rate limits, circuit thresholds, model routing weights, feature percentages | Live hub + SDK read |
+GitOps: images, CRDs, network policies, IAM bindings.  
+Live hub: retries, RPS, canary share, drains, sampling, fraud velocity.
 
-Confusing the two is why teams either (a) open emergency PRs at 3am, or (b) stuff operational floats into ConfigMaps and pretend that is GitOps.
+Fighting that boundary is how platforms invent three YAML dialects.
 
-## What GitOps does brilliantly
 
-- Audit trail via commit history
-- Peer review before reconcile
-- Drift detection against declared YAML
-- Repeatable promotions dev → staging → prod **for infrastructure**
+## The problem: ceremony between judgment and effect
 
-Keep Helm charts, Kustomize overlays, and Argo CD applications in Git. Do not rip that out.
+You already know the right number. Everyone in the war room knows the right number. What you do not have is a path from **mouth → running process** that is shorter than a release train.
 
-## Where GitOps hits the wall
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still CI + roll |
+| "Flags cover this" | Second system, second delay |
+| "Defaults are fine" | Defaults become root causes |
 
-```
-Incident: payment decline rate spiked
-Need: fraud.block_score 90 → 85 NOW
-GitOps path: branch → PR → merge → pipeline → deploy → 25+ minutes
-Ops path: dashboard tweak → WebSocket delta → SDK cache → sub-second
-```
+## The Aha: local read, live write
 
-Other wall cases:
-
-- **Saga step timeouts** tuned during load test week
-- **LLM temperature / routing** adjusted while GPUs saturate
-- **Canary percentage** shifted without a new Deployment manifest
-- **Cross-service handoff flags** coordinating three teams mid-incident
-
-These are **operational**, not **declarative**. They change hourly; they rarely belong in a Helm values PR.
-
-## Reference architecture
-
-![Architecture diagram](https://files.catbox.moe/z2kn7r.png)
-
-```
-Git (GitOps)          Kiponos Hub (live ops)
-     │                        │
-     ▼                        ▼
- Deployments            SDK in each service
- Ingress/RBAC           get() on hot path
- ConfigMaps (bootstrap)  WebSocket deltas
-```
-
-**Bootstrap in Git, operate in hub.** Ship a minimal Kiponos profile path in Git (team id, default tree skeleton). Day-2 tuning happens in the dashboard with ACL — not in a hundred YAML forks.
-
-## Config tree example
-
-```
-['payments']['fraud']['prod']['live']
-  block_score: 85
-  review_score: 70
-  max_velocity_per_min: 1200
-
-['payments']['resilience']['prod']['live']
-  circuit_failure_threshold: 0.45
-  bulkhead_max_concurrent: 200
-```
-
-Java service on the hot path:
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```java
-Kiponos kiponos = Kiponos.createForCurrentTeam();
-int blockScore = kiponos.path("fraud", "prod", "live").getInt("block_score");
+Folder policy = kiponos.path("examples", "arch-gitops-vs-live-config");
+int value = policy.getInt("canaryPercent");
+// use value on the decision path
 ```
 
-No network on `get()` — SDK serves from in-process cache updated by delta stream.
+Ops sets the key in the dashboard (or automation writes the same path). The **next** evaluation uses the new value. Same jar.
 
-## Governance without Git for every tweak
+## What stays in the jar vs the hub
 
-| Control | GitOps | Kiponos |
-|---------|--------|---------|
-| Who may change prod | CODEOWNERS | Dashboard ACL per profile |
-| Audit | `git log` | Hub change log + actor |
-| Emergency break-glass | Hotfix branch | Live override + post-incident sync to Git |
-| Rollback | `git revert` | One-click tree restore |
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima | Current posture |
+| Schema & types | Human judgment under pressure |
 
-**Recommended policy:** operational keys live in Kiponos; **structural** keys (new service URLs after migration) still go through Git review, then seed the hub.
+## Architecture
 
-## Anti-patterns
+```
+Dashboard / automation
+        │ write
+        ▼
+   Kiponos hub tree
+        │ delta
+        ▼
+  Java SDK in-process cache ──► local get on hot path
+```
 
-1. **Every float in a ConfigMap** — triggers pod reload culture; merges GitOps with ops tuning badly.
-2. **Feature-flag SaaS for circuit breakers** — wrong tool; boolean-centric, network-bound evaluation.
-3. **SSH + `kubectl edit`** — no audit, no SDK contract, breaks compliance story.
-4. **Duplicate YAML per env** — see [multi-env chaos article](https://dev.to/kiponos/escape-multi-environment-configuration-chaos-with-one-kiponos-profile-per-env-java-sdk-3205).
+No sidecar tax on every request. No second product for "just this one dial."
 
-## When to choose what
+## Clone and run
 
-| Need | Use |
-|------|-----|
-| New microservice Deployment | GitOps |
-| Rotate TLS via cert-manager | GitOps |
-| Tune API rate limit during traffic spike | Kiponos |
-| Shift 5% canary traffic | Kiponos (or mesh + Kiponos weights) |
-| Add Redis StatefulSet | GitOps |
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/arch-gitops-vs-live-config   # or nearest aha-* sibling
+# follow README — KIPONOS_ID / KIPONOS_ACCESS for sandbox
+```
 
-## Getting started alongside Argo / Flux
+Unit-test with fixed strings. Integration-test against the public sandbox when you can.
 
-1. Keep GitOps for cluster desired state — unchanged.
-2. [Create TeamPro at kiponos.io](https://kiponos.io) — one profile path per environment.
-3. Migrate **operational** keys out of `values-prod.yaml` into the hub; leave bootstrap secrets in Git/sealed-secrets.
-4. Document boundary in your platform RFC: *"Git declares wiring; hub declares knobs."*
-5. Run game days: measure time-to-mitigate with hub tweak vs PR path.
+## Scenarios
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+
+## When not to live-edit
+
+- Protocol or schema changes that need coordinated rollouts  
+- Values that compliance requires code-reviewed only  
+- Anything you cannot clamp or allowlist safely  
+
+Live knobs are for **posture**, not for inventing untested systems under fire.
+
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard roles + automation identities).  
+4. Log the **decision**, not every get.  
+5. Rehearse the flip in staging with this example module.  
+6. Document the one-line kill path (revert key).
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture on an architecture concern** — pools, cutovers, retries, circuits, canaries, thresholds — numbers humans already change verbally in war rooms.
+
+Kiponos makes that verbal decision **executable** without a second control plane tax on every request.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Anti-pattern: GitOps for RPS
+
+Putting ingress RPS in a ConfigMap so Argo can "manage" it means every bot farm is a GitOps incident. That is the wrong tool's pride.
+
+## Anti-pattern: hub for images
+
+Shipping container versions via a config hub skips supply-chain controls. Images belong in GitOps with signatures and progressive delivery of **binaries**.
+
+## Peace treaty
+
+Write the boundary on one wiki page. Platforms that skip the treaty invent a third control plane by Christmas.
+
+
+
+## Closing
+
+Architecture diagrams do not absorb incidents. Steerable posture does.
+
+
+## War-room protocol
+
+1. **Name the path** in the runbook before the incident (`examples/<stem>/<key>`).  
+2. **State the clamp** out loud (min/max) before anyone types.  
+3. **Write the reason code** with the change (`sev`, `peak`, `cost`, `drill`).  
+4. **Watch two signals** for five minutes (user SLO + dependency health).  
+5. **Revert or step** — never leave an experimental value as the silent new normal.  
+6. **Postmortem line:** who moved what, from→to, and whether automation should own it next time.
+
+## Defaults when the hub is dark
+
+| Path class | Hub unreachable default |
+|------------|-------------------------|
+| Money / fraud | Fail closed or conservative floor |
+| Ingress RPS | Last-known-good or safe mid |
+| Canary share | 0% (stable binary only) |
+| Observability sample | Modest baseline (not zero on audit paths) |
+| Drain window | Compiled mid (still exit) |
+
+Dark-hub behavior is part of the design, not an afterthought.
+
+## Related reading in this library
+
+- Aha series: retries, RPS, pools, sampling — same Super Pattern spine  
+- Super Patterns: GoF shapes with live policy objects  
+- Product: [kiponos.io](https://kiponos.io) · [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+If you only remember one architecture sentence: **version the code paths; live-edit the posture.**
+
+
+## Moral
+
+Git for what must be reviewable forever. Hub for what must be true in the next minute.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — GitOps for what you deploy. Live config for how it behaves in production.*
+*Runnable examples: [kiponos-io/examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java) · Product: [kiponos.io](https://kiponos.io) · Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)*

@@ -1,65 +1,171 @@
 ---
-title: "Canary Releases Without a Service Mesh — Live Traffic Weights in Kiponos (Java SDK)"
+title: "Canary Weights Are a Steering Wheel — Stop Welding Them to the Release"
 published: false
-tags: java, architecture, deployment, devops
-description: Shift traffic between v1 and v2 using live weight keys read in your Java router — no Istio, no second deployment mid-incident. Kiponos zero-latency reads.
+tags: java, architecture, devops, kiponos
+description: "Live canary traffic weights via Kiponos for progressive delivery."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-canary-traffic-weights.md
-main_image: https://files.catbox.moe/68lli5.jpg
+main_image: https://files.catbox.moe/9vi7un.jpg
 ---
 
-Canary releases usually mean **mesh config**, **duplicate Deployments**, or **load balancer Terraform** — slow loops when v2 shows errors and you need **0% → rollback NOW**.
+**The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) enables **application-level canary** when your Java edge/router chooses backends:
+If moving from 1% to 5% requires another pipeline, teams will skip canary under pressure. Process became the outage.
 
-```java
-public String pickBackend(String userId) {
-    var canary = kiponos.path("release", "canary");
-    int v2Weight = canary.getInt("v2_weight");  // 0-100
-    int roll = Math.floorMod(userId.hashCode(), 100);
-    return roll < v2Weight ? "payments-v2" : "payments-v1";
-}
-```
+Domain: Progressive delivery, mesh weight, gateway shares.
 
-SRE slides `v2_weight` 5 → 25 → 50 in dashboard — **seconds**, not pipeline.
+## Live share
 
-## Canary tree
+1% → 5% → 25% → 100% without rebuild. Rollback is `canaryPercent=0`. Automation can write the same path humans use.
 
-```yaml
-release/
-  canary/
-    v2_weight: 10
-    enabled: true
-    sticky_by_user: true
-    error_budget_pause: false
-  backends/
-    v1_url: http://payments-v1.svc
-    v2_url: http://payments-v2.svc
-```
 
-## Extreme: auto rollback hook
+## The problem: ceremony between judgment and effect
+
+You already know the right number. Everyone in the war room knows the right number. What you do not have is a path from **mouth → running process** that is shorter than a release train.
+
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still CI + roll |
+| "Flags cover this" | Second system, second delay |
+| "Defaults are fine" | Defaults become root causes |
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```java
-kiponos.afterValueChanged(change -> {
-    if ("release/canary/error_budget_pause".equals(change.path()) && change.newValue().equals(true)) {
-        kiponos.path("release", "canary").set("v2_weight", 0);
-    }
-});
+Folder policy = kiponos.path("examples", "arch-canary-traffic-weights");
+int value = policy.getInt("canaryPercent");
+// use value on the decision path
 ```
 
-Monitoring service sets `error_budget_pause` — weight zeroes without human clicking.
+Ops sets the key in the dashboard (or automation writes the same path). The **next** evaluation uses the new value. Same jar.
 
-## Compare
+## What stays in the jar vs the hub
 
-| Approach | Speed of rollback | Infra complexity |
-|----------|-------------------|------------------|
-| Mesh VirtualService | Minutes | High |
-| Second LB rule | Terraform | Medium |
-| **Kiponos weights** | **Dashboard** | **Router code + hub** |
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima | Current posture |
+| Schema & types | Human judgment under pressure |
 
-Related: [A/B checkout weights](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ab-checkout-weights.md)
+## Architecture
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+```
+Dashboard / automation
+        │ write
+        ▼
+   Kiponos hub tree
+        │ delta
+        ▼
+  Java SDK in-process cache ──► local get on hot path
+```
+
+No sidecar tax on every request. No second product for "just this one dial."
+
+## Clone and run
+
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/arch-canary-traffic-weights   # or nearest aha-* sibling
+# follow README — KIPONOS_ID / KIPONOS_ACCESS for sandbox
+```
+
+Unit-test with fixed strings. Integration-test against the public sandbox when you can.
+
+## Scenarios
+
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+
+## When not to live-edit
+
+- Protocol or schema changes that need coordinated rollouts  
+- Values that compliance requires code-reviewed only  
+- Anything you cannot clamp or allowlist safely  
+
+Live knobs are for **posture**, not for inventing untested systems under fire.
+
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard roles + automation identities).  
+4. Log the **decision**, not every get.  
+5. Rehearse the flip in staging with this example module.  
+6. Document the one-line kill path (revert key).
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture on an architecture concern** — pools, cutovers, retries, circuits, canaries, thresholds — numbers humans already change verbally in war rooms.
+
+Kiponos makes that verbal decision **executable** without a second control plane tax on every request.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Progressive delivery without pipeline thrash
+
+One canary-capable build. Hub steers share. Mesh/gateway reads the same number your humans set. No second "canary product" with its own YAML dialect.
+
+## Step guards
+
+- Max delta per write (e.g. +10% without break-glass)  
+- Auto-zero on SLO burn  
+- Separate stage/prod folders  
+
+## Honest limits
+
+Schema migrations and irreversible data changes are not canary-weight problems. Do not pretend a dial fixes a bad migration.
+
+
+
+## Closing
+
+Architecture diagrams do not absorb incidents. Steerable posture does.
+
+
+## War-room protocol
+
+1. **Name the path** in the runbook before the incident (`examples/<stem>/<key>`).  
+2. **State the clamp** out loud (min/max) before anyone types.  
+3. **Write the reason code** with the change (`sev`, `peak`, `cost`, `drill`).  
+4. **Watch two signals** for five minutes (user SLO + dependency health).  
+5. **Revert or step** — never leave an experimental value as the silent new normal.  
+6. **Postmortem line:** who moved what, from→to, and whether automation should own it next time.
+
+## Defaults when the hub is dark
+
+| Path class | Hub unreachable default |
+|------------|-------------------------|
+| Money / fraud | Fail closed or conservative floor |
+| Ingress RPS | Last-known-good or safe mid |
+| Canary share | 0% (stable binary only) |
+| Observability sample | Modest baseline (not zero on audit paths) |
+| Drain window | Compiled mid (still exit) |
+
+Dark-hub behavior is part of the design, not an afterthought.
+
+## Related reading in this library
+
+- Aha series: retries, RPS, pools, sampling — same Super Pattern spine  
+- Super Patterns: GoF shapes with live policy objects  
+- Product: [kiponos.io](https://kiponos.io) · [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+If you only remember one architecture sentence: **version the code paths; live-edit the posture.**
+
+
+## Moral
+
+Canary share is SRE posture on a frozen binary.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — canary by live weight, not by emergency Terraform.*
+*Runnable examples: [kiponos-io/examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java) · Product: [kiponos.io](https://kiponos.io) · Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)*
