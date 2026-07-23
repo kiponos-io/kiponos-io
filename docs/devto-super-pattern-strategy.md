@@ -140,3 +140,22 @@ Next up: Live Decorator Chain, Live Chain of Responsibility, Live State Machine,
 ---
 
 *Kiponos.io — Strategy always wanted a pulse. Now selection has one.*
+
+## Try it tonight
+
+```bash
+cd examples/java/pattern-strategy-live-router
+./gradlew test run
+```
+
+1. Start with `active=flat`.
+2. Flip hub to `volume` mid-run — next price uses volume without redeploy.
+3. Tune `loyalty-bps` live — params are posture too.
+
+## Why this is not “just another flag”
+
+Feature flags are often product gates. Super Patterns are **ops posture on a Gang of Four shape**.
+
+You still allowlist keys. You still test defaults. You still refuse secrets in the hub. What changes is the **distance between human judgment and the next request** — from a release train to a hub write.
+
+That is the entire point of electrifying the patterns.

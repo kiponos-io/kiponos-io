@@ -5,6 +5,27 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: Fraud handlers should reorder when attackers do — without a release train. GoF Chain of Responsibility becomes a Super Pattern when order and knobs live in Kiponos.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-super-pattern-chain.md
+
+## Operational checklist
+
+Before you electrify a pattern in production:
+
+1. **Name the hub path** so humans can find it under pressure (`patterns/...`).  
+2. **Default safely** — cold start without the hub still works (fail closed where money is involved).  
+3. **Allowlist writers** — who can `set()` this tree (dashboard roles, automation identities).  
+4. **Log the effective value** on decision points (not every get — the decision).  
+5. **Rehearse the flip** in staging with the same example module you ship in the article.  
+6. **Document the kill path** — how to revert hub values in one sentence.
+
+If you skip the checklist, you did not build a Super Pattern. You built a remote foot-gun.
+
+## Related reading
+
+- [Rewriting the Gang of Four](https://dev.to/kiponos/rewriting-the-gang-of-four-true-real-time-config-turns-design-patterns-into-super-patterns-nii)  
+- [Strategy selection live](https://dev.to/kiponos/the-strategy-pattern-still-required-a-deploy-until-we-made-selection-live-kiponos-super-patterns-1dgm)  
+- Getting started: [GitHub GETTING-STARTED](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+
 ---
 
 **The Aha:** The handlers were fine. The **order** was wrong for that week of the world. Put `order` + caps in [Kiponos.io](https://kiponos.io); the next payment walks a new chain with zero redeploy.
@@ -126,3 +147,22 @@ Ship the judgment path once. Leave the **order of judgment** in the hub.
 
 *Series: Kiponos Super Patterns (GoF + live policy).*  
 *Runnable: [pattern-chain-live-fraud](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-chain-live-fraud)*
+
+## Try it tonight
+
+```bash
+cd examples/java/pattern-chain-live-fraud
+./gradlew test run
+```
+
+1. Run default order — see which handler speaks first.
+2. Reorder hub `order` CSV — prove next evaluation changes without rebuild.
+3. Lower `velocity-max` live — bot farm response in seconds, not a release.
+
+## Why this is not “just another flag”
+
+Feature flags are often product gates. Super Patterns are **ops posture on a Gang of Four shape**.
+
+You still allowlist keys. You still test defaults. You still refuse secrets in the hub. What changes is the **distance between human judgment and the next request** — from a release train to a hub write.
+
+That is the entire point of electrifying the patterns.

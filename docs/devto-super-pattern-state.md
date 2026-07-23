@@ -1,56 +1,93 @@
 ---
-main_image: https://litter.catbox.moe/5qqohz.jpg
-title: "State Machines With a Live Transition Matrix (Kiponos Super Patterns)"
+title: "State Pattern Whose Transitions Are Live Config (Kiponos Super Patterns)"
 published: false
 tags: java, designpatterns, architecture, devops
-description: Freeze paid→cancelled from the dashboard. Keep draft→paid hot. GoF State becomes a Super Pattern when the transition matrix lives in Kiponos.
+description: "Allowed transitions and next-state defaults live in the hub"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-super-pattern-state.md
+main_image: https://litter.catbox.moe/5qqohz.jpg
+
+## Operational checklist
+
+Before you electrify a pattern in production:
+
+1. **Name the hub path** so humans can find it under pressure (`patterns/...`).  
+2. **Default safely** — cold start without the hub still works (fail closed where money is involved).  
+3. **Allowlist writers** — who can `set()` this tree (dashboard roles, automation identities).  
+4. **Log the effective value** on decision points (not every get — the decision).  
+5. **Rehearse the flip** in staging with the same example module you ship in the article.  
+6. **Document the kill path** — how to revert hub values in one sentence.
+
+If you skip the checklist, you did not build a Super Pattern. You built a remote foot-gun.
+
+## Related reading
+
+- [Rewriting the Gang of Four](https://dev.to/kiponos/rewriting-the-gang-of-four-true-real-time-config-turns-design-patterns-into-super-patterns-nii)  
+- [Strategy selection live](https://dev.to/kiponos/the-strategy-pattern-still-required-a-deploy-until-we-made-selection-live-kiponos-super-patterns-1dgm)  
+- Getting started: [GitHub GETTING-STARTED](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+
 ---
 
-**The Aha:** State describes *where you are*. Policy describes *where you may go next*. Policy should not wait for CI. Put `current` + `allowed` edges in [Kiponos.io](https://kiponos.io).
+**The Aha:** Allowed transitions and next-state defaults live in the hub
 
-## The problem: grammar frozen in enums
+Order machines freeze when legal wants a new transition path and engineering still needs a deploy to teach the state machine manners.
 
-Every order system grows a private dialect: `draft`, `paid`, `shipped`, `cancelled`.
+Most teams already own the Gang of Four shape. What they do not own is the **distance between human judgment and the next request**. That distance is still a release train — and that is what Super Patterns delete.
 
-The dialect is easy. The **grammar of what may follow what** is where nights go to die.
+## The problem: a beautiful pattern with a frozen dial
 
-Someone wants to freeze `paid → cancelled` during a refund exploit. Someone else needs `draft → paid` to stay hot. The state machine is correct in code — and unreachable until the next jar lands.
+You can draw the diagram. You can pass the interview. Production still says:
 
-| Belief | Production |
-|--------|------------|
-| “We modeled State correctly” | Transitions are `switch` / enum methods |
-| “Ops can freeze refunds” | Ops can open a ticket |
-| “Feature flags help” | Flag still ships or is a second brain |
+| Belief | Reality |
+|--------|---------|
+| "We implemented the pattern" | Selection / knobs are constants |
+| "Runtime means the JVM is up" | Runtime *choice* waits for CI |
+| "Flags will save us" | Another system, another delay |
+| "We'll hotfix" | Customers do not wait for green builds |
 
-## The Aha: State + live matrix = Super Pattern
+I have sat in rooms where everyone agreed on the right posture and nobody could apply it without a jar. That is not engineering maturity. That is **ceremony**.
+
+## The Aha: pattern + live policy = Super Pattern
+
+Keep the object structure in code. Move the **dial** into [Kiponos.io](https://kiponos.io):
 
 ```yaml
-patterns/
-  state/
-    order/
-      current: draft
-      allowed: draft>paid,paid>shipped,paid>cancelled,draft>cancelled
+patterns/state/order/
+  # live knobs
+  allow: paid->shipped,shipped->delivered
 ```
+
+Hot path (local memory after connect — WebSocket deltas, no per-request hub RTT):
 
 ```java
-String edge = from + ">" + to;
-if (!edges.contains(edge)) {
-    return TransitionResult.denied(from, to, edge);
-}
-policy.set("current", to);
+Folder policy = kiponos.path('patterns', 'state', 'order');
+// local gets — never remote on the money path
+if (!allowed(from, to, policy)) throw new IllegalTransition();
+order.setState(to);
 ```
 
-Ops deletes `paid>cancelled` from the CSV. Next refund attempt is denied. No redeploy. Remote compliance tooling can restore the edge when the incident closes.
+Ops writes the hub. The next evaluation uses the new posture. Same jar. Same tests for structure. Live judgment.
+
+## What stays versioned vs live
+
+| Versioned (jar) | Live (hub) |
+|-----------------|------------|
+| Class graph / interfaces | Selection ids, enable flags |
+| Algorithms / handlers | Numeric knobs, CSV lists |
+| Security boundaries | Temporary posture (with process) |
+| Secrets | **Never** — use a vault |
 
 ## Architecture
 
-![Architecture diagram](./devto-diagram-super-pattern-state.png)
-
-1. Ensure defaults under `patterns/state/order`.  
-2. `tryTransition(next)` reads live `allowed`.  
-3. On success, write `current` (or keep current in app DB and only enforce with hub matrix — pick one source of truth per design).  
-4. Local reads on the hot path.
+```text
+Ops / automation ──set──▶ Kiponos.io hub
+                              │ WS delta
+                              ▼
+                         Java SDK cache ──get──▶ pattern context
+                              │
+                              ▼
+                         GoF structure (code)
+```
 
 ## Clone and run
 
@@ -58,23 +95,72 @@ Ops deletes `paid>cancelled` from the CSV. Next refund attempt is denied. No red
 git clone https://github.com/kiponos-io/kiponos-io.git
 cd kiponos-io/examples/java/pattern-state-live-order
 cp kiponos.local.env.example kiponos.local.env
-./gradlew test run --args='paid'
+./gradlew test run
 ```
 
-Python: [`examples/python/pattern-state-live-order`](https://github.com/kiponos-io/kiponos-io/tree/master/examples/python/pattern-state-live-order)
+Full tree: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-state-live-order](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-state-live-order)
+
+Try it tonight:
+
+1. Run tests — prove defaults are coherent.  
+2. Flip the hub knobs mid-session — prove the next action sees them without rebuild.  
+3. Time your real release train vs a hub write.  
+4. Ask who is allowed to write this tree in production (humans, bots, both).
 
 ## Scenarios
 
-| Moment | Frozen machine | Super Pattern |
+| Moment | Frozen pattern | Super Pattern |
 |--------|----------------|---------------|
-| Refund exploit | Emergency hotfix | Remove `paid>cancelled` live |
-| Warehouse backlog | Code change | Block `paid>shipped` temporarily |
-| Partner cancels early | Ticket | Allow `draft>cancelled` only |
+| Incident posture | Hotfix PR | Hub write in seconds |
+| Peak event | Over-provision and pray | Live dials |
+| Experiment | Long-lived branch | Same jar, hub profile |
+| Rollback | Redeploy previous | Revert hub values |
+
+## When not to live-edit
+
+- Protocol / schema changes that need coordinated rollouts  
+- Crypto or auth that must never be optional  
+- Anything your compliance process requires code review only  
+
+Super Patterns are for **posture**, not for inventing untested systems under fire.
+
+## Why this is not “just another flag”
+
+Feature flags are often product gates. Super Patterns are **ops posture on a classical shape** — Strategy, Proxy, Facade, and the rest — with local reads and a single hub humans and remote SDKs share.
 
 ## Moral
 
-State machines describe what may happen next. Kiponos lets you rewrite “may” without rewriting the jar.
+States are code. Legal transition maps are posture.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Runnable: [pattern-state-live-order](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-state-live-order)*
+*Series: Kiponos Super Patterns — GoF + live policy. Intro: [Rewriting the Gang of Four](https://dev.to/kiponos/rewriting-the-gang-of-four-true-real-time-config-turns-design-patterns-into-super-patterns-nii).*
+
+*Runnable: [pattern-state-live-order](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-state-live-order) · [kiponos.io](https://kiponos.io)*
+
+
+## A note on testing Super Patterns
+
+Unit-test the **structure** with fixed strings (no network). Integration-test the **hub path** against the public sandbox when you can.
+
+Good tests:
+
+- Defaults when keys are missing  
+- Allowlisted values only (reject unknown provider / step ids)  
+- Fail-closed behavior for money paths  
+
+Bad tests:
+
+- Hitting production hubs from CI  
+- Asserting wall-clock times for WebSocket delivery  
+
+The example modules under `examples/java/pattern-*` are meant to be the golden path — clone them before inventing a second design.
+
+## Closing
+
+If you only remember one sentence: **patterns organize code; Super Patterns organize judgment.**
+
+The jar is for what is true across deploys. The hub is for what must be true in the next minute.
+

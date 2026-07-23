@@ -1,53 +1,92 @@
 ---
-main_image: https://litter.catbox.moe/iv9ar1.jpg
-title: "Composite Super Pattern — Node Weights Live"
+title: "Composite as a Super Pattern — Live Tree of Rules"
 published: false
-tags: java, devops, architecture, kiponos
-description: "composite scoring weights live"
+tags: java, designpatterns, architecture, devops
+description: "Enable/disable branches of a rule tree live"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-composite-live-rules.md
+main_image: ./devto-cover-pattern-composite-live-rules.jpg
+
+## Operational checklist
+
+Before you electrify a pattern in production:
+
+1. **Name the hub path** so humans can find it under pressure (`patterns/...`).  
+2. **Default safely** — cold start without the hub still works (fail closed where money is involved).  
+3. **Allowlist writers** — who can `set()` this tree (dashboard roles, automation identities).  
+4. **Log the effective value** on decision points (not every get — the decision).  
+5. **Rehearse the flip** in staging with the same example module you ship in the article.  
+6. **Document the kill path** — how to revert hub values in one sentence.
+
+If you skip the checklist, you did not build a Super Pattern. You built a remote foot-gun.
+
+## Related reading
+
+- [Rewriting the Gang of Four](https://dev.to/kiponos/rewriting-the-gang-of-four-true-real-time-config-turns-design-patterns-into-super-patterns-nii)  
+- [Strategy selection live](https://dev.to/kiponos/the-strategy-pattern-still-required-a-deploy-until-we-made-selection-live-kiponos-super-patterns-1dgm)  
+- Getting started: [GitHub GETTING-STARTED](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)
+
+
 ---
 
-**The Aha:** composite scoring weights live
+**The Aha:** Enable/disable branches of a rule tree live
 
-You already know the knob. You already know the incident. What hurts is the **ceremony** between decision and effect.
+Composite trees are great until a leaf must mute without rewriting the whole tree in a PR.
 
-## Config hell, one key
+Most teams already own the Gang of Four shape. What they do not own is the **distance between human judgment and the next request**. That distance is still a release train — and that is what Super Patterns delete.
+
+## The problem: a beautiful pattern with a frozen dial
+
+You can draw the diagram. You can pass the interview. Production still says:
+
+| Belief | Reality |
+|--------|---------|
+| "We implemented the pattern" | Selection / knobs are constants |
+| "Runtime means the JVM is up" | Runtime *choice* waits for CI |
+| "Flags will save us" | Another system, another delay |
+| "We'll hotfix" | Customers do not wait for green builds |
+
+I have sat in rooms where everyone agreed on the right posture and nobody could apply it without a jar. That is not engineering maturity. That is **ceremony**.
+
+## The Aha: pattern + live policy = Super Pattern
+
+Keep the object structure in code. Move the **dial** into [Kiponos.io](https://kiponos.io):
 
 ```yaml
-# logical tree
-patterns/composite/score/nodes: base:1,risk:2
+patterns/composite/rules/
+  # live knobs
+  enabled-branches: geo,velocity
 ```
 
-## What the process does
+Hot path (local memory after connect — WebSocket deltas, no per-request hub RTT):
 
 ```java
-    public static void main(String[] args) throws Exception {
-        Kiponos k = Kiponos.createForCurrentTeam();
-        try {
-            Folder p = ensure(k);
-            System.out.println("score=" + score(p, Map.of("base", 10, "risk", 3, "loyalty", 5)));
-            Thread.sleep(1500);
-        } finally { k.disconnect(); }
-    }
-    static Folder ensure(Kiponos k) {
-        Folder f = k.getRootFolder().folderOrCreate("patterns").folderOrCreate("composite").folderOrCreate("score");
-        if (!f.hasKey("nodes")) f.set("nodes", "base:1,risk:2,loyalty:1");
-        if (!f.hasKey("enabled")) f.set("enabled", "base,risk,loyalty");
-        return f;
-    }
-    static double score(Folder policy, Map<String, Integer> values) {
-        Set<String> enabled = new HashSet<>();
-        for (String e : read(policy, "enabled", "").split(",")) {
-            if (!e.trim().isEmpty()) enabled.add(e.trim().toLowerCase());
-        }
-        double sum = 0, wsum = 0;
-        for (String part : read(policy, "nodes", "").split(",")) {
-            String[] kv = part.trim().split(":");
-            if (kv.length != 2) continue;
-            String id = kv[0].trim().toLowerCase();
+Folder policy = kiponos.path('patterns', 'composite', 'rules');
+// local gets — never remote on the money path
+root.eval(ctx, enabledBranches);
 ```
 
-Hot path: **local memory** after connect. Change lands as a WebSocket delta from [Kiponos.io](https://kiponos.io).
+Ops writes the hub. The next evaluation uses the new posture. Same jar. Same tests for structure. Live judgment.
+
+## What stays versioned vs live
+
+| Versioned (jar) | Live (hub) |
+|-----------------|------------|
+| Class graph / interfaces | Selection ids, enable flags |
+| Algorithms / handlers | Numeric knobs, CSV lists |
+| Security boundaries | Temporary posture (with process) |
+| Secrets | **Never** — use a vault |
+
+## Architecture
+
+```text
+Ops / automation ──set──▶ Kiponos.io hub
+                              │ WS delta
+                              ▼
+                         Java SDK cache ──get──▶ pattern context
+                              │
+                              ▼
+                         GoF structure (code)
+```
 
 ## Clone and run
 
@@ -58,19 +97,69 @@ cp kiponos.local.env.example kiponos.local.env
 ./gradlew test run
 ```
 
-Full golden example: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules)
+Full tree: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules)
 
-## When this is enough
+Try it tonight:
 
-| Use live hub | Prefer release |
-|--------------|----------------|
-| Timeouts, caps, enable flags | Schema / protocol changes |
-| Incident posture | Security-sensitive crypto |
-| Regional tuning | License / legal text freezes |
+1. Run tests — prove defaults are coherent.  
+2. Flip the hub knobs mid-session — prove the next action sees them without rebuild.  
+3. Time your real release train vs a hub write.  
+4. Ask who is allowed to write this tree in production (humans, bots, both).
+
+## Scenarios
+
+| Moment | Frozen pattern | Super Pattern |
+|--------|----------------|---------------|
+| Incident posture | Hotfix PR | Hub write in seconds |
+| Peak event | Over-provision and pray | Live dials |
+| Experiment | Long-lived branch | Same jar, hub profile |
+| Rollback | Redeploy previous | Revert hub values |
+
+## When not to live-edit
+
+- Protocol / schema changes that need coordinated rollouts  
+- Crypto or auth that must never be optional  
+- Anything your compliance process requires code review only  
+
+Super Patterns are for **posture**, not for inventing untested systems under fire.
+
+## Why this is not “just another flag”
+
+Feature flags are often product gates. Super Patterns are **ops posture on a classical shape** — Strategy, Proxy, Facade, and the rest — with local reads and a single hub humans and remote SDKs share.
 
 ## Moral
+
+Composite owns structure. Super Composite owns which branches speak.
 
 Ship judgment. Leave the jar alone.
 
 ---
-*Runnable example on GitHub — this post is not a substitute for the tests.*
+
+*Series: Kiponos Super Patterns — GoF + live policy. Intro: [Rewriting the Gang of Four](https://dev.to/kiponos/rewriting-the-gang-of-four-true-real-time-config-turns-design-patterns-into-super-patterns-nii).*
+
+*Runnable: [pattern-composite-live-rules](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules) · [kiponos.io](https://kiponos.io)*
+
+
+## A note on testing Super Patterns
+
+Unit-test the **structure** with fixed strings (no network). Integration-test the **hub path** against the public sandbox when you can.
+
+Good tests:
+
+- Defaults when keys are missing  
+- Allowlisted values only (reject unknown provider / step ids)  
+- Fail-closed behavior for money paths  
+
+Bad tests:
+
+- Hitting production hubs from CI  
+- Asserting wall-clock times for WebSocket delivery  
+
+The example modules under `examples/java/pattern-*` are meant to be the golden path — clone them before inventing a second design.
+
+## Closing
+
+If you only remember one sentence: **patterns organize code; Super Patterns organize judgment.**
+
+The jar is for what is true across deploys. The hub is for what must be true in the next minute.
+
