@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Abstraction stable; implementor (pdf|html|json) flips live"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-bridge-live-implementor.md
-main_image: ./devto-cover-pattern-bridge-live-implementor.jpg
+main_image: https://files.catbox.moe/3cghc3.jpg
 
 ## Operational checklist
 

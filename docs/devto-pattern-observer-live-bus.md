@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Which topics fire is hub policy, not a redeploy"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-observer-live-bus.md
-main_image: ./devto-cover-pattern-observer-live-bus.jpg
+main_image: https://files.catbox.moe/xkcl97.jpg
 
 ## Operational checklist
 
