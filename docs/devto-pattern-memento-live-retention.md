@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "How many undo snapshots to keep is live"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-memento-live-retention.md
-main_image: ./devto-cover-pattern-memento-live-retention.jpg
+main_image: https://files.catbox.moe/q2tw9e.jpg
 
 ## Operational checklist
 

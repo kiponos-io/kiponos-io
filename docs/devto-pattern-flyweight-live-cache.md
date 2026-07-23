@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Shared instance pool size and TTL from the hub"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-flyweight-live-cache.md
-main_image: ./devto-cover-pattern-flyweight-live-cache.jpg
+main_image: https://files.catbox.moe/qxl1v3.jpg
 
 ## Operational checklist
 

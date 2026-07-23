@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Default field values from the hub"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-builder-live-defaults.md
-main_image: ./devto-cover-pattern-builder-live-defaults.jpg
+main_image: https://files.catbox.moe/c6g45h.jpg
 
 ## Operational checklist
 

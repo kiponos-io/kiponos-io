@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Page size is a knob, not a constant in a jar"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-iterator-live-page-size.md
-main_image: ./devto-cover-pattern-iterator-live-page-size.jpg
+main_image: https://files.catbox.moe/72nynn.jpg
 
 ## Operational checklist
 

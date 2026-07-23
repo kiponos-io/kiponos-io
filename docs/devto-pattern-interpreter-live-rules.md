@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Rule text in the hub, engine in the jar"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-interpreter-live-rules.md
-main_image: ./devto-cover-pattern-interpreter-live-rules.jpg
+main_image: https://files.catbox.moe/12tith.jpg
 
 ## Operational checklist
 

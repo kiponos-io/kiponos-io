@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Who talks to whom is a hub matrix"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-mediator-live-topology.md
-main_image: ./devto-cover-pattern-mediator-live-topology.jpg
+main_image: https://files.catbox.moe/l6h71u.jpg
 
 ## Operational checklist
 

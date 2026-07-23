@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Which prototype id to clone is hub state"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-prototype-live-registry.md
-main_image: ./devto-cover-pattern-prototype-live-registry.jpg
+main_image: https://files.catbox.moe/z4nwah.jpg
 
 ## Operational checklist
 

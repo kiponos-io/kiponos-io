@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Which visitors run over the tree is hub policy"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-visitor-live-registry.md
-main_image: ./devto-cover-pattern-visitor-live-registry.jpg
+main_image: https://files.catbox.moe/b0zb0k.jpg
 
 ## Operational checklist
 

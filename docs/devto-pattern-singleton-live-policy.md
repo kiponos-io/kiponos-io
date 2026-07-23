@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "One instance, live fields — not a god object with frozen YAML"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-singleton-live-policy.md
-main_image: ./devto-cover-pattern-singleton-live-policy.jpg
+main_image: https://files.catbox.moe/4u3hb4.jpg
 
 ## Operational checklist
 

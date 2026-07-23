@@ -4,7 +4,7 @@ published: false
 tags: java, designpatterns, architecture, devops
 description: "Enable/disable branches of a rule tree live"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-pattern-composite-live-rules.md
-main_image: ./devto-cover-pattern-composite-live-rules.jpg
+main_image: https://files.catbox.moe/tm3ebs.jpg
 
 ## Operational checklist
 
