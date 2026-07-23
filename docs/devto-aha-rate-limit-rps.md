@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live ingress RPS cap via Kiponos Java SDK — throttle without a redeploy mid-attack."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-rate-limit-rps.md
-main_image: ./devto-cover-aha-rate-limit-rps.jpg
+main_image: https://files.catbox.moe/y0prh4.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -123,6 +123,39 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Bot farms and honest customers share the same dial
+
+Ingress RPS is not only anti-abuse. It is also **fairness** during flash sales and partner spikes. One number serves three masters:
+
+1. **Security** — starve scrapers before they finish the catalog  
+2. **SRE** — keep p99 inside SLO when a dependency limps  
+3. **Product** — prefer graceful 429 over silent 503 death spirals  
+
+If those three orgs file three tickets to change three YAML copies, you already lost.
+
+## Where to enforce
+
+Prefer the earliest durable hop that still knows identity:
+
+| Layer | Pros | Cons |
+|-------|------|------|
+| Edge/WAF | Cheap rejection | Weak app identity |
+| API gateway | Central policy | Another control plane |
+| Service middleware + hub | Local get, live write | Must clamp in-process |
+
+Kiponos sits where the **decision is made**: middleware reads `rps` from memory; edge can still hard-cap a catastrophic upper bound that only changes with a real release.
+
+## Incident script (paste into runbook)
+
+1. Confirm scrape or overload (rate of 429 vs origin errors).  
+2. Drop hub `rps` to the emergency floor (documented number, not vibes).  
+3. Watch `retry_exhausted` / queue depth for 2 minutes.  
+4. Raise in steps of 10–20% once origin recovers.  
+5. Write the postmortem line: *who moved the dial, from→to, why*.  
+
+No PR. No image rebuild. No "we'll catch the next deploy window."
+
 
 ## Moral
 

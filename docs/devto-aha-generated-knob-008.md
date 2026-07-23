@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live allowed skew for token validation via Kiponos example aha-generated-knob-008 (hub key knob-8)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-008.md
-main_image: ./devto-cover-aha-generated-knob-008.jpg
+main_image: https://files.catbox.moe/aqhmhm.jpg
 ---
 
 **The Aha:** `knob-8` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## JWT clock skew is federation friction
+
+`leeway seconds` absorbs laptop clocks and IdP drift. Too tight: flapping 401s. Too loose: replay windows widen.
+
+## Live leeway with security clamps
+
+- Compiled max leeway (security review)  
+- Hub value ≤ max for operational tuning during IdP incidents  
+- Prefer fixing NTP and IdP health; leeway is a shock absorber, not a lifestyle  
+
+## When to move
+
+IdP maintenance, regional clock skew incidents, mobile clients with terrible timekeeping. Raise temporarily, page platform, lower when healthy.
+
+## What never goes live without review
+
+- Accepting `none` alg  
+- Disabling signature verify  
+- Widening leeway past the compiled security max  
+
+Skew tolerance is posture inside a **security envelope** defined in code.
+
+
+## Closing for auth owners
+
+Leeway is a shock absorber. Widen it to survive an IdP bad day; narrow it when clocks and federation are healthy again. Never confuse leeway with "disable verify."
+
 
 ## Moral
 

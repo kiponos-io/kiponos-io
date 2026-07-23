@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live broker prefetch for consumers via Kiponos example aha-generated-knob-005 (hub key knob-5)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-005.md
-main_image: ./devto-cover-aha-generated-knob-005.jpg
+main_image: https://files.catbox.moe/4k3gef.jpg
 ---
 
 **The Aha:** `knob-5` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,33 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Queue prefetch is fairness and memory
+
+Prefetch / QoS counts decide how many messages a consumer grabs. High prefetch boosts throughput and risks unfairness + memory spikes. Low prefetch is kinder under multi-tenant load.
+
+## Why hub over redeploy
+
+Broker-side and client-side knobs both suffer when frozen:
+
+- Sudden poison-message storms want **lower** prefetch now  
+- Big batch windows want **higher** prefetch for efficiency  
+
+## Safe pattern
+
+1. Hub key `prefetch` with clamps.  
+2. Apply on consumer start **and** on hub change if the client API allows dynamic update; otherwise document restart requirement honestly.  
+3. Always pair with ack discipline — prefetch without timely ack is just a leak.
+
+## Metrics
+
+Unacked messages, consumer lag, RSS. If lag falls but RSS climbs, prefetch bought speed with memory — say so in the change note.
+
+
+## Closing for queue owners
+
+Prefetch is a promise to hold work. Make the promise small enough to break safely, large enough to keep brokers honest.
+
 
 ## Moral
 

@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live consecutive fails before instance marks unhealthy via Kiponos example aha-generated-knob-010 (hub key knob-10)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-010.md
-main_image: ./devto-cover-aha-generated-knob-010.jpg
+main_image: https://files.catbox.moe/thdx7u.jpg
 ---
 
 **The Aha:** `knob-10` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Health fail threshold is cluster membership posture
+
+How many failed probes before a node is thrown out balances **flap** vs **sticky bad pods**. The right number shifts with network weather and dependency health.
+
+## Live threshold
+
+- Flappy network event: raise threshold temporarily to stop thrash  
+- Known bad build: lower threshold so probes eject faster  
+- Always clamp; never allow "infinite tolerance" from the dashboard  
+
+## Coordinate with drain
+
+Ejecting a pod is half the story; drain window (sister essay) is the other. Live both. Document the pair in one runbook section.
+
+## Signals
+
+Ready/not-ready transitions per minute, request error rate on remaining peers, deploy duration. If deploys stall because thresholds are too strict, that is a hub change — not a week of YAML PRs.
+
+Health is how the mesh decides trust. Trust thresholds are posture.
+
+
+## Closing for health owners
+
+Probe thresholds decide who stays in the mesh. Make them steerable when the network weathers change — and always pair eject speed with a sane drain.
+
+
+Ship the clamp. Ship the audit. Ship the revert path.
 
 ## Moral
 

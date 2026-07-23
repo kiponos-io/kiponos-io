@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live percent of traffic mirrored to a shadow path via Kiponos example aha-generated-knob-006 (hub key knob-6)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-006.md
-main_image: ./devto-cover-aha-generated-knob-006.jpg
+main_image: https://files.catbox.moe/ux4o7g.jpg
 ---
 
 **The Aha:** `knob-6` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Shadow traffic percent is experiment posture
+
+Shadow / dark launch percent decides how much production traffic is **mirrored** to a candidate. It is not user-visible routing (that is canary) — it is load and parity cost.
+
+## Live share
+
+- 0% → off  
+- Small percent → validate parity  
+- Raise only while error budgets on both primary and shadow allow  
+
+Welding shadow percent to a deploy means every experiment is a release. That is how shadow dies in the backlog.
+
+## Cost honesty
+
+Shadow doubles downstream calls for the mirrored slice. FinOps should see the dial. Cap it. Expire it (automation returns to 0 after N hours unless renewed).
+
+## Diffs that matter
+
+Compare status codes and latency histograms primary vs shadow. Do not require perfect body equality on every endpoint — define allowlisted diff rules in code; leave **volume** in the hub.
+
+
+## Closing for shadow owners
+
+Shadow traffic is a tax you choose. Choose it live, cap it hard, and expire it automatically so experiments cannot become permanent double-spend.
+
+
+Ship the clamp. Ship the audit. Ship the revert path.
 
 ## Moral
 

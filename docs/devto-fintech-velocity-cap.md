@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live transaction velocity cap via Kiponos — fraud ops without a payment service redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fintech-velocity-cap.md
-main_image: ./devto-cover-fintech-velocity-cap.jpg
+main_image: https://files.catbox.moe/h2zb65.jpg
 ---
 
 **The Aha:** `max-per-hour` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -122,6 +122,37 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Velocity is fraud posture, not a compile-time constant
+
+A velocity cap answers: *how much value can this identity move in this window before we slow or block?* Attackers adapt in minutes. Constants adapt in release trains.
+
+## Money paths fail closed
+
+When the hub is dark, do **not** open the floodgates:
+
+| Hub state | Recommended default |
+|-----------|---------------------|
+| Fresh value | Use live cap |
+| Stale but within TTL | Use LKG cap |
+| Missing / unreadable | Conservative floor (or deny) |
+
+"Fail open so we don't lose revenue" is how you lose the fraud war **and** the postmortem.
+
+## Coordination without a second product
+
+Fraud, risk, and payments all want a say. Give them one hub folder with allowlisted writers — not three YAML files and a Jira ballet.
+
+Log **decisions** (cap applied, reason code), not every `getInt`. Sampling the get stream teaches you nothing; sampling the **writes** teaches you who changed risk appetite.
+
+## What stays reviewed in code
+
+- Cryptographic material and signing keys  
+- Schema of the transfer payload  
+- Hard regulatory ceilings that legal freezes  
+
+Everything else that war-room humans already shout as numbers belongs in the hub with clamps and audit.
+
 
 ## Moral
 

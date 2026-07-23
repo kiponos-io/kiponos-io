@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live fraction of keys to pre-warm on boot via Kiponos example aha-generated-knob-003 (hub key knob-3)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-003.md
-main_image: ./devto-cover-aha-generated-knob-003.jpg
+main_image: https://files.catbox.moe/o5cvm8.jpg
 ---
 
 **The Aha:** `knob-3` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Cache warm ratio is cost vs latency
+
+Warm ratio / prefetch aggressiveness decides how much memory and origin traffic you spend to buy hit rate. Peak events want more warmth; quiet hours want thrift.
+
+## Live warm without restart storms
+
+Operators should move `warmRatio` (0–100) and see:
+
+- Prefetchers read the new target on their next tick  
+- No full process bounce  
+- Metrics: hit rate, origin QPS, RSS  
+
+## Guardrails
+
+- Never warm above compiled memory budget  
+- Fail to a modest default if hub missing (do not cold-start stampede origin)  
+- Per-region folders when origin costs differ  
+
+## Incident use
+
+During origin brownout: **lower** warm aggression to stop herd reloads. During launch: **raise** before traffic, then settle to steady-state. Both are the same dial; both used to be two tickets and a deploy.
+
+
+## Closing for cache owners
+
+Warmth is a budget. Spend it on purpose before peak; reclaim it when origin is sick. The jar should not be the wallet.
+
 
 ## Moral
 

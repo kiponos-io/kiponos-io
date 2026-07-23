@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live structured log sampling under load via Kiponos example aha-generated-knob-007 (hub key knob-7)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-007.md
-main_image: ./devto-cover-aha-generated-knob-007.jpg
+main_image: https://files.catbox.moe/v3un2e.jpg
 ---
 
 **The Aha:** `knob-7` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Log sample per thousand is sight vs bill
+
+Logging everything is a tax. Logging nothing is negligence. `samplePerThousand` is the compromise that should move when the incident does.
+
+## Live sampling
+
+- Steady state: low sample on hot paths  
+- SEV: raise on the failing service folder only  
+- Cost alert: lower globally with a documented floor (never zero on auth failures if policy forbids)
+
+## Implementation sketch
+
+```java
+int perThousand = policy.getInt("logSamplePerThousand"); // live
+if (ThreadLocalRandom.current().nextInt(1000) < perThousand) {
+    log.info("...");
+}
+```
+
+Always log: security denials, money-path failures, and explicit audit events — **outside** the sample gate.
+
+## Anti-pattern
+
+Shipping `DEBUG` in prod "for a while" via a new image. That is a sampling dial with worse cardinality. Use the hub; leave log level policy explicit.
+
+
+Ship the clamp. Ship the audit. Ship the revert path.
 
 ## Moral
 

@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live half-open probe interval for a flaky dependency via Kiponos example aha-generated-knob-004 (hub key knob-4)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-004.md
-main_image: ./devto-cover-aha-generated-knob-004.jpg
+main_image: https://files.catbox.moe/w6bejo.jpg
 ---
 
 **The Aha:** `knob-4` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,33 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Circuit reset seconds are recovery appetite
+
+How long a circuit stays open is a bet: too short and you hammer a sick dependency; too long and you stay dark after it healed.
+
+## Live reset, frozen failure thresholds (optional split)
+
+Many teams freeze `failureRateThreshold` in code review and leave `waitDurationInOpenState` live — recovery appetite changes with incident shape.
+
+| Open duration | Meaning |
+|---------------|---------|
+| Short | Aggressive probe; risk of flap |
+| Long | Protect dependency; risk of extended brownout |
+
+Move live. Measure half-open success rate. Write the from→to in the incident timeline.
+
+## Automation
+
+Budget burn high → automation lengthens open state. Dependency green for N minutes → automation shortens. Humans override both via the same hub path.
+
+No second "circuit product." One tree.
+
+
+## Closing for circuit owners
+
+Open duration is how polite you are to a burning dependency. Politeness that requires a deploy is not politeness — it is bureaucracy.
+
 
 ## Moral
 

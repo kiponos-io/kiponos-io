@@ -4,7 +4,7 @@ published: false
 tags: java, resilience, devops, kiponos
 description: "Live max-attempts for retries via Kiponos — stop amplifying outages with a jar-shaped budget."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-retry-max-attempts.md
-main_image: ./devto-cover-aha-retry-max-attempts.jpg
+main_image: https://files.catbox.moe/1s7ykc.jpg
 ---
 
 **The Aha:** `max-attempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -124,6 +124,41 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Failure budget vs retry budget
+
+Retries spend **downstream capacity**. Every extra attempt is a vote that the dependency should absorb more load while it is already sick.
+
+Treat `maxAttempts` as a slice of the **error budget**, not a comfort blanket:
+
+| Signal | Raise attempts? | Prefer instead |
+|--------|-----------------|----------------|
+| Transient blips, healthy p99 | Cautious +1 | Jitter + shorter timeout |
+| Dependency already 5xx-storming | **No** | Shed load, open circuit |
+| Client timeouts cascading | **No** | Fail faster, protect queue |
+| Idempotent read path | Maybe | Cap total wall clock |
+
+Write the number that survives a **bad day**, not the number that flatters a sunny demo.
+
+## Observability you actually need
+
+Ship three counters with the key path baked in:
+
+1. `retry_attempts_total{path,attempt}` — histogram of how deep you go  
+2. `retry_exhausted_total{path}` — the only number leadership should screenshot  
+3. `retry_decision_changes_total` — hub writes that moved the dial  
+
+When exhausted spikes and nobody moved the hub, the outage is **under-instrumented judgment**, not "config debt."
+
+## Anti-patterns we retired
+
+- Shipping `maxAttempts=10` "just in case" on payment writes  
+- Coupling retry count to deploy cadence ("we'll tune next sprint")  
+- Logging every get of the hub value (noise) instead of every **change**  
+- Using retries to paper over a missing circuit breaker  
+
+The Super Pattern here is simple: **budget is posture**. Posture that waits for a jar is already late.
+
 
 ## Moral
 

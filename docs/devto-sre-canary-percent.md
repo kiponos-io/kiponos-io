@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live canary traffic percent via Kiponos — steer rollouts without another pipeline run."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sre-canary-percent.md
-main_image: ./devto-cover-sre-canary-percent.jpg
+main_image: https://files.catbox.moe/f3o9ne.jpg
 ---
 
 **The Aha:** `percent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -120,6 +120,35 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Canary percent is a steering wheel
+
+Welding canary share to the release artifact means every traffic move is another pipeline. That is how teams "skip canary" under pressure — the process became the enemy.
+
+## Live share, frozen binary
+
+Ship **one** canary-capable build. Steer `canaryPercent` from the hub:
+
+- 1% → 5% → 25% → 100% without rebuilding  
+- Instant rollback: set share to 0 while you keep the bad binary offline  
+- Progressive delivery tools can write the same hub path your humans use  
+
+The jar answers *what code can run*. The hub answers *how much traffic tastes it*.
+
+## Guardrails
+
+- Max step size (no 1% → 100% in one click without break-glass)  
+- Automatic freeze if error budget burn exceeds threshold (automation writes 0)  
+- Separate folders for prod vs staging so drills do not bleed  
+
+## What stays in the release
+
+- Feature code itself  
+- Schema migrations  
+- Feature flags that gate unfinished product (different problem)
+
+Canary **share** is SRE posture. Treat it like a steering wheel, not a welded strut.
+
 
 ## Moral
 

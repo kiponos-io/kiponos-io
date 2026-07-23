@@ -4,7 +4,7 @@ published: false
 tags: java, sre, observability, kiponos
 description: "Live trace sampling rate via Kiponos — see more during incidents, pay less after."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sre-trace-sampling-rate.md
-main_image: ./devto-cover-sre-trace-sampling-rate.jpg
+main_image: https://files.catbox.moe/gjotpe.jpg
 ---
 
 **The Aha:** `rate` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -120,6 +120,35 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Sampling is cost and sight
+
+Trace sampling rate buys visibility with storage and cardinality. At 100% you drown FinOps; at 0.1% you blind the incident.
+
+## Move with the incident, not the sprint
+
+| Situation | Sampling posture |
+|-----------|------------------|
+| Steady state | Low baseline (budget-friendly) |
+| Active incident | Raise temporarily on the failing service |
+| New release canary | Raise on canary cohort only |
+| Cost spike alert | Lower globally with documented floor |
+
+If each of those requires a redeploy, you will choose blindness or bankruptcy by accident.
+
+## Practical wiring
+
+- Hub key: `traceSamplePerThousand` (integer, easy to clamp)  
+- SDK/local get on the tracer config refresh path (seconds, not per-span hub RTT)  
+- Automation may lower on budget burn; humans raise on SEV  
+
+## Never live-edit
+
+- Trace **schema** / attribute allowlists that compliance froze  
+- PII redaction rules  
+
+Rate is posture. Redaction is law.
+
 
 ## Moral
 

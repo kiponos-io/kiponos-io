@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live max open connections on the primary pool via Kiponos example aha-generated-knob-001 (hub key knob-1)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-001.md
-main_image: ./devto-cover-aha-generated-knob-001.jpg
+main_image: https://files.catbox.moe/ssmz78.jpg
 ---
 
 **The Aha:** `knob-1` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Pool ceilings are congestion control
+
+`max open connections` is how hard you lean on the database when every service panics together. Raise it blindly and you melt the primary. Lower it blindly and you queue the business.
+
+## Live ceiling, compiled hard max
+
+- Hub: operational ceiling operators may touch  
+- Jar: absolute hard max the driver will never exceed  
+- Default: safe mid value when hub is unreachable  
+
+That split keeps a typo from opening 10k connections while still letting on-call relieve a legitimate stampede **without** a deploy.
+
+## What to watch after a change
+
+1. Active connections vs ceiling  
+2. Wait time acquiring connections  
+3. DB CPU / lock waits  
+4. Application timeouts that used to be pool waits  
+
+If wait time drops but DB CPU pegs, you did not fix capacity — you **moved** the bottleneck.
+
+## Rehearsal
+
+In staging, set ceiling low until checkout queues, then raise live and prove recovery without restart. That single drill ends half the "we need a bigger pool in the next release" arguments.
+
+
+Ship the clamp. Ship the audit. Ship the revert path.
 
 ## Moral
 

@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live parallel job slots for the async worker via Kiponos example aha-generated-knob-002 (hub key knob-2)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-002.md
-main_image: ./devto-cover-aha-generated-knob-002.jpg
+main_image: https://files.catbox.moe/p7scdj.jpg
 ---
 
 **The Aha:** `knob-2` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,35 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Worker concurrency is throughput posture
+
+Thread/async worker counts decide how much parallel work you accept. Too high: context thrash and downstream melt. Too low: lag and SLO burn.
+
+## Change without bounce
+
+Many runtimes bake pool size at startup. Where you **can** resize (or gate admission with a live semaphore), put the number in the hub:
+
+- Admission control: `tryAcquire(liveLimit)` before expensive work  
+- Consumer concurrency: rebalance on hub change where the framework allows  
+- Document honestly when a restart is still required — do not fake live
+
+## Pair with bulkheads
+
+Concurrency without isolation is a shared fate. Combine live concurrency with bulkhead partitions so one noisy neighbor cannot spend the whole process.
+
+## Ops checklist unique to workers
+
+1. Define max useful concurrency (CPU-bound vs I/O-bound).  
+2. Clamp hub values to that max.  
+3. Alert on queue depth **and** active workers.  
+4. Prefer lowering concurrency before paging for "more pods" during dependency sickness.
+
+
+## Closing for concurrency owners
+
+If your framework cannot resize pools live, gate **admission** with a live semaphore that wraps the pool. That is still Super Pattern thinking: the expensive resource stays bounded by judgment, not by last week's YAML.
+
 
 ## Moral
 

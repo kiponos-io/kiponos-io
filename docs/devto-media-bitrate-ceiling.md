@@ -4,7 +4,7 @@ published: false
 tags: java, media, devops, kiponos
 description: "Live media bitrate ceiling via Kiponos — protect origin and QoS without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-media-bitrate-ceiling.md
-main_image: ./devto-cover-media-bitrate-ceiling.jpg
+main_image: https://files.catbox.moe/cn8fk6.jpg
 ---
 
 **The Aha:** `max-kbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -120,6 +120,37 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Peak traffic is a cost and a quality fight
+
+Bitrate ceilings protect origin, CDN bills, and mobile users on bad networks. The right ceiling at 3pm is wrong at season finale night.
+
+## Three pressures, one dial
+
+| Stakeholder | Wants |
+|-------------|--------|
+| FinOps | Lower ceiling, lower egress |
+| Product | Higher ceiling, happier viewers |
+| SRE | Stability under fan-out |
+
+A deploy per argument is how you ship the average of three opinions **too late**. A hub key with clamps lets the on-call move, then the postmortem argue with data.
+
+## Practice the flip
+
+1. Start stream with ceiling C.  
+2. Induce synthetic load (or wait for real peak).  
+3. Drop ceiling 15%; watch rebuffer rate and origin CPU.  
+4. Raise carefully when headroom returns.  
+5. Record from→to with reason codes (`cost_spike`, `rebuffer_slo`, `launch_window`).
+
+## Defaults that do not embarrass you
+
+- Fail to a **known-good mid tier**, not to unlimited  
+- Per-region folders when egress prices differ  
+- Never allow dashboard values above the compiled hard max  
+
+Bitrate is posture between cost and experience. Leave the codec in the jar; leave the ceiling in the hub.
+
 
 ## Moral
 

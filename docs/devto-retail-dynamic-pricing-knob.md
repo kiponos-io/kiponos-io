@@ -4,7 +4,7 @@ published: false
 tags: java, retail, architecture, kiponos
 description: "Live dynamic pricing weight via Kiponos — merchandising posture without redeploying checkout."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-retail-dynamic-pricing-knob.md
-main_image: ./devto-cover-retail-dynamic-pricing-knob.jpg
+main_image: https://files.catbox.moe/1vhoe4.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -120,6 +120,43 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Merchandising speaks margin; engineering spoke Gradle
+
+Pricing weight is a **commercial** control. Packaging it as a deploy artifact forces merchandising to borrow an engineering change train every flash sale.
+
+That is not governance. That is friction dressed as safety.
+
+## Guardrails that keep finance calm
+
+Live does **not** mean unbounded:
+
+- Clamp `weight` to an allowlisted range (e.g. 0.0–1.0 or basis points)  
+- Dual-control on writes for production folder (role + break-glass)  
+- Audit every change with actor, old, new, ticket id  
+- Default to **last-known-good** if the hub is unreachable mid-checkout  
+
+Finance cares that the number is **bounded and auditable**. They do not care that it lived in a JAR.
+
+## Black Friday drill
+
+Rehearse once before peak:
+
+1. Staging: move weight, prove checkout price tag updates within one request cycle.  
+2. Prove clamp rejects out-of-range values.  
+3. Prove LKG when hub is firewalled.  
+4. Time the full path: human decision → dashboard → next priced cart.  
+
+If that path is longer than five minutes, you will invent Slack-driven "manual price overrides" — a worse control plane.
+
+## What never goes live
+
+- Tax tables that legal freezes quarterly  
+- Currency conversion formulas needing dual review  
+- Anything that rewrites historical invoices  
+
+Weights, boosts, and experiment shares are posture. Ledgers are law.
+
 
 ## Moral
 

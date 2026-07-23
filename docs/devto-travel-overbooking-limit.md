@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live overbooking limit via Kiponos — inventory posture for travel without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-travel-overbooking-limit.md
-main_image: ./devto-cover-travel-overbooking-limit.jpg
+main_image: https://files.catbox.moe/7lmgsx.jpg
 ---
 
 **The Aha:** `percent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -120,6 +120,36 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Gate agents decide in minutes; jars decide in sprints
+
+Overbooking percent is an **inventory** lever. Weather, no-show models, and irregular ops change the right number inside a shift. A properties file from last Tuesday is not a strategy — it is a rumor.
+
+## Safety envelope
+
+Live overbooking still needs rails:
+
+1. **Hard max** compiled in (never book 200% of a 50-seat flight by typo).  
+2. **Per-market folders** so EU and US ops do not share one reckless dial.  
+3. **Audit** every change with flight date window + actor.  
+4. **Kill path**: one key revert returns to conservative default.
+
+## Ops theater to kill
+
+- "Open a change request to raise overbooking 2 points"  
+- Copy-pasting percentages into three microservices  
+- Nightly batch jobs that "sync config" from a spreadsheet  
+
+If a gate supervisor cannot move the dial under supervision in under a minute, passengers will feel the lag as denied upgrades and angry queues.
+
+## Not live
+
+- Fare construction rules under tariff filing  
+- Safety-of-flight parameters  
+- Anything that rewrites sold PNR history  
+
+Overbooking **appetite** is posture. Safety minima are law.
+
 
 ## Moral
 

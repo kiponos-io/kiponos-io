@@ -4,7 +4,7 @@ published: false
 tags: java, sre, kubernetes, kiponos
 description: "Live graceful shutdown window via Kiponos — longer drains under load without a new image."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-sre-graceful-shutdown-ms.md
-main_image: ./devto-cover-sre-graceful-shutdown-ms.jpg
+main_image: https://files.catbox.moe/v0zoo5.jpg
 ---
 
 **The Aha:** `drain-ms` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -120,6 +120,39 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Drain windows are incident posture
+
+`gracefulShutdownMs` is how long you let in-flight work finish before the process dies. Too short: dropped requests. Too long: stuck deploys and blocked autoscaling.
+
+## Why live beats YAML
+
+During an incident you may need to:
+
+- **Lengthen** drains so payments finish while you fence traffic  
+- **Shorten** drains so a bad pod stops holding a LoadBalancer target  
+
+Neither desire should wait for a green pipeline.
+
+## Pair with readiness
+
+A live drain is useless if readiness still says "up" forever. Coordinate:
+
+1. Mark not-ready (stop new traffic).  
+2. Apply drain window from hub.  
+3. Wait ≤ drain for in-flight.  
+4. Exit.
+
+Log the **chosen** drain on each shutdown so postmortems stop guessing.
+
+## Clamps
+
+- Compiled floor (never 0 on money paths unless explicit kill)  
+- Compiled ceiling (never 30 minutes because someone typed extra zeros)  
+- LKG when hub unreachable during SIGTERM (process still must exit)
+
+Drain is posture between **user completion** and **cluster agility**.
+
 
 ## Moral
 

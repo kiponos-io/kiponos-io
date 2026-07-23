@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live max upload size for the public API via Kiponos example aha-generated-knob-009 (hub key knob-9)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-009.md
-main_image: ./devto-cover-aha-generated-knob-009.jpg
+main_image: https://files.catbox.moe/sx8tze.jpg
 ---
 
 **The Aha:** `knob-9` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
@@ -121,6 +121,34 @@ Kiponos makes that verbal decision **executable** without a second control plane
 ## A note on testing
 
 Unit-test structure with fixed strings (no network). Integration-test the hub path against the public sandbox when you can. Good tests: defaults when keys are missing; clamps; fail-closed on money paths. Bad tests: hitting production hubs from CI.
+
+## Upload max MB is abuse and product tension
+
+Max upload size protects disks, proxies, and virus scanners. Product wants larger creative assets; security wants smaller attack surface.
+
+## Live ceiling
+
+Move `uploadMaxMb` inside a compiled hard max when:
+
+- A partner integration needs a temporary raise  
+- An abuse wave needs an emergency lower  
+- Regional products differ (per-folder)  
+
+## Enforce at more than one layer
+
+Hub-informed app check **and** edge/proxy hard cap. App-only limits are bypassable; edge-only limits are opaque to business logic. Both read related policy — or edge stays a static safety net while app uses live product limits below that net.
+
+## User experience
+
+When lowering live, return clear 413 with limit in the body. Silent TCP resets train clients to retry forever — which is another incident.
+
+
+## Closing for upload owners
+
+Size limits are product and security in one number. Move them inside a compiled envelope, tell clients the truth in 413s, and keep edge hard-caps as the last seatbelt.
+
+
+Ship the clamp. Ship the audit. Ship the revert path.
 
 ## Moral
 
