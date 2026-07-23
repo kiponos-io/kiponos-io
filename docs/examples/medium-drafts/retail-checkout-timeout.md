@@ -24,34 +24,30 @@ While carts become ghost stories.
 
 ## Architecture: live checkout knobs on the money path
 
-Checkout is a **trust ceremony**. The control plane must be live; the data plane must stay local:
+Checkout is a **trust ceremony**. The control plane must be live; the data plane must stay local.
+
+Who does what at peak:
+
+- **Storefront / cart API** — starts the ceremony  
+- **Checkout filter** — applies `timeout-ms` + `soft-fail-on-timeout` from **SDK memory**  
+- **PSP** — external HTTPS, the slow friend  
+- **Kiponos hub + dashboard** — ops raises timeout / soft-fail without rolling carts  
+- **WebSocket → SDK cache** — delivers the new integer **before** the next checkout  
 
 <!-- medium-img: diagram-checkout-path.png -->
 
-| Component | Job at peak |
-|-----------|-------------|
-| **Storefront / cart API** | Starts the ceremony |
-| **Checkout filter** | Applies `timeout-ms` + `soft-fail-on-timeout` from **SDK memory** |
-| **PSP** | External HTTPS — the slow friend |
-| **Kiponos hub + dashboard** | Ops raises timeout / soft-fail without rolling carts |
-| **WebSocket → SDK cache** | Delivers the new integer **before** the next checkout |
+Design clarity when the rail limps:
 
-### Decision table (design clarity)
+- **PSP healthy** — keep timeout tight (e.g. 3000ms); soft-fail off; fast path.  
+- **PSP lagging** — **raise** timeout to 5000–8000ms; optional soft-fail on. Fewer false timeouts.  
+- **PSP dying** — keep timeout high; soft-fail **on** so customers get a retry path instead of a hard 500.  
+- **Mis-set to 50ms** — clamp (≥250ms). Guardrail against self-inflicted UX DDoS.  
 
-| Condition | `timeout-ms` | `soft-fail-on-timeout` | Customer experience |
-|-----------|--------------|------------------------|---------------------|
-| PSP healthy | e.g. 3000 | `no` | Fast path, hard fail rare |
-| PSP lagging | **raise** to 5000–8000 | optional `yes` | Fewer false timeouts |
-| PSP dying | keep high | **`yes`** | Retry path instead of hard 500 |
-| Mis-set to 50ms | clamped (≥250ms) | — | Guardrail against self-inflicted DDoS of the UX |
+Old world vs live hub:
 
-### Old world vs live hub
-
-| Move | Old world | Kiponos |
-|------|-----------|---------|
-| Raise PSP timeout | PR + deploy mid-sale | Dashboard edit |
-| Enable soft-fail | Hope it was coded + shipped | Live flag |
-| Same JAR in all pods | Flags drift across rollouts | Same tree fan-out |
+- Raise PSP timeout: PR + deploy mid-sale → **dashboard edit**  
+- Enable soft-fail: hope it was coded and shipped → **live flag**  
+- Same JAR in all pods: flags drift across rollouts → **same tree fan-out**  
 
 ---
 
@@ -84,10 +80,8 @@ examples / retail-checkout-timeout /
   soft-fail-on-timeout  = yes | no
 ```
 
-| Key | Role |
-|-----|------|
-| `timeout-ms` | How long the storefront waits on the PSP |
-| `soft-fail-on-timeout` | Retry / degrade instead of detonating the session |
+- **`timeout-ms`** — how long the storefront waits on the PSP  
+- **`soft-fail-on-timeout`** — retry / degrade instead of detonating the session  
 
 That is the whole moral:
 
@@ -108,6 +102,13 @@ export KIPONOS_ACCESS='…'
 ./gradlew test run
 ```
 
+Try it tonight:
+
+1. Run the tests. Confirm clamps reject absurd timeouts and soft-fail wording is explicit.  
+2. Raise `timeout-ms` in the hub while imagining PSP lag — no redeploy.  
+3. Flip `soft-fail-on-timeout` to yes — carts get a second chance instead of a stack trace.  
+4. Imagine peak Black Friday: would you still wait for CI to change that integer?  
+
 Ops play: raise timeout during PSP lag; enable soft-fail so carts get a second chance instead of a stack trace.
 
 ---
@@ -118,7 +119,9 @@ If peak traffic requires a redeploy to change a timeout, you do not have a check
 
 You have a **scheduled vulnerability** that coincides with revenue.
 
-Ship the integer. Leave the jar alone. Let the customer finish paying.
+**Ship the integer. Leave the jar alone.** Let the customer finish paying.
+
+People should not have to ship a release to keep checkout honest.
 
 ---
 
