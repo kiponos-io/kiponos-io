@@ -14,7 +14,7 @@ The line that climbs while the room argues about whether the consumer is “just
 
 And then someone else says the worse sentence:
 
-**“We’d have to redeploy with `paused=true`.”**
+**“We’d have to redeploy with paused=true.”**
 
 Redeploy.
 
@@ -22,31 +22,37 @@ To pause.
 
 While lag is a business problem and poison messages are a moral one.
 
+I have watched that scene after red-eyes and before dawn coffee — once in a glass ops room where rain drew diagrams on the window, once in a hotel lobby where the only free seat faced a broken fountain, once simply at my own desk with the AC losing a quiet war against a rack of machines. Different cities. Same flinch. Same climbing line.
+
 ---
 
 ## Architecture: what “live pause” actually looks like
 
-Kiponos sits **beside** the worker, not on the Kafka hot path as a remote call per poll:
+Kiponos sits **beside** the worker, not on the Kafka hot path as a remote call per poll.
 
-![Kafka worker live control plane](https://litter.catbox.moe/zsnu1f.png)
+Think in four layers:
 
-| Layer | Role | Latency on the poll loop |
-|-------|------|---------------------------|
-| **Kiponos dashboard** | Ops flips `paused` / `prefetch` / `max-poll-records` | Human decision |
-| **Kiponos.io hub** | Holds the typed tree; fans out deltas | — |
-| **Java SDK in-memory cache** | WebSocket merges; local `.get()` | **Zero RTT** |
-| **Poll loop** | Reads policy from memory, then talks to Kafka | Only Kafka I/O |
+- **Kiponos dashboard** — a human flips `paused`, `prefetch`, or `max-poll-records`
+- **Kiponos.io hub** — holds the typed tree and fans out deltas
+- **Java SDK in-memory cache** — WebSocket merges; local `.get()` is **zero RTT**
+- **Poll loop** — reads policy from memory, then talks to Kafka (only Kafka I/O)
 
 That is the design point people miss: **control plane ≠ data plane.** You do not call the hub on every `poll()`. You call local memory that was already updated when ops moved the knob.
 
-### Old world vs Kiponos
+<!-- medium-img: diagram-kafka-control-plane.png -->
+
+---
+
+## Old world vs Kiponos
 
 | Question | Old world (YAML / Helm) | With Kiponos |
 |----------|-------------------------|--------------|
 | Pause consumer | PR → CI → roll pods | Dashboard `paused=yes` |
 | Shrink batch under poison | Redeploy `max.poll.records` | Live `max-poll-records` |
 | Tune prefetch | Hope the next chart is green | Live `prefetch` |
-| Wrong replica still running old flags | Common | Same JAR, same tree, WebSocket fan-out |
+| Wrong replica still on old flags | Common | Same JAR, same tree, WebSocket fan-out |
+
+Pause is a judgment. Packaging judgment as a release is how lag becomes a story customers tell.
 
 ---
 
@@ -58,12 +64,12 @@ We have consumer groups and rebalances and beautiful dashboards. Then a bad payl
 
 Old world theater:
 
-1. Edit `application.yml`  
-2. PR titled `temp: pause orders-consumer`  
-3. Wait for CI like it is weather  
-4. Deploy  
-5. Discover one pod is still on yesterday’s artifact  
-6. Merge a “revert the temporary pause” three days later that nobody reviews carefully  
+- Edit `application.yml`
+- Open a PR titled `temp: pause orders-consumer`
+- Wait for CI like it is weather
+- Deploy
+- Discover one pod is still on yesterday’s artifact
+- Merge a “revert the temporary pause” three days later that nobody reviews carefully
 
 I have watched excellent platform engineers — people who can reason about exactly-once without notes — reduced to archaeologists of their own Helm values because **pause was packaged as a release**.
 
@@ -75,11 +81,9 @@ Airports taught me that gates renumber without apology. Kafka taught me that a t
 
 A real worker has a small family of related moves under one mental folder:
 
-| Key | Type | Meaning |
-|-----|------|---------|
-| `paused` | bool-ish (`yes`/`no`) | May the worker pull at all? |
-| `prefetch` | int | How hungry is the fetch window? |
-| `max-poll-records` | int | How big is each poll batch when the dependency limps? |
+- `paused` — may the worker pull at all?
+- `prefetch` — how hungry is the fetch window?
+- `max-poll-records` — how big is each poll batch when the dependency limps?
 
 Tree shape in the hub:
 
@@ -90,18 +94,15 @@ examples / 16-kafka-consumer-worker /
   max-poll-records  = int
 ```
 
-| Effective state | Behavior |
-|-----------------|----------|
-| `paused=yes` | Do not pull — freeze the poison storm; lag may grow on purpose |
-| running | Honor prefetch / max-poll (**prefetch clamped ≥ poll batch**) |
+When `paused=yes`, do not pull — freeze the poison storm; lag may grow on purpose. When running, honor prefetch and max-poll (prefetch clamped ≥ poll batch).
 
 Old world: those answers live in three files, two env overlays, and a wiki page last edited during a previous poison storm.
 
 New world:
 
-1. Open the [Kiponos](https://kiponos.io) hub  
-2. Set `paused` to `yes` (or lower `max-poll-records`)  
-3. The process adopts a safer posture **without** a parade of pull requests  
+- Open the [Kiponos](https://kiponos.io) hub
+- Set `paused` to `yes` (or lower `max-poll-records`)
+- The process adopts a safer posture **without** a parade of pull requests
 
 Judgment at the speed of the person who is already awake.
 
@@ -131,6 +132,8 @@ Consumer lag is a **control-plane problem** dressed up as a data problem.
 If pausing a worker requires a release train, you do not have a pause button. You have a prayer with a pipeline.
 
 Ship the judgment. Leave the jar alone.
+
+People should not have to ship a release to make a decision.
 
 ---
 
