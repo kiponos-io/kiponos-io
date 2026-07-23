@@ -100,6 +100,60 @@ The algorithms stay reviewed code. The **choice among them** becomes operational
 
 ---
 
+---
+
+## Black Friday, not Black Pipeline
+
+Picture merchandising at 14:12. Loyalty is winning on AOV. Volume is losing on margin. Someone says: “Flip to loyalty for two hours.”
+
+In the fossil world that is a ticket, a PR, a review, a green build, a cautious roll. By the time the jar knows, the sale is over or the margin is gone.
+
+In the Super Pattern world it is a hub write:
+
+```text
+patterns / strategy / checkout / active = loyalty
+patterns / strategy / checkout / loyalty-bps = 150
+```
+
+The next cart prices under loyalty. The jar never left the node. When the window ends, flip back. The postmortem has from→to, not “we missed the train.”
+
+---
+
+## What stays versioned vs live
+
+| Versioned in the jar | Live in the hub |
+|----------------------|-----------------|
+| Strategy interface & implementations | `active` strategy id |
+| Allowlist of strategy names | Volume threshold |
+| Clamp logic (min/max bps) | Loyalty basis points |
+| Pure pricing math | Which mind is thinking |
+
+That table is the entire architecture argument. Misplace a row and you either freeze the business or invite unreviewed code into production via a text box.
+
+---
+
+## War-room protocol (paste into the runbook)
+
+1. Name the hub path: `patterns/strategy/checkout/*`  
+2. Speak the clamp before anyone types (max bps, allowlisted ids only)  
+3. Write the reason code with the change (`peak`, `margin`, `drill`)  
+4. Watch conversion and margin for five minutes  
+5. Revert or step — never leave a “temporary” strategy as the silent default  
+6. Postmortem line: who moved `active`, from→to, whether automation should own the next flip  
+
+---
+
+## Testing that does not lie
+
+- Unit-test each strategy with fixed numbers (no network).  
+- Unit-test the router with a fake policy map: unknown `active` → safe default.  
+- Integration-test the hub path against the public sandbox when you can.  
+- Never assert wall-clock WebSocket delivery in CI.
+
+The example module under `examples/java/pattern-strategy-live-router` is the golden path — clone it before inventing a second router.
+
+---
+
 ## The moral, if you need one on a slide
 
 The Gang of Four already knew systems need freedom of behavior.
