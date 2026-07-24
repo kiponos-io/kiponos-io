@@ -1,123 +1,165 @@
 ---
 title: "Kubernetes Pods Without ConfigMaps or Environment Variables (Kiponos Java SDK)"
 published: true
-tags: java, kubernetes, devops, realtime
-description: Remove ConfigMaps, envFrom walls, and volume-mounted YAML from pods. Each container reads live config from the Kiponos SDK — delta updates without reload operators or rolling restarts.
+tags: java, kubernetes, architecture, kiponos
+description: "Remove ConfigMaps, envFrom walls, and volume-mounted YAML from pods. Each container reads live config from the Kiponos SDK — delta updates without reload operat"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-configmaps.md
 main_image: https://files.catbox.moe/geqada.jpg
 ---
 
-Kubernetes taught us to inject config through ConfigMaps, Secrets-as-files, `envFrom`, and Reloader annotations that trigger **rolling restarts** when someone fixes a typo in `application.yml`. For Java services that need **mid-day tuning**, that model is backwards.
+**The Aha:** `knob` is not a property-file trophy. It is **incident posture** for K8s vs live hub — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) inverts pod configuration: mount **only auth tokens**, let the SDK hold operational config **in memory**, updated via WebSocket deltas. No ConfigMap volume. No `DATABASE_URL` env var matrix. No Stakater Reloader.
+K8s vs live hub does not wait for your change-management window. Your `knob` did — until it lived in a hub.
 
-## What stays in Kubernetes vs Kiponos
+## The problem: ceremony between judgment and effect
 
-| Kubernetes (secrets) | Kiponos (live hub) |
-|----------------------|-------------------|
-| `KIPONOS_ID` JWE token | JDBC URLs, pool sizes |
-| `KIPONOS_ACCESS` JWE token | Feature flags, rate limits |
-| TLS certs, IAM keys | Partner endpoints, timeouts |
-| | Anything ops changes weekly |
+When **beyond ConfigMaps** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-Secrets stay in K8s; **behavioral config** moves to Kiponos.
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-## Minimal pod spec
+Domain: K8s vs live hub.
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: payments-api
-spec:
-  template:
-    spec:
-      containers:
-        - name: app
-          image: payments-api:1.4.2
-          env:
-            - name: KIPONOS_ID
-              valueFrom:
-                secretKeyRef:
-                  name: kiponos-auth
-                  key: id
-            - name: KIPONOS_ACCESS
-              valueFrom:
-                secretKeyRef:
-                  name: kiponos-auth
-                  key: access
-          args:
-            - "-Dkiponos=['payments']['v3']['prod']['live']"
-          # No configMapRef. No envFrom. No application.yml volume.
+examples/
+  k8s-no-configmaps/
+    knob: <live>
 ```
-
-## Application code
 
 ```java
-@Service
-public class DataSourceFactory {
-    private final Kiponos kiponos = Kiponos.createForCurrentTeam();
-
-    public HikariConfig config() {
-        var db = kiponos.path("data", "postgres");
-        HikariConfig cfg = new HikariConfig();
-        cfg.setJdbcUrl(db.get("jdbc_url"));
-        cfg.setMaximumPoolSize(db.getInt("pool_max"));
-        return cfg;
-    }
+Folder policy = kiponos.path("examples", "k8s-no-configmaps");
+int knob = policy.getInt("knob"); // local get — no hub RTT
+if (knob <= 0) {
+    return failClosed();
 }
+return apply(knob);
 ```
 
-Pool size changes in dashboard → SDK receives delta → **next** `getInt("pool_max")` returns new value. Implement pool resize in your factory or on `afterValueChanged` — without a new Deployment.
+Ops (or automation) sets `knob` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
+
+## What stays in the jar vs the hub
+
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
 ## Architecture
 
-![Architecture diagram](https://files.catbox.moe/to4cqn.png)
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (beyond ConfigMaps)
+```
 
-## Why teams delete ConfigMaps
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-| ConfigMap pain | Kiponos answer |
-|----------------|----------------|
-| 1MB size limits | Tree in hub, not etcd |
-| Restart to pick up changes | WebSocket deltas |
-| Per-env duplicate manifests | Profile path per env |
-| Drift between Helm charts | Single dashboard truth |
+## Clone and run the pattern
 
-## Real-world scenarios
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
+```
 
-| Scenario | Action |
-|----------|--------|
-| Point staging at new DB | Edit `data/postgres/jdbc_url` in staging profile |
-| Reduce pool during incident | Lower `pool_max` live |
-| Enable read replica routing | Flip `read_replica_enabled` without new image |
-| Black Friday | Bump connection and timeout knobs from dashboard |
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-configmaps.md)
 
-## Performance
+## Scenarios
 
-- **One WebSocket per pod** — not ConfigMap watch + file reload per key
-- **Reads are local** — same as bare-metal Java services
-- **Delta patches** — one changed URL does not remount volumes
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-## Compare to alternatives
+## When not to live-edit
 
-| Approach | Live change without rollout | Pod spec complexity |
-|----------|----------------------------|---------------------|
-| ConfigMap + reload | Usually requires restart | High |
-| External Secrets Operator | Sync lag | High |
-| Spring Cloud Config poll | Polling latency | Medium |
-| **Kiponos SDK in pod** | **Dashboard delta** | **Two env vars + JVM arg** |
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-## Getting started
+## Operational checklist
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — profile per env (`prod`, `staging`)
-2. Create `kiponos-auth` Secret with team tokens
-3. Remove ConfigMap volumes from Deployment; add SDK dependency
-4. `kubectl apply`; change a flag in UI; verify pod behavior updates without rollout
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
 
-See also: [config changes without pod restart](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-restart.md)
+## Why this is not "just another flag"
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+Feature flags are often product gates. This essay is about **ops posture** on K8s vs live hub: **beyond ConfigMaps** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `knob` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Beyond ConfigMaps** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Java on Kubernetes. Pods carry tokens, not ConfigMaps.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

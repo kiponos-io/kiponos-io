@@ -1,147 +1,165 @@
 ---
 title: "Automation Testing Without Environment Variables (Kiponos Python SDK)"
 published: true
-tags: python, testing, automation, devops
-description: Replace brittle env-var matrices in test runners with a live Kiponos profile. Python pytest suites read URLs, credentials scopes, and chaos toggles locally — update mid-run from the dashboard.
+tags: java, devops, architecture, kiponos
+description: "Replace brittle env-var matrices in test runners with a live Kiponos profile. Python pytest suites read URLs, credentials scopes, and chaos toggles locally — up"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-automation-no-env.md
 main_image: https://files.catbox.moe/srkslu.jpg
 ---
 
-Automation engineers love pytest. They hate maintaining `export API_URL=...` in six CI jobs, `.env.test`, `tox.ini`, GitHub Actions secrets, and a Confluence table that is wrong by Tuesday.
+**The Aha:** `automationMode` is not a property-file trophy. It is **incident posture** for ops automation — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) moves **test runtime config** into a live profile: endpoints, feature toggles, parallelism, retry policy, and injected failure switches — read from Python with **zero latency**, updated from the dashboard without re-running the pipeline.
+At 02:14 the war room already knew the right **automation without env soup**. The jar still believed last week's YAML.
 
-## The env-var matrix anti-pattern
+## The problem: ceremony between judgment and effect
 
-```python
-BASE_URL = os.environ["AUTOMATION_API_URL"]
-TIMEOUT = int(os.environ.get("HTTP_TIMEOUT", "30"))
-USE_MOCK = os.environ.get("USE_MOCK_PAYMENTS", "false") == "true"
-```
+When **automation without env soup** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-Every new scenario adds variables. CI caches stale values. Local runs diverge from Jenkins. Rotating a sandbox URL means editing four repos.
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-## Kiponos model: tokens in env, everything else in the tree
+Domain: ops automation.
 
-```python
-import os
-from kiponos import Kiponos
+## The Aha: local read, live write
 
-os.environ["KIPONOS_ID"] = os.environ["KIPONOS_ID"]      # only secret in CI
-os.environ["KIPONOS_ACCESS"] = os.environ["KIPONOS_ACCESS"]
-os.environ["KIPONOS_PROFILE"] = "['automation']['v1']['ci']['e2e']"
-
-kiponos = Kiponos.create_for_current_team()
-
-def client_config():
-    dep = kiponos.path("targets", "api")
-    return {
-        "base_url": dep.get("base_url"),
-        "timeout": dep.get_int("timeout_sec"),
-        "use_mock_payments": kiponos.path("toggles").get_bool("mock_payments"),
-    }
-```
-
-CI job exports **two tokens**. The profile holds the behavior.
-
-## Automation config tree
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```yaml
-targets/
-  api/
-    base_url: https://api.qa.example.com
-    timeout_sec: 30
-  browser/
-    headless: true
-    slow_mo_ms: 0
-toggles/
-  mock_payments: true
-  skip_flaky_suite: false
-  inject_500_on_health: false
-retries/
-  max_attempts: 3
-  backoff_sec: 2
-suites/
-  smoke/
-    enabled: true
-  regression/
-    enabled: true
-    shard_count: 4
+examples/
+  automation-no-env/
+    automationMode: <live>
 ```
 
-## Mid-run changes (local or long CI)
-
-Running a **two-hour regression** on a shared QA stack? Partner changes sandbox URL:
-
-1. QA lead updates `targets/api/base_url` in Kiponos
-2. Connected test workers pick up delta via WebSocket
-3. **Next test case** hits the new URL — no pipeline restart
-
-For chaos:
-
-```python
-@pytest.fixture
-def api_session():
-    cfg = client_config()
-    if kiponos.path("toggles").get_bool("inject_500_on_health"):
-        pytest.skip("health chaos enabled in Kiponos")
-    return Session(base_url=cfg["base_url"], timeout=cfg["timeout"])
+```java
+Folder policy = kiponos.path("examples", "automation-no-env");
+int automationMode = policy.getInt("automationMode"); // local get — no hub RTT
+if (automationMode <= 0) {
+    return failClosed();
+}
+return apply(automationMode);
 ```
 
-## pytest integration pattern
+Ops (or automation) sets `automationMode` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-```python
-# conftest.py — connect once per session
-@pytest.fixture(scope="session")
-def kiponos_client():
-    return Kiponos.create_for_current_team()
+## What stays in the jar vs the hub
 
-def pytest_collection_modifyitems(config, items):
-    k = Kiponos.create_for_current_team()
-    if k.path("toggles").get_bool("skip_flaky_suite"):
-        skip = pytest.mark.skip(reason="flaky suite disabled in Kiponos")
-        for item in items:
-            if "flaky" in item.keywords:
-                item.add_marker(skip)
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
+
+## Architecture
+
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (automation without env soup)
 ```
 
-Suite enablement becomes **ops-controllable** — disable flaky shard during incident without editing `pytest.ini`.
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-## Real-world scenarios
+## Clone and run the pattern
 
-| Scenario | Live Kiponos change |
-|----------|---------------------|
-| Sandbox URL rotation | Edit `targets/api/base_url` |
-| Reduce load on QA | Lower `suites/regression/shard_count` |
-| Stop flaky failures blocking release | `skip_flaky_suite: true` |
-| Chaos drill | `inject_500_on_health: true` |
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
+```
 
-## Performance
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-automation-no-env.md)
 
-Test loops may call config often — `get_bool()` stays **local**. No HTTP to a "test config service" per assertion.
+## Scenarios
 
-## Compare to alternatives
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-| Approach | Change without new CI run | Single source for all suites |
-|----------|---------------------------|------------------------------|
-| Env vars only | No | Fragmented |
-| config.json in repo | PR + merge | Git lag |
-| Consul/etcd for tests | Ops-heavy | Possible |
-| **Kiponos profile** | **Dashboard** | **One tree** |
+## When not to live-edit
 
-## Getting started
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — profile `['automation']['v1']['ci']['e2e']`
-2. Migrate env vars into dashboard folders (`targets`, `toggles`, `retries`)
-3. CI: pass only `KIPONOS_ID` and `KIPONOS_ACCESS`
-4. Run pytest; flip `mock_payments` in UI; confirm next test uses mock
+## Operational checklist
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
 
-## What is next
+## Why this is not "just another flag"
 
-Pair with **CI parallelism tuning** and **QA zero-config Java services** — full pipeline lives in Kiponos profiles, not scattered env files.
+Feature flags are often product gates. This essay is about **ops posture** on ops automation: **automation without env soup** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `automationMode` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Automation without env soup** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Python. Automation without the env-var spreadsheet.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

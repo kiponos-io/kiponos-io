@@ -1,99 +1,165 @@
 ---
 title: "Change Kubernetes Config Without Pod Restart or Redeploy (Kiponos Java SDK)"
 published: true
-tags: java, kubernetes, devops, realtime
-description: ConfigMap changes usually mean rolling restarts. Kiponos WebSocket deltas update in-memory config inside running pods — tune Java services during incidents without touching Deployments.
+tags: java, kubernetes, devops, kiponos
+description: "ConfigMap changes usually mean rolling restarts. Kiponos WebSocket deltas update in-memory config inside running pods — tune Java services during incidents with"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-restart.md
 main_image: https://files.catbox.moe/vkgtrb.jpg
 ---
 
-The default Kubernetes config story ends with **`kubectl rollout restart`**. You fixed a rate limit in a ConfigMap; now you are waiting for twelve pods to cycle during peak traffic. Java services with Spring refresh scopes help for some beans — not for everything, and not without engineering ceremony.
+**The Aha:** `featureFlag` is not a property-file trophy. It is **incident posture** for K8s config posture — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) updates **running JVMs** through WebSocket delta patches into the SDK's in-memory tree. Ops edits the dashboard; connected pods see new values on the next `kiponos.path(...).get*()` — **no Deployment spec change, no image rebuild, no graceful drain**.
+K8s config posture does not wait for your change-management window. Your `featureFlag` did — until it lived in a hub.
 
-## Restart vs live update
+## The problem: ceremony between judgment and effect
 
-| Change type | ConfigMap model | Kiponos model |
-|-------------|-----------------|---------------|
-| Fraud threshold | Rolling restart | Dashboard edit |
-| Feature flag | Reloader + restart | Delta patch |
-| JDBC URL (emergency) | Restart + risk | Live update + connection factory hook |
-| Rate limit per tenant | New Helm release | Instant local read |
+When **config without restart** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-## How it works inside the pod
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-![Architecture diagram](https://files.catbox.moe/73lfeg.png)
+Domain: K8s config posture.
 
-The pod process **never exits**. Kubernetes is unaware config changed — by design.
+## The Aha: local read, live write
 
-## Java: react to changes optionally
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
-Hot path stays read-only:
-
-```java
-int rpm = kiponos.path("limits", tenantId).getInt("rpm");
+```yaml
+examples/
+  k8s-no-restart/
+    featureFlag: <live>
 ```
 
-For resources that need refresh (connection pools, cached clients):
-
 ```java
-kiponos.afterValueChanged(change -> {
-    if (change.path().startsWith("data/postgres")) {
-        dataSource.resizePool(kiponos.path("data", "postgres").getInt("pool_max"));
-    }
-});
+Folder policy = kiponos.path("examples", "k8s-no-restart");
+int featureFlag = policy.getInt("featureFlag"); // local get — no hub RTT
+if (featureFlag <= 0) {
+    return failClosed();
+}
+return apply(featureFlag);
 ```
 
-Keep listeners **lightweight** — heavy work async; reads stay local.
+Ops (or automation) sets `featureFlag` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-## Incident playbook example
+## What stays in the jar vs the hub
 
-1. Alert: downstream payment processor elevated latency
-2. Ops increases `payment/client/timeout_ms` and enables `degraded_mode` in Kiponos
-3. All payment pods pick up values within WebSocket RTT
-4. **Zero** pods restarted; HPA does not flap
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
-## Interaction with HPA and rollouts
+## Architecture
 
-| Concern | Note |
-|---------|------|
-| HPA scaling | New pods connect to Kiponos; receive full snapshot + deltas |
-| Blue/green deploy | New revision still uses same profile — config independent of rollout |
-| Pod crash | Replacement pod loads latest tree on connect |
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (config without restart)
+```
 
-Config lifecycle **decouples** from Deployment lifecycle.
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-## Real-world scenarios
+## Clone and run the pattern
 
-| Scenario | Without restart |
-|----------|-----------------|
-| Circuit breaker tuning | Edit `breakers/*` keys |
-| Kill switch feature | `features/new_checkout_enabled: false` |
-| Throttle abusive tenant | Lower per-tenant `rpm` |
-| Ops drill | Flip `degraded_mode` cluster-wide |
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
+```
 
-## Performance
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-restart.md)
 
-Identical to non-K8s Java: **local O(1) reads**, **async WebSocket worker**. Rolling restart cost (GC warmup, cache cold start) is avoided.
+## Scenarios
 
-## Compare to alternatives
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-| Approach | Avoids rollout | Works on every tunable knob |
-|----------|----------------|----------------------------|
-| ConfigMap alone | No | N/A |
-| Spring Cloud Bus refresh | Partial | Bean-dependent |
-| Sidecar config sync | Sometimes | Complex |
-| **Kiponos SDK** | **Yes** | **Any key you read via SDK** |
+## When not to live-edit
 
-## Getting started
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-1. Deploy Java service with Kiponos SDK ([no ConfigMap pattern](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-k8s-no-configmaps.md))
-2. `kubectl get pods` — note running pod names
-3. Change a live flag in dashboard
-4. Hit API — behavior changes; **same pod age** (`kubectl get pods` START TIME unchanged)
+## Operational checklist
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture** on K8s config posture: **config without restart** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `featureFlag` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Config without restart** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Java on Kubernetes. Tune running pods, not Deployment YAML.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

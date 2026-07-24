@@ -1,144 +1,165 @@
 ---
 title: "The Consumer Lag Was Real — and Redeploy Was Not a Pause Button"
 published: true
-tags: kafka,java,devops,microservices
+tags: java, kafka, devops, kiponos
 description: "A traveler’s note from poison messages, growing lag graphs, and the worker knobs that should not wait for CI."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/examples/medium-drafts/16-kafka-consumer-worker.md
 main_image: https://files.catbox.moe/tngzui.jpg
 ---
 
-*A traveler’s note from poison messages, growing lag graphs, and the worker knobs that should not wait for CI.*
+**The Aha:** `maxPoll` is not a property-file trophy. It is **incident posture** for Kafka consumers — and posture that waits for a jar is already late.
 
----
+You already know the number. Everyone on the call knows the number. What you lack is mouth to process shorter than a release train.
 
-There is a particular graph that makes on-call people stop joking.
+## The problem: ceremony between judgment and effect
 
-Not a red 500 rate. Not a disk full alert. Lag.
+When **Kafka max poll / concurrency** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-The line that climbs while the room argues about whether the consumer is “just slow” or “actually stuck.” Someone opens a terminal. Someone opens Grafana. Someone says the sentence I have heard in three time zones:
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-**“Just pause the consumer group. We need to dig.”**
+Domain: Kafka consumers.
 
-And then someone else says the worse sentence:
+## The Aha: local read, live write
 
-**“We’d have to redeploy with `paused=true`.”**
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
-Redeploy.
-
-To pause.
-
-While lag is a business problem and poison messages are a moral one.
-
----
-
-## Architecture: what “live pause” actually looks like
-
-Kiponos sits **beside** the worker, not on the Kafka hot path as a remote call per poll:
-
-![Kafka worker live control plane](https://litter.catbox.moe/zsnu1f.png)
-
-| Layer | Role | Latency on the poll loop |
-|-------|------|---------------------------|
-| **Kiponos dashboard** | Ops flips `paused` / `prefetch` / `max-poll-records` | Human decision |
-| **Kiponos.io hub** | Holds the typed tree; fans out deltas | — |
-| **Java SDK in-memory cache** | WebSocket merges; local `.get()` | **Zero RTT** |
-| **Poll loop** | Reads policy from memory, then talks to Kafka | Only Kafka I/O |
-
-That is the design point people miss: **control plane ≠ data plane.** You do not call the hub on every `poll()`. You call local memory that was already updated when ops moved the knob.
-
-### Old world vs Kiponos
-
-| Question | Old world (YAML / Helm) | With Kiponos |
-|----------|-------------------------|--------------|
-| Pause consumer | PR → CI → roll pods | Dashboard `paused=yes` |
-| Shrink batch under poison | Redeploy `max.poll.records` | Live `max-poll-records` |
-| Tune prefetch | Hope the next chart is green | Live `prefetch` |
-| Wrong replica still running old flags | Common | Same JAR, same tree, WebSocket fan-out |
-
----
-
-## Configuration hell wears a Kafka hoodie
-
-We tell ourselves that stream processing is modern.
-
-We have consumer groups and rebalances and beautiful dashboards. Then a bad payload lands — one bad schema, one null where a decimal should be — and the worker spins on the same offset like a tourist who will not leave the baggage carousel.
-
-Old world theater:
-
-1. Edit `application.yml`  
-2. PR titled `temp: pause orders-consumer`  
-3. Wait for CI like it is weather  
-4. Deploy  
-5. Discover one pod is still on yesterday’s artifact  
-6. Merge a “revert the temporary pause” three days later that nobody reviews carefully  
-
-I have watched excellent platform engineers — people who can reason about exactly-once without notes — reduced to archaeologists of their own Helm values because **pause was packaged as a release**.
-
-Airports taught me that gates renumber without apology. Kafka taught me that a temporary YAML flag is a confession: **your control plane is your git history.**
-
----
-
-## The worker tree (design, not decoration)
-
-A real worker has a small family of related moves under one mental folder:
-
-| Key | Type | Meaning |
-|-----|------|---------|
-| `paused` | bool-ish (`yes`/`no`) | May the worker pull at all? |
-| `prefetch` | int | How hungry is the fetch window? |
-| `max-poll-records` | int | How big is each poll batch when the dependency limps? |
-
-Tree shape in the hub:
-
-```text
-examples / 16-kafka-consumer-worker /
-  paused            = yes | no
-  prefetch          = int
-  max-poll-records  = int
+```yaml
+examples/
+  aha-16-kafka-consumer-worker/
+    maxPoll: <live>
 ```
 
-| Effective state | Behavior |
-|-----------------|----------|
-| `paused=yes` | Do not pull — freeze the poison storm; lag may grow on purpose |
-| running | Honor prefetch / max-poll (**prefetch clamped ≥ poll batch**) |
+```java
+Folder policy = kiponos.path("examples", "aha-16-kafka-consumer-worker");
+int maxPoll = policy.getInt("maxPoll"); // local get — no hub RTT
+if (maxPoll <= 0) {
+    return failClosed();
+}
+return apply(maxPoll);
+```
 
-Old world: those answers live in three files, two env overlays, and a wiki page last edited during a previous poison storm.
+Ops (or automation) sets `maxPoll` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-New world:
+## What stays in the jar vs the hub
 
-1. Open the [Kiponos](https://kiponos.io) hub  
-2. Set `paused` to `yes` (or lower `max-poll-records`)  
-3. The process adopts a safer posture **without** a parade of pull requests  
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
-Judgment at the speed of the person who is already awake.
+## Architecture
 
----
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (Kafka max poll / concurrency)
+```
 
-## The example (standalone Java)
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-**`examples/java/16-kafka-consumer-worker`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
-
-Plain `main`. No Spring ceremony. No “config refresh endpoint” you will forget to secure at 4am.
+## Clone and run the pattern
 
 ```bash
-cd examples/java/16-kafka-consumer-worker
-export KIPONOS_ID='…'
-export KIPONOS_ACCESS='…'
-./gradlew test run
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
 ```
 
-Then in the hub: set `paused=yes`, re-run, watch the posture line change. Logic tests ship with the example so CI proves the clamps without a live cluster.
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/examples/medium-drafts/16-kafka-consumer-worker.md)
+
+## Scenarios
+
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+
+## When not to live-edit
+
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
+
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture** on Kafka consumers: **Kafka max poll / concurrency** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `maxPoll` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Kafka max poll / concurrency** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-## The moral
-
-Consumer lag is a **control-plane problem** dressed up as a data problem.
-
-If pausing a worker requires a release train, you do not have a pause button. You have a prayer with a pipeline.
-
-Ship the judgment. Leave the jar alone.
-
----
-
-*Example + tests: [github.com/kiponos-io/kiponos-io/tree/master/examples/java/16-kafka-consumer-worker](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/16-kafka-consumer-worker)*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

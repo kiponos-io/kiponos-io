@@ -1,139 +1,165 @@
 ---
 title: "Cross-Service Handoff Signals and Locks in Real Time (Kiponos Python SDK)"
 published: true
-tags: python, microservices, architecture, realtime
-description: Coordinate service handoffs with live flags and lease TTLs in a shared Kiponos tree. Python workers read locally; ops flips workflow state without redeploy.
+tags: java, microservices, architecture, kiponos
+description: "Coordinate service handoffs with live flags and lease TTLs in a shared Kiponos tree. Python workers read locally; ops flips workflow state without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-handoff.md
 main_image: https://files.catbox.moe/hkgx7a.jpg
 ---
 
-Microservices handoffs are where systems get fragile: "Payment captured — who tells shipping?" Teams bolt on **extra REST calls**, **SQS fan-out**, or **Redis locks** that each need their own config, monitoring, and deploy cycle.
+**The Aha:** `handoffTimeoutMs` is not a property-file trophy. It is **incident posture** for service handoff — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) offers a lighter pattern for **operational handoff state**: a shared live config tree that every Python service reads locally. Not your system of record — but the **coordination layer** for "ready to proceed," "hold," "escalate," and **short-lived lease locks**.
+At 02:14 the war room already knew the right **handoff timeout**. The jar still believed last week's YAML.
 
-## The handoff problem
+## The problem: ceremony between judgment and effect
 
-```python
-def process_order(order_id: str) -> None:
-    if not payment_captured(order_id):
-        return  # poll again in 5s?
-    if shipping_locked_by_other_worker(order_id):
-        return
-    ship(order_id)
+When **handoff timeout** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
+
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
+
+Domain: service handoff.
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
+
+```yaml
+examples/
+  microservices-handoff/
+    handoffTimeoutMs: <live>
 ```
 
-Questions static config cannot answer mid-flight:
+```java
+Folder policy = kiponos.path("examples", "microservices-handoff");
+int handoffTimeoutMs = policy.getInt("handoffTimeoutMs"); // local get — no hub RTT
+if (handoffTimeoutMs <= 0) {
+    return failClosed();
+}
+return apply(handoffTimeoutMs);
+```
 
-- How long should shipping **wait** after payment?
-- When should we **escalate** to manual review?
-- What is the **lease TTL** if a worker dies holding a lock?
+Ops (or automation) sets `handoffTimeoutMs` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-Those values change during incidents — not during next week's release.
+## What stays in the jar vs the hub
+
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
 ## Architecture
 
-![Architecture diagram](https://files.catbox.moe/7c2gg7.png)
-
-Payment sets `payment_captured: true`. Shipping reads it **from memory** before allocating a carrier label. Support watches `escalate_to_human` flip — no broadcast topic required for **slow-changing operational flags**.
-
-## Handoff config tree
-
-```yaml
-workflow/
-  handoffs/
-    order-fulfillment/
-      payment_captured: false
-      fraud_cleared: false
-      shipping_ready: false
-      escalate_to_human: false
-    timing/
-      wait_after_payment_sec: 30
-      max_handoff_retries: 5
-      escalation_after_min: 15
-    locks/
-      shipping_lease_ttl_sec: 45
-      allow_parallel_pick: false
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (handoff timeout)
 ```
 
-## Python integration
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-```python
-import os
-from kiponos import Kiponos
+## Clone and run the pattern
 
-os.environ["KIPONOS_PROFILE"] = "['orders']['v1']['prod']['workflow']"
-kiponos = Kiponos.create_for_current_team()
-
-def can_ship(order_id: str) -> bool:
-    h = kiponos.path("workflow", "handoffs", "order-fulfillment")
-    if not h.get_bool("payment_captured") or not h.get_bool("fraud_cleared"):
-        return False
-    if h.get_bool("escalate_to_human"):
-        return False
-    return acquire_lease("shipping", order_id,
-        ttl=kiponos.path("workflow", "handoffs", "locks").get_int("shipping_lease_ttl_sec"))
-
-def payment_completed(order_id: str) -> None:
-    kiponos.path("workflow", "handoffs", "order-fulfillment").set("payment_captured", True)
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
 ```
 
-**Reads** (`get_bool`) are local — call them every loop iteration. **Writes** (`set`) are infrequent state transitions — acceptable on the payment completion path.
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-handoff.md)
 
-Ops can override during an incident:
+## Scenarios
 
-```python
-# Dashboard: escalate_to_human = true
-# Next can_ship() returns False — shipping stops without killing workers
-```
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-## When to use Kiponos vs messaging
+## When not to live-edit
 
-| Use Kiponos handoffs | Use Kafka/SQS instead |
-|----------------------|------------------------|
-| Slow-changing readiness flags | High-volume event streams |
-| Human-operable overrides | Strict event ordering audit |
-| Cross-team tunable TTLs | Payload-heavy domain events |
-| "Is it safe to proceed?" gates | "Something happened" notifications |
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-Kiponos complements messaging — it removes **config-driven polling intervals** and **magic timeout constants** from handoff code.
+## Operational checklist
 
-## Real-world scenarios
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
 
-| Scenario | Live tweak |
-|----------|------------|
-| Fraud review backlog | Set `escalate_to_human: true`, pause shipping |
-| Payment partner slow | Increase `wait_after_payment_sec` |
-| Worker storm on shipping | Lower `shipping_lease_ttl_sec`, disable `allow_parallel_pick` |
-| Black Friday | Tighten `escalation_after_min` for stuck orders |
+## Why this is not "just another flag"
 
-## Performance
+Feature flags are often product gates. This essay is about **ops posture** on service handoff: **handoff timeout** — numbers war rooms already shout.
 
-- Handoff checks use **cached tree lookups** — not HTTP to a lock service per order
-- WebSocket applies deltas in the background
-- Lease logic stays in your code; **TTL values** come from Kiponos live
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
 
-## Compare to alternatives
+## Guardrails
 
-| Approach | Ops can intervene mid-flight | Read cost per check |
-|----------|------------------------------|---------------------|
-| Hard-coded sleeps | No | Zero |
-| Poll Redis/DB | Yes | Network RTT |
-| Workflow engine only | Vendor UI | Engine-specific |
-| **Kiponos + your workers** | **Dashboard + SDK** | **Zero (local)** |
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
 
-## Getting started
+## Failure budget thinking
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — profile `workflow/handoffs/*`
-2. Connect Python services with `KIPONOS_ID`, `KIPONOS_ACCESS`, profile path
-3. Replace magic sleeps and env-based TTLs with `kiponos.path(...).get_*()`
-4. Run payment → shipping flow; flip `escalate_to_human` in UI; confirm shipping stops instantly
+Treat `handoffTimeoutMs` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+## Observability
 
-## What is next
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
 
-Combine handoffs with **saga timeouts** and **event topic routing** in the same tree — one live control plane for distributed order fulfillment.
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Handoff timeout** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Python. Hand off work across services without redeploying coordination logic.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

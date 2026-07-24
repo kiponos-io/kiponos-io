@@ -1,132 +1,165 @@
 ---
 title: "QA Environments With Zero Config Files — Kiponos Replaces Them All (Java SDK)"
 published: true
-tags: java, testing, qa, devops
-description: Eliminate application-qa.yml and 40-variable env matrices. QA JVMs read dependencies, stubs, and feature flags from Kiponos — live updates without redeploy.
+tags: java, testing, devops, kiponos
+description: "Eliminate application-qa.yml and 40-variable env matrices. QA JVMs read dependencies, stubs, and feature flags from Kiponos — live updates without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-qa-zero-config.md
 main_image: https://files.catbox.moe/4p1gxw.jpg
 ---
 
-QA environments are where configuration goes to die. `application-qa.yml`, `.env.qa`, Docker Compose overrides, Helm values for "qa-staging-2", and a wiki page listing **40 environment variables** nobody updates. Add one microservice and the matrix doubles.
+**The Aha:** `fixtureMode` is not a property-file trophy. It is **incident posture** for zero-config QA — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) collapses QA config into **one live profile** every JVM reads locally: dependency URLs, mock toggles, feature flags, test user seeds, and timeout knobs — editable in the dashboard while exploratory testing is in progress.
+At 02:14 the war room already knew the right **QA fixture posture**. The jar still believed last week's YAML.
 
-## What "zero config files" means
+## The problem: ceremony between judgment and effect
 
-Your QA deployment still needs **auth** to connect:
+When **QA fixture posture** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-```bash
-export KIPONOS_ID="..."
-export KIPONOS_ACCESS="..."
-java -Dkiponos="['my-app']['v2']['qa']['integration']" -jar app.jar
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
+
+Domain: zero-config QA.
+
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
+
+```yaml
+examples/
+  qa-zero-config/
+    fixtureMode: <live>
 ```
-
-Everything else — database JDBC URL, payment sandbox endpoint, "use mock fraud service," feature flags — lives in Kiponos, not in Git.
 
 ```java
-Kiponos kiponos = Kiponos.createForCurrentTeam();
-
-String jdbc = kiponos.path("dependencies", "postgres").get("jdbc_url");
-String payments = kiponos.path("dependencies", "payments").get("base_url");
-boolean mockFraud = kiponos.path("toggles", "qa").getBool("use_mock_fraud");
+Folder policy = kiponos.path("examples", "qa-zero-config");
+int fixtureMode = policy.getInt("fixtureMode"); // local get — no hub RTT
+if (fixtureMode <= 0) {
+    return failClosed();
+}
+return apply(fixtureMode);
 ```
 
-No `application-qa.yml`. No `SPRING_DATASOURCE_URL` in CI secrets for QA logic — only Kiponos tokens.
+Ops (or automation) sets `fixtureMode` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-## Why QA teams feel this pain
+## What stays in the jar vs the hub
 
-| Static config problem | What breaks |
-|----------------------|-------------|
-| Wrong YAML branch deployed | Tests pass against prod-like URLs by accident |
-| Env var drift between services | Integration tests flake |
-| "Restart QA after config change" | Tester loses repro state |
-| Per-developer `.env.local` | "Works on my QA" |
-
-QA needs **fast iteration** on dependencies — point at a stub mid-test, crank timeouts for slow partners, enable a feature flag for one scenario — without a redeploy pipeline.
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
 ## Architecture
 
-![Architecture diagram](https://files.catbox.moe/piufym.png)
-
-All QA services share one profile slice — **consistent** dependency map across the fleet.
-
-## Example QA tree
-
-```yaml
-dependencies/
-  postgres/
-    jdbc_url: jdbc:postgresql://qa-db:5432/app
-  payments/
-    base_url: https://sandbox.payments.test
-  fraud/
-    base_url: http://fraud-mock:8080
-toggles/
-  qa/
-    use_mock_fraud: true
-    enable_new_checkout: true
-    fail_payment_on_purpose: false
-timeouts/
-  http_client_ms: 5000
-  integration_wait_sec: 30
-testdata/
-  default_customer_id: cust-qa-001
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (QA fixture posture)
 ```
 
-## Exploratory testing: change config mid-session
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-Tester discovers payment mock is wrong:
+## Clone and run the pattern
 
-1. Open Kiponos dashboard → `dependencies/payments/base_url` → point to new stub
-2. WebSocket delta hits all QA JVMs
-3. **Next HTTP call** uses new URL — no pod restart, no `kubectl rollout`
-
-For chaos scenarios:
-
-```java
-if (kiponos.path("toggles", "qa").getBool("fail_payment_on_purpose")) {
-    return PaymentResult.declined("qa_injected_failure");
-}
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
 ```
 
-Flip `fail_payment_on_purpose` in UI during a manual test — instant repro.
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-qa-zero-config.md)
 
-## CI vs manual QA
+## Scenarios
 
-| Layer | Kiponos role |
-|-------|----------------|
-| CI pipeline | Inject only `KIPONOS_ID` / `KIPONOS_ACCESS`; profile holds URLs |
-| Manual QA | Same profile — engineers tweak live |
-| Staging promotion | Different profile path (`['my-app']['staging']`) — same binary |
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-One artifact, multiple profiles — the [staging mirror pattern](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-staging-live-profile.md) uses the same idea.
+## When not to live-edit
 
-## Performance
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-QA is not prod QPS — but tests still hammer hot paths. `get()` remains **local** — no config server poll per assertion.
+## Operational checklist
 
-## Compare to alternatives
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
 
-| Approach | Live mid-test changes | Cross-service consistency |
-|----------|----------------------|---------------------------|
-| application-qa.yml in Git | PR + redeploy | Drift per repo |
-| .env in CI | Re-run pipeline | Per-job matrix |
-| Shared test DB config table | Possible | DB coupling |
-| **Kiponos QA profile** | **Dashboard** | **One tree** |
+## Why this is not "just another flag"
 
-## Getting started
+Feature flags are often product gates. This essay is about **ops posture** on zero-config QA: **QA fixture posture** — numbers war rooms already shout.
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — create `['my-app']['v2']['qa']['integration']`
-2. Copy your current `application-qa.yml` keys into the dashboard tree
-3. Remove QA-specific YAML from the repo (keep prod secrets out of Git regardless)
-4. Wire SDK reads in `@Configuration` beans
-5. Run an integration test; change `payments.base_url` live; re-run without redeploy
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+## Guardrails
 
-## What is next
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
 
-Extend the same model to **CI parallelism tuning** and **automation without env vars** — one hub for the whole delivery lifecycle.
+## Failure budget thinking
+
+Treat `fixtureMode` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**QA fixture posture** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Java. QA without the YAML graveyard.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

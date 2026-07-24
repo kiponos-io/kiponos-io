@@ -1,122 +1,165 @@
 ---
 title: "Staging Mirrors Prod With Live Profile Overrides (Kiponos Java SDK)"
 published: true
-tags: java, devops, staging, architecture
-description: Run the same Java binary in staging and prod — different Kiponos profile paths, live overrides without duplicate YAML. Tune staging behavior while releases are validated.
+tags: java, devops, architecture, kiponos
+description: "Run the same Java binary in staging and prod — different Kiponos profile paths, live overrides without duplicate YAML. Tune staging behavior while releases are "
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-staging-live-profile.md
 main_image: https://files.catbox.moe/x854ey.jpg
 ---
 
-Staging is supposed to de-risk production. In practice it is a **fork**: `application-staging.yml`, different env vars, older feature flags, and "staging config" nobody dares merge back. The binary diverges from prod mentally even when it does not technically.
+**The Aha:** `profile` is not a property-file trophy. It is **incident posture** for env profiles — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) enforces **one artifact, multiple profiles**:
+Env profiles does not wait for your change-management window. Your `profile` did — until it lived in a hub.
 
-- Production JVM: `-Dkiponos="['payments']['v3']['prod']['live']"`
-- Staging JVM: `-Dkiponos="['payments']['v3']['staging']['live']"`
+## The problem: ceremony between judgment and effect
 
-Same JAR. Different profile slice in the hub. **Live overrides** in staging while release validation runs — without editing Git.
+When **staging live profile** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-## The twelve-factor env explosion
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-```java
-@Value("${payments.processor.url}")
-String processorUrl;
-```
+Domain: env profiles.
 
-Staging needs different URLs, softer limits, test cards enabled. Teams duplicate entire YAML trees. Drift becomes inevitable — staging stops predicting prod behavior.
+## The Aha: local read, live write
 
-## Profile path as environment boundary
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```yaml
-payments/
-  v3/
-    prod/
-      live/
-        processor_url: https://api.stripe.com
-        max_txn_usd: 50000
-        test_mode: false
-    staging/
-      live/
-        processor_url: https://api.stripe.com   # same code path
-        max_txn_usd: 500                        # softer limit
-        test_mode: true
-        mirror_prod_flags: true
+examples/
+  staging-live-profile/
+    profile: <live>
 ```
-
-Code never branches on `spring.profiles.active`:
 
 ```java
-Kiponos kiponos = Kiponos.createForCurrentTeam();
-var pay = kiponos.path("payments", "processor");
-String url = pay.get("processor_url");
-int maxUsd = pay.getInt("max_txn_usd");
-boolean testMode = pay.getBool("test_mode");
+Folder policy = kiponos.path("examples", "staging-live-profile");
+int profile = policy.getInt("profile"); // local get — no hub RTT
+if (profile <= 0) {
+    return failClosed();
+}
+return apply(profile);
 ```
 
-Environment is **which profile you connect to**, not which file is on disk.
+Ops (or automation) sets `profile` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-## Live override during release validation
+## What stays in the jar vs the hub
 
-Release manager testing v3.2 in staging:
-
-1. Enable `mirror_prod_flags: true` — staging copies prod flag values temporarily
-2. Flip one flag to validate rollback — **dashboard only**
-3. WebSocket delta updates staging JVMs; prod profile untouched
-
-No `git checkout application-staging.yml`. No Helm diff for prod.
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
 ## Architecture
 
-![Architecture diagram](https://files.catbox.moe/zvstyy.png)
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (staging live profile)
+```
 
-Profiles are **namespaces** — staging edits never leak to prod SDK connections.
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-## Promotion workflow
+## Clone and run the pattern
 
-| Step | Action |
-|------|--------|
-| Develop | Local dev profile `['payments']['v3']['dev']` |
-| CI | Automation profile (see [CI tuning article](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ci-test-tuning.md)) |
-| Staging | Validate with `staging/live` — live tweaks allowed |
-| Prod promote | Copy reviewed keys staging → prod in dashboard **or** export/import profile snapshot |
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
+```
 
-Binary promotion decouples from config promotion — but config is visible and editable in one system.
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-staging-live-profile.md)
 
-## Real-world scenarios
+## Scenarios
 
-| Scenario | Staging live tweak |
-|----------|-------------------|
-| Load test | Raise synthetic traffic limits in staging profile only |
-| Partner sandbox down | Point `processor_url` to mock |
-| Prod flag parity check | `mirror_prod_flags: true` |
-| Incident rehearsal | Copy prod thresholds into staging slice for drill |
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-## Performance
+## When not to live-edit
 
-Identical to prod: **local reads**, **async deltas**. Staging does not get a slower config path.
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-## Compare to alternatives
+## Operational checklist
 
-| Approach | Prod/staging parity | Live staging experiments |
-|----------|---------------------|--------------------------|
-| Duplicate YAML trees | Drift | Git PR cycle |
-| Same env vars, different values | Error-prone | Redeploy |
-| Feature-flag SaaS | Good for flags | Another vendor |
-| **Kiponos profiles** | **Same code** | **Dashboard per profile** |
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
 
-## Getting started
+## Why this is not "just another flag"
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — create parallel `prod` and `staging` profile paths
-2. Deploy same JAR with different `-Dkiponos=...` only
-3. Remove `application-staging.yml` dependency URLs
-4. Run smoke in staging; change `max_txn_usd` live; confirm prod unaffected
+Feature flags are often product gates. This essay is about **ops posture** on env profiles: **staging live profile** — numbers war rooms already shout.
 
-Resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
 
-## What is next
+## Guardrails
 
-Kubernetes deployments use the same pattern — **pods carry tokens, not ConfigMaps** — staging and prod differ only by profile path and secrets.
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `profile` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Staging live profile** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Java. Staging that actually resembles prod — without duplicate YAML.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

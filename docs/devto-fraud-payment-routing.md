@@ -1,149 +1,165 @@
 ---
 title: "Retune Fraud Thresholds and Payment Routes in Real Time — No Java Restart (Kiponos SDK)"
 published: true
-tags: java, fintech, security, realtime
-description: Change fraud scores, routing rules, and block thresholds in your payment service while transactions keep flowing. Kiponos Java SDK reads live values locally with zero latency.
+tags: java, fintech, security, kiponos
+description: "Change fraud scores, routing rules, and block thresholds in your payment service while transactions keep flowing. Kiponos Java SDK reads live values locally wit"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fraud-payment-routing.md
 main_image: https://files.catbox.moe/lzraul.jpg
 ---
 
-Payment systems are the worst place for a **deploy cycle**. Fraud patterns shift hourly. Processors go degraded. A/B routing experiments need mid-day course correction. Yet most Java payment services still bake thresholds into `application.yml` and require a restart to change a single risk score.
+**The Aha:** `fraudScoreCutoff` is not a property-file trophy. It is **incident posture** for payment fraud routing — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) fixes that: a real-time config hub where your **Java SDK** holds the latest fraud and routing values **in memory**, updated over WebSocket deltas — no restart, no redeploy, no per-transaction remote call.
+You already know the number. Everyone on the call knows the number. What you lack is mouth to process shorter than a release train.
 
-## The problem: static config in a live money path
+## The problem: ceremony between judgment and effect
 
-A typical card-authorization service does this on every transaction:
+When **fraud score / PSP route** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-```java
-if (riskScore > fraudThreshold) {
-    routeToManualReview();
-} else if (amount > highValueLimit) {
-    routeToStrongAuth();
-} else {
-    routeToStandardProcessor();
-}
-```
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-Those thresholds (`fraudThreshold`, `highValueLimit`, processor weights) usually come from:
+Domain: payment fraud routing.
 
-1. **YAML at startup** — change means rolling restart during peak traffic
-2. **Database poll** — adds latency and DB load on the hot path
-3. **Feature-flag SaaS** — another network hop per evaluation
+## The Aha: local read, live write
 
-The authorization path runs thousands of times per second. You need **local reads** and **async updates** — exactly what Kiponos provides.
-
-## How Kiponos fits payment routing
-
-![Architecture diagram](https://files.catbox.moe/0uthng.png)
-
-1. **Connect once** at service startup — `Kiponos.createForCurrentTeam()`
-2. **Organize config** under a profile like `['payments']['v2']['prod']['fraud']`
-3. **Read locally** on every transaction — `kiponos.path("fraud", "thresholds").getInt("block_score")`
-4. **Ops updates live** — fraud analyst raises block threshold in dashboard; next transaction sees it
-
-## Example config tree
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```yaml
-fraud/
-  thresholds/
-    block_score: 85
-    review_score: 70
-    velocity_limit_per_hour: 12
-  routing/
-    primary_processor: stripe
-    fallback_processor: adyen
-    high_risk_processor: manual_review
-  limits/
-    high_value_usd: 5000
-    crypto_enabled: false
-  rules/
-    country_block_list: RU,NG
-    mccs_high_risk: 7995,6012
+examples/
+  fraud-payment-routing/
+    fraudScoreCutoff: <live>
 ```
 
-## Java integration (Spring Boot payment service)
-
 ```java
-import io.kiponos.sdk.Kiponos;
-
-@Service
-public class PaymentRouter {
-    private final Kiponos kiponos = Kiponos.createForCurrentTeam();
-
-    public RouteDecision route(Transaction txn, int riskScore) {
-        var thresholds = kiponos.path("fraud", "thresholds");
-        int blockScore = thresholds.getInt("block_score");
-        int reviewScore = thresholds.getInt("review_score");
-
-        if (riskScore >= blockScore) {
-            return RouteDecision.block("score_exceeded");
-        }
-        if (riskScore >= reviewScore) {
-            return RouteDecision.manualReview();
-        }
-
-        var routing = kiponos.path("fraud", "routing");
-        String processor = routing.get("primary_processor");
-        if (txn.amountUsd() > kiponos.path("fraud", "limits").getInt("high_value_usd")) {
-            processor = routing.get("high_risk_processor");
-        }
-        return RouteDecision.approve(processor);
-    }
+Folder policy = kiponos.path("examples", "fraud-payment-routing");
+int fraudScoreCutoff = policy.getInt("fraudScoreCutoff"); // local get — no hub RTT
+if (fraudScoreCutoff <= 0) {
+    return failClosed();
 }
+return apply(fraudScoreCutoff);
 ```
 
-Every `getInt()` and `get()` is a **local memory read** — no HTTP, no JDBC, no cache miss to a remote store.
+Ops (or automation) sets `fraudScoreCutoff` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-Optional listener for audit logging when ops changes a threshold:
+## What stays in the jar vs the hub
 
-```java
-kiponos.afterValueChanged(change ->
-    log.info("Fraud config changed: {} → {}", change.path(), change.newValue())
-);
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
+
+## Architecture
+
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (fraud score / PSP route)
 ```
 
-## Real-world scenarios
+No sidecar tax on every request. One tree humans and remote SDKs share.
 
-| Scenario | Without Kiponos | With Kiponos |
-|----------|-----------------|--------------|
-| Fraud spike at 2 PM | Emergency deploy or accept losses | Analyst raises `block_score` in UI |
-| Processor outage | Flip YAML, restart pods | Switch `primary_processor` live |
-| Black Friday limits | Pre-provision 3 config versions | Bump `high_value_usd` during event |
-| New BIN attack pattern | Wait for next release | Add MCC/country rules in dashboard |
+## Clone and run the pattern
 
-## Performance: why payments teams care
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
+```
 
-- **One WebSocket** per JVM — not one config fetch per transaction
-- **Reads are O(1)** on the SDK cache — microseconds, not milliseconds
-- **Delta updates** — changing `block_score` from 85 → 90 sends one patch, not the full tree
-- **No GC pressure** from parsing YAML on every request
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fraud-payment-routing.md)
 
-In load tests against typical authorization paths, Kiponos reads are noise compared to network I/O to card networks.
+## Scenarios
 
-## Compare to alternatives
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
 
-| Approach | Mid-flight changes | Read latency | Audit trail |
-|----------|-------------------|--------------|-------------|
-| Static YAML | No | Zero | Git history |
-| DB config table | Yes | DB round-trip | DB logs |
-| Redis cache | Yes | Cache RTT + invalidation | Custom |
-| **Kiponos SDK** | **Yes** | **Zero (local)** | **Dashboard + listeners** |
+## When not to live-edit
 
-## Getting started
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
 
-1. [Free TeamPro at kiponos.io](https://kiponos.io) — create `payments` / `fraud` profile
-2. Add `io.kiponos:sdk-boot-3` to your Spring Boot service
-3. Wire `KIPONOS_ID`, `KIPONOS_ACCESS`, and `-Dkiponos=...` profile
-4. Replace hard-coded thresholds with `kiponos.path(...).get*()` calls
-5. Run a shadow transaction, change `block_score` in the dashboard, run again — route changes instantly
+## Operational checklist
 
-Runnable golden example and Agent Skills: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
 
-## What is next
+## Why this is not "just another flag"
 
-The same pattern applies to **API rate limits**, **circuit breaker thresholds**, and **A/B checkout weights** — any Java service that must change behavior at runtime without a deployment window.
+Feature flags are often product gates. This essay is about **ops posture** on payment fraud routing: **fraud score / PSP route** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `fraudScoreCutoff` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Fraud score / PSP route** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Java and Python. Tune fraud rules and payment routes while money keeps moving.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

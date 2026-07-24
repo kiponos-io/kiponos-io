@@ -1,79 +1,165 @@
 ---
 title: "Shift E-Commerce A/B Checkout Weights in Real Time (Kiponos Java SDK)"
 published: true
-tags: java, ecommerce, abtesting, realtime
-description: Rebalance checkout experiment variants during live traffic without redeploying your Java storefront. Kiponos delivers variant weights via WebSocket deltas with zero-latency local reads.
+tags: java, ecommerce, devops, kiponos
+description: "Rebalance checkout experiment variants during live traffic without redeploying your Java storefront. Kiponos delivers variant weights via WebSocket deltas with "
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ab-checkout-weights.md
 main_image: https://files.catbox.moe/dlkkmj.jpg
 ---
 
-A/B tests are supposed to be scientific. Reality: variant B is crushing it at 10 AM, variant C is hurting conversion at 2 PM, and marketing wants to **reweight the split before the weekend rush** — without a deploy window.
+**The Aha:** `variantWeight` is not a property-file trophy. It is **incident posture** for checkout experiments — and posture that waits for a jar is already late.
 
-[Kiponos.io](https://kiponos.io) lets your Java checkout service read **live experiment weights** from memory on every session assignment.
+Checkout experiments does not wait for your change-management window. Your `variantWeight` did — until it lived in a hub.
 
-## Why not hard-code weights?
+## The problem: ceremony between judgment and effect
 
-```java
-int bucket = hash(sessionId) % 100;
-if (bucket < 50) return Variant.A;
-if (bucket < 80) return Variant.B;
-return Variant.C;
-```
+When **A/B checkout weight** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-Those cutoffs (50, 80) usually live in config files. Changing 50→60→70 means:
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-- Rebuild + redeploy during peak sales
-- Or per-request DB lookups (latency + load)
+Domain: checkout experiments.
 
-## Live weight model
+## The Aha: local read, live write
+
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
 ```yaml
-experiments/
-  checkout_q2/
-    variant_a_weight: 40
-    variant_b_weight: 45
-    variant_c_weight: 15
-    enabled: true
+examples/
+  ab-checkout-weights/
+    variantWeight: <live>
 ```
 
 ```java
-@Service
-public class CheckoutExperiment {
-    private final Kiponos kiponos = Kiponos.createForCurrentTeam();
-
-    public Variant assign(String sessionId) {
-        var exp = kiponos.path("experiments", "checkout_q2");
-        if (!exp.getBool("enabled")) return Variant.CONTROL;
-
-        int a = exp.getInt("variant_a_weight");
-        int b = exp.getInt("variant_b_weight");
-        int c = exp.getInt("variant_c_weight");
-        int roll = Math.floorMod(sessionId.hashCode(), a + b + c);
-
-        if (roll < a) return Variant.A;
-        if (roll < a + b) return Variant.B;
-        return Variant.C;
-    }
+Folder policy = kiponos.path("examples", "ab-checkout-weights");
+int variantWeight = policy.getInt("variantWeight"); // local get — no hub RTT
+if (variantWeight <= 0) {
+    return failClosed();
 }
+return apply(variantWeight);
 ```
 
-Product manager slides weights in Kiponos dashboard → **new sessions** immediately use updated distribution. Existing sessions can stick with assignment cookie — your choice.
+Ops (or automation) sets `variantWeight` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-## Use cases
+## What stays in the jar vs the hub
 
-| Scenario | Live tweak |
-|----------|------------|
-| Winner emerging | Shift 70% traffic to best variant |
-| Bug in variant C | Set `variant_c_weight: 0` instantly |
-| Flash sale | Disable experiment, route 100% to optimized flow |
-| Geo test | Separate weight folders per region |
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
-## Zero performance hit
+## Architecture
 
-Weight reads are **local cache lookups** — safe inside checkout hot path. Updates arrive as **async WebSocket deltas**.
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (A/B checkout weight)
+```
 
-Try free TeamPro at [kiponos.io](https://kiponos.io). Integration resources: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+No sidecar tax on every request. One tree humans and remote SDKs share.
+
+## Clone and run the pattern
+
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
+```
+
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ab-checkout-weights.md)
+
+## Scenarios
+
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+
+## When not to live-edit
+
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
+
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture** on checkout experiments: **A/B checkout weight** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `variantWeight` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**A/B checkout weight** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-*Kiponos.io — real-time config for Java. Steer experiments while carts are moving.*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*

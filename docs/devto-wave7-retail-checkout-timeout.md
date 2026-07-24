@@ -1,132 +1,165 @@
 ---
 title: "Black Friday Did Not Care About Your PSP Timeout"
 published: true
-tags: java,ecommerce,devops,api
+tags: java, retail, devops, kiponos
 description: "A traveler’s note from abandoned carts, limping payment rails, and the checkout number that should not wait for a release train."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/examples/medium-drafts/retail-checkout-timeout.md
 main_image: https://files.catbox.moe/tngzui.jpg
 ---
 
-*A traveler’s note from abandoned carts, limping payment rails, and the checkout number that should not wait for a release train.*
+**The Aha:** `checkoutTimeoutMs` is not a property-file trophy. It is **incident posture** for retail PSP timeouts — and posture that waits for a jar is already late.
 
----
+At 02:14 the war room already knew the right **checkout timeout**. The jar still believed last week's YAML.
 
-There is a particular kind of silence in a retail war room.
+## The problem: ceremony between judgment and effect
 
-Not the calm of a quiet morning. The silence after someone says cart conversion is down and the dashboards agree. You can hear the AC. You can hear someone refresh New Relic. You can hear the product person try not to say **Black Friday** out loud like it is a curse.
+When **checkout timeout** is frozen in a deploy unit, every incident becomes a process argument. Hotfixes still mean CI + roll. Feature flags often mean a second control plane with its own delay.
 
-Then engineering says the sentence I have heard in more than one language:
+| Belief | Production |
+|--------|------------|
+| "It's just config" | Config is packaged as a deploy unit |
+| "We'll hotfix" | Hotfix is still pipeline + nerves |
+| "Flags cover this" | Second system, second outage mode |
+| "Defaults are fine" | Defaults become root causes under load |
 
-**“The PSP is slow. We need a higher timeout. But we have to redeploy.”**
+Domain: retail PSP timeouts.
 
-Redeploy.
+## The Aha: local read, live write
 
-During peak.
+[Kiponos.io](https://kiponos.io) holds the tree. The **Java SDK** keeps the latest value **in memory**, patched over WebSocket deltas. Hot path: **local get** — no per-request hub RTT.
 
-To change an integer.
-
-While carts become ghost stories.
-
----
-
-## Architecture: live checkout knobs on the money path
-
-Checkout is a **trust ceremony**. The control plane must be live; the data plane must stay local:
-
-![Checkout path with live timeout control](https://litter.catbox.moe/m9ot7u.png)
-
-| Component | Job at peak |
-|-----------|-------------|
-| **Storefront / cart API** | Starts the ceremony |
-| **Checkout filter** | Applies `timeout-ms` + `soft-fail-on-timeout` from **SDK memory** |
-| **PSP** | External HTTPS — the slow friend |
-| **Kiponos hub + dashboard** | Ops raises timeout / soft-fail without rolling carts |
-| **WebSocket → SDK cache** | Delivers the new integer **before** the next checkout |
-
-### Decision table (design clarity)
-
-| Condition | `timeout-ms` | `soft-fail-on-timeout` | Customer experience |
-|-----------|--------------|------------------------|---------------------|
-| PSP healthy | e.g. 3000 | `no` | Fast path, hard fail rare |
-| PSP lagging | **raise** to 5000–8000 | optional `yes` | Fewer false timeouts |
-| PSP dying | keep high | **`yes`** | Retry path instead of hard 500 |
-| Mis-set to 50ms | clamped (≥250ms) | — | Guardrail against self-inflicted DDoS of the UX |
-
-### Old world vs live hub
-
-| Move | Old world | Kiponos |
-|------|-----------|---------|
-| Raise PSP timeout | PR + deploy mid-sale | Dashboard edit |
-| Enable soft-fail | Hope it was coded + shipped | Live flag |
-| Same JAR in all pods | Flags drift across rollouts | Same tree fan-out |
-
----
-
-## Configuration hell wears a shopping bag
-
-Checkout is not a feature. Checkout is a **trust ceremony**.
-
-Customer already decided. Wallet is open. You are one slow HTTPS call from a sad face emoji and a support ticket.
-
-Old world theater:
-
-1. Discover `payment.timeout` is 3000ms and the PSP p99 is now 4200ms  
-2. Open a PR  
-3. Wait for pipeline while marketing refreshes revenue charts  
-4. Deploy half the fleet  
-5. Discover soft-fail was never implemented — timeouts still become hard 500s  
-6. Write a postmortem titled “we will add a kill switch next quarter”  
-
-I have watched excellent commerce engineers — people who can reason about idempotency keys without notes — reduced to archaeologists of their own ConfigMaps because **an integer was packaged as a release**.
-
-Airports taught me that boarding groups are fiction until the gate agent decides. Retail taught me that **timeouts are fiction until the customer abandons**.
-
----
-
-## The tree
-
-```text
-examples / retail-checkout-timeout /
-  timeout-ms            = int (clamped 250ms..60s)
-  soft-fail-on-timeout  = yes | no
+```yaml
+examples/
+  aha-retail-checkout-timeout/
+    checkoutTimeoutMs: <live>
 ```
 
-| Key | Role |
-|-----|------|
-| `timeout-ms` | How long the storefront waits on the PSP |
-| `soft-fail-on-timeout` | Retry / degrade instead of detonating the session |
+```java
+Folder policy = kiponos.path("examples", "aha-retail-checkout-timeout");
+int checkoutTimeoutMs = policy.getInt("checkoutTimeoutMs"); // local get — no hub RTT
+if (checkoutTimeoutMs <= 0) {
+    return failClosed();
+}
+return apply(checkoutTimeoutMs);
+```
 
-That is the whole moral:
+Ops (or automation) sets `checkoutTimeoutMs` in the hub. The **next** evaluation uses it. Same binary. Same tests for structure.
 
-**Checkout posture is an operational decision, not a build artifact.**
+## What stays in the jar vs the hub
 
----
+| Jar (versioned) | Hub (live) |
+|-----------------|------------|
+| Code paths & clamps | Operational numbers |
+| Hard maxima / allowlists | Current posture |
+| Schema & types | Human judgment under pressure |
+| Fail-closed defaults | Temporary incident overrides |
 
-## The example
+## Architecture
 
-**`examples/java/retail-checkout-timeout`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+```
+Dashboard / automation ──write──► Kiponos hub
+                                      │ delta
+                                      ▼
+                               SDK in-process cache
+                                      │ local get
+                                      ▼
+                               Hot path (checkout timeout)
+```
 
-Plain `main`. Unit tests for clamps and soft-fail wording. Wire the same reads into your filter tomorrow.
+No sidecar tax on every request. One tree humans and remote SDKs share.
+
+## Clone and run the pattern
 
 ```bash
-cd examples/java/retail-checkout-timeout
-export KIPONOS_ID='…'
-export KIPONOS_ACCESS='…'
-./gradlew test run
+git clone https://github.com/kiponos-io/kiponos-io.git
+# examples/java/* — Super Patterns + Aha modules
+# Profile: ['app']['release']['env']['config']
 ```
 
-Ops play: raise timeout during PSP lag; enable soft-fail so carts get a second chance instead of a stack trace.
+- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
+- Product: [kiponos.io](https://kiponos.io)  
+- Canonical source: [this article on GitHub](https://github.com/kiponos-io/kiponos-io/blob/master/docs/examples/medium-drafts/retail-checkout-timeout.md)
+
+## Scenarios
+
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+
+## When not to live-edit
+
+- Protocol / schema changes that need coordinated rollouts  
+- Values compliance freezes to code review only  
+- Secrets (secret manager — never the ops posture tree)  
+- Anything you cannot clamp or allowlist safely  
+
+## Operational checklist
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable (fail closed on money paths).  
+3. Allowlist writers (dashboard + automation identities).  
+4. Log **decisions** and hub writes — not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
+
+## Why this is not "just another flag"
+
+Feature flags are often product gates. This essay is about **ops posture** on retail PSP timeouts: **checkout timeout** — numbers war rooms already shout.
+
+Kiponos makes that verbal decision **executable** without a second control-plane tax on every request.
+
+## Guardrails
+
+Live does not mean unbounded. Compile a hard max. Audit actor/old/new/ticket. Prefer fail-closed on money and fraud paths when the hub is dark.
+
+## Failure budget thinking
+
+Treat `checkoutTimeoutMs` as a slice of error budget. Raise when the world is healthy; lower when dependencies are sick. Write the number that survives a bad day.
+
+## Observability
+
+Ship counters for decisions applied, rejects, and hub write events. Logging every local get teaches nothing; logging every change teaches ownership.
+
+## A note on testing
+
+Unit-test structure with fixed strings (no network). Integration-test against the public sandbox when you can. Good tests: missing-key defaults, clamps, fail-closed. Bad tests: production hubs from CI.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+Posture beats ceremony — every time.
+
+## Moral
+
+**Checkout timeout** that requires a deploy is optimistic documentation.
+
+Ship judgment. Leave the jar alone.
 
 ---
 
-## The moral
-
-If peak traffic requires a redeploy to change a timeout, you do not have a checkout system.
-
-You have a **scheduled vulnerability** that coincides with revenue.
-
-Ship the integer. Leave the jar alone. Let the customer finish paying.
-
----
-
-*Example + tests: [github.com/kiponos-io/kiponos-io/tree/master/examples/java/retail-checkout-timeout](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/retail-checkout-timeout)*
+*Kiponos live ops · [docs library](https://github.com/kiponos-io/kiponos-io/tree/master/docs) · [examples/java](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java)*
