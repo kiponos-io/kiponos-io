@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live circuit open duration via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-circuit-open-ms-0608.md
-main_image: ./devto-cover-ops-posture-insurance-circuit-open-ms-0608.jpg
+main_image: https://files.catbox.moe/fs0fk1.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

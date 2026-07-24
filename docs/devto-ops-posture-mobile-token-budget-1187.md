@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live token budget per request via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-token-budget-1187.md
-main_image: ./devto-cover-ops-posture-mobile-token-budget-1187.jpg
+main_image: https://files.catbox.moe/ouun07.jpg
 ---
 
 **The Aha:** `tokenBudget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live feature kill switch via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-feature-kill-0227.md
-main_image: ./devto-cover-ops-posture-sre-feature-kill-0227.jpg
+main_image: https://files.catbox.moe/mjvaka.jpg
 ---
 
 **The Aha:** `killSwitch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live idempotency window via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-idempotency-win-0398.md
-main_image: ./devto-cover-ops-posture-healthcare-idempotency-win-0398.jpg
+main_image: https://files.catbox.moe/wnfs8z.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

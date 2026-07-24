@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-cache-warm-ratio-0965.md
-main_image: ./devto-cover-ops-posture-mlops-cache-warm-ratio-0965.jpg
+main_image: https://files.catbox.moe/bl6a5t.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

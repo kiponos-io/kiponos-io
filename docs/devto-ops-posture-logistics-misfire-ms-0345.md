@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live scheduler misfire threshold via Kiponos Python SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-misfire-ms-0345.md
-main_image: ./devto-cover-ops-posture-logistics-misfire-ms-0345.jpg
+main_image: https://files.catbox.moe/pi1qdi.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live shadow traffic share via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-shadow-percent-0361.md
-main_image: ./devto-cover-ops-posture-healthcare-shadow-percent-0361.jpg
+main_image: https://files.catbox.moe/1q9wd8.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

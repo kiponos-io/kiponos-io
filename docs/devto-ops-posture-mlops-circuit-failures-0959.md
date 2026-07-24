@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-circuit-failures-0959.md
-main_image: ./devto-cover-ops-posture-mlops-circuit-failures-0959.jpg
+main_image: https://files.catbox.moe/y9i3ea.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

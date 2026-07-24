@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live outbound call timeout via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-timeout-ms-0201.md
-main_image: ./devto-cover-ops-posture-sre-timeout-ms-0201.jpg
+main_image: https://files.catbox.moe/4it898.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live ingress RPS ceiling via Kiponos Python SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-rps-cap-0304.md
-main_image: ./devto-cover-ops-posture-logistics-rps-cap-0304.jpg
+main_image: https://files.catbox.moe/w67c3n.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

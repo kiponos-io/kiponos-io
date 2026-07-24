@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live per-tenant quota via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-tenant-quota-0529.md
-main_image: ./devto-cover-ops-posture-telecom-tenant-quota-0529.jpg
+main_image: https://files.catbox.moe/p7eved.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

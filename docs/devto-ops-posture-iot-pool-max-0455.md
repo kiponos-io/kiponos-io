@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live connection pool ceiling via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-pool-max-0455.md
-main_image: ./devto-cover-ops-posture-iot-pool-max-0455.jpg
+main_image: https://files.catbox.moe/9gyb5g.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

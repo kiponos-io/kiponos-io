@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live JWT clock skew leeway via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-jwt-leeway-sec-0219.md
-main_image: ./devto-cover-ops-posture-sre-jwt-leeway-sec-0219.jpg
+main_image: https://files.catbox.moe/vo9xlq.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

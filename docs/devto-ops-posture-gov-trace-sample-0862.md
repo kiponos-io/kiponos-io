@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live trace sample per thousand via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-trace-sample-0862.md
-main_image: ./devto-cover-ops-posture-gov-trace-sample-0862.jpg
+main_image: https://files.catbox.moe/fgy3g4.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

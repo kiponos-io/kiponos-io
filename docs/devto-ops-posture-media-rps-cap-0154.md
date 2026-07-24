@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live ingress RPS ceiling via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-rps-cap-0154.md
-main_image: ./devto-cover-ops-posture-media-rps-cap-0154.jpg
+main_image: https://files.catbox.moe/pynzkx.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

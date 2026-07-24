@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live partner API timeout via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-partner-timeout-0389.md
-main_image: ./devto-cover-ops-posture-healthcare-partner-timeout-0389.jpg
+main_image: https://files.catbox.moe/txlzrn.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

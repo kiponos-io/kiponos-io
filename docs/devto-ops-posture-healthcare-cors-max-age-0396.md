@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live CORS max-age via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-cors-max-age-0396.md
-main_image: ./devto-cover-ops-posture-healthcare-cors-max-age-0396.jpg
+main_image: https://files.catbox.moe/n7n2qr.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

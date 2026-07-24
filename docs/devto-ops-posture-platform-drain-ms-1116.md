@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live graceful drain window via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-drain-ms-1116.md
-main_image: ./devto-cover-ops-posture-platform-drain-ms-1116.jpg
+main_image: https://files.catbox.moe/gxx6a3.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

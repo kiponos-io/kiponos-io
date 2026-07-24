@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live media bitrate ceiling via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-bitrate-kbps-0275.md
-main_image: ./devto-cover-ops-posture-saas-bitrate-kbps-0275.jpg
+main_image: https://files.catbox.moe/5igccw.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

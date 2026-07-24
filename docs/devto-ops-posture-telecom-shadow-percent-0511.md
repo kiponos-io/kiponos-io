@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live shadow traffic share via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-shadow-percent-0511.md
-main_image: ./devto-cover-ops-posture-telecom-shadow-percent-0511.jpg
+main_image: https://files.catbox.moe/lwhjk5.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

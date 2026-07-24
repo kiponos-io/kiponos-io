@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live UI/API debounce via Kiponos Python SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-debounce-ms-0897.md
-main_image: ./devto-cover-ops-posture-gov-debounce-ms-0897.jpg
+main_image: https://files.catbox.moe/qnf825.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

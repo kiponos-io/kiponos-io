@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live cache TTL seconds via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-cache-ttl-sec-0214.md
-main_image: ./devto-cover-ops-posture-sre-cache-ttl-sec-0214.jpg
+main_image: https://files.catbox.moe/cc0j68.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

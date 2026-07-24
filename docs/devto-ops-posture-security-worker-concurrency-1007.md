@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-worker-concurrency-1007.md
-main_image: ./devto-cover-ops-posture-security-worker-concurrency-1007.jpg
+main_image: https://files.catbox.moe/nz56y3.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

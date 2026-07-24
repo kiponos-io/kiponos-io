@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live GraphQL query depth via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-graphql-depth-1050.md
-main_image: ./devto-cover-ops-posture-security-graphql-depth-1050.jpg
+main_image: https://files.catbox.moe/ly1bpb.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

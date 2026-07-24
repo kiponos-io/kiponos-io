@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live degradation mode via Kiponos Python SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-degrade-mode-1028.md
-main_image: ./devto-cover-ops-posture-security-degrade-mode-1028.jpg
+main_image: https://files.catbox.moe/gowbi5.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

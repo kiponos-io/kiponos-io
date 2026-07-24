@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live inference batch size via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-inference-batch-0485.md
-main_image: ./devto-cover-ops-posture-iot-inference-batch-0485.jpg
+main_image: https://files.catbox.moe/ad6b2n.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live health fail threshold via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-health-fails-0217.md
-main_image: ./devto-cover-ops-posture-sre-health-fails-0217.jpg
+main_image: https://files.catbox.moe/hutlkd.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live GraphQL query depth via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-graphql-depth-1200.md
-main_image: ./devto-cover-ops-posture-mobile-graphql-depth-1200.jpg
+main_image: https://files.catbox.moe/4c2m5l.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

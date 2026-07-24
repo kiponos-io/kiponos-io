@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live ingress RPS ceiling via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-rps-cap-0254.md
-main_image: ./devto-cover-ops-posture-saas-rps-cap-0254.jpg
+main_image: https://files.catbox.moe/qfk71k.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

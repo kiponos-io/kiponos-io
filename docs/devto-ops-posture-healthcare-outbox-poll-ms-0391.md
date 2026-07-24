@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live outbox poll interval via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-outbox-poll-ms-0391.md
-main_image: ./devto-cover-ops-posture-healthcare-outbox-poll-ms-0391.jpg
+main_image: https://files.catbox.moe/4an0h5.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

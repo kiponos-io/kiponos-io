@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live pricing / promo weight via Kiponos Python SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-pricing-weight-0876.md
-main_image: ./devto-cover-ops-posture-gov-pricing-weight-0876.jpg
+main_image: https://files.catbox.moe/tio0li.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

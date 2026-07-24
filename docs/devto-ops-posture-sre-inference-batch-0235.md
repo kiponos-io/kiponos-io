@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live inference batch size via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-inference-batch-0235.md
-main_image: ./devto-cover-ops-posture-sre-inference-batch-0235.jpg
+main_image: https://files.catbox.moe/hmbnqx.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

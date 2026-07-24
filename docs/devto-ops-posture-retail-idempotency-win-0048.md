@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live idempotency window via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-idempotency-win-0048.md
-main_image: ./devto-cover-ops-posture-retail-idempotency-win-0048.jpg
+main_image: https://files.catbox.moe/ynzhn3.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

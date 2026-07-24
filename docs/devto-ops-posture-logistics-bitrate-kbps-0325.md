@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-bitrate-kbps-0325.md
-main_image: ./devto-cover-ops-posture-logistics-bitrate-kbps-0325.jpg
+main_image: https://files.catbox.moe/smysly.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

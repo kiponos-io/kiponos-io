@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live UI/API debounce via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-debounce-ms-0397.md
-main_image: ./devto-cover-ops-posture-healthcare-debounce-ms-0397.jpg
+main_image: https://files.catbox.moe/3wtt8q.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

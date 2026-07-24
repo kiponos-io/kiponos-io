@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live degradation mode via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-degrade-mode-0328.md
-main_image: ./devto-cover-ops-posture-logistics-degrade-mode-0328.jpg
+main_image: https://files.catbox.moe/u3orwv.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

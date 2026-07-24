@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-partner-timeout-0339.md
-main_image: ./devto-cover-ops-posture-logistics-partner-timeout-0339.jpg
+main_image: https://files.catbox.moe/joe7wa.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-scroll-timeout-0494.md
-main_image: ./devto-cover-ops-posture-iot-scroll-timeout-0494.jpg
+main_image: https://files.catbox.moe/eg1afx.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

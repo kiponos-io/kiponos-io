@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live per-tenant quota via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-tenant-quota-0279.md
-main_image: ./devto-cover-ops-posture-saas-tenant-quota-0279.jpg
+main_image: https://files.catbox.moe/s0sy2c.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

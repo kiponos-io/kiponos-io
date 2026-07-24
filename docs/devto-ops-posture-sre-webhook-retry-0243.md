@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live webhook retry budget via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-webhook-retry-0243.md
-main_image: ./devto-cover-ops-posture-sre-webhook-retry-0243.jpg
+main_image: https://files.catbox.moe/i72l5k.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

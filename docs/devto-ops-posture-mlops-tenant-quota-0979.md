@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live per-tenant quota via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-tenant-quota-0979.md
-main_image: ./devto-cover-ops-posture-mlops-tenant-quota-0979.jpg
+main_image: https://files.catbox.moe/h02jso.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

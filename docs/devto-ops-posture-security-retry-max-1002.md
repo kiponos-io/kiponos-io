@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live retry budget via Kiponos Python SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-retry-max-1002.md
-main_image: ./devto-cover-ops-posture-security-retry-max-1002.jpg
+main_image: https://files.catbox.moe/u1k3ds.jpg
 ---
 
 **The Aha:** `maxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

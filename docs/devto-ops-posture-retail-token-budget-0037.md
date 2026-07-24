@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live token budget per request via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-token-budget-0037.md
-main_image: ./devto-cover-ops-posture-retail-token-budget-0037.jpg
+main_image: https://files.catbox.moe/x3zeur.jpg
 ---
 
 **The Aha:** `tokenBudget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

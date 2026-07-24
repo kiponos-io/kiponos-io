@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live JWT clock skew leeway via Kiponos Java SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-jwt-leeway-sec-0119.md
-main_image: ./devto-cover-ops-posture-travel-jwt-leeway-sec-0119.jpg
+main_image: https://files.catbox.moe/aadkhp.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

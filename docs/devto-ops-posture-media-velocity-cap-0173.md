@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live fraud velocity cap via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-velocity-cap-0173.md
-main_image: ./devto-cover-ops-posture-media-velocity-cap-0173.jpg
+main_image: https://files.catbox.moe/bj7ds2.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

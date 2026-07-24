@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live shadow traffic share via Kiponos Python SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-shadow-percent-0861.md
-main_image: ./devto-cover-ops-posture-gov-shadow-percent-0861.jpg
+main_image: https://files.catbox.moe/t0b9lr.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

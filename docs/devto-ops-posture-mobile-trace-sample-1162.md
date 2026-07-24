@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live trace sample per thousand via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-trace-sample-1162.md
-main_image: ./devto-cover-ops-posture-mobile-trace-sample-1162.jpg
+main_image: https://files.catbox.moe/ayy8c7.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

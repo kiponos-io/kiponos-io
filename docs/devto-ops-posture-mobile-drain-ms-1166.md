@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live graceful drain window via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-drain-ms-1166.md
-main_image: ./devto-cover-ops-posture-mobile-drain-ms-1166.jpg
+main_image: https://files.catbox.moe/3wpwz9.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

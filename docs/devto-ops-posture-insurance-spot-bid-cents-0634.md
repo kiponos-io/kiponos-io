@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live spot bid ceiling cents via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-spot-bid-cents-0634.md
-main_image: ./devto-cover-ops-posture-insurance-spot-bid-cents-0634.jpg
+main_image: https://files.catbox.moe/1dfapn.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-log-sample-0513.md
-main_image: ./devto-cover-ops-posture-telecom-log-sample-0513.jpg
+main_image: https://files.catbox.moe/k07kss.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

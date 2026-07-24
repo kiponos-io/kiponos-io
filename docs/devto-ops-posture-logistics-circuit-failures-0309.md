@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-circuit-failures-0309.md
-main_image: ./devto-cover-ops-posture-logistics-circuit-failures-0309.jpg
+main_image: https://files.catbox.moe/3f27zk.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

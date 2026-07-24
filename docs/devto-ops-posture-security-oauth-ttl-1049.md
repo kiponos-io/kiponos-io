@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live OAuth token TTL via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-oauth-ttl-1049.md
-main_image: ./devto-cover-ops-posture-security-oauth-ttl-1049.jpg
+main_image: https://files.catbox.moe/927ln4.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

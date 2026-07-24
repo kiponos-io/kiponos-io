@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live feature kill switch via Kiponos Python SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-feature-kill-0877.md
-main_image: ./devto-cover-ops-posture-gov-feature-kill-0877.jpg
+main_image: https://files.catbox.moe/28u6k6.jpg
 ---
 
 **The Aha:** `killSwitch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

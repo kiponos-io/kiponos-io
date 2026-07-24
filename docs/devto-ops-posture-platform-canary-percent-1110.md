@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live canary traffic share via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-canary-percent-1110.md
-main_image: ./devto-cover-ops-posture-platform-canary-percent-1110.jpg
+main_image: https://files.catbox.moe/w8oyyz.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

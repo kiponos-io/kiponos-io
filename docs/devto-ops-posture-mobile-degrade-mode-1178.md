@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live degradation mode via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-degrade-mode-1178.md
-main_image: ./devto-cover-ops-posture-mobile-degrade-mode-1178.jpg
+main_image: https://files.catbox.moe/tqd9b4.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

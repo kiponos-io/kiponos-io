@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live log sample per thousand via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-log-sample-0263.md
-main_image: ./devto-cover-ops-posture-saas-log-sample-0263.jpg
+main_image: https://files.catbox.moe/3yqf58.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

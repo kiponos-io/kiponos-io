@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live outbox poll interval via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-outbox-poll-ms-0041.md
-main_image: ./devto-cover-ops-posture-retail-outbox-poll-ms-0041.jpg
+main_image: https://files.catbox.moe/9rsbm2.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

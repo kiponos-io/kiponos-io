@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live region traffic share via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-region-share-0280.md
-main_image: ./devto-cover-ops-posture-saas-region-share-0280.jpg
+main_image: https://files.catbox.moe/tv88xv.jpg
 ---
 
 **The Aha:** `regionShare` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

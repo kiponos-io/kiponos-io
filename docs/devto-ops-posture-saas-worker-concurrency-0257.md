@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-worker-concurrency-0257.md
-main_image: ./devto-cover-ops-posture-saas-worker-concurrency-0257.jpg
+main_image: https://files.catbox.moe/v8x087.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

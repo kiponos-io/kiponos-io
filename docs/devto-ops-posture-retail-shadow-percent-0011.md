@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live shadow traffic share via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-shadow-percent-0011.md
-main_image: ./devto-cover-ops-posture-retail-shadow-percent-0011.jpg
+main_image: https://files.catbox.moe/g31r2f.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

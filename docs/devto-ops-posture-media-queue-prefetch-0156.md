@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live consumer prefetch via Kiponos Python SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-queue-prefetch-0156.md
-main_image: ./devto-cover-ops-posture-media-queue-prefetch-0156.jpg
+main_image: https://files.catbox.moe/ac0mbm.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

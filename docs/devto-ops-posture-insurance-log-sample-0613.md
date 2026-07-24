@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live log sample per thousand via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-log-sample-0613.md
-main_image: ./devto-cover-ops-posture-insurance-log-sample-0613.jpg
+main_image: https://files.catbox.moe/ia0w3p.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

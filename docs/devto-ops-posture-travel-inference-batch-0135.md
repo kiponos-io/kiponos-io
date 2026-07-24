@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live inference batch size via Kiponos Python SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-inference-batch-0135.md
-main_image: ./devto-cover-ops-posture-travel-inference-batch-0135.jpg
+main_image: https://files.catbox.moe/93l2wq.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

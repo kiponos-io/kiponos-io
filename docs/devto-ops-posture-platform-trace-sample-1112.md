@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live trace sample per thousand via Kiponos Python SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-trace-sample-1112.md
-main_image: ./devto-cover-ops-posture-platform-trace-sample-1112.jpg
+main_image: https://files.catbox.moe/f7rqqs.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live ingress RPS ceiling via Kiponos Python SDK — marketplace posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-marketplace-rps-cap-1204.md
-main_image: ./devto-cover-ops-posture-marketplace-rps-cap-1204.jpg
+main_image: https://files.catbox.moe/6lmrar.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

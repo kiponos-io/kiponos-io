@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live trace sample per thousand via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-trace-sample-0362.md
-main_image: ./devto-cover-ops-posture-healthcare-trace-sample-0362.jpg
+main_image: https://files.catbox.moe/bv1gnq.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

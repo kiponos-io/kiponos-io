@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live spot bid ceiling cents via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-spot-bid-cents-1134.md
-main_image: ./devto-cover-ops-posture-platform-spot-bid-cents-1134.jpg
+main_image: https://files.catbox.moe/14vg91.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live circuit open duration via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-circuit-open-ms-1008.md
-main_image: ./devto-cover-ops-posture-security-circuit-open-ms-1008.jpg
+main_image: https://files.catbox.moe/0ur278.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

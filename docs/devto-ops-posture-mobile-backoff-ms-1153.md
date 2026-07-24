@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live retry backoff base via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-backoff-ms-1153.md
-main_image: ./devto-cover-ops-posture-mobile-backoff-ms-1153.jpg
+main_image: https://files.catbox.moe/ke4dik.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

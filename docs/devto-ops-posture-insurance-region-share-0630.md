@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live region traffic share via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-region-share-0630.md
-main_image: ./devto-cover-ops-posture-insurance-region-share-0630.jpg
+main_image: https://files.catbox.moe/eo6548.jpg
 ---
 
 **The Aha:** `regionShare` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

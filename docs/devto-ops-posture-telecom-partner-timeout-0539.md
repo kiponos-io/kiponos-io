@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live partner API timeout via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-partner-timeout-0539.md
-main_image: ./devto-cover-ops-posture-telecom-partner-timeout-0539.jpg
+main_image: https://files.catbox.moe/p9injl.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

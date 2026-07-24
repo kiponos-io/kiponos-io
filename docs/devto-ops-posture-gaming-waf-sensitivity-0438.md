@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Python SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-waf-sensitivity-0438.md
-main_image: ./devto-cover-ops-posture-gaming-waf-sensitivity-0438.jpg
+main_image: https://files.catbox.moe/icf2qh.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

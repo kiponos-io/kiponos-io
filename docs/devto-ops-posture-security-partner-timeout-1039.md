@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-partner-timeout-1039.md
-main_image: ./devto-cover-ops-posture-security-partner-timeout-1039.jpg
+main_image: https://files.catbox.moe/8udt9a.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

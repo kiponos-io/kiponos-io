@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-backoff-ms-0353.md
-main_image: ./devto-cover-ops-posture-healthcare-backoff-ms-0353.jpg
+main_image: https://files.catbox.moe/1ky4d3.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live cache TTL seconds via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-cache-ttl-sec-1014.md
-main_image: ./devto-cover-ops-posture-security-cache-ttl-sec-1014.jpg
+main_image: https://files.catbox.moe/du1ffx.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live search scroll timeout via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-scroll-timeout-0244.md
-main_image: ./devto-cover-ops-posture-sre-scroll-timeout-0244.jpg
+main_image: https://files.catbox.moe/vrw6en.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

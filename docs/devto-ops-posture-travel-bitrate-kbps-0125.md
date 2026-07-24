@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-bitrate-kbps-0125.md
-main_image: ./devto-cover-ops-posture-travel-bitrate-kbps-0125.jpg
+main_image: https://files.catbox.moe/p3ol7l.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

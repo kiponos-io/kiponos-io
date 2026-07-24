@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-scroll-timeout-0194.md
-main_image: ./devto-cover-ops-posture-media-scroll-timeout-0194.jpg
+main_image: https://files.catbox.moe/6j35la.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

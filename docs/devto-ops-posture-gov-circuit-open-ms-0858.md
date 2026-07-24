@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live circuit open duration via Kiponos Python SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-circuit-open-ms-0858.md
-main_image: ./devto-cover-ops-posture-gov-circuit-open-ms-0858.jpg
+main_image: https://files.catbox.moe/jaij3h.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

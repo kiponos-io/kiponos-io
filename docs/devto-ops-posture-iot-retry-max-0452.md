@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live retry budget via Kiponos Python SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-retry-max-0452.md
-main_image: ./devto-cover-ops-posture-iot-retry-max-0452.jpg
+main_image: https://files.catbox.moe/kshkic.jpg
 ---
 
 **The Aha:** `maxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

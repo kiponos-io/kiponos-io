@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live alert critical threshold via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-alert-crit-0032.md
-main_image: ./devto-cover-ops-posture-retail-alert-crit-0032.jpg
+main_image: https://files.catbox.moe/namlyw.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

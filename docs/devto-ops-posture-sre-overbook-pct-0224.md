@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live overbooking percent via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-overbook-pct-0224.md
-main_image: ./devto-cover-ops-posture-sre-overbook-pct-0224.jpg
+main_image: https://files.catbox.moe/6c4y6i.jpg
 ---
 
 **The Aha:** `overbookPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

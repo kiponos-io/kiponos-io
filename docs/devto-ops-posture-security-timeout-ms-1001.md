@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live outbound call timeout via Kiponos Python SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-timeout-ms-1001.md
-main_image: ./devto-cover-ops-posture-security-timeout-ms-1001.jpg
+main_image: https://files.catbox.moe/qyqar6.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

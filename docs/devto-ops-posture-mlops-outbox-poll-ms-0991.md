@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live outbox poll interval via Kiponos Python SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-outbox-poll-ms-0991.md
-main_image: ./devto-cover-ops-posture-mlops-outbox-poll-ms-0991.jpg
+main_image: https://files.catbox.moe/ccz725.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

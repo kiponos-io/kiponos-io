@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live retry backoff base via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-backoff-ms-0603.md
-main_image: ./devto-cover-ops-posture-insurance-backoff-ms-0603.jpg
+main_image: https://files.catbox.moe/6oymk3.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

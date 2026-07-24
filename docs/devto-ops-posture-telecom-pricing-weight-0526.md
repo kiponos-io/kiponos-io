@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live pricing / promo weight via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-pricing-weight-0526.md
-main_image: ./devto-cover-ops-posture-telecom-pricing-weight-0526.jpg
+main_image: https://files.catbox.moe/6kxtfq.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

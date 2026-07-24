@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live webhook retry budget via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-webhook-retry-0343.md
-main_image: ./devto-cover-ops-posture-logistics-webhook-retry-0343.jpg
+main_image: https://files.catbox.moe/n282zt.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

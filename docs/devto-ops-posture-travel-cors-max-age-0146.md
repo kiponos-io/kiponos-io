@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live CORS max-age via Kiponos Java SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-cors-max-age-0146.md
-main_image: ./devto-cover-ops-posture-travel-cors-max-age-0146.jpg
+main_image: https://files.catbox.moe/w3syb4.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

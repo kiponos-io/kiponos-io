@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live outbox poll interval via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-outbox-poll-ms-0491.md
-main_image: ./devto-cover-ops-posture-iot-outbox-poll-ms-0491.jpg
+main_image: https://files.catbox.moe/5se76v.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

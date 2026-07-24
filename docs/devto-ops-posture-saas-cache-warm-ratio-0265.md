@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-cache-warm-ratio-0265.md
-main_image: ./devto-cover-ops-posture-saas-cache-warm-ratio-0265.jpg
+main_image: https://files.catbox.moe/r92li5.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

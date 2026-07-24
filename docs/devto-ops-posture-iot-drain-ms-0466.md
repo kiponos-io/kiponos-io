@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live graceful drain window via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-drain-ms-0466.md
-main_image: ./devto-cover-ops-posture-iot-drain-ms-0466.jpg
+main_image: https://files.catbox.moe/1lcwpn.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

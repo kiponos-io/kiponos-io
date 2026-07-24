@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-circuit-failures-1109.md
-main_image: ./devto-cover-ops-posture-platform-circuit-failures-1109.jpg
+main_image: https://files.catbox.moe/7oltjn.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

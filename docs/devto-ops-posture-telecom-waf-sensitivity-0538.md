@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-waf-sensitivity-0538.md
-main_image: ./devto-cover-ops-posture-telecom-waf-sensitivity-0538.jpg
+main_image: https://files.catbox.moe/nvoqyd.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

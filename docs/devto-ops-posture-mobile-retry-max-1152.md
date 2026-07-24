@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live retry budget via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-retry-max-1152.md
-main_image: ./devto-cover-ops-posture-mobile-retry-max-1152.jpg
+main_image: https://files.catbox.moe/uywep1.jpg
 ---
 
 **The Aha:** `maxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

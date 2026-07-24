@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live graceful drain window via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-drain-ms-0016.md
-main_image: ./devto-cover-ops-posture-retail-drain-ms-0016.jpg
+main_image: https://files.catbox.moe/90ez35.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

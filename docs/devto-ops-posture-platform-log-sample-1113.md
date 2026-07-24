@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-log-sample-1113.md
-main_image: ./devto-cover-ops-posture-platform-log-sample-1113.jpg
+main_image: https://files.catbox.moe/nai4lx.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

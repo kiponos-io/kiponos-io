@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live circuit open duration via Kiponos Python SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-circuit-open-ms-0958.md
-main_image: ./devto-cover-ops-posture-mlops-circuit-open-ms-0958.jpg
+main_image: https://files.catbox.moe/qm5n4z.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

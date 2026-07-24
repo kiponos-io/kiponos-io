@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-waf-sensitivity-0388.md
-main_image: ./devto-cover-ops-posture-healthcare-waf-sensitivity-0388.jpg
+main_image: https://files.catbox.moe/c2zt81.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

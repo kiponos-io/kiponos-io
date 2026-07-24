@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live per-tenant quota via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-tenant-quota-0229.md
-main_image: ./devto-cover-ops-posture-sre-tenant-quota-0229.jpg
+main_image: https://files.catbox.moe/3jr3w7.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

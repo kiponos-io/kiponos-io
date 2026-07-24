@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live retry backoff base via Kiponos Python SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-backoff-ms-0103.md
-main_image: ./devto-cover-ops-posture-travel-backoff-ms-0103.jpg
+main_image: https://files.catbox.moe/jtgjtl.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

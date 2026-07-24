@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live pricing / promo weight via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-pricing-weight-0226.md
-main_image: ./devto-cover-ops-posture-sre-pricing-weight-0226.jpg
+main_image: https://files.catbox.moe/lccvrv.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

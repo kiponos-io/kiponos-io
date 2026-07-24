@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — marketplace posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-marketplace-backoff-ms-1203.md
-main_image: ./devto-cover-ops-posture-marketplace-backoff-ms-1203.jpg
+main_image: https://files.catbox.moe/nxb6i5.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

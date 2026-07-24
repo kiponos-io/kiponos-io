@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live cache TTL seconds via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-cache-ttl-sec-1164.md
-main_image: ./devto-cover-ops-posture-mobile-cache-ttl-sec-1164.jpg
+main_image: https://files.catbox.moe/0cyvvz.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

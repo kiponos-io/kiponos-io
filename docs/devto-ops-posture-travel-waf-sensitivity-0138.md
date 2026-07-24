@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Java SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-waf-sensitivity-0138.md
-main_image: ./devto-cover-ops-posture-travel-waf-sensitivity-0138.jpg
+main_image: https://files.catbox.moe/w5py2f.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

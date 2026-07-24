@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live trace sample per thousand via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-trace-sample-0212.md
-main_image: ./devto-cover-ops-posture-sre-trace-sample-0212.jpg
+main_image: https://files.catbox.moe/mh5x9e.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

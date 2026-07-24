@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live outbound call timeout via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-timeout-ms-0601.md
-main_image: ./devto-cover-ops-posture-insurance-timeout-ms-0601.jpg
+main_image: https://files.catbox.moe/34fa2y.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

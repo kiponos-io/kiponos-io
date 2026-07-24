@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live UI/API debounce via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-debounce-ms-0347.md
-main_image: ./devto-cover-ops-posture-logistics-debounce-ms-0347.jpg
+main_image: https://files.catbox.moe/3nd0ap.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

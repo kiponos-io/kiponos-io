@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live log sample per thousand via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-log-sample-0363.md
-main_image: ./devto-cover-ops-posture-healthcare-log-sample-0363.jpg
+main_image: https://files.catbox.moe/j1o4oo.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

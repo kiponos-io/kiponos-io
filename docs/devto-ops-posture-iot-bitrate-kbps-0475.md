@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-bitrate-kbps-0475.md
-main_image: ./devto-cover-ops-posture-iot-bitrate-kbps-0475.jpg
+main_image: https://files.catbox.moe/y74i31.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

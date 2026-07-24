@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live fraud velocity cap via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-velocity-cap-1173.md
-main_image: ./devto-cover-ops-posture-mobile-velocity-cap-1173.jpg
+main_image: https://files.catbox.moe/p9r6xw.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

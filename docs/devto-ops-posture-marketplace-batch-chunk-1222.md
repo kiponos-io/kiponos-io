@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live batch chunk size via Kiponos Python SDK — marketplace posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-marketplace-batch-chunk-1222.md
-main_image: ./devto-cover-ops-posture-marketplace-batch-chunk-1222.jpg
+main_image: https://files.catbox.moe/pwiip1.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

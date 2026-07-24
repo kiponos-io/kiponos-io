@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-cache-warm-ratio-0365.md
-main_image: ./devto-cover-ops-posture-healthcare-cache-warm-ratio-0365.jpg
+main_image: https://files.catbox.moe/iake7i.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

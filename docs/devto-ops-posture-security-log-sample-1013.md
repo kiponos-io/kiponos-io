@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-log-sample-1013.md
-main_image: ./devto-cover-ops-posture-security-log-sample-1013.jpg
+main_image: https://files.catbox.moe/j5r5ml.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

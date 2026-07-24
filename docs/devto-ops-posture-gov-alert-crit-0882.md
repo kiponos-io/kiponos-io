@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live alert critical threshold via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-alert-crit-0882.md
-main_image: ./devto-cover-ops-posture-gov-alert-crit-0882.jpg
+main_image: https://files.catbox.moe/zf3e3j.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live consumer prefetch via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-queue-prefetch-0856.md
-main_image: ./devto-cover-ops-posture-gov-queue-prefetch-0856.jpg
+main_image: https://files.catbox.moe/jupfzn.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

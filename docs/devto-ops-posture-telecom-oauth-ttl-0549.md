@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live OAuth token TTL via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-oauth-ttl-0549.md
-main_image: ./devto-cover-ops-posture-telecom-oauth-ttl-0549.jpg
+main_image: https://files.catbox.moe/v6p8v5.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

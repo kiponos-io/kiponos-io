@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live outbound call timeout via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-timeout-ms-0501.md
-main_image: ./devto-cover-ops-posture-telecom-timeout-ms-0501.jpg
+main_image: https://files.catbox.moe/ok2va2.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

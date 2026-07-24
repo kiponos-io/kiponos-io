@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live pricing / promo weight via Kiponos Python SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-pricing-weight-0976.md
-main_image: ./devto-cover-ops-posture-mlops-pricing-weight-0976.jpg
+main_image: https://files.catbox.moe/3sp2vj.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

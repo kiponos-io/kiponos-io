@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live pricing / promo weight via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-pricing-weight-0026.md
-main_image: ./devto-cover-ops-posture-retail-pricing-weight-0026.jpg
+main_image: https://files.catbox.moe/ssjwvg.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

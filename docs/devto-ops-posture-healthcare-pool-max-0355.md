@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live connection pool ceiling via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-pool-max-0355.md
-main_image: ./devto-cover-ops-posture-healthcare-pool-max-0355.jpg
+main_image: https://files.catbox.moe/j66leb.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

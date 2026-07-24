@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live cache TTL seconds via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-cache-ttl-sec-0864.md
-main_image: ./devto-cover-ops-posture-gov-cache-ttl-sec-0864.jpg
+main_image: https://files.catbox.moe/t9sqan.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

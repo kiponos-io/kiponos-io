@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live health fail threshold via Kiponos Python SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-health-fails-0467.md
-main_image: ./devto-cover-ops-posture-iot-health-fails-0467.jpg
+main_image: https://files.catbox.moe/qdkeeg.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

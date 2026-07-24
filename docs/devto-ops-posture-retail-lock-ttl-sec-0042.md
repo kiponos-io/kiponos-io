@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live distributed lock TTL via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-lock-ttl-sec-0042.md
-main_image: ./devto-cover-ops-posture-retail-lock-ttl-sec-0042.jpg
+main_image: https://files.catbox.moe/wfp0er.jpg
 ---
 
 **The Aha:** `lockTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live token budget per request via Kiponos Python SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-token-budget-0137.md
-main_image: ./devto-cover-ops-posture-travel-token-budget-0137.jpg
+main_image: https://files.catbox.moe/8caair.jpg
 ---
 
 **The Aha:** `tokenBudget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

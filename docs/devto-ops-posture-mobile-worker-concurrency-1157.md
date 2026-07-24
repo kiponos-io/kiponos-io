@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-worker-concurrency-1157.md
-main_image: ./devto-cover-ops-posture-mobile-worker-concurrency-1157.jpg
+main_image: https://files.catbox.moe/r2b5uv.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

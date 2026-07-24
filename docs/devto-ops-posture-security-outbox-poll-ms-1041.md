@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live outbox poll interval via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-outbox-poll-ms-1041.md
-main_image: ./devto-cover-ops-posture-security-outbox-poll-ms-1041.jpg
+main_image: https://files.catbox.moe/8da1me.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

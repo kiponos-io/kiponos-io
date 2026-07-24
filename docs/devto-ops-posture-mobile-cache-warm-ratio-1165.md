@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-cache-warm-ratio-1165.md
-main_image: ./devto-cover-ops-posture-mobile-cache-warm-ratio-1165.jpg
+main_image: https://files.catbox.moe/bikawu.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

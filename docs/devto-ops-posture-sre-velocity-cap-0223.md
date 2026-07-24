@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live fraud velocity cap via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-velocity-cap-0223.md
-main_image: ./devto-cover-ops-posture-sre-velocity-cap-0223.jpg
+main_image: https://files.catbox.moe/n9o4ru.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

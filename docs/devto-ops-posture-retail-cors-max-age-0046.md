@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live CORS max-age via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-cors-max-age-0046.md
-main_image: ./devto-cover-ops-posture-retail-cors-max-age-0046.jpg
+main_image: https://files.catbox.moe/4v9upx.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

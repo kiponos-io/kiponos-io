@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live SLO warn burn bps via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-slo-warn-bps-0381.md
-main_image: ./devto-cover-ops-posture-healthcare-slo-warn-bps-0381.jpg
+main_image: https://files.catbox.moe/r3au6v.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

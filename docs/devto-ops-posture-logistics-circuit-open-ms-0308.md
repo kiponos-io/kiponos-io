@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live circuit open duration via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-circuit-open-ms-0308.md
-main_image: ./devto-cover-ops-posture-logistics-circuit-open-ms-0308.jpg
+main_image: https://files.catbox.moe/3847uu.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live pagination page size via Kiponos Python SDK — marketplace posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-marketplace-page-size-1221.md
-main_image: ./devto-cover-ops-posture-marketplace-page-size-1221.jpg
+main_image: https://files.catbox.moe/13p47j.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

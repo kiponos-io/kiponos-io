@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-scroll-timeout-0644.md
-main_image: ./devto-cover-ops-posture-insurance-scroll-timeout-0644.jpg
+main_image: https://files.catbox.moe/bekvh0.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

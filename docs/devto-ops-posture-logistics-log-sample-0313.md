@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live log sample per thousand via Kiponos Python SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-log-sample-0313.md
-main_image: ./devto-cover-ops-posture-logistics-log-sample-0313.jpg
+main_image: https://files.catbox.moe/1zunvf.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

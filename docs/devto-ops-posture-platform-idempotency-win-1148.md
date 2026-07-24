@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live idempotency window via Kiponos Python SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-idempotency-win-1148.md
-main_image: ./devto-cover-ops-posture-platform-idempotency-win-1148.jpg
+main_image: https://files.catbox.moe/7pyqlj.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

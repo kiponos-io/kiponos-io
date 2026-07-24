@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live distributed lock TTL via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-lock-ttl-sec-0992.md
-main_image: ./devto-cover-ops-posture-mlops-lock-ttl-sec-0992.jpg
+main_image: https://files.catbox.moe/00aa17.jpg
 ---
 
 **The Aha:** `lockTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

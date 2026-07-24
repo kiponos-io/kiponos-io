@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live spot bid ceiling cents via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-spot-bid-cents-0234.md
-main_image: ./devto-cover-ops-posture-sre-spot-bid-cents-0234.jpg
+main_image: https://files.catbox.moe/z1rv48.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

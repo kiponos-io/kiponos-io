@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live degradation mode via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-degrade-mode-0378.md
-main_image: ./devto-cover-ops-posture-healthcare-degrade-mode-0378.jpg
+main_image: https://files.catbox.moe/hnqr57.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

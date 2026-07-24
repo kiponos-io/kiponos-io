@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-backoff-ms-0003.md
-main_image: ./devto-cover-ops-posture-retail-backoff-ms-0003.jpg
+main_image: https://files.catbox.moe/hzqpcc.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

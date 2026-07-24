@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live HPA CPU target percent via Kiponos Python SDK — marketplace posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-marketplace-hpa-target-1233.md
-main_image: ./devto-cover-ops-posture-marketplace-hpa-target-1233.jpg
+main_image: https://files.catbox.moe/v8gv00.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

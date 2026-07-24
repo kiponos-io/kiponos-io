@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live spot bid ceiling cents via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-spot-bid-cents-0484.md
-main_image: ./devto-cover-ops-posture-iot-spot-bid-cents-0484.jpg
+main_image: https://files.catbox.moe/47hksi.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

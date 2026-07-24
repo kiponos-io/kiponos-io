@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live batch chunk size via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-batch-chunk-0972.md
-main_image: ./devto-cover-ops-posture-mlops-batch-chunk-0972.jpg
+main_image: https://files.catbox.moe/g6nw8f.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

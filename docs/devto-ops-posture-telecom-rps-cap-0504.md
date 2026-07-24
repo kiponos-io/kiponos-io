@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live ingress RPS ceiling via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-rps-cap-0504.md
-main_image: ./devto-cover-ops-posture-telecom-rps-cap-0504.jpg
+main_image: https://files.catbox.moe/4cwjhj.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

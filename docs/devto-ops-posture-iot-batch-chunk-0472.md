@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live batch chunk size via Kiponos Python SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-batch-chunk-0472.md
-main_image: ./devto-cover-ops-posture-iot-batch-chunk-0472.jpg
+main_image: https://files.catbox.moe/i7bv56.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

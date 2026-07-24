@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live SLO warn burn bps via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-slo-warn-bps-0031.md
-main_image: ./devto-cover-ops-posture-retail-slo-warn-bps-0031.jpg
+main_image: https://files.catbox.moe/pgr25q.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

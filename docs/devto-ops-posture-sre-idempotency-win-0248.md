@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live idempotency window via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-idempotency-win-0248.md
-main_image: ./devto-cover-ops-posture-sre-idempotency-win-0248.jpg
+main_image: https://files.catbox.moe/mmk7cy.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

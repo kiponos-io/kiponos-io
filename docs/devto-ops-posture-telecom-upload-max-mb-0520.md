@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live upload size ceiling MB via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-upload-max-mb-0520.md
-main_image: ./devto-cover-ops-posture-telecom-upload-max-mb-0520.jpg
+main_image: https://files.catbox.moe/pz7luu.jpg
 ---
 
 **The Aha:** `uploadMaxMb` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

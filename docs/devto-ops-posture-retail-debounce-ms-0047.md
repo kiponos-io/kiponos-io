@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live UI/API debounce via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-debounce-ms-0047.md
-main_image: ./devto-cover-ops-posture-retail-debounce-ms-0047.jpg
+main_image: https://files.catbox.moe/pmf3ek.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

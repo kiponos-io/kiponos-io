@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live RAG top-k via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-rag-topk-0536.md
-main_image: ./devto-cover-ops-posture-telecom-rag-topk-0536.jpg
+main_image: https://files.catbox.moe/rv49nt.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

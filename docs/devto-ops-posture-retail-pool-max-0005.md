@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live connection pool ceiling via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-pool-max-0005.md
-main_image: ./devto-cover-ops-posture-retail-pool-max-0005.jpg
+main_image: https://files.catbox.moe/3fxfvy.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

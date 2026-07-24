@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live circuit open duration via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-circuit-open-ms-1158.md
-main_image: ./devto-cover-ops-posture-mobile-circuit-open-ms-1158.jpg
+main_image: https://files.catbox.moe/ubak69.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

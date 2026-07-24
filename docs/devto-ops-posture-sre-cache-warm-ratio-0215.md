@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live cache warm ratio percent via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-cache-warm-ratio-0215.md
-main_image: ./devto-cover-ops-posture-sre-cache-warm-ratio-0215.jpg
+main_image: https://files.catbox.moe/rk0t13.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

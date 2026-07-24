@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live fraud velocity cap via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-velocity-cap-0523.md
-main_image: ./devto-cover-ops-posture-telecom-velocity-cap-0523.jpg
+main_image: https://files.catbox.moe/idtuck.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

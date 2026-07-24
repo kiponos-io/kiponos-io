@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live UI/API debounce via Kiponos Python SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-debounce-ms-0497.md
-main_image: ./devto-cover-ops-posture-iot-debounce-ms-0497.jpg
+main_image: https://files.catbox.moe/apg7dp.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

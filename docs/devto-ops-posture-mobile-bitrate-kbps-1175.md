@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-bitrate-kbps-1175.md
-main_image: ./devto-cover-ops-posture-mobile-bitrate-kbps-1175.jpg
+main_image: https://files.catbox.moe/sg66yo.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

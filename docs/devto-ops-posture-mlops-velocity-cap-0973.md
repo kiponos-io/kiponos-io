@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live fraud velocity cap via Kiponos Python SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-velocity-cap-0973.md
-main_image: ./devto-cover-ops-posture-mlops-velocity-cap-0973.jpg
+main_image: https://files.catbox.moe/4c7k1d.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

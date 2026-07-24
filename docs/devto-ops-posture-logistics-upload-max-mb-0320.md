@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live upload size ceiling MB via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-upload-max-mb-0320.md
-main_image: ./devto-cover-ops-posture-logistics-upload-max-mb-0320.jpg
+main_image: https://files.catbox.moe/7dl1ej.jpg
 ---
 
 **The Aha:** `uploadMaxMb` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

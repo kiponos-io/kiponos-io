@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live trace sample per thousand via Kiponos Java SDK — marketplace posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-marketplace-trace-sample-1212.md
-main_image: ./devto-cover-ops-posture-marketplace-trace-sample-1212.jpg
+main_image: https://files.catbox.moe/4pp0id.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

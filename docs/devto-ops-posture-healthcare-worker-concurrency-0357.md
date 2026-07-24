@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live worker concurrency via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-worker-concurrency-0357.md
-main_image: ./devto-cover-ops-posture-healthcare-worker-concurrency-0357.jpg
+main_image: https://files.catbox.moe/wyc49e.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

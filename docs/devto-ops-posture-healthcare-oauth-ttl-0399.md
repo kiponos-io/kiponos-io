@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live OAuth token TTL via Kiponos Python SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-oauth-ttl-0399.md
-main_image: ./devto-cover-ops-posture-healthcare-oauth-ttl-0399.jpg
+main_image: https://files.catbox.moe/ktr92t.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

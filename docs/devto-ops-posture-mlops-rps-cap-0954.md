@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live ingress RPS ceiling via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-rps-cap-0954.md
-main_image: ./devto-cover-ops-posture-mlops-rps-cap-0954.jpg
+main_image: https://files.catbox.moe/ghrd46.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

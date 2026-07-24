@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live circuit open duration via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-circuit-open-ms-0208.md
-main_image: ./devto-cover-ops-posture-sre-circuit-open-ms-0208.jpg
+main_image: https://files.catbox.moe/ltzjjn.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

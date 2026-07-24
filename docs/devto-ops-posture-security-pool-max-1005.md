@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live connection pool ceiling via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-pool-max-1005.md
-main_image: ./devto-cover-ops-posture-security-pool-max-1005.jpg
+main_image: https://files.catbox.moe/2tl2g1.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

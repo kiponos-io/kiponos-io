@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live fraud velocity cap via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-velocity-cap-0623.md
-main_image: ./devto-cover-ops-posture-insurance-velocity-cap-0623.jpg
+main_image: https://files.catbox.moe/b3j9e6.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live JWT clock skew leeway via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-jwt-leeway-sec-0269.md
-main_image: ./devto-cover-ops-posture-saas-jwt-leeway-sec-0269.jpg
+main_image: https://files.catbox.moe/onv182.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

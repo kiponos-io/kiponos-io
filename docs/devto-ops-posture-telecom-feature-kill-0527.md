@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live feature kill switch via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-feature-kill-0527.md
-main_image: ./devto-cover-ops-posture-telecom-feature-kill-0527.jpg
+main_image: https://files.catbox.moe/nmvr2c.jpg
 ---
 
 **The Aha:** `killSwitch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

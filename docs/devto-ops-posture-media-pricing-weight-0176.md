@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live pricing / promo weight via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-pricing-weight-0176.md
-main_image: ./devto-cover-ops-posture-media-pricing-weight-0176.jpg
+main_image: https://files.catbox.moe/fw3c9k.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

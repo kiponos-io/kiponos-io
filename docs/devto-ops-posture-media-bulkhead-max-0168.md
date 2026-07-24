@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live bulkhead concurrency via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-bulkhead-max-0168.md
-main_image: ./devto-cover-ops-posture-media-bulkhead-max-0168.jpg
+main_image: https://files.catbox.moe/3cmv36.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

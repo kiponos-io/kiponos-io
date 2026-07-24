@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live saga step retry budget via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-saga-retry-1140.md
-main_image: ./devto-cover-ops-posture-platform-saga-retry-1140.jpg
+main_image: https://files.catbox.moe/7of7b9.jpg
 ---
 
 **The Aha:** `sagaMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

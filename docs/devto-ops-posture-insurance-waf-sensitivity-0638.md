@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-waf-sensitivity-0638.md
-main_image: ./devto-cover-ops-posture-insurance-waf-sensitivity-0638.jpg
+main_image: https://files.catbox.moe/l45cu7.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

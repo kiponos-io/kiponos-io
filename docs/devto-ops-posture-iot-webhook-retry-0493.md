@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live webhook retry budget via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-webhook-retry-0493.md
-main_image: ./devto-cover-ops-posture-iot-webhook-retry-0493.jpg
+main_image: https://files.catbox.moe/3xgp6l.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

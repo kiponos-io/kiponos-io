@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live retry backoff base via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-backoff-ms-0253.md
-main_image: ./devto-cover-ops-posture-saas-backoff-ms-0253.jpg
+main_image: https://files.catbox.moe/ur0nvl.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

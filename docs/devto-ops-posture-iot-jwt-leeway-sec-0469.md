@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live JWT clock skew leeway via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-jwt-leeway-sec-0469.md
-main_image: ./devto-cover-ops-posture-iot-jwt-leeway-sec-0469.jpg
+main_image: https://files.catbox.moe/a54m9q.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

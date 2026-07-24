@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-scroll-timeout-0994.md
-main_image: ./devto-cover-ops-posture-mlops-scroll-timeout-0994.jpg
+main_image: https://files.catbox.moe/vf1we3.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

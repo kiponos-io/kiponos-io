@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-cache-warm-ratio-0315.md
-main_image: ./devto-cover-ops-posture-logistics-cache-warm-ratio-0315.jpg
+main_image: https://files.catbox.moe/ks6v80.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

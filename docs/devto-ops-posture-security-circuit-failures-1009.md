@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-circuit-failures-1009.md
-main_image: ./devto-cover-ops-posture-security-circuit-failures-1009.jpg
+main_image: https://files.catbox.moe/4kv5mj.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

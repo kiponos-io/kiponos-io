@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live OAuth token TTL via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-oauth-ttl-0299.md
-main_image: ./devto-cover-ops-posture-saas-oauth-ttl-0299.jpg
+main_image: https://files.catbox.moe/xflbbe.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

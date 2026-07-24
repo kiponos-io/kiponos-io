@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live pagination page size via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-page-size-1021.md
-main_image: ./devto-cover-ops-posture-security-page-size-1021.jpg
+main_image: https://files.catbox.moe/f18z4c.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

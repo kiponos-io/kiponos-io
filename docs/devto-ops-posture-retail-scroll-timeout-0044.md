@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-scroll-timeout-0044.md
-main_image: ./devto-cover-ops-posture-retail-scroll-timeout-0044.jpg
+main_image: https://files.catbox.moe/gy532s.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

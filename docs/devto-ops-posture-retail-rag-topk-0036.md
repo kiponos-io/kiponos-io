@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live RAG top-k via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-rag-topk-0036.md
-main_image: ./devto-cover-ops-posture-retail-rag-topk-0036.jpg
+main_image: https://files.catbox.moe/wgr01m.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-worker-concurrency-0407.md
-main_image: ./devto-cover-ops-posture-gaming-worker-concurrency-0407.jpg
+main_image: https://files.catbox.moe/vm7pdw.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

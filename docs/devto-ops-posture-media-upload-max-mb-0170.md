@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live upload size ceiling MB via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-upload-max-mb-0170.md
-main_image: ./devto-cover-ops-posture-media-upload-max-mb-0170.jpg
+main_image: https://files.catbox.moe/dp61x2.jpg
 ---
 
 **The Aha:** `uploadMaxMb` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live bulkhead concurrency via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-bulkhead-max-0018.md
-main_image: ./devto-cover-ops-posture-retail-bulkhead-max-0018.jpg
+main_image: https://files.catbox.moe/psu60m.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

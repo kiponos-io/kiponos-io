@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-cache-warm-ratio-0015.md
-main_image: ./devto-cover-ops-posture-retail-cache-warm-ratio-0015.jpg
+main_image: https://files.catbox.moe/328w9h.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

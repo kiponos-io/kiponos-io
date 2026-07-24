@@ -4,7 +4,7 @@ published: false
 tags: java, platform, architecture, kiponos
 description: "Live pricing / promo weight via Kiponos Java SDK — platform posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-platform-pricing-weight-1126.md
-main_image: ./devto-cover-ops-posture-platform-pricing-weight-1126.jpg
+main_image: https://files.catbox.moe/f2pn8t.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

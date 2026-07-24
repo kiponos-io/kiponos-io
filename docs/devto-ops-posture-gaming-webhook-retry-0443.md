@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live webhook retry budget via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-webhook-retry-0443.md
-main_image: ./devto-cover-ops-posture-gaming-webhook-retry-0443.jpg
+main_image: https://files.catbox.moe/vwzz8x.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

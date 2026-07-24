@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-circuit-failures-0009.md
-main_image: ./devto-cover-ops-posture-retail-circuit-failures-0009.jpg
+main_image: https://files.catbox.moe/uxz8c9.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

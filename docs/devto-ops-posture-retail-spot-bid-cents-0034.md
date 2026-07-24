@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live spot bid ceiling cents via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-spot-bid-cents-0034.md
-main_image: ./devto-cover-ops-posture-retail-spot-bid-cents-0034.jpg
+main_image: https://files.catbox.moe/1x4q9p.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

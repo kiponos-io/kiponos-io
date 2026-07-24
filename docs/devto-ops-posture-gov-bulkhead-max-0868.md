@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live bulkhead concurrency via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-bulkhead-max-0868.md
-main_image: ./devto-cover-ops-posture-gov-bulkhead-max-0868.jpg
+main_image: https://files.catbox.moe/b5cihw.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

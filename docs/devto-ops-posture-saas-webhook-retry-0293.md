@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live webhook retry budget via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-webhook-retry-0293.md
-main_image: ./devto-cover-ops-posture-saas-webhook-retry-0293.jpg
+main_image: https://files.catbox.moe/7pqxyh.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

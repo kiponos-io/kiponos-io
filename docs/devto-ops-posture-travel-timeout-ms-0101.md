@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live outbound call timeout via Kiponos Python SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-timeout-ms-0101.md
-main_image: ./devto-cover-ops-posture-travel-timeout-ms-0101.jpg
+main_image: https://files.catbox.moe/17neyj.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

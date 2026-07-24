@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live consumer prefetch via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-queue-prefetch-0306.md
-main_image: ./devto-cover-ops-posture-logistics-queue-prefetch-0306.jpg
+main_image: https://files.catbox.moe/bu8ul4.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, healthcare, architecture, kiponos
 description: "Live fraud velocity cap via Kiponos Java SDK — healthcare posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-healthcare-velocity-cap-0373.md
-main_image: ./devto-cover-ops-posture-healthcare-velocity-cap-0373.jpg
+main_image: https://files.catbox.moe/m5egy2.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

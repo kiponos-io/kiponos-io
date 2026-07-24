@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-backoff-ms-0853.md
-main_image: ./devto-cover-ops-posture-gov-backoff-ms-0853.jpg
+main_image: https://files.catbox.moe/mr14kz.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live HPA CPU target percent via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-hpa-target-0283.md
-main_image: ./devto-cover-ops-posture-saas-hpa-target-0283.jpg
+main_image: https://files.catbox.moe/ltz59j.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

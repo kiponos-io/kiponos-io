@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-log-sample-0463.md
-main_image: ./devto-cover-ops-posture-iot-log-sample-0463.jpg
+main_image: https://files.catbox.moe/u0r01u.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

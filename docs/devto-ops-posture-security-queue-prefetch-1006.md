@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live consumer prefetch via Kiponos Python SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-queue-prefetch-1006.md
-main_image: ./devto-cover-ops-posture-security-queue-prefetch-1006.jpg
+main_image: https://files.catbox.moe/kooo7p.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live RAG top-k via Kiponos Java SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-rag-topk-0136.md
-main_image: ./devto-cover-ops-posture-travel-rag-topk-0136.jpg
+main_image: https://files.catbox.moe/rlbgnb.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
