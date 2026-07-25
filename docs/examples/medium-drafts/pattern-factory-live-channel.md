@@ -1,53 +1,114 @@
-# The Factory Still Built Objects — We Just Stopped Redeploying to Choose Which One
+# Live Posture: pattern-factory-live-channel
 
-*A traveler’s note on Factory Method, notification channels, and the Super Pattern that makes `product` a live hub value.*
-
----
-
-Factory Method promises: **defer which class to instantiate.**
-
-In most codebases, “defer” means “until the next release.” Email is hard-coded. Slack is a weekend branch. SMS is a comment that says `// TODO`.
-
-An incident needs pages in Slack **now**, not after pipeline green.
+*A traveler’s note from the pattern war room: a frozen dial under fire, frozen YAML, and the Super Pattern that lets ops move **channel** without a jar.*
 
 ---
 
-## Super Pattern: Live Product Factory
+At **16:52**, the pattern war room already knew the number. The process still believed last week’s properties file.
+
+Someone said the sentence that always costs a night:
+
+**“It's just config — we’ll cut a PR.”**
+
+A PR. To change a number the business already decided verbally. CI still green. Attackers (or customers, or the bill) not waiting.
+
+---
+
+## What we thought we bought
+
+Classic structure is not the enemy. Strategy, Decorator, Chain, Factory — GoF still names the shape of good software.
+
+What the frozen form steals is **time**. The time between a human judgment and a running process that obeys it. When that gap is longer than the incident, architecture becomes ceremony.
+
+For pattern, the painful dial was **channel** (`channel`). Default in the jar: `baseline`. Correct for a demo. Wrong for a brownout.
+
+---
+
+## Super Pattern: live posture on a hot path
+
+Keep the code path. Move the number (or the active id / chain order) into [Kiponos.io](https://kiponos.io):
 
 ```text
-patterns / factory / notify / product    = email | sms | push | slack
-patterns / factory / notify / from-email = string
-patterns / factory / notify / slack-hook = string
+examples / pattern-factory-live-channel / channel
+  channel = baseline
 ```
 
-### Snippet
+- Every decision uses **local** `get()` after connect — no hub RTT on the hot path  
+- Dashboard or remote SDK can change `channel` while this process keeps running  
+- Offline / dark hub: fail closed on money paths; fail open only where product policy says so  
+- Audit actor, old, new, ticket — live is not anonymous  
 
-```java
-Notifier n = switch (read(policy, "product", "email")) {
-    case "sms" -> new SmsNotifier();
-    case "slack" -> new SlackNotifier(hook);
-    default -> new EmailNotifier(from);
-};
-```
+**Structure stays classical. Selection becomes operational.**
+
+<!-- medium-img: diagram-pattern-factory-live-channel-gof-vs-live.png -->
 
 ---
 
-## Clone and run
+## The night a frozen dial under fire met a fossil
+
+I have been in rooms where the dependency was already sick and the client stayed “resilient”: more retries, longer open-wait, wider canary — all fossils in the image.
+
+Resilience that cannot be steered is not resilience. It is a thrash amplifier with good intentions.
+
+With a live hub path, ops can:
+
+1. Confirm the signal (SLO burn, partner errors, queue depth).  
+2. Move `channel` to the emergency value (documented floor/ceiling).  
+3. Watch two metrics for five minutes.  
+4. Step or revert.  
+5. Write from→to + reason in the timeline.
+
+No second product. No SSH folklore. Same tree in every region; values differ on purpose.
+
+---
+
+## The example
 
 ```bash
-git clone https://github.com/kiponos-io/kiponos-io.git
-cd kiponos-io/examples/java/pattern-factory-live-channel
-./gradlew test run --args='Warehouse delay on order 9'
+examples/java/pattern-factory-live-channel
+./gradlew test run
 ```
 
-Python: `examples/python/pattern-factory-live-channel/`
+It prints the live `channel` and a one-line decision trace. Change the hub. Run again. The jar is innocent.
+
+Unit tests pin structure and clamps without tokens. Golden tests skip cleanly when `KIPONOS_ID` is a placeholder.
+
+<!-- medium-img: diagram-pattern-factory-live-channel-hub-flow.png -->
 
 ---
 
-## The moral
+## Scenarios
 
-**Factories create objects. Super factories create the right object for the next minute of production.**
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+| Region skew | Copy three files | Per-folder values |
 
 ---
 
-*Example: [pattern-factory-live-channel](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-factory-live-channel)*
+## What never goes live without review
+
+Protocol/schema changes, crypto material, legal freezes stay in code review. Posture numbers war rooms already shout belong in the hub with clamps and allowlisted writers.
+
+Do not put secrets in the ops tree. Do not use live knobs as a substitute for fixing a flaky dependency. Do use them when the cost of a wrong number *tonight* is higher than a controlled live edit.
+
+---
+
+## Observability you actually need
+
+Ship counters with the key path baked in: decisions applied, rejects, and **hub write events**. Logging every local get teaches nothing; logging every change teaches ownership.
+
+---
+
+## Moral
+
+Ship judgment. Leave the jar alone.
+
+People should not have to ship a release to make a decision the business already made in a sentence.
+
+---
+
+*Series: Kiponos Medium Super Patterns · Example: [`examples/java/pattern-factory-live-channel`](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-factory-live-channel) · Product: [kiponos.io](https://kiponos.io)*

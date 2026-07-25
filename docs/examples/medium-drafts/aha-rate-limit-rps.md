@@ -1,89 +1,114 @@
-# Rate Limit RPS Live
+# Live Posture: aha-rate-limit-rps
 
-*A traveler’s note: ingress RPS live.*
-
----
-
-There is a class of production decisions that are **too small for a release** and **too important for a wiki**.
-
-ingress RPS live
-
-Redeploying a jar to change `rps` is how teams invent 3am folklore.
+*A traveler’s note from the aha war room: a frozen dial under fire, frozen YAML, and the Super Pattern that lets ops move **rps** without a jar.*
 
 ---
 
-## Hub tree
+At **02:17**, the aha war room already knew the number. The process still believed last week’s properties file.
+
+Someone said the sentence that always costs a night:
+
+**“It's just config — we’ll cut a PR.”**
+
+A PR. To change a number the business already decided verbally. CI still green. Attackers (or customers, or the bill) not waiting.
+
+---
+
+## What we thought we bought
+
+Classic structure is not the enemy. Strategy, Decorator, Chain, Factory — GoF still names the shape of good software.
+
+What the frozen form steals is **time**. The time between a human judgment and a running process that obeys it. When that gap is longer than the incident, architecture becomes ceremony.
+
+For aha, the painful dial was **rps** (`rps`). Default in the jar: `baseline`. Correct for a demo. Wrong for a brownout.
+
+---
+
+## Super Pattern: live posture on a hot path
+
+Keep the code path. Move the number (or the active id / chain order) into [Kiponos.io](https://kiponos.io):
 
 ```text
-examples/aha-rate-limit-rps/rps = 100
+examples / aha-rate-limit-rps / rps
+  rps = baseline
 ```
 
-Local `get()` on the hot path. Dashboard or remote SDK `set()` when the world changes.
+- Every decision uses **local** `get()` after connect — no hub RTT on the hot path  
+- Dashboard or remote SDK can change `rps` while this process keeps running  
+- Offline / dark hub: fail closed on money paths; fail open only where product policy says so  
+- Audit actor, old, new, ticket — live is not anonymous  
+
+**Structure stays classical. Selection becomes operational.**
+
+<!-- medium-img: diagram-aha-rate-limit-rps-gof-vs-live.png -->
 
 ---
 
-## Snippet
+## The night a frozen dial under fire met a fossil
 
-```java
-    public static void main(String[] args) throws Exception {
-        Kiponos k = Kiponos.createForCurrentTeam();
-        try {
-            Folder p = ensure(k);
-            System.out.println("rps=" + read(p, "rps", "100"));
-            System.out.println("ingress RPS live");
-            Thread.sleep(1500L);
-        } finally {
-            k.disconnect();
-        }
-    }
+I have been in rooms where the dependency was already sick and the client stayed “resilient”: more retries, longer open-wait, wider canary — all fossils in the image.
 
-    static Folder ensure(Kiponos k) {
-        Folder f = k.getRootFolder().folderOrCreate("examples").folderOrCreate("aha-rate-limit-rps");
-        if (!f.hasKey("rps")) {
-            f.set("rps", "100");
-        }
-        return f;
-    }
+Resilience that cannot be steered is not resilience. It is a thrash amplifier with good intentions.
 
-    static String read(Folder p, String key, String def) {
-        if (!p.hasKey(key)) {
-            return def;
-        }
-```
+With a live hub path, ops can:
+
+1. Confirm the signal (SLO burn, partner errors, queue depth).  
+2. Move `rps` to the emergency value (documented floor/ceiling).  
+3. Watch two metrics for five minutes.  
+4. Step or revert.  
+5. Write from→to + reason in the timeline.
+
+No second product. No SSH folklore. Same tree in every region; values differ on purpose.
 
 ---
 
-## Clone and run the full golden example
+## The example
 
 ```bash
-git clone https://github.com/kiponos-io/kiponos-io.git
-cd kiponos-io/examples/java/aha-rate-limit-rps
-cp kiponos.local.env.example kiponos.local.env   # tokens from kiponos.io → Connect
+examples/java/aha-rate-limit-rps
 ./gradlew test run
 ```
 
-Full source + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/aha-rate-limit-rps](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/aha-rate-limit-rps)
+It prints the live `rps` and a one-line decision trace. Change the hub. Run again. The jar is innocent.
 
-This article only shows the nerve. The repo is the product.
+Unit tests pin structure and clamps without tokens. Golden tests skip cleanly when `KIPONOS_ID` is a placeholder.
 
----
-
-## Old world vs Kiponos
-
-| Move | Old world | Live hub |
-|------|-----------|----------|
-| Change the knob | PR → CI → roll | Dashboard / SDK `set()` |
-| Wrong replica | Drift | Same tree, WebSocket fan-out |
-| Incident rollback | Redeploy previous | Flip the value back |
+<!-- medium-img: diagram-aha-rate-limit-rps-hub-flow.png -->
 
 ---
 
-## The moral
+## Scenarios
 
-**People should not have to ship a release to make a decision.**
-
-Ship the judgment path once. Leave the jar alone.
+| Moment | Frozen YAML | Live hub |
+|--------|-------------|----------|
+| Incident | PR + pipeline | Seconds |
+| Peak event | Over-provision | Dial down/up |
+| Experiment | Long-lived branch | Same jar |
+| Rollback | Redeploy previous | Revert hub value |
+| Region skew | Copy three files | Per-folder values |
 
 ---
 
-*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/aha-rate-limit-rps](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/aha-rate-limit-rps)*
+## What never goes live without review
+
+Protocol/schema changes, crypto material, legal freezes stay in code review. Posture numbers war rooms already shout belong in the hub with clamps and allowlisted writers.
+
+Do not put secrets in the ops tree. Do not use live knobs as a substitute for fixing a flaky dependency. Do use them when the cost of a wrong number *tonight* is higher than a controlled live edit.
+
+---
+
+## Observability you actually need
+
+Ship counters with the key path baked in: decisions applied, rejects, and **hub write events**. Logging every local get teaches nothing; logging every change teaches ownership.
+
+---
+
+## Moral
+
+Rps that requires a deploy is optimistic documentation.
+
+People should not have to ship a release to make a decision the business already made in a sentence.
+
+---
+
+*Series: Kiponos Medium Super Patterns · Example: [`examples/java/aha-rate-limit-rps`](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/aha-rate-limit-rps) · Product: [kiponos.io](https://kiponos.io)*

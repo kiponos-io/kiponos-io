@@ -88,3 +88,6 @@ Ship the judgment path once. Leave the order of judgment in the hub.
 ---
 
 *Example + tests: [github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-chain-live-fraud](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-chain-live-fraud)*
+
+<!-- medium-img: diagram-pattern-chain-live-fraud-gof-vs-live.png -->
+<!-- medium-img: diagram-pattern-chain-live-fraud-hub-flow.png -->

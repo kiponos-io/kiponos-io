@@ -87,3 +87,26 @@ Ship the judgment path once. Leave the jar alone.
 ---
 
 *Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-composite-live-rules)*
+
+<!-- medium-img: diagram-pattern-composite-live-rules-gof-vs-live.png -->
+<!-- medium-img: diagram-pattern-composite-live-rules-hub-flow.png -->
+
+
+---
+
+## Why this still matters on a quiet Tuesday
+
+Incidents train the muscle. Quiet days keep it honest.
+
+If `nodes` only moves through a release train, every product conversation becomes a ceremony debate: who owns the PR, who merges, who rolls, who watches. That tax compounds across regions and on-call rotations.
+
+Live posture is not a license for chaos. It is a contract:
+
+- named path humans can find under pressure  
+- clamps that survive panic  
+- audit that names the actor  
+- a one-line revert that does not require a hero  
+
+When those four exist, the Super Pattern stops being a demo and becomes how the system grows older without growing brittle.
+
+

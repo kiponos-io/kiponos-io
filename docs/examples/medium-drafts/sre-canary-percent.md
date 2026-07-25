@@ -87,3 +87,38 @@ Ship the judgment path once. Leave the jar alone.
 ---
 
 *Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/sre-canary-percent](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/sre-canary-percent)*
+
+<!-- medium-img: diagram-sre-canary-percent-gof-vs-live.png -->
+<!-- medium-img: diagram-sre-canary-percent-hub-flow.png -->
+
+
+---
+
+## Why this still matters on a quiet Tuesday
+
+Incidents train the muscle. Quiet days keep it honest.
+
+If `percent` only moves through a release train, every product conversation becomes a ceremony debate: who owns the PR, who merges, who rolls, who watches. That tax compounds across regions and on-call rotations.
+
+Live posture is not a license for chaos. It is a contract:
+
+- named path humans can find under pressure  
+- clamps that survive panic  
+- audit that names the actor  
+- a one-line revert that does not require a hero  
+
+When those four exist, the Super Pattern stops being a demo and becomes how the system grows older without growing brittle.
+
+
+## Operational checklist (keep this boring)
+
+1. Name the hub path so humans find it under pressure.  
+2. Default safely when the hub is unreachable.  
+3. Allowlist writers (dashboard roles + automation identities).  
+4. Log the **decision**, not every get.  
+5. Rehearse the flip in staging.  
+6. Document the one-line kill path (revert key).  
+7. Record from→to + reason code in the incident timeline.
+
+Boring checklists survive 3am. Clever ones do not.
+

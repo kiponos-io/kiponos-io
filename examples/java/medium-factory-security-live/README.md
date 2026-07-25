@@ -1,0 +1,9 @@
+# medium-factory-security-live
+
+Live Kiponos posture example for Medium: **The Factory Pattern Select Product Channel Live — Security War Room**
+
+```bash
+./gradlew test run
+```
+
+Hub path: `examples/medium-factory-security-live/active` (default `baseline`).
