@@ -122,3 +122,6 @@ When those four exist, the Super Pattern stops being a demo and becomes how the 
 
 Boring checklists survive 3am. Clever ones do not.
 
+## What this buys you at 03:00
+
+When the knob lives on the hub, the on-call engineer changes one value and watches the fleet converge without a rebuild. That is the whole product claim in one sentence: configuration that used to require a deploy becomes a live control with an audit trail. The example is intentionally small so you can prove the pattern before you wire it into your real processor or checkout path.
