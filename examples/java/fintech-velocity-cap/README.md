@@ -1,6 +1,6 @@
 # fintech-velocity-cap
 
-tx velocity cap live
+Live transaction velocity limit (`max-tx-per-min`) from the Kiponos hub — change the cap without redeploying the payment jar.
 
 ## Hub
 
@@ -16,4 +16,4 @@ cp kiponos.local.env.example kiponos.local.env   # from kiponos.io → Connect
 ./gradlew test run
 ```
 
-Full example for article: [github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap)
+Article draft: `docs/examples/medium-drafts/fintech-velocity-cap.md`

@@ -74,8 +74,9 @@ public static void main(String[] args) throws Exception {
     Kiponos k = Kiponos.createForCurrentTeam();
     try {
         Folder p = ensure(k);
-        System.out.println("max-tx-per-min=" + read(p, "max-tx-per-min", "60"));
-        // hot path: int cap = readInt(p, "max-tx-per-min", 60);
+        int cap = readInt(p, "max-tx-per-min", 60);
+        System.out.println("max-tx-per-min=" + cap);
+        // hot path: refuse new work when rate would exceed cap
         Thread.sleep(1500L);
     } finally {
         k.disconnect();
@@ -98,6 +99,14 @@ static String read(Folder p, String key, String def) {
     }
     String r = p.get(key);
     return r == null || r.isBlank() ? def : r.trim();
+}
+
+static int readInt(Folder p, String key, int def) {
+    try {
+        return Integer.parseInt(read(p, key, String.valueOf(def)));
+    } catch (Exception e) {
+        return def;
+    }
 }
 ```
 

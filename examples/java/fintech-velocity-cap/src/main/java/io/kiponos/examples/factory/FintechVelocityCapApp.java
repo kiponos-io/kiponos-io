@@ -4,8 +4,7 @@ import io.kiponos.sdk.Kiponos;
 import io.kiponos.sdk.configs.Folder;
 
 /**
- * Generated golden example for content factory.
- * tx velocity cap live
+ * Live velocity cap: read max-tx-per-min from the Kiponos hub.
  * Hub: examples/fintech-velocity-cap/max-tx-per-min (default 60)
  */
 public final class FintechVelocityCapApp {
@@ -13,8 +12,9 @@ public final class FintechVelocityCapApp {
         Kiponos k = Kiponos.createForCurrentTeam();
         try {
             Folder p = ensure(k);
-            System.out.println("max-tx-per-min=" + read(p, "max-tx-per-min", "60"));
-            System.out.println("tx velocity cap live");
+            int cap = readInt(p, "max-tx-per-min", 60);
+            System.out.println("max-tx-per-min=" + cap);
+            // hot path: refuse new work when rate would exceed cap
             Thread.sleep(1500L);
         } finally {
             k.disconnect();
@@ -22,7 +22,9 @@ public final class FintechVelocityCapApp {
     }
 
     static Folder ensure(Kiponos k) {
-        Folder f = k.getRootFolder().folderOrCreate("examples").folderOrCreate("fintech-velocity-cap");
+        Folder f = k.getRootFolder()
+                .folderOrCreate("examples")
+                .folderOrCreate("fintech-velocity-cap");
         if (!f.hasKey("max-tx-per-min")) {
             f.set("max-tx-per-min", "60");
         }
