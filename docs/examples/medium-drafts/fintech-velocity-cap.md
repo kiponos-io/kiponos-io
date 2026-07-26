@@ -1,59 +1,111 @@
-# Fintech Velocity Cap Live
+# We Redeployed a Payment Jar to Lower a Number — That Number Was Transactions Per Minute
 
-*A traveler’s note: tx velocity cap live.*
-
----
-
-There is a class of production decisions that are **too small for a release** and **too important for a wiki**.
-
-tx velocity cap live
-
-Redeploying a jar to change `max-tx-per-min` is how teams invent 3am folklore.
+*A traveler’s note from a fintech war room: the velocity cap that only moved through CI.*
 
 ---
 
-## Hub tree
+I have sat through more “velocity” meetings than I care to admit.
+
+Not the product-roadmap kind with sticky notes. The other kind — the one that starts when fraud tooling, or a partner, or a sudden flash-sale makes the transaction rate look like a stock ticker someone forgot to pause. Someone says **“cap it.”** Someone else opens a PR to change `max-tx-per-min` in a YAML file that only exists in the artifact that is currently burning money in production.
+
+I have watched that loop in three different offices and one hotel lobby with bad Wi‑Fi:
+
+1. Agree on a number  
+2. Open a PR  
+3. Wait for CI  
+4. Roll a jar  
+5. Discover the wrong replica still has the old number  
+6. Repeat  
+
+That is not risk control. That is a ceremony with a ledger attached.
+
+---
+
+## What went wrong (the human version)
+
+The system already *had* a velocity cap. The engineers were not stupid. The problem was the **path to change it**.
+
+In the old world, `max-tx-per-min` lived next to code:
+
+- same repo  
+- same release train  
+- same “who owns the merge at 02:14?” politics  
+
+So every real incident became a release discussion. Fraud wants **30**. Growth wants **120**. Ops wants **something now**. The jar becomes a hostage.
+
+I once heard a lead say, half joking, half broken:
+
+**“If we could just flip the cap without a deploy, I’d sleep.”**
+
+That sentence is the whole product brief.
+
+<!-- medium-img: diagram-fintech-velocity-cap-gof-vs-live.png -->
+
+---
+
+## The Super Pattern (live knob, not a redeploy)
+
+The example is intentionally small. It proves one nerve:
+
+> A running process can **read** a velocity limit from a live hub, and ops can **set** that limit without rebuilding the payment jar.
+
+Hub path:
 
 ```text
 examples/fintech-velocity-cap/max-tx-per-min = 60
 ```
 
-Local `get()` on the hot path. Dashboard or remote SDK `set()` when the world changes.
+Local `get()` on the hot path (or a short-lived cache with a live invalidation story). Dashboard or remote SDK `set()` when the world changes. Same tree for every replica. No “which box still has the old YAML?” scavenger hunt.
+
+<!-- medium-img: diagram-fintech-velocity-cap-hub-flow.png -->
 
 ---
 
-## Snippet
+## The example (standalone Java)
+
+Published under:
+
+**`examples/java/fintech-velocity-cap`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap)
+
+It connects with `Kiponos.createForCurrentTeam()`, ensures the folder, seeds a safe default, and prints the live cap:
 
 ```java
-    public static void main(String[] args) throws Exception {
-        Kiponos k = Kiponos.createForCurrentTeam();
-        try {
-            Folder p = ensure(k);
-            System.out.println("max-tx-per-min=" + read(p, "max-tx-per-min", "60"));
-            System.out.println("tx velocity cap live");
-            Thread.sleep(1500L);
-        } finally {
-            k.disconnect();
-        }
+public static void main(String[] args) throws Exception {
+    Kiponos k = Kiponos.createForCurrentTeam();
+    try {
+        Folder p = ensure(k);
+        System.out.println("max-tx-per-min=" + read(p, "max-tx-per-min", "60"));
+        // hot path: int cap = readInt(p, "max-tx-per-min", 60);
+        Thread.sleep(1500L);
+    } finally {
+        k.disconnect();
     }
+}
 
-    static Folder ensure(Kiponos k) {
-        Folder f = k.getRootFolder().folderOrCreate("examples").folderOrCreate("fintech-velocity-cap");
-        if (!f.hasKey("max-tx-per-min")) {
-            f.set("max-tx-per-min", "60");
-        }
-        return f;
+static Folder ensure(Kiponos k) {
+    Folder f = k.getRootFolder()
+        .folderOrCreate("examples")
+        .folderOrCreate("fintech-velocity-cap");
+    if (!f.hasKey("max-tx-per-min")) {
+        f.set("max-tx-per-min", "60");
     }
+    return f;
+}
 
-    static String read(Folder p, String key, String def) {
-        if (!p.hasKey(key)) {
-            return def;
-        }
+static String read(Folder p, String key, String def) {
+    if (!p.hasKey(key)) {
+        return def;
+    }
+    String r = p.get(key);
+    return r == null || r.isBlank() ? def : r.trim();
+}
 ```
+
+Ops changes the number on the hub. You re-run (or keep the process listening). **No jar rebuild** to lower the rate while fraud cools down.
 
 ---
 
-## Clone and run the full golden example
+## How to try it
 
 ```bash
 git clone https://github.com/kiponos-io/kiponos-io.git
@@ -62,19 +114,21 @@ cp kiponos.local.env.example kiponos.local.env   # tokens from kiponos.io → Co
 ./gradlew test run
 ```
 
-Full source + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap)
+Then flip `max-tx-per-min` on the Kiponos dashboard (or another SDK client) and run again. The printed value should follow the hub — not the last release.
 
-This article only shows the nerve. The repo is the product.
+Full source + tests:  
+https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap
 
 ---
 
-## Old world vs Kiponos
+## Old world vs live hub
 
 | Move | Old world | Live hub |
 |------|-----------|----------|
-| Change the knob | PR → CI → roll | Dashboard / SDK `set()` |
-| Wrong replica | Drift | Same tree, WebSocket fan-out |
-| Incident rollback | Redeploy previous | Flip the value back |
+| Change the cap | PR → CI → roll | Dashboard / SDK `set()` |
+| Wrong replica | Drift until next deploy | Same tree, WebSocket fan-out |
+| Incident rollback | Redeploy previous artifact | Flip the value back |
+| Audit story | “Who merged?” | Who set the key, when, why |
 
 ---
 
@@ -82,46 +136,24 @@ This article only shows the nerve. The repo is the product.
 
 **People should not have to ship a release to make a decision.**
 
-Ship the judgment path once. Leave the jar alone.
+A velocity cap is a judgment call under pressure. Judgment belongs on a live path with a name humans can find at 3am — not buried in the next green build.
+
+Ship the judgment path once. Leave the jar alone when the only thing that changed is a number.
 
 ---
-
-*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap)*
-
-<!-- medium-img: diagram-fintech-velocity-cap-gof-vs-live.png -->
-<!-- medium-img: diagram-fintech-velocity-cap-hub-flow.png -->
-
-
----
-
-## Why this still matters on a quiet Tuesday
-
-Incidents train the muscle. Quiet days keep it honest.
-
-If `max-tx-per-min` only moves through a release train, every product conversation becomes a ceremony debate: who owns the PR, who merges, who rolls, who watches. That tax compounds across regions and on-call rotations.
-
-Live posture is not a license for chaos. It is a contract:
-
-- named path humans can find under pressure  
-- clamps that survive panic  
-- audit that names the actor  
-- a one-line revert that does not require a hero  
-
-When those four exist, the Super Pattern stops being a demo and becomes how the system grows older without growing brittle.
-
 
 ## Operational checklist (keep this boring)
 
 1. Name the hub path so humans find it under pressure.  
-2. Default safely when the hub is unreachable.  
+2. Default safely when the hub is unreachable (fail closed or fail to last-known-good — pick on purpose).  
 3. Allowlist writers (dashboard roles + automation identities).  
-4. Log the **decision**, not every get.  
-5. Rehearse the flip in staging.  
-6. Document the one-line kill path (revert key).  
-7. Record from→to + reason code in the incident timeline.
+4. Log the **decision** (from → to + reason), not every `get`.  
+5. Rehearse the flip in staging before the next flash sale.  
+6. Document the one-line kill path (raise or lower the cap).  
+7. Put that line in the incident timeline template.
 
 Boring checklists survive 3am. Clever ones do not.
 
-## What this buys you at 03:00
+---
 
-When the knob lives on the hub, the on-call engineer changes one value and watches the fleet converge without a rebuild. That is the whole product claim in one sentence: configuration that used to require a deploy becomes a live control with an audit trail. The example is intentionally small so you can prove the pattern before you wire it into your real processor or checkout path.
+*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/fintech-velocity-cap)*
