@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live GraphQL query depth via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-graphql-depth-0700.md
-main_image: https://files.catbox.moe/7gw17n.jpg
+main_image: https://files.catbox.moe/4hbrqj.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

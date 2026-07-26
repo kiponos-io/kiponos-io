@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-backoff-ms-0653.md
-main_image: https://files.catbox.moe/j8ftq2.jpg
+main_image: https://files.catbox.moe/a75pij.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

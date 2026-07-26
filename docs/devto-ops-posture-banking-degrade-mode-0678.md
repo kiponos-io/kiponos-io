@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live degradation mode via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-degrade-mode-0678.md
-main_image: https://files.catbox.moe/xj96m8.jpg
+main_image: https://files.catbox.moe/w20u54.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-bitrate-kbps-0675.md
-main_image: https://files.catbox.moe/t7nedd.jpg
+main_image: https://files.catbox.moe/8yslip.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

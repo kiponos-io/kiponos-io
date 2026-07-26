@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live HPA CPU target percent via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-hpa-target-0683.md
-main_image: https://files.catbox.moe/8h98z8.jpg
+main_image: https://files.catbox.moe/q1aawx.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

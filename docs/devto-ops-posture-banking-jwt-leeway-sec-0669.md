@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live JWT clock skew leeway via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-jwt-leeway-sec-0669.md
-main_image: https://files.catbox.moe/bkdnq1.jpg
+main_image: https://files.catbox.moe/9cx4oz.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

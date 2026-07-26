@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live bulkhead concurrency via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-bulkhead-max-0668.md
-main_image: https://files.catbox.moe/npumvm.jpg
+main_image: https://files.catbox.moe/egay5a.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

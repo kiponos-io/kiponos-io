@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live worker concurrency via Kiponos Python SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-worker-concurrency-0757.md
-main_image: https://files.catbox.moe/t2j73y.jpg
+main_image: https://files.catbox.moe/v0ts6z.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
