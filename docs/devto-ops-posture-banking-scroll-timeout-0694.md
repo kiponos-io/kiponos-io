@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live search scroll timeout via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-scroll-timeout-0694.md
-main_image: https://files.catbox.moe/j9elc2.jpg
+main_image: https://litter.catbox.moe/t5zsei.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

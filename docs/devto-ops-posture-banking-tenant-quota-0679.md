@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live per-tenant quota via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-tenant-quota-0679.md
-main_image: https://files.catbox.moe/0zetdt.jpg
+main_image: https://litter.catbox.moe/fz0ys5.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
