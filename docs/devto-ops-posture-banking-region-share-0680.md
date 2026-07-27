@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live region traffic share via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-region-share-0680.md
-main_image: https://files.catbox.moe/a1603s.jpg
+main_image: https://litter.catbox.moe/czsin1.jpg
 ---
 
 **The Aha:** `regionShare` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

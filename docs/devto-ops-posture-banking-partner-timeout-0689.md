@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live partner API timeout via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-partner-timeout-0689.md
-main_image: https://files.catbox.moe/xnf42u.jpg
+main_image: https://litter.catbox.moe/pix453.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

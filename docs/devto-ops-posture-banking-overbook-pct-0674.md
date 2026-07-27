@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live overbooking percent via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-overbook-pct-0674.md
-main_image: https://files.catbox.moe/l55n9d.jpg
+main_image: https://litter.catbox.moe/lz0o1w.jpg
 ---
 
 **The Aha:** `overbookPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

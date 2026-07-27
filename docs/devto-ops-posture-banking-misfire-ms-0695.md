@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live scheduler misfire threshold via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-misfire-ms-0695.md
-main_image: https://files.catbox.moe/etq3b1.jpg
+main_image: https://litter.catbox.moe/298fhg.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

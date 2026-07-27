@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live consumer prefetch via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-queue-prefetch-0656.md
-main_image: https://files.catbox.moe/jb3sj8.jpg
+main_image: https://litter.catbox.moe/op1ffy.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
