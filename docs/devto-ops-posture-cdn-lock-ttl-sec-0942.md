@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live distributed lock TTL via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-lock-ttl-sec-0942.md
-main_image: https://files.catbox.moe/sr5ij5.jpg
+main_image: https://litter.catbox.moe/5lhidm.jpg
 ---
 
 **The Aha:** `lockTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live UI/API debounce via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-debounce-ms-0947.md
-main_image: https://files.catbox.moe/gnjmj5.jpg
+main_image: https://litter.catbox.moe/tg8dnf.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

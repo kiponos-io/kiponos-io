@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live cache warm ratio percent via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-cache-warm-ratio-0915.md
-main_image: https://files.catbox.moe/wqv4uz.jpg
+main_image: https://litter.catbox.moe/3vulyr.jpg
 ---
 
 **The Aha:** `warmRatio` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

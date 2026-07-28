@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live bulkhead concurrency via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-bulkhead-max-0918.md
-main_image: https://files.catbox.moe/de7cbx.jpg
+main_image: https://litter.catbox.moe/dq8dla.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
