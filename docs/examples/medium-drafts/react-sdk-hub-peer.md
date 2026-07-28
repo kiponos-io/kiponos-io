@@ -114,3 +114,63 @@ Same hub. Same moral.
 **People should not have to ship a release to make a decision** — and they should not paste service tokens into a SPA to share state.  
 
 Identity is **where the process runs**. The fourth voice is Node. The UI can stay thin, live, and honest.
+
+
+---
+
+## Configuration hell, restated for frontends
+
+Backend teams already learned: packaging timeouts in a jar turns every incident into a release. Frontend teams are replaying the same movie with a different costume — shipping a new SPA build to flip a shared operational string.
+
+The hub does not care whether the writer was Spring Boot, a Python agent, or a Node process that happens to serve a React tree. It cares that **identity is a process**, and that deltas arrive on a living connection.
+
+---
+
+## What went wrong in the usual SPA story
+
+1. Secrets were treated as “env” because the filename was `.env`.  
+2. The bundler inlined Connect tokens into public JS.  
+3. Browser WebSocket upgrades could not carry Java-style handshake headers.  
+4. Someone proposed weakening the server handshake “for CORS” — which was never the diagnosis.
+
+The correct story is duller and safer: the **Node API** is the participant; the SPA is a client of *your* API.
+
+---
+
+## The example in production
+
+Mirror Phone is intentionally small:
+
+- Status fields for people in the family tree  
+- A shared note  
+- A ping timestamp  
+- OTP **time only** (never the code) on the wall  
+
+It is enough to prove bi-directional updates without building a second product. Operator links to it next to Shopping, Punch, and Torah.
+
+When Java calls:
+
+```java
+k.path("family", "mirror-phone").get("status-moshe", "—");
+```
+
+…it is reading the same leaf the Node `createFromEnv` process wrote after a button press in the SPA.
+
+---
+
+## A traveler’s checklist
+
+- Prefer `createForCurrentTeam` / `createFromEnv` over token constructors.  
+- Keep Connect tokens next to other production secrets.  
+- Bridge browsers with SSE/API you control.  
+- Let the dashboard remain the human surface; let SDKs remain service surfaces.  
+- Measure success by **seconds from judgment to effect**, not by how many languages have a client library.
+
+---
+
+## The lie we stop telling
+
+“We’ll just put the SDK in the frontend.”  
+
+No. We’ll put **live state** in the hub, put **identity** on the process, and let the frontend stay a fast mirror.
+
