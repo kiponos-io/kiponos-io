@@ -1,7 +1,7 @@
 ---
 main_image: https://files.catbox.moe/dlkkmj.jpg
 title: "Your React SPA Is Not a Node Process — Why Kiponos createFromEnv Lives on the Server"
-published: false
+published: true
 tags: java, architecture, devops, kiponos
 description: "Kiponos still ships Java and Python SDKs. For SaaS UIs we added a Node server participant with createFromEnv — same hub, no Connect tokens in the browser bundle."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-react-sdk-create-from-env.md
