@@ -35,7 +35,7 @@ import { Kiponos } from '@kiponos/react/server';
 // Java parity: identity from process env only
 const kip = Kiponos.createFromEnv(); // or createForCurrentTeam()
 await kip.connect();
-await kip.path('family', 'mirror-phone').set('status-moshe', 'online');
+await kip.path('demo', 'status-wall').set('status-alpha', 'online');
 ```
 
 - Reads **`KIPONOS_ID` / `KIPONOS_ACCESS` / `KIPONOS`** only from process env  
@@ -46,7 +46,7 @@ Java still looks like this:
 
 ```java
 Kiponos k = Kiponos.createForCurrentTeam();
-String status = k.path("family", "mirror-phone").get("status-moshe", "—");
+String status = k.path("demo", "status-wall").get("status-alpha", "—");
 ```
 
 One tree. Four participant *shapes*: dashboard human, JVM, Python, Node server.
@@ -81,25 +81,22 @@ The SPA never holds Connect tokens. It posts intent to **your** backend; the bac
 └─────────────┘
 ```
 
-## Live demo on kiponos.io
+## Demo pattern (local)
 
-**[Mirror Phone](https://kiponos.io/mirror/)** — family status wall:
+Run a small **status-wall** Node process with `createFromEnv` + SSE, and a thin SPA that never holds Connect tokens. Java or Python on the **same hub profile** can `get()` the new values without a redeploy.
 
-- Node process: `createFromEnv` + team topics  
-- SPA UI: `EventSource` only  
-- Tree: `family/mirror-phone/*`  
-- Linked from the **[Operator](https://kiponos.io/operator/)** home grid  
+Do **not** publish private team home URLs (ops walls, internal tools, LAN hosts) as “live demos” in public articles.
 
-Change a status on the wall; Java or Python on the same profile can `get()` the new value without a redeploy. That is the product: **state is the protocol**.
+Public product surface: **[kiponos.io](https://kiponos.io)** and the example tree on GitHub.
 
 ## Hub tree
 
 ```text
-family/mirror-phone/status-moshe = online|away|focus
-family/mirror-phone/status-mush  = shift|home|—
-family/mirror-phone/note         = free text
-family/mirror-phone/last-ping    = ISO timestamp
-family/mirror-phone/mood         = focused|calm|…
+demo/status-wall/status-alpha = online|away|focus
+demo/status-wall/status-beta  = shift|home|—
+demo/status-wall/note         = free text
+demo/status-wall/last-ping    = ISO timestamp
+demo/status-wall/mood         = focused|calm|…
 ```
 
 Local `get()` on the hot path. Dashboard or any SDK `set()` when the world changes.
@@ -137,7 +134,6 @@ await kip.connect()
 
 - Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
 - Product: [kiponos.io](https://kiponos.io)  
-- Live: [Mirror Phone](https://kiponos.io/mirror/)  
 - Public tree: [kiponos-io on GitHub](https://github.com/kiponos-io/kiponos-io)
 
 ## The moral

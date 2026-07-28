@@ -14,7 +14,7 @@ We already had three kinds of participants on the Kiponos hub:
 
 What we did **not** have was a first-class **Node/React backend** peer with the same contract: env identity, in-memory tree, live deltas.
 
-Redeploying a frontend bundle to change `family/mirror-phone/status-moshe` is how teams invent folklore.
+Redeploying a frontend bundle to change `demo/status-wall/status-alpha` is how teams invent folklore.
 
 ---
 
@@ -45,10 +45,10 @@ No constructor tokens. Process env only — the same idea as Java’s singleton.
 ## Hub tree
 
 ```text
-family/mirror-phone/status-moshe = online
-family/mirror-phone/status-mush  = home
-family/mirror-phone/note         = live
-family/mirror-phone/last-ping    = <iso>
+demo/status-wall/status-alpha = online
+demo/status-wall/status-beta  = home
+demo/status-wall/note         = live
+demo/status-wall/last-ping    = <iso>
 ```
 
 Local `get()` on the hot path. Dashboard, Java, Python, or Node `set()` when the world changes.
@@ -61,8 +61,8 @@ Local `get()` on the hot path. Dashboard, Java, Python, or Node `set()` when the
 
 ```java
 Kiponos k = Kiponos.createForCurrentTeam();
-Folder wall = k.path("family", "mirror-phone");
-String moshe = wall.get("status-moshe", "—");
+Folder wall = k.path("demo", "status-wall");
+String alpha = wall.get("status-alpha", "—");
 // Node createFromEnv wrote this seconds ago — no redeploy
 ```
 
@@ -71,7 +71,7 @@ Node side (the new participant):
 ```js
 const kip = Kiponos.createForCurrentTeam();
 await kip.connect();
-await kip.path("family", "mirror-phone").set("status-moshe", "focus");
+await kip.path("demo", "status-wall").set("status-alpha", "focus");
 ```
 
 The browser UI talks **SSE to your Node process**, not Connect tokens to the hub.
@@ -80,10 +80,12 @@ The browser UI talks **SSE to your Node process**, not Connect tokens to the hub
 
 ## Live proof
 
-**[Mirror Phone](https://kiponos.io/mirror/)** on the same profile as the family ops tree.  
-Linked from **[Operator](https://kiponos.io/operator/)**.
+Run the pattern locally: a small status-wall SPA talks to your Node process (`createFromEnv` + SSE), and a Java peer on the same hub profile reads the same leaves.
 
 Two tabs. One status flip. Everyone sees it — including a JVM that never restarted.
+
+Public surface: **[kiponos.io](https://kiponos.io)** (hub + docs) and the example tree on GitHub.  
+Do **not** treat private team homes / family ops walls as public demo URLs.
 
 ---
 
@@ -137,21 +139,20 @@ The correct story is duller and safer: the **Node API** is the participant; the 
 
 ---
 
-## The example in production
+## The example pattern
 
-Mirror Phone is intentionally small:
+A status wall is intentionally small:
 
-- Status fields for people in the family tree  
+- A few shared status fields  
 - A shared note  
 - A ping timestamp  
-- OTP **time only** (never the code) on the wall  
 
-It is enough to prove bi-directional updates without building a second product. Operator links to it next to Shopping, Punch, and Torah.
+Enough to prove bi-directional updates without building a second product. Keep **private** ops homes (family tools, commute walls, OTP timing) off public write-ups.
 
 When Java calls:
 
 ```java
-k.path("family", "mirror-phone").get("status-moshe", "—");
+k.path("demo", "status-wall").get("status-alpha", "—");
 ```
 
 …it is reading the same leaf the Node `createFromEnv` process wrote after a button press in the SPA.
@@ -164,7 +165,8 @@ k.path("family", "mirror-phone").get("status-moshe", "—");
 - Keep Connect tokens next to other production secrets.  
 - Bridge browsers with SSE/API you control.  
 - Let the dashboard remain the human surface; let SDKs remain service surfaces.  
-- Measure success by **seconds from judgment to effect**, not by how many languages have a client library.
+- Measure success by **seconds from judgment to effect**, not by how many languages have a client library.  
+- Never publish private team path trees or private product URLs in public articles.
 
 ---
 
@@ -173,4 +175,3 @@ k.path("family", "mirror-phone").get("status-moshe", "—");
 “We’ll just put the SDK in the frontend.”  
 
 No. We’ll put **live state** in the hub, put **identity** on the process, and let the frontend stay a fast mirror.
-
