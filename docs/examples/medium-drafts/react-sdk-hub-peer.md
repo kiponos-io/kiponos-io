@@ -40,6 +40,8 @@ await kip.connect();
 
 No constructor tokens. Process env only — the same idea as Java’s singleton.
 
+<!-- medium-img: diagram-spa-vs-node.png -->
+
 ---
 
 ## Hub tree
@@ -110,6 +112,23 @@ Kiponos.createForCurrentTeam();
 Same hub. Same moral.
 
 ---
+
+
+
+
+Public tree:
+
+`examples/java/react-sdk-hub-peer`
+
+```bash
+cd examples/java/react-sdk-hub-peer
+./gradlew test run
+```
+
+Full path on GitHub:
+
+https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/react-sdk-hub-peer
+
 
 ## The moral
 

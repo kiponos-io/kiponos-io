@@ -86,8 +86,12 @@ Do use a live chain when the cost of a wrong stack *tonight* is higher than the 
 
 ---
 
-## Moral
+## The moral
 
 Decorator always promised composition.
 
 **Kiponos makes the composition list something you can change at the speed of an outage — not the speed of CI.**
+
+---
+
+*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-decorator-live-chain](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-decorator-live-chain)*

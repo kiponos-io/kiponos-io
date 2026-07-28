@@ -163,3 +163,7 @@ What they could not ship in 1994 was a realtime hub where people **and** other m
 **Strategy is not a Super Pattern until selection can move at the speed of the business.**
 
 Kiponos.io — the companion that turns Design Patterns into live ones.
+
+---
+
+*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-strategy-live-router](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-strategy-live-router)*
