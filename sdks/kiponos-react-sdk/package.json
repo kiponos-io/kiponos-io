@@ -1,0 +1,80 @@
+{
+  "name": "@kiponos/react",
+  "version": "0.1.0",
+  "description": "Kiponos real-time React/Node SDK — createFromEnv (Java parity), get/set path, after* listeners",
+  "license": "MIT",
+  "author": "Kiponos",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kiponos-io/kiponos-react-sdk.git"
+  },
+  "homepage": "https://kiponos.io",
+  "keywords": [
+    "kiponos",
+    "react",
+    "websocket",
+    "stomp",
+    "realtime",
+    "config",
+    "sdk"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "require": "./dist/server.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "DESIGN.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run tests/unit",
+    "test:unit": "vitest run tests/unit",
+    "test:e2e": "vitest run tests/e2e --testTimeout=120000 --hookTimeout=60000",
+    "test:all": "vitest run tests/unit && vitest run tests/e2e --testTimeout=120000 --hookTimeout=60000",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test:unit && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "pako": "^2.1.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/pako": "^2.0.3",
+    "@types/react": "^18.3.12",
+    "@types/ws": "^8.5.13",
+    "react": "^18.3.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
