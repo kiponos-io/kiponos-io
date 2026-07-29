@@ -34,7 +34,8 @@
       "types": "./dist/server.d.ts",
       "import": "./dist/server.js",
       "require": "./dist/server.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
