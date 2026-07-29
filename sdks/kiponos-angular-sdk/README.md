@@ -3,16 +3,10 @@
 **Production install**
 
 ```bash
-npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.1/kiponos-angular-0.1.1.tgz
-# or (npm 7+):
-# npm install "github:kiponos-io/kiponos-io#master:sdks/kiponos-angular-sdk"
+npm install @kiponos/angular
 ```
 
-**Node/server-first** Kiponos real-time SDK for Angular + SaaS backends
-(Java `createForCurrentTeam` parity).
-
-Connect identity comes **only from process environment** — never constructor
-tokens, never browser SPA secrets.
+Also on GitHub release / monorepo source under `sdks/kiponos-angular-sdk`.
 
 ## Install
 
