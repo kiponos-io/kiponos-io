@@ -15,10 +15,10 @@ Both follow **Java SDK API parity**: process-env identity, `path` / `get` / `set
 
 ```bash
 # Angular
-npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.0/kiponos-angular-0.1.0.tgz
+npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.1/kiponos-angular-0.1.1.tgz
 
 # React
-npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.0/kiponos-react-0.1.0.tgz
+npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.1/kiponos-react-0.1.1.tgz
 ```
 
 ### Option B — Git monorepo path (npm 7+)

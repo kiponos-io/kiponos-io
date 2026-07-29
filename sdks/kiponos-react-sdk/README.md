@@ -3,7 +3,7 @@
 **Production install**
 
 ```bash
-npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.0/kiponos-react-0.1.0.tgz
+npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.1/kiponos-react-0.1.1.tgz
 # or (npm 7+):
 # npm install "github:kiponos-io/kiponos-io#master:sdks/kiponos-react-sdk"
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@kiponos/angular",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Kiponos real-time Angular/Node SDK \u2014 createFromEnv (Java parity), get/set path, after* listeners, signals",
   "license": "MIT",
   "author": "Kiponos",
