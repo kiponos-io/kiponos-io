@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live outbound call timeout via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-timeout-ms-0901.md
-main_image: https://files.catbox.moe/vnskcb.jpg
+main_image: https://files.catbox.moe/0p9wlf.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

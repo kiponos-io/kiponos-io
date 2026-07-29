@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live region traffic share via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-region-share-0930.md
-main_image: https://files.catbox.moe/8jtzfx.jpg
+main_image: https://files.catbox.moe/dmaorm.jpg
 ---
 
 **The Aha:** `regionShare` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

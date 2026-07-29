@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live pagination page size via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-page-size-0921.md
-main_image: https://files.catbox.moe/1gtiln.jpg
+main_image: https://files.catbox.moe/0e9vp4.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

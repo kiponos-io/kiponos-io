@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live per-tenant quota via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-tenant-quota-0929.md
-main_image: https://files.catbox.moe/ty2ubb.jpg
+main_image: https://files.catbox.moe/b33arx.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live consumer prefetch via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-queue-prefetch-0906.md
-main_image: https://files.catbox.moe/563kx6.jpg
+main_image: https://files.catbox.moe/witvlp.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

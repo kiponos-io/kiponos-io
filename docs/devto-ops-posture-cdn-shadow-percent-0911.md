@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live shadow traffic share via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-shadow-percent-0911.md
-main_image: https://files.catbox.moe/n5o36q.jpg
+main_image: https://litter.catbox.moe/3t7j0l.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

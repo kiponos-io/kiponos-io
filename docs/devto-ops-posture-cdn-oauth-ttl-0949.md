@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live OAuth token TTL via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-oauth-ttl-0949.md
-main_image: https://files.catbox.moe/eta2x9.jpg
+main_image: https://files.catbox.moe/s8hyj4.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

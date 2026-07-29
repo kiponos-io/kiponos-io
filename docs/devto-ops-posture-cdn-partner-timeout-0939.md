@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-partner-timeout-0939.md
-main_image: https://files.catbox.moe/juf8s3.jpg
+main_image: https://files.catbox.moe/w1em43.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

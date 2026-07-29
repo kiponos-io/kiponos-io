@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live pricing / promo weight via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-pricing-weight-0926.md
-main_image: https://files.catbox.moe/ciefqo.jpg
+main_image: https://files.catbox.moe/t61ud1.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

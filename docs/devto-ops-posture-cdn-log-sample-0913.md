@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-log-sample-0913.md
-main_image: https://files.catbox.moe/em625l.jpg
+main_image: https://files.catbox.moe/2xjncd.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

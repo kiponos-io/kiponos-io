@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live scheduler misfire threshold via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-misfire-ms-0945.md
-main_image: https://files.catbox.moe/sxjbyj.jpg
+main_image: https://files.catbox.moe/3nhvi6.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

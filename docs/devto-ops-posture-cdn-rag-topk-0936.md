@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live RAG top-k via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-rag-topk-0936.md
-main_image: https://files.catbox.moe/qv5goo.jpg
+main_image: https://files.catbox.moe/lazng7.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
