@@ -1,21 +1,34 @@
 # react-sdk-hub-peer
 
-Java peer that **reads** a live `demo/status-wall/*` tree written by a Node
-`@kiponos/react` `createFromEnv` status-wall service (and the dashboard).
+Java peer for the **@kiponos/react** npm SDK as the write/UI side.
 
-## Point
+## Install the JS peer (npm)
 
-Same hub participant model as other examples: `Kiponos.createForCurrentTeam()`,
-local `get()`, live deltas — no redeploy when the Node wall flips a status.
+```bash
+npm install @kiponos/react
+```
 
-## Run
+Runnable Node example: `examples/node/react-status-wall`  
+Package: https://www.npmjs.com/package/@kiponos/react
+
+## Hub key
+
+`demo/status-wall/status-alpha` (default `online`)
+
+## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
-export KIPONOS="['MyApp']['1.0']['Dev']['base']"  # use your own profile
-# ./gradlew run   # when wired like sibling examples
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+# ./gradlew test   # when wired like sibling examples
 ```
 
-See draft: `docs/examples/medium-drafts/react-sdk-hub-peer.md`  
+## Run (Node peer)
 
-Do **not** link private team homes (ops walls, family tools) from public docs.
+```bash
+cd examples/node/react-status-wall
+npm install
+npm start
+```
+
+See draft: `docs/examples/medium-drafts/react-sdk-hub-peer.md`

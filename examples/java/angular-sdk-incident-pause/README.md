@@ -1,16 +1,34 @@
 # angular-sdk-incident-pause
 
-Java peer for **pause flag for agents** with the **@kiponos/angular** SDK as the write/UI side.
+Java peer for the **@kiponos/angular** npm SDK as the write/UI side.
+
+## Install the JS peer (npm)
+
+```bash
+npm install @kiponos/angular
+```
+
+Runnable Node example: `examples/node/angular-status-wall`  
+Package: https://www.npmjs.com/package/@kiponos/angular
 
 ## Hub key
 
 `ops/incident/paused` (default `no`)
 
-## Run
+## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+# ./gradlew test   # when wired like sibling examples
 ```
 
-See `docs/examples/medium-drafts/angular-sdk-incident-pause.md` and `sdks/kiponos-angular-sdk`.
+## Run (Node peer)
+
+```bash
+cd examples/node/angular-status-wall
+npm install
+npm start
+```
+
+See draft: `docs/examples/medium-drafts/angular-sdk-incident-pause.md`

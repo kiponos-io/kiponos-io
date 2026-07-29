@@ -95,3 +95,19 @@ Questions? [Open a Discussion](https://github.com/kiponos-io/kiponos-io/discussi
 ---
 
 [Join Us — free TeamPro at kiponos.io](https://kiponos.io)
+
+
+## JavaScript / TypeScript SDKs (npm)
+
+```bash
+npm install @kiponos/react
+npm install @kiponos/angular
+```
+
+| Package | npm | Runnable example |
+|---------|-----|------------------|
+| `@kiponos/react` | [npm](https://www.npmjs.com/package/@kiponos/react) | `examples/node/react-status-wall` |
+| `@kiponos/angular` | [npm](https://www.npmjs.com/package/@kiponos/angular) | `examples/node/angular-status-wall` |
+
+Source trees: `sdks/kiponos-react-sdk`, `sdks/kiponos-angular-sdk`.
+

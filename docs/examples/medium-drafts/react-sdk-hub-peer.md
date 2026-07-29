@@ -114,25 +114,39 @@ Do **not** treat private team homes or private ops walls as public demo URLs.
 
 ---
 
-## How to try it
+## Install (npm)
 
 ```bash
+npm install @kiponos/react
+```
+
+Public package: https://www.npmjs.com/package/@kiponos/react  
+Runnable Node example: `examples/node/react-status-wall`  
+Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
+
+## How to try
+
+```bash
+# 1) Install the SDK from npm
+npm install @kiponos/react
+
+# 2) Connect credentials (same as Java)
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
 
+# 3) Runnable Node peer
 git clone https://github.com/kiponos-io/kiponos-io.git
-cd kiponos-io/examples/java/react-sdk-hub-peer
-# pair with your Node status-wall using @kiponos/react createFromEnv
-# Java peer:
-./gradlew test run   # when wired like sibling examples
+cd kiponos-io/examples/node/react-status-wall
+npm install
+npm start
+# → writes demo/status-wall/* on the hub
+
+# 4) Optional Java peer (same tree)
+cd ../../java/react-sdk-hub-peer
+# export same KIPONOS_* then run the Java example / tests
 ```
 
-Flip `demo/status-wall/status-alpha` from the dashboard or Node. The Java print should follow the hub — not the last SPA deploy.
-
-Full path on GitHub:  
-https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/react-sdk-hub-peer
-
----
+Package: [@kiponos/react on npm](https://www.npmjs.com/package/@kiponos/react)
 
 ## Old world vs live hub
 

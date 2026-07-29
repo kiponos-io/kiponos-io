@@ -25,3 +25,7 @@ Each example has a `README.md` (problem → Kiponos fix → run) and tests. Pref
 ## Python parity
 
 See `examples/python/` — Super Pattern demos with pure logic tests and optional live hub via `agent-kit`.
+
+## Node (npm SDKs)
+
+See `examples/node/` — `npm install @kiponos/react` / `@kiponos/angular`.

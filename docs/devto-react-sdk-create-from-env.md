@@ -25,9 +25,23 @@ Same filename. Opposite threat model.
 | JVM / Python / Node **process** | Real environment (like `createForCurrentTeam`) |
 | Bundled SPA in the visitor’s browser | Strings every visitor can download |
 
+## Install (npm)
+
+```bash
+npm install @kiponos/react
+```
+
+Public package: https://www.npmjs.com/package/@kiponos/react  
+Runnable Node example: `examples/node/react-status-wall`  
+Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
+
 ## What we shipped
 
-**`@kiponos/react`** (Node entry: `@kiponos/react/server`) — real-time Kiponos **server** participant:
+**`@kiponos/react`** on npm (Node entry: `@kiponos/react/server`) — real-time Kiponos **server** participant:
+
+```bash
+npm install @kiponos/react
+```
 
 ```js
 import { Kiponos } from '@kiponos/react/server';
@@ -116,25 +130,29 @@ We did **not** weaken the SDK handshake “for CORS.” CORS is not the issue; *
 | Fail-closed defaults | Temporary incident overrides |
 | Schema of keys | Current values |
 
-## Clone and run the pattern
+## How to try
 
 ```bash
+# 1) Install the SDK from npm
+npm install @kiponos/react
+
+# 2) Connect credentials (same as Java)
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+
+# 3) Runnable Node peer
 git clone https://github.com/kiponos-io/kiponos-io.git
-# Java examples: examples/java/*
-# Profile: ['app']['release']['env']['config']
-# Node peer: createFromEnv with KIPONOS_ID / KIPONOS_ACCESS / KIPONOS
+cd kiponos-io/examples/node/react-status-wall
+npm install
+npm start
+# → writes demo/status-wall/* on the hub
+
+# 4) Optional Java peer (same tree)
+cd ../../java/react-sdk-hub-peer
+# export same KIPONOS_* then run the Java example / tests
 ```
 
-```js
-import { Kiponos } from '@kiponos/react/server'
-const kip = Kiponos.createForCurrentTeam()
-await kip.connect()
-// set/get path — same tree Java already uses
-```
-
-- Getting started: [GETTING-STARTED.md](https://github.com/kiponos-io/kiponos-io/blob/master/GETTING-STARTED.md)  
-- Product: [kiponos.io](https://kiponos.io)  
-- Public tree: [kiponos-io on GitHub](https://github.com/kiponos-io/kiponos-io)
+Package: [@kiponos/react on npm](https://www.npmjs.com/package/@kiponos/react)
 
 ## The moral
 

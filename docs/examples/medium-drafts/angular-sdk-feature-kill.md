@@ -51,6 +51,16 @@ Companion example: `examples/java/angular-sdk-feature-kill`
 
 ---
 
+## Install (npm)
+
+```bash
+npm install @kiponos/angular
+```
+
+Public package: https://www.npmjs.com/package/@kiponos/angular  
+Runnable Node example: `examples/node/angular-status-wall`  
+Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-angular-sdk
+
 ## The example pattern
 
 1. Connect with process env (`KIPONOS_ID` / `KIPONOS_ACCESS` / `KIPONOS`) — never browser secrets.  
@@ -58,7 +68,7 @@ Companion example: `examples/java/angular-sdk-feature-kill`
 3. Java `createForCurrentTeam()` reads the same leaf; `afterValueUpdated` fires on change.  
 4. Dashboard shows the value without refresh.
 
-How to try: open `sdks/kiponos-angular-sdk`, `npm test`, then `provideKiponos({{ client }})` from a server-created client. Companion: `examples/java/angular-sdk-feature-kill`.
+How to try: use `npm install @kiponos/angular` and `examples/node/angular-status-wall`
 
 ---
 

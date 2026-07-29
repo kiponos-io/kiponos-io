@@ -86,15 +86,18 @@ demo / status-wall /
 
 ---
 
-## Where the package lives
+## Install (npm)
 
-Public monorepo (ship with this story):
+```bash
+npm install @kiponos/angular
+# also: npm install @kiponos/react
+```
 
-- Angular SDK: `https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-angular-sdk`  
-- React SDK: `https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk`  
-- Companion Java peer: `examples/java/angular-sdk-hub-peer`
-
-npm package name: **`@kiponos/angular`** — Node ≥18, Angular ≥16 peer, same wire protocol as Java/Python/React (STOMP, header auth, heartbeats).
+- npm: https://www.npmjs.com/package/@kiponos/angular  
+- npm React: https://www.npmjs.com/package/@kiponos/react  
+- Source: `sdks/kiponos-angular-sdk` on GitHub  
+- Companion Java peer: `examples/java/angular-sdk-hub-peer`  
+- Runnable Node: `examples/node/angular-status-wall`
 
 ---
 
@@ -102,8 +105,8 @@ npm package name: **`@kiponos/angular`** — Node ≥18, Angular ≥16 peer, sam
 
 `examples/java/angular-sdk-hub-peer` is the cross-language proof:
 
-1. Node process runs `Kiponos.createFromEnv()` (Angular BFF or plain server).  
-2. It sets `demo/status-wall/status-alpha`.  
+1. Node process runs `Kiponos.createFromEnv()` after `npm install @kiponos/angular`.  
+2. It sets `demo/status-wall/status-alpha` (see `examples/node/angular-status-wall`).  
 3. Java `createForCurrentTeam()` reads the leaf locally; `afterValueUpdated` fires when the wall flips.  
 4. Dashboard shows the same string without refresh.
 
@@ -115,7 +118,18 @@ kip.afterValueUpdated(e -> {
 });
 ```
 
-How to try: clone `kiponos-io`, open `sdks/kiponos-angular-sdk` and `examples/java/angular-sdk-hub-peer`. Export `KIPONOS_ID` / `KIPONOS_ACCESS` / `KIPONOS` the way the Java SDK always has.
+## How to try
+
+```bash
+npm install @kiponos/angular
+
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/node/angular-status-wall
+npm install && npm start
+```
 
 ---
 

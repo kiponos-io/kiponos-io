@@ -1,0 +1,15 @@
+{
+  "name": "kiponos-react-status-wall-example",
+  "version": "0.1.2",
+  "private": true,
+  "type": "module",
+  "description": "Runnable Node peer using npm @kiponos/react createFromEnv (status wall)",
+  "scripts": {
+    "start": "node status-wall.mjs",
+    "set": "node status-wall.mjs"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@kiponos/react": "^0.1.2"
+  }
+}

@@ -2,7 +2,7 @@
 title: "React + Kiponos: Live Theme Toggle Without a SPA Redeploy"
 published: false
 tags: react, typescript, devops, websocket, kiponos
-description: Use the Kiponos React SDK to live-control theme string on the hub (`ui/theme`) without redeploy. createFromEnv, Java parity, and a runnable monorepo path.
+description: Use the Kiponos React SDK to live-control theme string on the hub (`ui/theme`) without redeploy. createFromEnv, Java parity, and a runnable Install with `npm install @kiponos/react`. Runnable example included.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-react-sdk-live-theme.md
 ---
 
@@ -14,7 +14,12 @@ I have watched a design lead wait for a frontend deploy to flip dark mode for a 
 
 ## Package
 
-https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
+```bash
+npm install @kiponos/react
+```
+
+https://www.npmjs.com/package/@kiponos/react  
+Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
 
 Companion: `examples/java/react-sdk-live-theme`
 
@@ -33,10 +38,27 @@ await kip.path('ui').set('theme', 'dark');
 
 ## How to try
 
-1. Export `KIPONOS_ID`, `KIPONOS_ACCESS`, `KIPONOS` (Connect UI).  
-2. Build the SDK package under `sdks/kiponos-react-sdk`.  
-3. Set `ui/theme` from Node; read it from Java `createForCurrentTeam()`.  
-4. Optional: open the dashboard on the same profile.
+```bash
+# 1) Install the SDK from npm
+npm install @kiponos/react
+
+# 2) Connect credentials (same as Java)
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+
+# 3) Runnable Node peer
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/node/react-status-wall
+npm install
+npm start
+# → writes demo/status-wall/* on the hub
+
+# 4) Optional Java peer (same tree)
+cd ../../java/react-sdk-hub-peer
+# export same KIPONOS_* then run the Java example / tests
+```
+
+Package: [@kiponos/react on npm](https://www.npmjs.com/package/@kiponos/react)
 
 ## The moral
 

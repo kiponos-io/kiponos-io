@@ -50,6 +50,16 @@ Companion example: `examples/java/react-sdk-incident-pause`
 
 ---
 
+## Install (npm)
+
+```bash
+npm install @kiponos/react
+```
+
+Public package: https://www.npmjs.com/package/@kiponos/react  
+Runnable Node example: `examples/node/react-status-wall`  
+Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
+
 ## The example pattern
 
 1. Connect with process env (`KIPONOS_ID` / `KIPONOS_ACCESS` / `KIPONOS`) — never browser secrets.  
@@ -57,7 +67,7 @@ Companion example: `examples/java/react-sdk-incident-pause`
 3. Java `createForCurrentTeam()` reads the same leaf; `afterValueUpdated` fires on change.  
 4. Dashboard shows the value without refresh.
 
-How to try: open `sdks/kiponos-react-sdk`, run unit tests, then wire `createFromEnv` in a Node BFF. Companion: `examples/java/react-sdk-incident-pause`.
+How to try: use `npm install @kiponos/react` and `examples/node/react-status-wall`
 
 ---
 

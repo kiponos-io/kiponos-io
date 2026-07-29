@@ -1,16 +1,34 @@
 # react-sdk-canary-percent
 
-Java peer for **traffic split percent** with the **@kiponos/react** SDK as the write/UI side.
+Java peer for the **@kiponos/react** npm SDK as the write/UI side.
+
+## Install the JS peer (npm)
+
+```bash
+npm install @kiponos/react
+```
+
+Runnable Node example: `examples/node/react-status-wall`  
+Package: https://www.npmjs.com/package/@kiponos/react
 
 ## Hub key
 
 `release/canary-percent` (default `5`)
 
-## Run
+## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+# ./gradlew test   # when wired like sibling examples
 ```
 
-See `docs/examples/medium-drafts/react-sdk-canary-percent.md` and `sdks/kiponos-react-sdk`.
+## Run (Node peer)
+
+```bash
+cd examples/node/react-status-wall
+npm install
+npm start
+```
+
+See draft: `docs/examples/medium-drafts/react-sdk-canary-percent.md`

@@ -1,28 +1,34 @@
 # angular-sdk-hub-peer
 
-Java peer that **reads** a live `demo/status-wall/*` tree written by a Node
-`@kiponos/angular` `createFromEnv` service (and the dashboard / React peers).
+Java peer for the **@kiponos/angular** npm SDK as the write/UI side.
 
-## Point
+## Install the JS peer (npm)
 
-Same hub participant model: `Kiponos.createForCurrentTeam()`, local `get()`,
-live deltas — no redeploy when an Angular BFF or status service flips a key.
+```bash
+npm install @kiponos/angular
+```
 
-## Public packages
+Runnable Node example: `examples/node/angular-status-wall`  
+Package: https://www.npmjs.com/package/@kiponos/angular
 
-| Package | Tree |
-|---------|------|
-| `@kiponos/angular` | [`sdks/kiponos-angular-sdk`](../../../sdks/kiponos-angular-sdk) |
-| `@kiponos/react` | [`sdks/kiponos-react-sdk`](../../../sdks/kiponos-react-sdk) |
+## Hub key
 
-## Run
+`demo/status-wall/status-alpha` (default `online`)
+
+## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew run   # when wired like sibling examples
+# ./gradlew test   # when wired like sibling examples
+```
+
+## Run (Node peer)
+
+```bash
+cd examples/node/angular-status-wall
+npm install
+npm start
 ```
 
 See draft: `docs/examples/medium-drafts/angular-sdk-hub-peer.md`
-
-Do **not** link private team homes from public docs.

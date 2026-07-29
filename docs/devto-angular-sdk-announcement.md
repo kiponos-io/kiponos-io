@@ -1,9 +1,9 @@
 ---
 main_image: https://litter.catbox.moe/2l7x1l.jpg
 title: "We Opened the Kiponos Hub to Angular — Live Config Without Redeploy (Announcement)"
-published: false
+published: true
 tags: angular, typescript, devops, websocket, opensource
-description: Happy professional announcement — @kiponos/angular is public. Java-parity createFromEnv, Angular Signals, and a BFF-safe design so browsers never hold Connect tokens. Links to the monorepo package and how to try it today.
+description: Happy professional announcement — @kiponos/angular is on npm. Install with npm install @kiponos/angular. Java-parity createFromEnv, Angular Signals, BFF-safe design, runnable example.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-angular-sdk-announcement.md
 ---
 
@@ -27,20 +27,15 @@ Angular teams deserved the same contract:
 | Live UI | listeners | **Signals** + `after*` hooks |
 | Tokens in browser | never | **never** (BFF injects client) |
 
-## Install / open source
-
-Public tree (monorepo package):
-
-**https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-angular-sdk**
-
-Also shipping the React package beside it:
-
-**https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk**
+## Install (npm)
 
 ```bash
-# from the monorepo package (npm link / file: path until npm publish)
-cd sdks/kiponos-angular-sdk && npm install && npm run build
+npm install @kiponos/angular
 ```
+
+Public package: https://www.npmjs.com/package/@kiponos/angular  
+Runnable Node example: `examples/node/angular-status-wall`  
+Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-angular-sdk
 
 ## 60-second Node start
 
@@ -101,10 +96,26 @@ Out of v0.1: Offline/LKG modes (Java has them; Angular will follow).
 
 ## How to try
 
-1. Open the package README in the monorepo tree above.  
-2. Export Connect tokens like any Kiponos Java app.  
-3. Run unit tests: `npm test` in `sdks/kiponos-angular-sdk`.  
-4. Optional live E2E: `npm run test:e2e` with a real profile.
+```bash
+# 1) Install the SDK from npm
+npm install @kiponos/angular
+
+# 2) Connect credentials (same as Java)
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+
+# 3) Runnable Node peer (BFF process)
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/node/angular-status-wall
+npm install
+npm start
+# → writes demo/status-wall/* on the hub
+
+# 4) Optional Java peer (same tree)
+cd ../../java/angular-sdk-hub-peer
+```
+
+Package: [@kiponos/angular on npm](https://www.npmjs.com/package/@kiponos/angular)
 
 ## Closing
 
