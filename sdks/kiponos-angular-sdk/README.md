@@ -1,8 +1,15 @@
 # @kiponos/angular
 
+**Production install**
+
+```bash
+npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.0/kiponos-angular-0.1.0.tgz
+# or (npm 7+):
+# npm install "github:kiponos-io/kiponos-io#master:sdks/kiponos-angular-sdk"
+```
+
 **Node/server-first** Kiponos real-time SDK for Angular + SaaS backends
-(Java `createForCurrentTeam` parity). Same wire protocol and quality bar as
-[`@kiponos/react`](https://github.com/kiponos-io/kiponos-react-sdk).
+(Java `createForCurrentTeam` parity).
 
 Connect identity comes **only from process environment** — never constructor
 tokens, never browser SPA secrets.

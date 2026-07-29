@@ -1,14 +1,15 @@
 {
   "name": "@kiponos/angular",
   "version": "0.1.0",
-  "description": "Kiponos real-time Angular/Node SDK — createFromEnv (Java parity), get/set path, after* listeners, signals",
+  "description": "Kiponos real-time Angular/Node SDK \u2014 createFromEnv (Java parity), get/set path, after* listeners, signals",
   "license": "MIT",
   "author": "Kiponos",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kiponos-io/kiponos-angular-sdk.git"
+    "url": "https://github.com/kiponos-io/kiponos-io.git",
+    "directory": "sdks/kiponos-angular-sdk"
   },
-  "homepage": "https://kiponos.io",
+  "homepage": "https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-angular-sdk",
   "keywords": [
     "kiponos",
     "angular",
@@ -81,5 +82,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "bugs": {
+    "url": "https://github.com/kiponos-io/kiponos-io/issues"
   }
 }

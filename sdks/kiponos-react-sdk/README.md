@@ -1,8 +1,18 @@
 # @kiponos/react
 
-**Node/server-first** Kiponos real-time SDK for SaaS backends (Java `createForCurrentTeam` parity).
+**Production install**
 
-Connect identity comes **only from process environment** — never constructor tokens, never browser SPA secrets.
+```bash
+npm install https://github.com/kiponos-io/kiponos-io/releases/download/sdk-js-v0.1.0/kiponos-react-0.1.0.tgz
+# or (npm 7+):
+# npm install "github:kiponos-io/kiponos-io#master:sdks/kiponos-react-sdk"
+```
+
+**Node/server-first** Kiponos real-time SDK for React/Node backends
+(Java `createForCurrentTeam` parity).
+
+Connect identity comes **only from process environment** — never constructor
+tokens, never browser SPA secrets.
 
 ## Install
 

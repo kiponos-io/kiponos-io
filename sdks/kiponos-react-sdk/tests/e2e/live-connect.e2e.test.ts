@@ -1,6 +1,13 @@
 /**
  * E2E: connection, bootstrap, auth failures — LIVE PROD hub.
+ *
+ * Auth-rejection cases use a temp env file: createFromEnv always prefers
+ * a file that supplies KIPONOS_ID/ACCESS (Java-style EnvironmentFile), so
+ * mutating process.env alone is overwritten by otp-listener.env.
  */
+import { writeFileSync, unlinkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import {
   createLiveClient,
@@ -14,6 +21,15 @@ import { Kiponos } from "../../src/core/kiponos";
 import { KiponosClient } from "../../src/core/kiponos-client";
 
 const hasCreds = credsPresent();
+
+function writeTempEnv(contents: string): string {
+  const p = join(
+    tmpdir(),
+    `kiponos-react-e2e-${Date.now()}-${Math.random().toString(36).slice(2)}.env`
+  );
+  writeFileSync(p, contents, "utf8");
+  return p;
+}
 
 describe.skipIf(!hasCreds)("E2E live connect (PROD)", () => {
   let client: KiponosClient;
@@ -63,36 +79,62 @@ describe.skipIf(!hasCreds)("E2E live connect (PROD)", () => {
 describe.skipIf(!hasCreds)("E2E auth rejection (PROD)", () => {
   it("rejects garbage tokens via env (handshake fails)", async () => {
     ensureE2eEnv();
-    const prevId = process.env.KIPONOS_ID;
-    const prevAcc = process.env.KIPONOS_ACCESS;
-    process.env.KIPONOS_ID = "not-a-real-token";
-    process.env.KIPONOS_ACCESS = "also-fake";
+    const envFile = writeTempEnv(
+      [
+        "KIPONOS_ID=not-a-real-token",
+        "KIPONOS_ACCESS=also-fake",
+        `KIPONOS=${FAMILY_PROFILE}`,
+      ].join("\n")
+    );
     Kiponos.resetSingleton();
-    const c = Kiponos.createFromEnv({ requestTimeoutMs: 15000, quiet: true });
+    const c = Kiponos.createFromEnv({
+      envFile,
+      requestTimeoutMs: 15000,
+      quiet: true,
+    });
     try {
       await expect(c.connect()).rejects.toThrow();
       expect(c.ready).toBe(false);
     } finally {
-      process.env.KIPONOS_ID = prevId;
-      process.env.KIPONOS_ACCESS = prevAcc;
+      try {
+        unlinkSync(envFile);
+      } catch {
+        /* ignore */
+      }
       c.disconnect();
       Kiponos.resetSingleton();
+      ensureE2eEnv();
     }
   }, 30000);
 
   it("rejects mismatched profile with valid tokens (handshake 500 class)", async () => {
     ensureE2eEnv();
-    const prev = process.env.KIPONOS;
-    process.env.KIPONOS = "['Not-A-Real-App']['9.9.9']['Nowhere']['ghost']";
+    const creds = loadLiveCreds();
+    const envFile = writeTempEnv(
+      [
+        `KIPONOS_ID=${creds.idToken}`,
+        `KIPONOS_ACCESS=${creds.accessToken}`,
+        "KIPONOS=['Not-A-Real-App']['9.9.9']['Nowhere']['ghost']",
+      ].join("\n")
+    );
     Kiponos.resetSingleton();
-    const c = Kiponos.createFromEnv({ requestTimeoutMs: 20000, quiet: true });
+    const c = Kiponos.createFromEnv({
+      envFile,
+      requestTimeoutMs: 20000,
+      quiet: true,
+    });
     try {
       await expect(c.connect()).rejects.toThrow();
       expect(c.ready).toBe(false);
     } finally {
-      process.env.KIPONOS = prev;
+      try {
+        unlinkSync(envFile);
+      } catch {
+        /* ignore */
+      }
       c.disconnect();
       Kiponos.resetSingleton();
+      ensureE2eEnv();
     }
   }, 35000);
 
@@ -110,19 +152,33 @@ describe.skipIf(!hasCreds)("E2E auth rejection (PROD)", () => {
   it("createFromEnv fails cleanly with bad tokens in env", async () => {
     ensureE2eEnv();
     const creds = loadLiveCreds();
-    const prev = process.env.KIPONOS_ID;
-    process.env.KIPONOS_ID = "not-a-real-token";
+    const envFile = writeTempEnv(
+      [
+        "KIPONOS_ID=not-a-real-token",
+        "KIPONOS_ACCESS=also-fake",
+        `KIPONOS=${FAMILY_PROFILE}`,
+      ].join("\n")
+    );
     Kiponos.resetSingleton();
-    const c = Kiponos.createFromEnv({ requestTimeoutMs: 15000, quiet: true });
+    const c = Kiponos.createFromEnv({
+      envFile,
+      requestTimeoutMs: 15000,
+      quiet: true,
+    });
     try {
-      await c.connect();
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      assertNoSecretsIn(msg, creds);
+      await expect(c.connect()).rejects.toThrow();
+      // failure messages must not embed real token values
+      const err = c.error;
+      if (err) assertNoSecretsIn(err.message, creds);
     } finally {
-      process.env.KIPONOS_ID = prev;
+      try {
+        unlinkSync(envFile);
+      } catch {
+        /* ignore */
+      }
       c.disconnect();
       Kiponos.resetSingleton();
+      ensureE2eEnv();
     }
   }, 30000);
 });
