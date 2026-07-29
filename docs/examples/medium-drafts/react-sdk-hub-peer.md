@@ -1,24 +1,26 @@
 # The Fourth Voice on the Hub Was Not Another JVM
 
-*A traveler’s note from a living config tree.*
+*A traveler’s note from a living config tree: the Node peer that finally spoke the same language as Java.*
 
 ---
 
 There is a class of production decisions that are **too small for a release** and **too important for a chat thread**.
 
-We already had three kinds of participants on the Kiponos hub:
+I have sat in rooms where the backend already had three kinds of participants on the Kiponos hub:
 
 1. Humans on the **dashboard**  
 2. **Java** services with `createForCurrentTeam()`  
 3. **Python** agents writing ops state  
 
-What we did **not** have was a first-class **Node/React backend** peer with the same contract: env identity, in-memory tree, live deltas.
+What we did **not** have was a first-class **Node** peer with the same contract: env identity, in-memory tree, live deltas — while a React UI stayed thin and honest.
 
-Redeploying a frontend bundle to change `demo/status-wall/status-alpha` is how teams invent folklore.
+Redeploying a frontend bundle to change `demo/status-wall/status-alpha` is how teams invent folklore. Someone ships a SPA build to flip a shared string. Tokens leak into public JS because the file was named `.env`. The browser becomes a participant it was never meant to be.
+
+That is not real-time config. That is a ceremony with a webpack graph attached.
 
 ---
 
-## The jar was fine. The browser was the wrong place for secrets.
+## What went wrong (the human version)
 
 A SaaS “React app” is usually two things people mash into one word:
 
@@ -27,170 +29,150 @@ A SaaS “React app” is usually two things people mash into one word:
 | SPA bundle | Visitor’s browser | **Never** |
 | Node (or any) API | Your machine / cluster | **Yes — like Java** |
 
-`.env` on a build host is not “safe” if the bundler inlines `VITE_KIPONOS_ID` into public JS.
+The engineers were not stupid. The UI needed live status. The mistake was treating the **browser** as the hub participant.
 
-So the React SDK is honest:
+I once heard a lead say, half joking, half broken:
+
+**“If the Node process could write the wall the way the JVM reads it, I’d stop shipping SPA builds for ops strings.”**
+
+That sentence is the whole product brief.
+
+<!-- medium-img: diagram-spa-vs-node.png -->
+
+---
+
+## The Super Pattern (process identity, not a SPA secret)
+
+The React SDK is honest about where identity lives:
 
 ```js
 import { Kiponos } from '@kiponos/react/server';
 
 const kip = Kiponos.createFromEnv(); // or createForCurrentTeam()
 await kip.connect();
+await kip.path("demo", "status-wall").set("status-alpha", "focus");
 ```
 
-No constructor tokens. Process env only — the same idea as Java’s singleton.
+No constructor tokens in the browser. Process env only — the same idea as Java’s singleton.
 
-<!-- medium-img: diagram-spa-vs-node.png -->
-
----
-
-## Hub tree
+Hub tree:
 
 ```text
-demo/status-wall/status-alpha = online
-demo/status-wall/status-beta  = home
-demo/status-wall/note         = live
-demo/status-wall/last-ping    = <iso>
+demo / status-wall / status-alpha = online
+demo / status-wall / status-beta  = home
+demo / status-wall / note         = live
+demo / status-wall / last-ping    = <iso>
 ```
 
-Local `get()` on the hot path. Dashboard, Java, Python, or Node `set()` when the world changes.
+Local `get()` on the hot path. Dashboard, Java, Python, or Node `set()` when the world changes. The SPA talks **SSE to your Node process**, not Connect tokens to the hub.
+
+That is the Super Pattern for frontends:
+
+> Live hub + process identity + thin UI mirror = decisions that move without a release **or** a leaked token.
 
 <!-- medium-img: diagram-hub-peers.png -->
 
 ---
 
-## Snippet (Java still peers with Node)
+## The example (Java still peers with Node)
+
+Published under:
+
+**`examples/java/react-sdk-hub-peer`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/react-sdk-hub-peer)
+
+The Java peer reads the same leaves the Node process wrote:
 
 ```java
 Kiponos k = Kiponos.createForCurrentTeam();
-Folder wall = k.path("demo", "status-wall");
-String alpha = wall.get("status-alpha", "—");
-// Node createFromEnv wrote this seconds ago — no redeploy
+try {
+    Folder wall = k.getRootFolder()
+        .folderOrCreate("demo")
+        .folderOrCreate("status-wall");
+    String alpha = wall.hasKey("status-alpha")
+        ? wall.get("status-alpha")
+        : "—";
+    System.out.println("status-alpha=" + alpha);
+    // Node createFromEnv wrote this seconds ago — no redeploy
+} finally {
+    k.disconnect();
+}
 ```
 
-Node side (the new participant):
+Node side (the fourth voice):
 
 ```js
 const kip = Kiponos.createForCurrentTeam();
 await kip.connect();
 await kip.path("demo", "status-wall").set("status-alpha", "focus");
+await kip.path("demo", "status-wall").set("last-ping", new Date().toISOString());
 ```
-
-The browser UI talks **SSE to your Node process**, not Connect tokens to the hub.
-
----
-
-## Live proof
-
-Run the pattern locally: a small status-wall SPA talks to your Node process (`createFromEnv` + SSE), and a Java peer on the same hub profile reads the same leaves.
 
 Two tabs. One status flip. Everyone sees it — including a JVM that never restarted.
 
 Public surface: **[kiponos.io](https://kiponos.io)** (hub + docs) and the example tree on GitHub.  
-Do **not** treat private team homes / family ops walls as public demo URLs.
+Do **not** treat private team homes or private ops walls as public demo URLs.
 
 ---
 
-## How to try
+## How to try it
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
 
-# Node
-import { Kiponos } from '@kiponos/react/server'
-const kip = Kiponos.createFromEnv()
-await kip.connect()
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/react-sdk-hub-peer
+# pair with your Node status-wall using @kiponos/react createFromEnv
+# Java peer:
+./gradlew test run   # when wired like sibling examples
 ```
 
-Java remains:
+Flip `demo/status-wall/status-alpha` from the dashboard or Node. The Java print should follow the hub — not the last SPA deploy.
 
-```java
-Kiponos.createForCurrentTeam();
-```
-
-Same hub. Same moral.
-
----
-
-
-
-
-Public tree:
-
-`examples/java/react-sdk-hub-peer`
-
-```bash
-cd examples/java/react-sdk-hub-peer
-./gradlew test run
-```
-
-Full path on GitHub:
-
+Full path on GitHub:  
 https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/react-sdk-hub-peer
 
-
-## The moral
-
-**People should not have to ship a release to make a decision** — and they should not paste service tokens into a SPA to share state.  
-
-Identity is **where the process runs**. The fourth voice is Node. The UI can stay thin, live, and honest.
-
-
 ---
 
-## Configuration hell, restated for frontends
+## Old world vs live hub
 
-Backend teams already learned: packaging timeouts in a jar turns every incident into a release. Frontend teams are replaying the same movie with a different costume — shipping a new SPA build to flip a shared operational string.
-
-The hub does not care whether the writer was Spring Boot, a Python agent, or a Node process that happens to serve a React tree. It cares that **identity is a process**, and that deltas arrive on a living connection.
-
----
-
-## What went wrong in the usual SPA story
-
-1. Secrets were treated as “env” because the filename was `.env`.  
-2. The bundler inlined Connect tokens into public JS.  
-3. Browser WebSocket upgrades could not carry Java-style handshake headers.  
-4. Someone proposed weakening the server handshake “for CORS” — which was never the diagnosis.
-
-The correct story is duller and safer: the **Node API** is the participant; the SPA is a client of *your* API.
-
----
-
-## The example pattern
-
-A status wall is intentionally small:
-
-- A few shared status fields  
-- A shared note  
-- A ping timestamp  
-
-Enough to prove bi-directional updates without building a second product. Keep **private** ops homes (family tools, commute walls, OTP timing) off public write-ups.
-
-When Java calls:
-
-```java
-k.path("demo", "status-wall").get("status-alpha", "—");
-```
-
-…it is reading the same leaf the Node `createFromEnv` process wrote after a button press in the SPA.
+| Move | Old world (SPA as participant) | Live hub (Node peer) |
+|------|--------------------------------|----------------------|
+| Flip a status string | Ship SPA build | Node / dashboard `set()` |
+| Where tokens live | Often public JS | Process env only |
+| Java sees the change | After redeploy folklore | Same tree, live deltas |
+| Browser role | Fake hub client | Client of **your** API / SSE |
 
 ---
 
 ## A traveler’s checklist
 
-- Prefer `createForCurrentTeam` / `createFromEnv` over token constructors.  
-- Keep Connect tokens next to other production secrets.  
-- Bridge browsers with SSE/API you control.  
-- Let the dashboard remain the human surface; let SDKs remain service surfaces.  
-- Measure success by **seconds from judgment to effect**, not by how many languages have a client library.  
-- Never publish private team path trees or private product URLs in public articles.
+1. Prefer `createForCurrentTeam` / `createFromEnv` over token constructors.  
+2. Keep Connect tokens next to other production secrets — never in a bundler input that ships to visitors.  
+3. Bridge browsers with SSE/API you control.  
+4. Let the dashboard remain the human surface; let SDKs remain service surfaces.  
+5. Measure success by **seconds from judgment to effect**, not by how many languages have a client library.  
+6. Never publish private team path trees or private product URLs in public articles.  
+7. Rehearse a two-tab proof (Node write → Java read) before the next “just put the SDK in the frontend” meeting.
+
+---
+
+## The moral
+
+**People should not have to ship a release to make a decision** — and they should not paste service tokens into a SPA to share state.
+
+Identity is **where the process runs**. The fourth voice is Node. The UI can stay thin, live, and honest.
+
+Ship the peer once. Leave the bundle alone when the only thing that changed is a shared operational string.
 
 ---
 
 ## The lie we stop telling
 
-“We’ll just put the SDK in the frontend.”  
+“We’ll just put the SDK in the frontend.”
 
 No. We’ll put **live state** in the hub, put **identity** on the process, and let the frontend stay a fast mirror.
+
+---
+
+*Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/react-sdk-hub-peer](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/react-sdk-hub-peer)*

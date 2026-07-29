@@ -1,104 +1,121 @@
 # The Strategy Pattern Promised Runtime Freedom — Then We Redeployed to Change It
 
-*A traveler’s note on Gang of Four, checkout pricing, and the Super Pattern that finally keeps the promise.*
+*A traveler’s note from a checkout war room: the algorithm that only swapped after CI.*
 
 ---
 
-I have drawn the Strategy pattern on more whiteboards than I care to count.
+I have sat through more design reviews where someone wrote **“runtime strategy”** on a whiteboard than I care to count.
 
-Boxes. Arrows. A tidy interface. Three concrete classes. Someone always nods and says: **“So we can swap algorithms at runtime.”**
+The boxes looked honest. Interface on top. Three concrete classes. A context that “selects.” Someone always says the comforting sentence:
 
-Runtime.
+**“So we can swap the algorithm without touching callers.”**
 
-That word does a lot of work in a design-review room. It sounds like freedom. It sounds like the system will listen when the business changes its mind at 2:14pm on a Friday.
+What they mean — and what the jar actually does — are different animals.
 
-Then production arrives, and “runtime” quietly means *the next release train*.
+In the rooms I keep landing in, “runtime” quietly means *the next green build*. Merchandising wants loyalty for two hours of a flash sale. Risk wants flat pricing while a partner is sick. Ops wants a flip **before** the conversion graph finishes falling. Someone opens a PR to change a Spring bean name. CI runs. A jar rolls. Half the replicas still price the old way. The sale ends. The postmortem blames process.
 
----
-
-## What Strategy was always trying to say
-
-Strategy is not about clever class names. At its core it is an admission:
-
-**Behavior is not permanent.**
-
-Pricing formulas, routing policies, fraud scores, recommendation weights — they want to move when the world moves. The GoF pattern gives you a clean place to put those algorithms. It does *not* give you a nervous system to choose among them while the process is already hot.
-
-So teams do what teams do:
-
-- hard-code a default  
-- wire a Spring bean name  
-- bury a `switch` in a service  
-- wait for CI  
-
-The pattern’s *shape* is flexible. The *selection* is still a fossil.
+That is not Strategy. That is a ceremony with a shopping cart attached.
 
 ---
 
-## Super Pattern: Live Strategy Router
+## What went wrong (the human version)
 
-We keep the classic shape — interface, implementations, context.
+The engineers were not stupid. The GoF pattern was not wrong.
 
-We move the **selection** (and the knobs the strategies need) into [Kiponos.io](https://kiponos.io):
+The problem was the **path to choose**.
 
-```text
-patterns / strategy / checkout / active
-patterns / strategy / checkout / volume-threshold
-patterns / strategy / checkout / loyalty-bps
-```
+In the frozen form, selection lives next to code:
 
-- `active` = `flat` | `volume` | `loyalty`  
-- volume strategy reads its threshold live  
-- loyalty strategy reads discount bps live  
+- a hard-coded default  
+- a bean name in YAML that only ships with the artifact  
+- a `switch` that nobody wants to touch at 14:12 on a Friday  
 
-Every `priceCart()` does a **local** hub read, then runs pure Java. No HTTP on the hot path. No redeploy to change who prices the cart.
+So every real business change becomes a release discussion. Growth wants **loyalty**. Margin wants **volume**. Fraud wants **flat**. The jar becomes a hostage.
 
-That is the Super Pattern:
+I once heard a lead say, half joking, half broken:
 
-**Gang of Four structure + live policy tree = behavior that can change while money is still moving.**
+**“If we could just flip which mind prices the cart without a deploy, I’d sleep.”**
+
+That sentence is the whole product brief.
 
 <!-- medium-img: diagram-strategy-gof-vs-super.png -->
 
 ---
 
-## Why Kiponos is the companion Strategy always needed
+## The Super Pattern (live selection, not a redeploy)
 
-Not only humans flip `active` in the dashboard.
+We keep the classic shape — interface, implementations, context.
 
-Another service — promotions, risk, a partner SDK — can **programmatically** `set` the same keys. WebSocket deltas arrive. The in-process tree updates. The next checkout decision already belongs to a different algorithm.
-
-Strategy always wanted remote authority over *which mind is thinking*. Kiponos is that authority without a restart.
-
----
-
-## The example (standalone Java)
-
-Runnable under:
-
-```bash
-examples/java/pattern-strategy-live-router
-./gradlew test run
-```
-
-It ensures the policy folder, prints the active strategy, and prices a demo cart. Change `active` in the hub. Run again. The jar is innocent. The selection is live.
+We move **which algorithm is thinking** (and the knobs those algorithms need) into a live hub:
 
 ```text
-patterns / strategy / checkout / active = volume
+patterns / strategy / checkout / active          = flat | volume | loyalty
+patterns / strategy / checkout / volume-threshold = 10000
+patterns / strategy / checkout / loyalty-bps      = 150
 ```
+
+Every `priceCart()` does a **local** hub read, then runs pure Java. No HTTP on the hot path. No redeploy to change who prices the cart.
+
+That is the Super Pattern:
+
+> Gang of Four structure + live policy tree = behavior that can change while money is still moving.
 
 <!-- medium-img: diagram-strategy-hub-flow.png -->
 
 ---
 
-## What this is not
+## The example (standalone Java)
 
-- Not “delete the Strategy pattern and put if-else in the dashboard.”  
-- Not secrets or card data in the hub.  
-- Not free-form code injection — allowlisted strategy ids only.
+Published under:
 
-The algorithms stay reviewed code. The **choice among them** becomes operational.
+**`examples/java/pattern-strategy-live-router`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-strategy-live-router)
+
+It connects with `Kiponos.createForCurrentTeam()`, ensures the policy folder, prices a demo cart, and prints which strategy ran:
+
+```java
+static Quote priceCart(Folder policy, long cartCents, boolean loyaltyMember) {
+    String id = readActive(policy); // local get() of "active"
+    PricingStrategy strategy = STRATEGIES.getOrDefault(id, STRATEGIES.get("flat"));
+    StrategyContext ctx = new StrategyContext(
+            cartCents,
+            loyaltyMember,
+            readInt(policy, "volume-threshold", 10_000),
+            readInt(policy, "loyalty-bps", 150)
+    );
+    long total = strategy.priceCents(ctx);
+    return new Quote(id, cartCents, total, strategy.describe(ctx));
+}
+
+static Folder ensureStrategyFolder(Kiponos kiponos) {
+    Folder checkout = kiponos.getRootFolder()
+        .folderOrCreate("patterns")
+        .folderOrCreate("strategy")
+        .folderOrCreate("checkout");
+    if (!checkout.hasKey("active")) {
+        checkout.set("active", "flat");
+    }
+    // volume-threshold, loyalty-bps seeded the same way
+    return checkout;
+}
+```
+
+Ops changes `active` on the hub. You re-run (or keep the process listening). **No jar rebuild** to swap the mind that prices the next cart.
 
 ---
+
+## How to try it
+
+```bash
+git clone https://github.com/kiponos-io/kiponos-io.git
+cd kiponos-io/examples/java/pattern-strategy-live-router
+cp kiponos.local.env.example kiponos.local.env   # tokens from kiponos.io → Connect
+./gradlew test run
+```
+
+Then flip `patterns/strategy/checkout/active` on the Kiponos dashboard (or another SDK client) and run again. The printed strategy should follow the hub — not the last release.
+
+Full source + tests:  
+https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-strategy-live-router
 
 ---
 
@@ -128,11 +145,21 @@ The next cart prices under loyalty. The jar never left the node. When the window
 | Clamp logic (min/max bps) | Loyalty basis points |
 | Pure pricing math | Which mind is thinking |
 
-That table is the entire architecture argument. Misplace a row and you either freeze the business or invite unreviewed code into production via a text box.
+Misplace a row and you either freeze the business or invite unreviewed code into production via a text box.
 
 ---
 
-## War-room protocol (paste into the runbook)
+## What this is not
+
+- Not “delete Strategy and put if-else in the dashboard.”  
+- Not secrets or card data in the hub.  
+- Not free-form code injection — allowlisted strategy ids only.
+
+The algorithms stay reviewed code. The **choice among them** becomes operational.
+
+---
+
+## War-room protocol (keep this boring)
 
 1. Name the hub path: `patterns/strategy/checkout/*`  
 2. Speak the clamp before anyone types (max bps, allowlisted ids only)  
@@ -141,28 +168,17 @@ That table is the entire architecture argument. Misplace a row and you either fr
 5. Revert or step — never leave a “temporary” strategy as the silent default  
 6. Postmortem line: who moved `active`, from→to, whether automation should own the next flip  
 
----
-
-## Testing that does not lie
-
-- Unit-test each strategy with fixed numbers (no network).  
-- Unit-test the router with a fake policy map: unknown `active` → safe default.  
-- Integration-test the hub path against the public sandbox when you can.  
-- Never assert wall-clock WebSocket delivery in CI.
-
-The example module under `examples/java/pattern-strategy-live-router` is the golden path — clone it before inventing a second router.
+Boring checklists survive 3pm flash sales. Clever ones do not.
 
 ---
 
-## The moral, if you need one on a slide
+## The moral
 
-The Gang of Four already knew systems need freedom of behavior.
+**People should not have to ship a release to make a decision.**
 
-What they could not ship in 1994 was a realtime hub where people **and** other machines rewrite the inner variables of a pattern without redeploy.
+Strategy always promised freedom of behavior. Freedom that only moves at CI speed is not freedom — it is a delayed vote.
 
-**Strategy is not a Super Pattern until selection can move at the speed of the business.**
-
-Kiponos.io — the companion that turns Design Patterns into live ones.
+Ship the selection path once. Leave the jar alone when the only thing that changed is **which algorithm should think next**.
 
 ---
 
