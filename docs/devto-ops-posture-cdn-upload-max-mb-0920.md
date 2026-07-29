@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live upload size ceiling MB via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-upload-max-mb-0920.md
-main_image: https://files.catbox.moe/p8js6c.jpg
+main_image: https://litter.catbox.moe/4tukyp.jpg
 ---
 
 **The Aha:** `uploadMaxMb` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
