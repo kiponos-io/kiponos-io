@@ -2,16 +2,31 @@
 main_image: https://files.catbox.moe/wswv2d.jpg
 title: "React + Kiponos: API Rate Limit Knobs Without Bounce"
 published: false
-tags: react, typescript, devops, websocket, kiponos
-description: Use the Kiponos React SDK to live-control RPS cap (`api/rate-limit-rps`) without redeploy. createFromEnv, Java parity, and a runnable Install with `npm install @kiponos/react`. Runnable example included.
+tags: react, typescript, devops, kiponos
+description: "Live API RPS ceiling on the Kiponos hub from a React server peer — createFromEnv, no SPA secrets, Java parity. Install @kiponos/react."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-react-sdk-rate-limit.md
 ---
 
-# React + Kiponos: API Rate Limit Knobs Without Bounce
+**The Aha:** Api rps ceiling is a judgment call under pressure. If the only path is a SPA rebuild, you do not have a control plane — you have a ceremony.
 
-**Use case.** Control **RPS cap** at hub path `api/rate-limit-rps` from a **@kiponos/react** process peer — while Java and the dashboard stay in sync.
+I have sat through a room that looked like this: edge traffic spike where the only lever was a config PR. Someone said “we just need to flip it.” Someone else opened a PR. CI ran. The window closed.
 
-I have met teams that bounced pods just to change a rate limit integer. The fix is not another SPA build. It is a hub key.
+The fix is not another frontend deploy. It is a **hub key** read by a **process** that is allowed to hold Connect tokens.
+
+## What went wrong (the human version)
+
+A SaaS “React app” is usually two things mashed into one word:
+
+| Piece | Runs where | Holds Connect tokens? |
+|-------|------------|------------------------|
+| SPA / browser bundle | Visitor’s machine | **Never** |
+| Node (or any) API | Your cluster | **Yes — like Java** |
+
+`.env` on a build host is not “safe” if the bundler inlines `VITE_*` / `NG_*` into public JS. The **Node process** is the participant. The UI talks to **your** API (SSE/REST) — not Connect tokens to the hub.
+
+So the Super Pattern for frontends is dull on purpose:
+
+> Live hub + process identity + thin UI mirror = decisions that move without a release **or** a leaked token.
 
 ## Package
 
@@ -19,50 +34,99 @@ I have met teams that bounced pods just to change a rate limit integer. The fix 
 npm install @kiponos/react
 ```
 
-https://www.npmjs.com/package/@kiponos/react  
-Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
+- npm: https://www.npmjs.com/package/@kiponos/react
+- Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-react-sdk
+- Companion Java tree: `examples/java/react-sdk-rate-limit` (same hub moral)
 
-Companion: `examples/java/react-sdk-rate-limit`
+## Hub path (name it so humans find it at 3am)
 
-## Code
+```text
+api/rps-cap
+```
+
+Ops or another SDK client **sets** the leaf. Every peer **gets** locally after WebSocket deltas. No “which replica still has the old YAML?” scavenger hunt.
+
+## Code (server peer — process env only)
 
 ```ts
 import { Kiponos } from '@kiponos/react/server';
 
-const kip = Kiponos.createFromEnv();
+const kip = Kiponos.createFromEnv(); // or createForCurrentTeam()
 await kip.connect();
 await kip.ensurePath('api');
-await kip.path('api').set('rate-limit-rps', '100');
-// live UI (BFF-injected client):
-// const v = useKiponosValue('api/rate-limit-rps', { defaultValue: '100' });
+await kip.path('api').set('rps-cap', '…');
+// Browser UI: call *your* API / SSE — never put KIPONOS_ACCESS in the SPA bundle
 ```
+
+Java still peers on the same tree:
+
+```java
+Kiponos k = Kiponos.createForCurrentTeam();
+String v = k.path("api").get("rps-cap", "…");
+// Node/React wrote this seconds ago — no redeploy
+```
+
+That is the whole product brief: **structure in the jar, selection on the hub**.
+
+## Browser UI pattern (keep the SPA thin)
+
+```text
+SPA / React UI  ↔  your API (@kiponos/react createFromEnv + SSE)  ↔  Kiponos hub
+                              ↑
+                     same env contract as Java
+```
+
+| Do | Don’t |
+|----|--------|
+| `createFromEnv` / `createForCurrentTeam` on the server | Token constructors in client bundles |
+| Bridge browsers with API/SSE you control | Expose Connect tokens for “simpler WebSocket” |
+| Name hub paths for war rooms | Hide knobs in undocumented env files |
+| Measure seconds from judgment to effect | Count deploys as progress |
 
 ## How to try
 
 ```bash
-# 1) Install the SDK from npm
-npm install @kiponos/react
-
-# 2) Connect credentials (same as Java)
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
 
-# 3) Runnable Node peer
-git clone https://github.com/kiponos-io/kiponos-io.git
-cd kiponos-io/examples/node/react-status-wall
-npm install
-npm start
-# → writes demo/status-wall/* on the hub
+npm install @kiponos/react
 
-# 4) Optional Java peer (same tree)
+git clone https://github.com/kiponos-io/kiponos-io.git
+# Node status-wall peer (writes live leaves):
+cd kiponos-io/examples/node/react-status-wall
+npm install && npm start
+
+# Optional Java peer on the same hub profile:
 cd ../../java/react-sdk-hub-peer
-# export same KIPONOS_* then run the Java example / tests
+# export same KIPONOS_* then ./gradlew test run when wired like sibling examples
 ```
 
-Package: [@kiponos/react on npm](https://www.npmjs.com/package/@kiponos/react)
+Flip `rps-cap` (or your domain leaf) on the dashboard or from the Node peer. The Java print should follow the hub — not the last SPA deploy.
+
+Full public surface: [kiponos.io](https://kiponos.io) · [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+
+## Old world vs live hub
+
+| Move | Old world (SPA as participant) | Live hub (Node process) |
+|------|--------------------------------|------------------------|
+| Change API RPS ceiling | Ship SPA / service build | Dashboard or SDK `set()` |
+| Where tokens live | Often public JS | Process env only |
+| Java sees the change | After redeploy folklore | Same tree, live deltas |
+| Rollback | Redeploy previous artifact | Flip the value back |
+
+## War-room protocol (keep this boring)
+
+1. Name the hub path out loud: `api/rps-cap`  
+2. Speak the clamp / allowlist before anyone types  
+3. Write reason code with the change (`demo`, `incident`, `peak`)  
+4. Watch the metric that matters for five minutes  
+5. Revert or step — never leave a “temporary” value as silent default  
+6. Postmortem line: who moved the key, from→to, whether automation should own the next flip  
 
 ## The moral
 
-People should not have to ship a release to make a decision. Live **RPS cap** belongs on the hub — and the React SDK is a peer on that hub.
+**People should not have to ship a release to make a decision** — and they should not paste service tokens into a SPA to share state.
+
+Identity is **where the process runs**. React’s job is to be a first-class peer on the hub, not a bundler that smuggles secrets. Ship the peer once. Leave the bundle alone when the only thing that changed is **API RPS ceiling**.
 
 — Kiponos · https://kiponos.io
