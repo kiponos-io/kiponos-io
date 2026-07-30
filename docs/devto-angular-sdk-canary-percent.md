@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/e166i8.jpg
 title: "Angular + Kiponos: Canary Percent Live on the Hub"
 published: false
 tags: angular, typescript, devops, websocket, kiponos

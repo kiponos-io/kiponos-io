@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/68lli5.jpg
 title: "Angular + Kiponos: A/B Checkout Weights in Real Time"
 published: false
 tags: angular, typescript, devops, websocket, kiponos

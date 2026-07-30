@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/uiggaj.jpg
 title: "Angular + Kiponos: Incident Pause Flag the Agents Obey"
 published: false
 tags: angular, typescript, devops, websocket, kiponos

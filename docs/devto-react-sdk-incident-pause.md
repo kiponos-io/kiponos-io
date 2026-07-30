@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/uiggaj.jpg
 title: "React + Kiponos: Incident Pause Flag the Agents Obey"
 published: false
 tags: react, typescript, devops, websocket, kiponos

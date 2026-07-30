@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/dlkkmj.jpg
 title: "Angular + Kiponos: Feature Kill Switch From the Hub"
 published: false
 tags: angular, typescript, devops, websocket, kiponos

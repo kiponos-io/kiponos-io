@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/dlkkmj.jpg
 title: "React + Kiponos: Feature Kill Switch From the Hub"
 published: false
 tags: react, typescript, devops, websocket, kiponos

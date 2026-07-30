@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/wswv2d.jpg
 title: "React + Kiponos: API Rate Limit Knobs Without Bounce"
 published: false
 tags: react, typescript, devops, websocket, kiponos

@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/wswv2d.jpg
 title: "Angular + Kiponos: API Rate Limit Knobs Without Bounce"
 published: false
 tags: angular, typescript, devops, websocket, kiponos

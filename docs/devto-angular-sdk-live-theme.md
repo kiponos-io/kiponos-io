@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/z65ex6.jpg
 title: "Angular + Kiponos: Live Theme Toggle Without a SPA Redeploy"
 published: false
 tags: angular, typescript, devops, websocket, kiponos

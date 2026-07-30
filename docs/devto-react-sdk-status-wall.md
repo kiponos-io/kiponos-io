@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/x854ey.jpg
 title: "React + Kiponos: Shared Status Wall Across Peers"
 published: false
 tags: react, typescript, devops, websocket, kiponos

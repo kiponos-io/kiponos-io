@@ -1,4 +1,5 @@
 ---
+main_image: https://files.catbox.moe/e166i8.jpg
 title: "React + Kiponos: Canary Percent Live on the Hub"
 published: false
 tags: react, typescript, devops, websocket, kiponos
