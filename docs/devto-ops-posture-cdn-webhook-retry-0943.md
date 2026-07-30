@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live webhook retry budget via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-webhook-retry-0943.md
-main_image: https://files.catbox.moe/3iewmk.jpg
+main_image: https://files.catbox.moe/pvpsla.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

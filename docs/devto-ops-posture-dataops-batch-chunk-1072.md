@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live batch chunk size via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-batch-chunk-1072.md
-main_image: https://files.catbox.moe/fdp30y.jpg
+main_image: https://files.catbox.moe/1vj4t4.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live canary traffic share via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-canary-percent-1060.md
-main_image: https://files.catbox.moe/p7sfjc.jpg
+main_image: https://files.catbox.moe/3hkfqn.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

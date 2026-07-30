@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live alert critical threshold via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-alert-crit-1082.md
-main_image: https://files.catbox.moe/y765lg.jpg
+main_image: https://files.catbox.moe/qa5hu7.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

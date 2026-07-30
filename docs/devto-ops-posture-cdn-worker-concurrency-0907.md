@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-worker-concurrency-0907.md
-main_image: https://files.catbox.moe/8mow5j.jpg
+main_image: https://files.catbox.moe/uz3ftd.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
