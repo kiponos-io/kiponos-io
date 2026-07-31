@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live consumer prefetch via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-queue-prefetch-1056.md
-main_image: https://files.catbox.moe/fltlhg.jpg
+main_image: https://litter.catbox.moe/v8yylk.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

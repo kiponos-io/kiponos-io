@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-log-sample-1063.md
-main_image: https://files.catbox.moe/6wss1l.jpg
+main_image: https://files.catbox.moe/s9p3uh.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

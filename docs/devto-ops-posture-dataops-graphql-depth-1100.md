@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live GraphQL query depth via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-graphql-depth-1100.md
-main_image: https://files.catbox.moe/fnpqj0.jpg
+main_image: https://files.catbox.moe/0ikh7d.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

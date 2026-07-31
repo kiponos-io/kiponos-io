@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live OAuth token TTL via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-oauth-ttl-1099.md
-main_image: https://files.catbox.moe/kzy4d5.jpg
+main_image: https://litter.catbox.moe/fr5i4w.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

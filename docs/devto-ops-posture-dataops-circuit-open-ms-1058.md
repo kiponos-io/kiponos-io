@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live circuit open duration via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-circuit-open-ms-1058.md
-main_image: https://files.catbox.moe/bwpj04.jpg
+main_image: https://litter.catbox.moe/fqbt36.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

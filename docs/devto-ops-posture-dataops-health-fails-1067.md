@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live health fail threshold via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-health-fails-1067.md
-main_image: https://files.catbox.moe/4ldao5.jpg
+main_image: https://litter.catbox.moe/23u0jw.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

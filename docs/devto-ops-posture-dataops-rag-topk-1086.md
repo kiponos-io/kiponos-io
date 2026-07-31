@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live RAG top-k via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-rag-topk-1086.md
-main_image: https://files.catbox.moe/9812ob.jpg
+main_image: https://files.catbox.moe/1y1cr8.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

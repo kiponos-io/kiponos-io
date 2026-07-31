@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live overbooking percent via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-overbook-pct-1074.md
-main_image: https://files.catbox.moe/rifjn6.jpg
+main_image: https://litter.catbox.moe/u1zlgp.jpg
 ---
 
 **The Aha:** `overbookPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

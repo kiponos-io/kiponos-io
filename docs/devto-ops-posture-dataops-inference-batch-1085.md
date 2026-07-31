@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live inference batch size via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-inference-batch-1085.md
-main_image: https://files.catbox.moe/1zwxqo.jpg
+main_image: https://files.catbox.moe/d8qy8o.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
