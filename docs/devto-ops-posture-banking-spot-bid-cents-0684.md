@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live spot bid ceiling cents via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-spot-bid-cents-0684.md
-main_image: https://litter.catbox.moe/y2l0m1.jpg
+main_image: https://iili.io/CSCcU6Q.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

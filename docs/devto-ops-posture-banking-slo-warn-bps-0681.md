@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live SLO warn burn bps via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-slo-warn-bps-0681.md
-main_image: https://litter.catbox.moe/vqp7zi.jpg
+main_image: https://iili.io/CSCckZb.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
