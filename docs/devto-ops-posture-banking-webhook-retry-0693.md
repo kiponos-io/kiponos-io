@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live webhook retry budget via Kiponos Java SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-webhook-retry-0693.md
-main_image: https://litter.catbox.moe/omqp2h.jpg
+main_image: https://d.uguu.se/tGMMRYop.jpg
 ---
 
 **The Aha:** `webhookMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

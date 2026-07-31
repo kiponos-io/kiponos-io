@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-waf-sensitivity-0688.md
-main_image: https://litter.catbox.moe/7wag9u.jpg
+main_image: https://d.uguu.se/jLmVhOeU.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

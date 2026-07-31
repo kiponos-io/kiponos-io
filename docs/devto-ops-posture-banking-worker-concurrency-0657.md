@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live worker concurrency via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-worker-concurrency-0657.md
-main_image: https://litter.catbox.moe/41lyoj.jpg
+main_image: https://d.uguu.se/gkSkDDUK.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

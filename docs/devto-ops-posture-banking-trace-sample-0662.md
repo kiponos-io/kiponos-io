@@ -4,7 +4,7 @@ published: false
 tags: java, banking, security, kiponos
 description: "Live trace sample per thousand via Kiponos Python SDK — banking posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-banking-trace-sample-0662.md
-main_image: https://litter.catbox.moe/cs0o7l.jpg
+main_image: https://h.uguu.se/tmXXkbLL.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
