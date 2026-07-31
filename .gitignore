@@ -44,3 +44,4 @@ scripts/*.user.service
 __pycache__/
 *.py[cod]
 
+examples/java/**/build/
