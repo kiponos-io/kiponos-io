@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live retry backoff base via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-backoff-ms-0903.md
-main_image: https://litter.catbox.moe/gf6kct.jpg
+main_image: https://iili.io/CSXpZOl.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
