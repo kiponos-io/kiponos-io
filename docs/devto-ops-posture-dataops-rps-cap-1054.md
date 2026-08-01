@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live ingress RPS ceiling via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-rps-cap-1054.md
-main_image: https://files.catbox.moe/v9wzlw.jpg
+main_image: https://iili.io/CS7nHns.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

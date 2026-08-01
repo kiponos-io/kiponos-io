@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live token budget per request via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-token-budget-1087.md
-main_image: https://files.catbox.moe/htleuu.jpg
+main_image: https://iili.io/CS7nMKv.jpg
 ---
 
 **The Aha:** `tokenBudget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-scroll-timeout-1094.md
-main_image: https://files.catbox.moe/lyw35b.jpg
+main_image: https://iili.io/CS7nBA7.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live SLO warn burn bps via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-slo-warn-bps-1081.md
-main_image: https://files.catbox.moe/zu3n7k.jpg
+main_image: https://iili.io/CS7nIPj.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

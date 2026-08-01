@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live spot bid ceiling cents via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-spot-bid-cents-1084.md
-main_image: https://files.catbox.moe/drbovf.jpg
+main_image: https://iili.io/CS7nRSV.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

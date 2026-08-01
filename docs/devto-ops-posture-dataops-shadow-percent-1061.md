@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live shadow traffic share via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-shadow-percent-1061.md
-main_image: https://files.catbox.moe/z4mvck.jpg
+main_image: https://iili.io/CS7nCN9.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

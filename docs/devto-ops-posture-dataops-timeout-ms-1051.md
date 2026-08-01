@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live outbound call timeout via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-timeout-ms-1051.md
-main_image: https://files.catbox.moe/0z60lr.jpg
+main_image: https://iili.io/CS7n1Va.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
