@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live graceful drain window via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-drain-ms-0916.md
-main_image: https://litter.catbox.moe/fo84nt.jpg
+main_image: https://iili.io/CSrZ1ff.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
