@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live idempotency window via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-idempotency-win-0948.md
-main_image: https://litter.catbox.moe/nk0jpy.jpg
+main_image: https://iili.io/CUdQp1e.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
