@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live batch chunk size via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-batch-chunk-0722.md
-main_image: https://files.catbox.moe/hre0r5.jpg
+main_image: https://iili.io/CS8d4Ve.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

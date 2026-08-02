@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live graceful drain window via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-drain-ms-0716.md
-main_image: https://files.catbox.moe/qdz8q0.jpg
+main_image: https://iili.io/CS82NX1.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

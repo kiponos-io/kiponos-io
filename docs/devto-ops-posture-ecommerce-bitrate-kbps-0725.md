@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-bitrate-kbps-0725.md
-main_image: https://files.catbox.moe/v8z312.jpg
+main_image: https://iili.io/CS8dslj.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

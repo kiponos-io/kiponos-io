@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live circuit trip count via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-circuit-failures-0709.md
-main_image: https://files.catbox.moe/xnz7wn.jpg
+main_image: https://iili.io/CS82Tgf.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

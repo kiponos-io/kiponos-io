@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live CORS max-age via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-cors-max-age-0746.md
-main_image: https://files.catbox.moe/wj7ypk.jpg
+main_image: https://iili.io/CS827bS.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

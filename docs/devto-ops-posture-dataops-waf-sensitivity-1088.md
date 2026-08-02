@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-waf-sensitivity-1088.md
-main_image: https://files.catbox.moe/fii05p.jpg
+main_image: https://iili.io/CS8d7Mg.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

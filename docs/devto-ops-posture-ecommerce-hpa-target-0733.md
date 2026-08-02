@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live HPA CPU target percent via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-hpa-target-0733.md
-main_image: https://files.catbox.moe/bv8now.jpg
+main_image: https://iili.io/CS82g7R.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

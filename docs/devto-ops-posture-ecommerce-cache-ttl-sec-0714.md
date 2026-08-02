@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live cache TTL seconds via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-cache-ttl-sec-0714.md
-main_image: https://files.catbox.moe/4g7gxk.jpg
+main_image: https://iili.io/CS82Jfa.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

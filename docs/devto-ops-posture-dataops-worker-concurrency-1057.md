@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live worker concurrency via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-worker-concurrency-1057.md
-main_image: https://files.catbox.moe/qb79he.jpg
+main_image: https://iili.io/CS8dVtt.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
