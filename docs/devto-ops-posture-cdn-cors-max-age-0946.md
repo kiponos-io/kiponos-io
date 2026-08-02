@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live CORS max-age via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-cors-max-age-0946.md
-main_image: https://litter.catbox.moe/0yna67.jpg
+main_image: https://iili.io/CSv0KTN.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
