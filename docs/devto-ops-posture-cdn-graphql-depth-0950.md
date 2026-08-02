@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live GraphQL query depth via Kiponos Python SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-graphql-depth-0950.md
-main_image: https://litter.catbox.moe/b4zit3.jpg
+main_image: https://iili.io/CStaEUx.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
