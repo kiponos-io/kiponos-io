@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live inference batch size via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-inference-batch-0935.md
-main_image: https://litter.catbox.moe/b0un66.jpg
+main_image: https://iili.io/CU2skJf.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
