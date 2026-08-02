@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live health fail threshold via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-health-fails-0917.md
-main_image: https://litter.catbox.moe/2lfopf.jpg
+main_image: https://iili.io/CSm5mZP.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
