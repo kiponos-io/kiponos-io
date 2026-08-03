@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live region traffic share via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-region-share-0730.md
-main_image: https://files.catbox.moe/beqh7q.jpg
+main_image: https://iili.io/CUxZQEu.jpg
 ---
 
 **The Aha:** `regionShare` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

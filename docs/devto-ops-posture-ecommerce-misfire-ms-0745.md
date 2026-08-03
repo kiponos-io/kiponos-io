@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live scheduler misfire threshold via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-misfire-ms-0745.md
-main_image: https://files.catbox.moe/xqpb61.jpg
+main_image: https://iili.io/CUxZ3J4.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

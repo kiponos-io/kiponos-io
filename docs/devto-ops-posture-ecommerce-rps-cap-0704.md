@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live ingress RPS ceiling via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-rps-cap-0704.md
-main_image: https://files.catbox.moe/9ex31d.jpg
+main_image: https://iili.io/CUxt9TB.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live upload size ceiling MB via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-upload-max-mb-0720.md
-main_image: https://files.catbox.moe/grwxog.jpg
+main_image: https://iili.io/CUxttnt.jpg
 ---
 
 **The Aha:** `uploadMaxMb` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

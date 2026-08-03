@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live per-tenant quota via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-tenant-quota-0729.md
-main_image: https://files.catbox.moe/r5dali.jpg
+main_image: https://iili.io/CUxt8n1.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

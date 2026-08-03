@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live outbox poll interval via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-outbox-poll-ms-0741.md
-main_image: https://files.catbox.moe/635tml.jpg
+main_image: https://iili.io/CUxZnse.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

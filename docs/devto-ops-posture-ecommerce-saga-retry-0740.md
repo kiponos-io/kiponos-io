@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live saga step retry budget via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-saga-retry-0740.md
-main_image: https://files.catbox.moe/3al3hi.jpg
+main_image: https://iili.io/CUxtxjI.jpg
 ---
 
 **The Aha:** `sagaMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

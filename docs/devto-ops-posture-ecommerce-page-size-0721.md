@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live pagination page size via Kiponos Java SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-page-size-0721.md
-main_image: https://files.catbox.moe/t91w0y.jpg
+main_image: https://iili.io/CUxZXmN.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
