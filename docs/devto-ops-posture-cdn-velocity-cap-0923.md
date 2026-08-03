@@ -4,7 +4,7 @@ published: false
 tags: java, networking, devops, kiponos
 description: "Live fraud velocity cap via Kiponos Java SDK — cdn posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-cdn-velocity-cap-0923.md
-main_image: https://litter.catbox.moe/2vgdgp.jpg
+main_image: https://iili.io/CUrNXAF.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
