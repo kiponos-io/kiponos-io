@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live UI/API debounce via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-debounce-ms-1097.md
-main_image: https://litter.catbox.moe/z8v627.jpg
+main_image: https://iili.io/CgFPH9S.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
