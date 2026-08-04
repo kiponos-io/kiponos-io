@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live HPA CPU target percent via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-hpa-target-1083.md
-main_image: https://litter.catbox.moe/tz9bsz.jpg
+main_image: https://iili.io/Cgnmlzg.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
