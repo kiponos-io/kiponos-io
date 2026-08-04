@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live CORS max-age via Kiponos Python SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-cors-max-age-0846.md
-main_image: https://files.catbox.moe/9puyfi.jpg
+main_image: https://iili.io/CUscnwv.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

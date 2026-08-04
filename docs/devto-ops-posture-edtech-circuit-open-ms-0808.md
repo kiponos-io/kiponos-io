@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live circuit open duration via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-circuit-open-ms-0808.md
-main_image: https://files.catbox.moe/kqe92q.jpg
+main_image: https://iili.io/CUscCAJ.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

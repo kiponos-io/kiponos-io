@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live JWT clock skew leeway via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-jwt-leeway-sec-0819.md
-main_image: https://files.catbox.moe/pktmgr.jpg
+main_image: https://iili.io/CUsctiN.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

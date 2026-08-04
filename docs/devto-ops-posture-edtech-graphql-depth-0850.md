@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live GraphQL query depth via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-graphql-depth-0850.md
-main_image: https://files.catbox.moe/y3qik5.jpg
+main_image: https://iili.io/CUscjHu.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

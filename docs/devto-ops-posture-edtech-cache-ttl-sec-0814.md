@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live cache TTL seconds via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-cache-ttl-sec-0814.md
-main_image: https://files.catbox.moe/075im5.jpg
+main_image: https://iili.io/CUsaruf.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

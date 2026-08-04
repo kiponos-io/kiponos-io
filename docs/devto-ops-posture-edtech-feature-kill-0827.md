@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live feature kill switch via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-feature-kill-0827.md
-main_image: https://files.catbox.moe/juxnx4.jpg
+main_image: https://iili.io/CUscXSe.jpg
 ---
 
 **The Aha:** `killSwitch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

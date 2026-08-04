@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live degradation mode via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-degrade-mode-0828.md
-main_image: https://files.catbox.moe/40mui9.jpg
+main_image: https://iili.io/CUscEV2.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

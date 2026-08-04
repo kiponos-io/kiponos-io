@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live alert critical threshold via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-alert-crit-0832.md
-main_image: https://files.catbox.moe/z38jm9.jpg
+main_image: https://iili.io/CUsaFpf.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

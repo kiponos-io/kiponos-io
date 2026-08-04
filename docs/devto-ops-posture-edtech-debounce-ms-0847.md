@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live UI/API debounce via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-debounce-ms-0847.md
-main_image: https://files.catbox.moe/kise54.jpg
+main_image: https://iili.io/CUsc1ol.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

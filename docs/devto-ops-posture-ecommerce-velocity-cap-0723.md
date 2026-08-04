@@ -4,7 +4,7 @@ published: false
 tags: java, ecommerce, devops, kiponos
 description: "Live fraud velocity cap via Kiponos Python SDK — ecommerce posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ecommerce-velocity-cap-0723.md
-main_image: https://files.catbox.moe/bt149i.jpg
+main_image: https://iili.io/CUsYyBI.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live HPA CPU target percent via Kiponos Python SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-hpa-target-0833.md
-main_image: https://files.catbox.moe/fgp9n9.jpg
+main_image: https://iili.io/CUsc8iB.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
