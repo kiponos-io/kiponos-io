@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-circuit-failures-1059.md
-main_image: https://litter.catbox.moe/3byvw7.jpg
+main_image: https://iili.io/CgHYuAQ.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
