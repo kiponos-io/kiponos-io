@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live idempotency window via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-idempotency-win-1098.md
-main_image: https://litter.catbox.moe/0hnwmg.jpg
+main_image: https://iili.io/Cg7gXJ2.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
