@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live pagination page size via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-page-size-1071.md
-main_image: https://litter.catbox.moe/gk5wh7.jpg
+main_image: https://iili.io/CgQVSfV.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
