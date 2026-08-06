@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live connection pool ceiling via Kiponos Python SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-pool-max-1055.md
-main_image: https://litter.catbox.moe/t9436g.jpg
+main_image: https://d.uguu.se/neKcNEhj.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
