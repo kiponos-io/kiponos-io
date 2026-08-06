@@ -4,7 +4,7 @@ published: false
 tags: java, dataengineering, devops, kiponos
 description: "Live outbox poll interval via Kiponos Java SDK — dataops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-dataops-outbox-poll-ms-1091.md
-main_image: https://litter.catbox.moe/nbpul8.jpg
+main_image: https://iili.io/CgsY5cx.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
