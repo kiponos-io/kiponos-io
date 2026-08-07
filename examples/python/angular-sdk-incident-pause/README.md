@@ -1,0 +1,1 @@
+# angular-sdk-incident-pause (Python peer)\n\nHub: `incident/pause-risky` default `off`\n\n```bash\npython3 peer.py\npython3 -m pytest -q\n```\n

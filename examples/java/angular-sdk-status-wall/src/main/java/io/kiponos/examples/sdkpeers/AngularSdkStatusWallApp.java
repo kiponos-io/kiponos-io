@@ -1,0 +1,48 @@
+package io.kiponos.examples.sdkpeers;
+
+import io.kiponos.sdk.Kiponos;
+import io.kiponos.sdk.configs.Folder;
+
+/**
+ * Angular Status Wall Fed by the Same Hub as Everyone Else
+ * Hub: ops/status-headline (default steady)
+ * Pain: Angular ops wall polls a different source than agents and Java
+ * Peers: Java + Python + @kiponos/angular (Node server)
+ */
+public final class AngularSdkStatusWallApp {
+    public static final String FOLDER = "ops";
+    public static final String KEY = "status-headline";
+    public static final String DEFAULT = "steady";
+
+    public static void main(String[] args) throws Exception {
+        Kiponos k = Kiponos.createForCurrentTeam();
+        try {
+            Folder p = ensure(k);
+            String v = read(p, KEY, DEFAULT);
+System.out.println(KEY + "=" + v);
+// hot path: honor live Angular status wall headline without restart
+Thread.sleep(1200L);
+        } finally {
+            k.disconnect();
+        }
+    }
+
+    static Folder ensure(Kiponos k) {
+        Folder f = k.getRootFolder()
+                .folderOrCreate(FOLDER);
+        if (!f.hasKey(KEY)) {
+            f.set(KEY, DEFAULT);
+        }
+        return f;
+    }
+
+    static String read(Folder p, String key, String def) {
+        if (!p.hasKey(key)) {
+            return def;
+        }
+        String r = p.get(key);
+        return r == null || r.isBlank() ? def : r.trim();
+    }
+
+    private AngularSdkStatusWallApp() {}
+}

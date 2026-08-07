@@ -1,91 +1,201 @@
-# Incident Pause Flag the Agents Obey (Angular SDK)
+# Pause Dangerous Angular Actions Without Killing the Session
 
-*A traveler's note on pause flag for agents — with the Kiponos Angular SDK as a hub peer.*
+*A traveler’s note on Angular incident pause flag — with the Kiponos Angular SDK as a hub peer, plus Java and Python on the same living tree.*
 
 ---
 
-I have drawn a line under automated remediation the moment a human said stop.
+There is a class of production decisions that are **too small for a release** and **too important for a chat thread**.
 
-That is the class of decision that is **too small for a release** and **too important for a chat thread**. Kiponos exists so a leaf like `ops/incident/paused` can move while every peer — dashboard, Java, Python, and now **@kiponos/angular** — stays honest.
+During a data incident we needed bulk-export disabled. The only off switch was a feature module rebuild.
 
-I have always believed people should not have to ship a release to make a decision. This story is one concrete use case.
+Someone said the sentence that always costs a night:
 
-<!-- medium-img: diagram-before-after.png -->
+**“Admin power without a live pause is just an incident waiting for a click.”**
+
+That sentence is the product brief.
+
+I have always believed people should not have to ship a release to make a decision. This story is one concrete use case — **Java**, **Python**, and **@kiponos/angular** (Node server peer) on one leaf: `incident/pause-risky`.
+
+Redeploying a frontend, restarting a BFF, or bouncing an agent just to move **Angular incident pause flag** is how teams invent folklore. Tokens drift into public bundles. Agents lose session memory. Java keeps the old value until the next ConfigMap. The decision was simple; the ceremony was not.
 
 ---
 
 ## What went wrong (the human version)
 
-Someone needed to change **pause flag for agents**. The path of least resistance was a config file in a deployable artifact. On-call waited. Product waited. The pager did not care about your green pipeline.
+Angular apps are usually two things people mash into one word:
 
-The Super Pattern is simpler: put the leaf on the hub, let peers read locally after bootstrap, and push deltas when anyone sets a value.
+| Piece | Runs where | Holds Connect tokens? |
+|-------|------------|------------------------|
+| SPA / admin bundle | Visitor or operator browser | **Never** |
+| Node (or any) BFF / peer | Your machine / cluster | **Yes — like Java** |
 
-## The Super Pattern
+The engineers were not stupid. They needed **Angular incident pause flag** to move. The mistake was freezing it in a build-time env, a YAML file, or a process restart — or treating the **browser** as the hub participant.
 
-Hub path: `ops/incident/paused` (example default `no`)
+| Old habit | What it costs |
+|-----------|----------------|
+| Flag in SPA env | Minutes to hours of train delay |
+| Restart Node to re-read env | Dropped sessions mid-incident |
+| Separate Java ConfigMap | Peers disagree; war-room confusion |
+| Restart agent to flip posture | Lost context, lost time |
+
+<!-- medium-img: diagram-before-after.png -->
+
+---
+
+## The Super Pattern (process identity, multi-peer)
+
+Hub leaf (this example):
+
+```text
+incident/pause-risky = off
+```
+
+**@kiponos/angular** server peer (identity on the process):
 
 ```ts
-import { Kiponos, injectKiponos, provideKiponos } from '@kiponos/angular';
+import { Kiponos } from '@kiponos/angular/server';
 
-// Node BFF
-const client = Kiponos.createFromEnv();
-await client.connect();
-await client.path('ops', 'incident').set('paused', 'no');
-
-// Angular component (client injected via provideKiponos)
-// readonly v = injectKiponos().value('ops/incident/paused', { defaultValue: 'no' });
+const kip = Kiponos.createFromEnv();
+await kip.connect();
+await kip.ensurePath('incident');
+await kip.path('incident').set('pause-risky', 'off');
+// UI mirror via your BFF/SSE — never Connect tokens in the browser
+// const v = useKiponosValue('incident/pause-risky', { defaultValue: 'off' });
 ```
 
-Java peer (same profile):
+Java peer (same profile tree):
 
 ```java
-Kiponos kip = Kiponos.createForCurrentTeam();
-String v = kip.path("ops", "incident").get("paused", "no");
-// or get at root segments matching the tree
+Kiponos k = Kiponos.createForCurrentTeam();
+try {
+    Folder p = k.getRootFolder().folderOrCreate("incident");
+    String v = p.hasKey("pause-risky") ? p.get("pause-risky") : "off";
+    // honor live Angular incident pause flag
+    System.out.println("pause-risky=" + v);
+} finally {
+    k.disconnect();
+}
 ```
 
-Public package tree: `sdks/kiponos-angular-sdk`  
-Companion example: `examples/java/angular-sdk-incident-pause`
+Python agent peer (session stays up):
+
+```python
+# connect once; flip the leaf without killing the agent
+from kiponos import Kiponos
+k = Kiponos.connect(quiet=True)
+# hub leaf: incident/pause-risky
+print("python peer online — change pause-risky on the hub, keep this process")
+
+```
+
+No constructor tokens in the browser. Process env only — the same idea as Java’s singleton. The SPA or Angular admin talks **SSE or API to your Node process**, not Connect tokens to the hub. When the leaf moves, every honest peer honors it — without a jar, without a SPA ship, without killing the agent.
+
+That is the Super Pattern:
+
+> Live hub + process identity + thin UI mirror = operational posture in seconds, not deploy minutes.
 
 <!-- medium-img: diagram-flow.png -->
 
 ---
 
-## Install (npm)
+## The example (runnable multi-SDK tree)
+
+Published under:
+
+| Peer | Path |
+|------|------|
+| Java | `examples/java/angular-sdk-incident-pause` |
+| Python | `examples/python/angular-sdk-incident-pause` |
+| Node (angular) | `examples/node/angular-sdk-incident-pause` |
+| Story | `docs/examples/medium-drafts/angular-sdk-incident-pause.md` |
+
+Public surface: **[kiponos.io](https://kiponos.io)** and [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/angular-sdk-incident-pause).
+
+Do **not** treat private team homes or private ops walls as public demo URLs.
+
+---
+
+## Install (angular / npm)
 
 ```bash
 npm install @kiponos/angular
 ```
 
 Public package: https://www.npmjs.com/package/@kiponos/angular  
-Runnable Node example: `examples/node/angular-status-wall`  
-Source: https://github.com/kiponos-io/kiponos-io/tree/master/sdks/kiponos-angular-sdk
+SDK source tree on the public repo under `sdks/`.
 
-## The example pattern
+## How to try
 
-1. Connect with process env (`KIPONOS_ID` / `KIPONOS_ACCESS` / `KIPONOS`) — never browser secrets.  
-2. `ensurePath` / `path(...).set` for `ops/incident/paused`.  
-3. Java `createForCurrentTeam()` reads the same leaf; `afterValueUpdated` fires on change.  
-4. Dashboard shows the value without refresh.
+```bash
+# 1) Credentials (same as Java)
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
 
-How to try: use `npm install @kiponos/angular` and `examples/node/angular-status-wall`
+# 2) Node peer writes the leaf
+cd examples/node/angular-sdk-incident-pause
+npm install && node peer.mjs off
+
+# 3) Java peer reads the same leaf
+cd examples/java/angular-sdk-incident-pause
+./gradlew test
+./gradlew run
+
+# 4) Python peer (pure logic + optional live)
+cd examples/python/angular-sdk-incident-pause
+python3 peer.py
+```
+
+Two tabs. One leaf. Everyone sees it — including a JVM that never restarted, a Python agent that kept its session, and a UI that mirrors your BFF.
+
+## Old world vs live hub
+
+| Move | Old world | Live hub |
+|------|-----------|----------|
+| Change Angular incident pause flag | Ship SPA / restart BFF | Node or dashboard `set` |
+| Where tokens live | Often public JS | Process env only |
+| Java / Python peers | After redeploy folklore | Same tree, live deltas |
+| Browser role | Fake hub client | Client of **your** API / SSE |
+| Failure mode | Stale until next train | One leaf, fail-closed peers |
 
 ---
 
-## Guardrails
+## Guardrails (traveler’s checklist)
+
+1. Prefer `createForCurrentTeam` / `createFromEnv` over token constructors.  
+2. Keep Connect tokens next to other production secrets — never in a bundler input that ships to visitors.  
+3. Bridge browsers with SSE/API you control; treat the leaf as **ops posture**, not as a toy alone.  
+4. Fail closed when the leaf is missing if the path is dangerous.  
+5. Measure success by **seconds from judgment to effect**, not by how many languages have a client library.  
+6. Never publish private team path trees or private product URLs in public articles.  
+7. Rehearse a multi-peer proof (Node set → Java read → Python honor → UI mirror) before the next fire.
 
 | Do | Don't |
 |----|-------|
-| Hold tokens in Node/Java process env | Embed tokens in SPA bundles |
-| Use one profile tree for all peers | Invent a second source of truth |
-| Treat `get` as local after bootstrap | Poll REST for every render |
+| Hold tokens in Node/Java/Python process env | Embed tokens in SPA bundles |
+| Use one profile tree for all peers | Second “frontend-only” source of truth |
+| Treat `get` as local after bootstrap | Poll REST for every request |
+| Move the leaf mid-incident | Wait for green pipeline to stop bleeding |
 
 ---
 
 ## The moral
 
-People should not have to ship a release to make a decision.
+**People should not have to ship a release to make a decision** — and they should not paste service tokens into a SPA to share **Angular incident pause flag**.
 
-**Incident Pause Flag the Agents Obey** is not a tutorial for its own sake — it is proof that the Angular SDK is a **hub peer**, not a glorified fetch wrapper. Change `ops/incident/paused`. Watch the tree. Keep the release train for real code.
+Identity is **where the process runs**. The Angular SDK is a **hub peer**, not a glorified fetch wrapper. Change `incident/pause-risky`. Watch the tree. Keep the release train for real code.
 
-That is the whole moral.
+Ship the peers once. Leave the bundle alone when the only thing that changed is a shared operational leaf.
+
+---
+
+## The lie we stop telling
+
+“We’ll fix Angular incident pause flag in the next angular release.”
+
+No. We’ll put **live posture** in the hub, put **identity** on the process, and let every peer — Java, Python, Node, thin UI mirror — honor `incident/pause-risky` without waiting for CI.
+
+Pain we retire: *dangerous admin actions stay clickable until someone ships Angular*.
+
+---
+
+*Example tree: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/angular-sdk-incident-pause](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/angular-sdk-incident-pause)*

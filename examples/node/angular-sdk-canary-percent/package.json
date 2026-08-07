@@ -1,0 +1,12 @@
+{
+  "name": "kiponos-angular-sdk-canary-percent",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node peer.mjs",
+    "set": "node peer.mjs"
+  },
+  "dependencies": {
+    "@kiponos/angular": "latest"
+  }
+}

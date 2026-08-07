@@ -1,34 +1,25 @@
 # react-sdk-incident-pause
 
-Java peer for the **@kiponos/react** npm SDK as the write/UI side.
+**Incident Pause That Freezes Risky UI Paths Instantly**
 
-## Install the JS peer (npm)
+Multi-SDK Super Pattern peer set:
+- **Java** (this directory) — `./gradlew run` / `./gradlew test`
+- **Python** — `examples/python/react-sdk-incident-pause/`
+- **Node (react)** — `examples/node/react-sdk-incident-pause/`
 
-```bash
-npm install @kiponos/react
-```
+## Hub leaf
 
-Runnable Node example: `examples/node/react-status-wall`  
-Package: https://www.npmjs.com/package/@kiponos/react
-
-## Hub key
-
-`ops/incident/paused` (default `no`)
+`incident/pause-risky` (default `off`)
 
 ## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew test   # when wired like sibling examples
+./gradlew test
+./gradlew run
 ```
 
-## Run (Node peer)
+## Story
 
-```bash
-cd examples/node/react-status-wall
-npm install
-npm start
-```
-
-See draft: `docs/examples/medium-drafts/react-sdk-incident-pause.md`
+`docs/examples/medium-drafts/react-sdk-incident-pause.md`

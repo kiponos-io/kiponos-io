@@ -1,34 +1,25 @@
 # angular-sdk-ab-weights
 
-Java peer for the **@kiponos/angular** npm SDK as the write/UI side.
+**A/B Weights on Angular Without a Client Bundle Ship**
 
-## Install the JS peer (npm)
+Multi-SDK Super Pattern peer set:
+- **Java** (this directory) — `./gradlew run` / `./gradlew test`
+- **Python** — `examples/python/angular-sdk-ab-weights/`
+- **Node (angular)** — `examples/node/angular-sdk-ab-weights/`
 
-```bash
-npm install @kiponos/angular
-```
+## Hub leaf
 
-Runnable Node example: `examples/node/angular-status-wall`  
-Package: https://www.npmjs.com/package/@kiponos/angular
-
-## Hub key
-
-`checkout/ab-weight-b` (default `50`)
+`experiments/ab-weights` (default `70,30`)
 
 ## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew test   # when wired like sibling examples
+./gradlew test
+./gradlew run
 ```
 
-## Run (Node peer)
+## Story
 
-```bash
-cd examples/node/angular-status-wall
-npm install
-npm start
-```
-
-See draft: `docs/examples/medium-drafts/angular-sdk-ab-weights.md`
+`docs/examples/medium-drafts/angular-sdk-ab-weights.md`

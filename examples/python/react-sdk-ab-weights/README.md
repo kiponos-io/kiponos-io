@@ -1,0 +1,1 @@
+# react-sdk-ab-weights (Python peer)\n\nHub: `experiments/ab-weights` default `50,50`\n\n```bash\npython3 peer.py\npython3 -m pytest -q\n```\n

@@ -1,34 +1,25 @@
 # react-sdk-rate-limit
 
-Java peer for the **@kiponos/react** npm SDK as the write/UI side.
+**Rate Limits the BFF Honors Without Redeploying Node**
 
-## Install the JS peer (npm)
+Multi-SDK Super Pattern peer set:
+- **Java** (this directory) — `./gradlew run` / `./gradlew test`
+- **Python** — `examples/python/react-sdk-rate-limit/`
+- **Node (react)** — `examples/node/react-sdk-rate-limit/`
 
-```bash
-npm install @kiponos/react
-```
+## Hub leaf
 
-Runnable Node example: `examples/node/react-status-wall`  
-Package: https://www.npmjs.com/package/@kiponos/react
-
-## Hub key
-
-`api/rate-limit-rps` (default `100`)
+`limits/rps-cap` (default `40`)
 
 ## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew test   # when wired like sibling examples
+./gradlew test
+./gradlew run
 ```
 
-## Run (Node peer)
+## Story
 
-```bash
-cd examples/node/react-status-wall
-npm install
-npm start
-```
-
-See draft: `docs/examples/medium-drafts/react-sdk-rate-limit.md`
+`docs/examples/medium-drafts/react-sdk-rate-limit.md`

@@ -1,0 +1,1 @@
+# angular-sdk-rate-limit (Python peer)\n\nHub: `limits/rps-cap` default `25`\n\n```bash\npython3 peer.py\npython3 -m pytest -q\n```\n

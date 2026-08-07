@@ -1,34 +1,25 @@
 # angular-sdk-incident-pause
 
-Java peer for the **@kiponos/angular** npm SDK as the write/UI side.
+**Pause Dangerous Angular Actions Without Killing the Session**
 
-## Install the JS peer (npm)
+Multi-SDK Super Pattern peer set:
+- **Java** (this directory) — `./gradlew run` / `./gradlew test`
+- **Python** — `examples/python/angular-sdk-incident-pause/`
+- **Node (angular)** — `examples/node/angular-sdk-incident-pause/`
 
-```bash
-npm install @kiponos/angular
-```
+## Hub leaf
 
-Runnable Node example: `examples/node/angular-status-wall`  
-Package: https://www.npmjs.com/package/@kiponos/angular
-
-## Hub key
-
-`ops/incident/paused` (default `no`)
+`incident/pause-risky` (default `off`)
 
 ## Run (Java)
 
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew test   # when wired like sibling examples
+./gradlew test
+./gradlew run
 ```
 
-## Run (Node peer)
+## Story
 
-```bash
-cd examples/node/angular-status-wall
-npm install
-npm start
-```
-
-See draft: `docs/examples/medium-drafts/angular-sdk-incident-pause.md`
+`docs/examples/medium-drafts/angular-sdk-incident-pause.md`
