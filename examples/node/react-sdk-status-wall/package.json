@@ -1,0 +1,12 @@
+{
+  "name": "kiponos-react-sdk-status-wall",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node peer.mjs",
+    "set": "node peer.mjs"
+  },
+  "dependencies": {
+    "@kiponos/react": "latest"
+  }
+}
