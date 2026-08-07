@@ -1,17 +1,13 @@
 # react-sdk-canary-percent
 
-Java peer for the **@kiponos/react** npm SDK as the write/UI side.
+**Canary Percent That Moves Without a Frontend Train**
 
-## Install the JS peer (npm)
+Multi-SDK Super Pattern peer set:
+- **Java** (this directory) — `./gradlew run` / `./gradlew test`
+- **Python** — `examples/python/react-sdk-canary-percent/`
+- **Node (react)** — `examples/node/react-sdk-canary-percent/`
 
-```bash
-npm install @kiponos/react
-```
-
-Runnable Node example: `examples/node/react-status-wall`  
-Package: https://www.npmjs.com/package/@kiponos/react
-
-## Hub key
+## Hub leaf
 
 `release/canary-percent` (default `5`)
 
@@ -20,15 +16,10 @@ Package: https://www.npmjs.com/package/@kiponos/react
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew test   # when wired like sibling examples
+./gradlew test
+./gradlew run
 ```
 
-## Run (Node peer)
+## Story
 
-```bash
-cd examples/node/react-status-wall
-npm install
-npm start
-```
-
-See draft: `docs/examples/medium-drafts/react-sdk-canary-percent.md`
+`docs/examples/medium-drafts/react-sdk-canary-percent.md`
