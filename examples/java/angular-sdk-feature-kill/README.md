@@ -1,17 +1,13 @@
 # angular-sdk-feature-kill
 
-Java peer for the **@kiponos/angular** npm SDK as the write/UI side.
+**Feature Kill From the Hub — Angular Peer, Same Leaf as Java**
 
-## Install the JS peer (npm)
+Multi-SDK Super Pattern peer set:
+- **Java** (this directory) — `./gradlew run` / `./gradlew test`
+- **Python** — `examples/python/angular-sdk-feature-kill/`
+- **Node (angular)** — `examples/node/angular-sdk-feature-kill/`
 
-```bash
-npm install @kiponos/angular
-```
-
-Runnable Node example: `examples/node/angular-status-wall`  
-Package: https://www.npmjs.com/package/@kiponos/angular
-
-## Hub key
+## Hub leaf
 
 `flags/feature-x` (default `off`)
 
@@ -20,15 +16,10 @@ Package: https://www.npmjs.com/package/@kiponos/angular
 ```bash
 export KIPONOS_ID=… KIPONOS_ACCESS=…
 export KIPONOS="['MyApp']['1.0']['Dev']['base']"
-# ./gradlew test   # when wired like sibling examples
+./gradlew test
+./gradlew run
 ```
 
-## Run (Node peer)
+## Story
 
-```bash
-cd examples/node/angular-status-wall
-npm install
-npm start
-```
-
-See draft: `docs/examples/medium-drafts/angular-sdk-feature-kill.md`
+`docs/examples/medium-drafts/angular-sdk-feature-kill.md`
