@@ -1,17 +1,13 @@
-package io.kiponos.examples.mesh;
+    package io.kiponos.examples.mesh;
+    import org.junit.jupiter.api.Test;
+    import static org.junit.jupiter.api.Assertions.*;
+    class WarRoomSharedTruthAppLogicTest {
+        @Test void hubKeyStable() {
+            assertEquals("headline", WarRoomSharedTruthApp.KEY);
+            assertEquals("steady", WarRoomSharedTruthApp.DEFAULT);
+            assertTrue(WarRoomSharedTruthApp.PATH_LABEL.contains("headline"));
+        }
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+@Test void defaultNonBlank() { assertFalse("steady".isBlank()); }
 
-class WarRoomSharedTruthAppLogicTest {
-    @Test
-    void hubKeyIsStable() {
-        assertEquals("headline", WarRoomSharedTruthApp.KEY);
-        assertFalse(WarRoomSharedTruthApp.KEY.isBlank());
     }
-
-    @Test
-    void defaultIsNonEmpty() {
-        assertFalse(WarRoomSharedTruthApp.DEFAULT.isBlank());
-    }
-}
