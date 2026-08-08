@@ -1,33 +1,22 @@
 # canary-fullstack-live
 
-Canary Percent That Moves BFF, Workers, and UI Mirrors Together
+**Canary Percent That Moves BFF, Workers, and UI Mirrors Together**
 
-Live hub leaf for **fullstack canary percent** — change it without restarting Java, Python agents, React/Angular BFF peers.
+Same **Team** tree — four peers:
 
-## Hub
+| Peer | Path |
+|------|------|
+| Java | `examples/java/canary-fullstack-live` |
+| Python | `examples/python/canary-fullstack-live` |
+| Node React | `examples/node/canary-fullstack-live-react` |
+| Node Angular | `examples/node/canary-fullstack-live-angular` |
 
-```text
-examples/canary-fullstack-live/percent = 0
-```
-
-Pain: canaries that only flip one tier while clients keep old behavior
-
-## Run
+Hub leaf: `release/canary-percent` (default `5`)
 
 ```bash
-cd examples/java/canary-fullstack-live
-cp kiponos.local.env.example kiponos.local.env   # from kiponos.io → Connect
-./gradlew test run
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+./gradlew test && ./gradlew run
 ```
 
-## Peers
-
-| Peer | Role |
-|------|------|
-| Java | this example — `createForCurrentTeam()` |
-| Python | `examples/python/canary-fullstack-live` agent sketch |
-| React | `@kiponos/react` **server** peer (`createFromEnv`) — never browser tokens |
-| Angular | `@kiponos/angular` **server** peer — same moral |
-
-Medium draft: `docs/examples/medium-drafts/canary-fullstack-live.md`  
-dev.to essay: `docs/devto-canary-fullstack-live.md`
+Story: `docs/examples/medium-drafts/canary-fullstack-live.md`

@@ -1,33 +1,22 @@
 # client-server-mirror-live
 
-Client Mirrors Server Truth — Without Putting Tokens in the Browser
+**Client Mirrors Server Truth — Without Putting Tokens in the Browser**
 
-Live hub leaf for **BFF-mirrored status leaf** — change it without restarting Java, Python agents, React/Angular BFF peers.
+Same **Team** tree — four peers:
 
-## Hub
+| Peer | Path |
+|------|------|
+| Java | `examples/java/client-server-mirror-live` |
+| Python | `examples/python/client-server-mirror-live` |
+| Node React | `examples/node/client-server-mirror-live-react` |
+| Node Angular | `examples/node/client-server-mirror-live-angular` |
 
-```text
-examples/client-server-mirror-live/status = ok
-```
-
-Pain: SPA and server disagree because the SPA was treated as a hub peer
-
-## Run
+Hub leaf: `mirror/truth` (default `steady`)
 
 ```bash
-cd examples/java/client-server-mirror-live
-cp kiponos.local.env.example kiponos.local.env   # from kiponos.io → Connect
-./gradlew test run
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"
+./gradlew test && ./gradlew run
 ```
 
-## Peers
-
-| Peer | Role |
-|------|------|
-| Java | this example — `createForCurrentTeam()` |
-| Python | `examples/python/client-server-mirror-live` agent sketch |
-| React | `@kiponos/react` **server** peer (`createFromEnv`) — never browser tokens |
-| Angular | `@kiponos/angular` **server** peer — same moral |
-
-Medium draft: `docs/examples/medium-drafts/client-server-mirror-live.md`  
-dev.to essay: `docs/devto-client-server-mirror-live.md`
+Story: `docs/examples/medium-drafts/client-server-mirror-live.md`

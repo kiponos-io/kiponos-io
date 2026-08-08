@@ -1,170 +1,180 @@
 # Client Mirrors Server Truth — Without Putting Tokens in the Browser
 
-*A traveler’s note from the multi-SDK mesh: Java, Python, React, Angular — and agents that never reboot for a leaf.*
+*A traveler’s note on the real product magic: **Web, Server, and Users on the same Team tree**, moving together in real time — Java, Python, React, and Angular as honest peers.*
 
 ---
 
 There is a class of production decisions that are **too small for a release** and **too important for a chat thread**.
 
-The React app showed green. Java was failing closed. Someone had embedded a stale default in the SPA bundle.
+Product wanted the admin badge to match server posture in seconds. Someone suggested putting the SDK in the SPA. Security said no. Ops said ship a build. Nobody won.
 
-Someone said the sentence that always costs a night:
+Someone said the sentence that costs a night:
 
-**“The browser is a mirror. The process is the peer. Confuse them and you leak secrets or lies.”**
+**“The browser is a mirror, not a vault. Identity stays on the process.”**
 
-That sentence is the product brief for **BFF-mirrored status leaf**.
+That sentence is the brief for Kiponos when you stop treating languages as silos and start treating them as **peers on one Team profile**.
 
-I have always believed people should not have to ship a release to make a decision. With **Java**, **Python**, **@kiponos/react** (Node server peer), and **@kiponos/angular** (Node server peer) on one living tree, the brief finally has four honest voices — plus agents that read the same leaves without killing their sessions.
-
-
+I have always believed people should not have to ship a release to make a decision. With four SDKs on **one living tree**, the decision is a leaf. The session stays. The browser **mirrors** truth from a process that holds identity — it never becomes a vault for Connect tokens.
 
 ---
 
-## What went wrong (the human version)
+## What “same Team” actually means
 
-Distributed systems did not lack languages. They lacked a **shared operational plane** that all peers could honor while running.
+| Role | Where it runs | How it joins the Team |
+|------|---------------|------------------------|
+| **Server (Java)** | JVM / workers | `Kiponos.createForCurrentTeam()` |
+| **Server / agent (Python)** | agents, workers | connect once; read/write live leaves |
+| **Web BFF (React Node)** | your Node process | `@kiponos/react` **server** peer |
+| **Admin / ops (Angular Node)** | your Node process | `@kiponos/angular` **server** peer |
+| **Users / operators (browser)** | SPA / admin UI | **mirror** via your API/SSE — **no** hub tokens in JS |
 
-| Old habit | What it costs |
-|-----------|----------------|
-| YAML per service | Four PRs to flip one truth |
-| Restart the agent to enable a skill | Lost context, lost time |
-| Put the SDK in the browser | Leaked tokens or stale defaults |
-| MCP tools always on | Incidents with no real gate |
-| Separate ops wall from agents | Three “truths” in one war room |
+Same `KIPONOS` profile. Same tree. Same second the leaf moves.
 
-The Super Pattern is simpler: put **BFF-mirrored status leaf** (`status`) on [Kiponos.io](https://kiponos.io). Every peer uses **local `get()`** after bootstrap. Dashboard, agent, or any SDK `set()` when judgment arrives.
+| Old habit | Cost |
+|-----------|------|
+| Flag per language repo | Four PRs for one truth |
+| Tokens in the SPA | Security incident waiting to happen |
+| Restart agent to flip posture | Lost context mid-run |
+| Admin wall from a different source | War-room lies |
 
-<!-- medium-img: diagram-client-server-mirror-live-gof-vs-live.png -->
+<!-- medium-img: diagram-before-after.png -->
 
 ---
 
-## The Super Pattern (process identity, multi-peer)
+## The Super Pattern (one leaf, four voices)
 
-Hub leaf (this example):
+Hub leaf for this story:
 
 ```text
-examples/client-server-mirror-live/status = ok
+mirror/truth = steady
 ```
 
-Java peer:
+**Java** (server peer):
 
 ```java
 Kiponos k = Kiponos.createForCurrentTeam();
 try {
-    Folder f = k.getRootFolder()
-        .folderOrCreate("examples")
-        .folderOrCreate("client-server-mirror-live");
-    String v = f.hasKey("status") ? f.get("status") : "ok";
-    System.out.println("status=" + v);
+    // ensure + read mirror/truth
+    // honor live server truth mirrored to the client
 } finally {
     k.disconnect();
 }
 ```
 
-Python agent peer (session stays up):
+**Python** (agent peer — session stays up):
 
 ```python
-# moral: connect once; read leaf live; do not restart to flip posture
+# connect once; flip the leaf without killing the process
 from kiponos import Kiponos
 k = Kiponos.connect(quiet=True)
-# path/get style depends on kit — leaf is examples/client-server-mirror-live/status
-print("agent online; flip the leaf on the hub without killing this process")
+print("python peer on the same Team tree")
 ```
 
-React **server** peer (never browser Connect tokens):
+**React Node** (web/BFF identity):
 
 ```ts
 import { Kiponos } from '@kiponos/react/server';
-
 const kip = Kiponos.createFromEnv();
 await kip.connect();
-await kip.ensurePath('examples/client-server-mirror-live');
-// mirror to SPA via your API/SSE — SPA is a client of you, not of Connect
-const v = /* local get after bootstrap */ 'ok';
+// set/get the same leaf — browser only sees your mirror
 ```
 
-Angular **server** peer — same moral as React: process identity, thin UI mirror.
+**Angular Node** (admin identity):
 
-<!-- medium-img: diagram-client-server-mirror-live-hub-flow.png -->
+```ts
+import { Kiponos } from '@kiponos/angular/server';
+const kip = Kiponos.createFromEnv();
+await kip.connect();
+// same Team profile, same leaf as Java and React
+```
 
----
+When anyone — dashboard, on-call, agent, or peer — changes the leaf, **every honest peer** moves. That is the magic: not four clients, but **one Team collaborating in real time**.
 
-## The example (runnable)
-
-Published under **`examples/java/client-server-mirror-live`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/client-server-mirror-live)
-
-Python companion: `examples/python/client-server-mirror-live`
-
-Peers in this story: **java, react, angular**
-
-Public surface: **[kiponos.io](https://kiponos.io)** and the public GitHub tree.  
-Do **not** publish private team path trees or private product URLs.
+<!-- medium-img: diagram-flow.png -->
 
 ---
 
-## Install & how to try
+## The runnable example
+
+| Peer | Path |
+|------|------|
+| Java | `examples/java/client-server-mirror-live` |
+| Python | `examples/python/client-server-mirror-live` |
+| Node React | `examples/node/client-server-mirror-live-react` |
+| Node Angular | `examples/node/client-server-mirror-live-angular` |
+| Story | `docs/examples/medium-drafts/client-server-mirror-live.md` |
+
+Public: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/client-server-mirror-live) · hub docs [kiponos.io](https://kiponos.io)
+
+Do **not** publish private team homes as demo URLs.
+
+---
+
+## How to try (end-to-end)
 
 ```bash
-# Java
-cd examples/java/client-server-mirror-live
-cp kiponos.local.env.example kiponos.local.env   # Connect tokens from kiponos.io
-./gradlew test run
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"   # same Team profile everywhere
 
-# Python agent peer
-cd examples/python/client-server-mirror-live
-# export KIPONOS_ID KIPONOS_ACCESS KIPONOS=...
-python3 agent_peer.py
+# 1) React Node writes the leaf
+cd examples/node/client-server-mirror-live-react && npm install && node peer.mjs steady
 
-# React / Angular server peers
-npm install @kiponos/react    # or @kiponos/angular
-# createFromEnv / createForCurrentTeam in Node — never in the SPA bundle
+# 2) Angular Node can write or confirm the same leaf
+cd examples/node/client-server-mirror-live-angular && npm install && node peer.mjs steady
+
+# 3) Java reads it without restart folklore
+cd examples/java/client-server-mirror-live && ./gradlew test && ./gradlew run
+
+# 4) Python peer (agent stays alive)
+cd examples/python/client-server-mirror-live && python3 peer.py
 ```
 
-## Old world vs live multi-SDK mesh
+Two tabs. Four peers. One Team. One leaf.
 
-| Move | Old world | Live mesh |
-|------|-----------|-----------|
-| Flip BFF-mirrored status leaf | Redeploy N services | One hub `set` |
-| Enable agent skill / MCP tool | Restart agent host | Leaf gate |
-| Align UI with server | Hope the SPA build matches | BFF mirrors hub |
-| Debug prod | DEBUG=1 + bounce | Live probe leaf |
-| War room truth | Slack + three dashboards | One hub headline |
+## Old world vs same-Team hub
+
+| Move | Old world | Same Team tree |
+|------|-----------|----------------|
+| Change server truth mirrored to the client | Redeploy each language | One `set` on the hub |
+| Browser role | Fake hub client / leaked tokens | Mirror of **your** BFF |
+| War room | Three screens, three truths | One leaf, every peer |
+| Agent | Restart to flip skill/gate | Session stays; leaf moves |
 
 ---
 
-## Guardrails (traveler’s checklist)
+## Guardrails
 
-1. Prefer `createForCurrentTeam` / `createFromEnv` over token constructors.  
-2. **Never** put Connect tokens in SPA bundles — React/Angular SDKs are **server** peers.  
-3. Agents and MCP hosts are peers too: skills, tools, budgets, handoffs are leaves.  
-4. Fail closed on money and kill paths when the leaf is missing.  
-5. Measure success in **seconds from judgment to effect** across *all* peers.  
-6. Never publish private family/agent path trees in public articles.  
-7. Rehearse a multi-peer proof (Java set → Python agent read → BFF mirror) before the next “just restart it” meeting.
+1. Process identity only — never Connect tokens in SPA bundles.  
+2. One profile tree for Java, Python, React Node, Angular Node.  
+3. Browser = mirror (SSE/API you control).  
+4. Fail closed on dangerous paths when the leaf is missing.  
+5. Measure **seconds from judgment to every peer**, not “we have four SDKs.”  
+6. Never publish private path trees in public articles.
 
 | Do | Don't |
 |----|-------|
-| One profile tree for Java/Python/React/Angular/agents | Four config systems |
-| Local get on hot path | Poll hub per request |
-| Live skill/MCP/budget gates | Restart to flip a flag |
-| UI as mirror via your API | Browser as hub participant |
+| Hold tokens on server processes | Embed tokens in Web bundles |
+| Share one Team profile | Per-language folklore flags |
+| Prove multi-peer in two tabs | Claim “fullstack” with one README |
 
 ---
 
 ## The moral
 
-**People should not have to ship a release to make a decision** — and agents should not die to learn a new skill, gate, or budget.
+**People should not have to ship a release to make a decision** — and Web, Server, and Users should not need three different truths to collaborate.
 
-Identity is **where the process runs**. The mesh is **one living tree**. Java, Python, React, Angular, and agents are peers. Change `status`. Watch every honest peer obey. Keep the release train for real code.
+The product magic is simple to say and rare to build: **one Team tree, many peers, real time.**
+
+Pain we retire: *SPA builds freeze truth; or worse, Connect tokens leak into the browser*.
 
 ---
 
 ## The lie we stop telling
 
-“We’ll align the stack in the next multi-service deploy.”
+“We’ll sync the frontend after the backend deploy.”
 
-No. We’ll put **BFF-mirrored status leaf** on the hub, put **identity** on each process, let agents stay warm, and let every SDK speak the same leaf while the world is still on fire.
+No. We’ll put **server truth mirrored to the client** on the hub, put identity on every process peer, and let the browser mirror the Team — so collaboration is a leaf change, not a release train.
 
 ---
 
-*Runnable: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/client-server-mirror-live](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/client-server-mirror-live)*
+*Example: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/client-server-mirror-live](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/client-server-mirror-live)*

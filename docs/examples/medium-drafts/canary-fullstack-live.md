@@ -1,173 +1,180 @@
 # Canary Percent That Moves BFF, Workers, and UI Mirrors Together
 
-*A traveler’s note from the multi-SDK mesh: Java, Python, React, Angular — and agents that never reboot for a leaf.*
+*A traveler’s note on the real product magic: **Web, Server, and Users on the same Team tree**, moving together in real time — Java, Python, React, and Angular as honest peers.*
 
 ---
 
 There is a class of production decisions that are **too small for a release** and **too important for a chat thread**.
 
-We canaried the API to 10%. The SPA still hit the old path. The agent still trained on 100% of traffic.
+Canary was five percent on the server. The UI still behaved like twenty. Support argued with graphs that could not agree.
 
-Someone said the sentence that always costs a night:
+Someone said the sentence that costs a night:
 
-**“A canary that is not shared is just a partial deploy with marketing language.”**
+**“A canary that only one tier sees is not a canary. It is a split brain.”**
 
-That sentence is the product brief for **fullstack canary percent**.
+That sentence is the brief for Kiponos when you stop treating languages as silos and start treating them as **peers on one Team profile**.
 
-I have always believed people should not have to ship a release to make a decision. With **Java**, **Python**, **@kiponos/react** (Node server peer), and **@kiponos/angular** (Node server peer) on one living tree, the brief finally has four honest voices — plus agents that read the same leaves without killing their sessions.
-
-Agents are not a side channel. When skills, MCP tool gates, token budgets, or handoff tickets live
-on the same hub tree as services and BFFs, **nobody needs a restart to collaborate**. The session stays.
-The leaf moves. That is the agentic half of this revolution — not chatbots bolted on, but real-time
-control for long-running workers.
+I have always believed people should not have to ship a release to make a decision. With four SDKs on **one living tree**, the decision is a leaf. The session stays. The browser **mirrors** truth from a process that holds identity — it never becomes a vault for Connect tokens.
 
 ---
 
-## What went wrong (the human version)
+## What “same Team” actually means
 
-Distributed systems did not lack languages. They lacked a **shared operational plane** that all peers could honor while running.
+| Role | Where it runs | How it joins the Team |
+|------|---------------|------------------------|
+| **Server (Java)** | JVM / workers | `Kiponos.createForCurrentTeam()` |
+| **Server / agent (Python)** | agents, workers | connect once; read/write live leaves |
+| **Web BFF (React Node)** | your Node process | `@kiponos/react` **server** peer |
+| **Admin / ops (Angular Node)** | your Node process | `@kiponos/angular` **server** peer |
+| **Users / operators (browser)** | SPA / admin UI | **mirror** via your API/SSE — **no** hub tokens in JS |
 
-| Old habit | What it costs |
-|-----------|----------------|
-| YAML per service | Four PRs to flip one truth |
-| Restart the agent to enable a skill | Lost context, lost time |
-| Put the SDK in the browser | Leaked tokens or stale defaults |
-| MCP tools always on | Incidents with no real gate |
-| Separate ops wall from agents | Three “truths” in one war room |
+Same `KIPONOS` profile. Same tree. Same second the leaf moves.
 
-The Super Pattern is simpler: put **fullstack canary percent** (`percent`) on [Kiponos.io](https://kiponos.io). Every peer uses **local `get()`** after bootstrap. Dashboard, agent, or any SDK `set()` when judgment arrives.
+| Old habit | Cost |
+|-----------|------|
+| Flag per language repo | Four PRs for one truth |
+| Tokens in the SPA | Security incident waiting to happen |
+| Restart agent to flip posture | Lost context mid-run |
+| Admin wall from a different source | War-room lies |
 
-<!-- medium-img: diagram-canary-fullstack-live-gof-vs-live.png -->
+<!-- medium-img: diagram-before-after.png -->
 
 ---
 
-## The Super Pattern (process identity, multi-peer)
+## The Super Pattern (one leaf, four voices)
 
-Hub leaf (this example):
+Hub leaf for this story:
 
 ```text
-examples/canary-fullstack-live/percent = 0
+release/canary-percent = 5
 ```
 
-Java peer:
+**Java** (server peer):
 
 ```java
 Kiponos k = Kiponos.createForCurrentTeam();
 try {
-    Folder f = k.getRootFolder()
-        .folderOrCreate("examples")
-        .folderOrCreate("canary-fullstack-live");
-    String v = f.hasKey("percent") ? f.get("percent") : "0";
-    System.out.println("percent=" + v);
+    // ensure + read release/canary-percent
+    // honor live fullstack canary percent
 } finally {
     k.disconnect();
 }
 ```
 
-Python agent peer (session stays up):
+**Python** (agent peer — session stays up):
 
 ```python
-# moral: connect once; read leaf live; do not restart to flip posture
+# connect once; flip the leaf without killing the process
 from kiponos import Kiponos
 k = Kiponos.connect(quiet=True)
-# path/get style depends on kit — leaf is examples/canary-fullstack-live/percent
-print("agent online; flip the leaf on the hub without killing this process")
+print("python peer on the same Team tree")
 ```
 
-React **server** peer (never browser Connect tokens):
+**React Node** (web/BFF identity):
 
 ```ts
 import { Kiponos } from '@kiponos/react/server';
-
 const kip = Kiponos.createFromEnv();
 await kip.connect();
-await kip.ensurePath('examples/canary-fullstack-live');
-// mirror to SPA via your API/SSE — SPA is a client of you, not of Connect
-const v = /* local get after bootstrap */ '0';
+// set/get the same leaf — browser only sees your mirror
 ```
 
-Angular **server** peer — same moral as React: process identity, thin UI mirror.
+**Angular Node** (admin identity):
 
-<!-- medium-img: diagram-canary-fullstack-live-hub-flow.png -->
+```ts
+import { Kiponos } from '@kiponos/angular/server';
+const kip = Kiponos.createFromEnv();
+await kip.connect();
+// same Team profile, same leaf as Java and React
+```
 
----
+When anyone — dashboard, on-call, agent, or peer — changes the leaf, **every honest peer** moves. That is the magic: not four clients, but **one Team collaborating in real time**.
 
-## The example (runnable)
-
-Published under **`examples/java/canary-fullstack-live`** on [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/canary-fullstack-live)
-
-Python companion: `examples/python/canary-fullstack-live`
-
-Peers in this story: **java, python, react**
-
-Public surface: **[kiponos.io](https://kiponos.io)** and the public GitHub tree.  
-Do **not** publish private team path trees or private product URLs.
+<!-- medium-img: diagram-flow.png -->
 
 ---
 
-## Install & how to try
+## The runnable example
+
+| Peer | Path |
+|------|------|
+| Java | `examples/java/canary-fullstack-live` |
+| Python | `examples/python/canary-fullstack-live` |
+| Node React | `examples/node/canary-fullstack-live-react` |
+| Node Angular | `examples/node/canary-fullstack-live-angular` |
+| Story | `docs/examples/medium-drafts/canary-fullstack-live.md` |
+
+Public: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/canary-fullstack-live) · hub docs [kiponos.io](https://kiponos.io)
+
+Do **not** publish private team homes as demo URLs.
+
+---
+
+## How to try (end-to-end)
 
 ```bash
-# Java
-cd examples/java/canary-fullstack-live
-cp kiponos.local.env.example kiponos.local.env   # Connect tokens from kiponos.io
-./gradlew test run
+export KIPONOS_ID=… KIPONOS_ACCESS=…
+export KIPONOS="['MyApp']['1.0']['Dev']['base']"   # same Team profile everywhere
 
-# Python agent peer
-cd examples/python/canary-fullstack-live
-# export KIPONOS_ID KIPONOS_ACCESS KIPONOS=...
-python3 agent_peer.py
+# 1) React Node writes the leaf
+cd examples/node/canary-fullstack-live-react && npm install && node peer.mjs 5
 
-# React / Angular server peers
-npm install @kiponos/react    # or @kiponos/angular
-# createFromEnv / createForCurrentTeam in Node — never in the SPA bundle
+# 2) Angular Node can write or confirm the same leaf
+cd examples/node/canary-fullstack-live-angular && npm install && node peer.mjs 5
+
+# 3) Java reads it without restart folklore
+cd examples/java/canary-fullstack-live && ./gradlew test && ./gradlew run
+
+# 4) Python peer (agent stays alive)
+cd examples/python/canary-fullstack-live && python3 peer.py
 ```
 
-## Old world vs live multi-SDK mesh
+Two tabs. Four peers. One Team. One leaf.
 
-| Move | Old world | Live mesh |
-|------|-----------|-----------|
-| Flip fullstack canary percent | Redeploy N services | One hub `set` |
-| Enable agent skill / MCP tool | Restart agent host | Leaf gate |
-| Align UI with server | Hope the SPA build matches | BFF mirrors hub |
-| Debug prod | DEBUG=1 + bounce | Live probe leaf |
-| War room truth | Slack + three dashboards | One hub headline |
+## Old world vs same-Team hub
+
+| Move | Old world | Same Team tree |
+|------|-----------|----------------|
+| Change fullstack canary percent | Redeploy each language | One `set` on the hub |
+| Browser role | Fake hub client / leaked tokens | Mirror of **your** BFF |
+| War room | Three screens, three truths | One leaf, every peer |
+| Agent | Restart to flip skill/gate | Session stays; leaf moves |
 
 ---
 
-## Guardrails (traveler’s checklist)
+## Guardrails
 
-1. Prefer `createForCurrentTeam` / `createFromEnv` over token constructors.  
-2. **Never** put Connect tokens in SPA bundles — React/Angular SDKs are **server** peers.  
-3. Agents and MCP hosts are peers too: skills, tools, budgets, handoffs are leaves.  
-4. Fail closed on money and kill paths when the leaf is missing.  
-5. Measure success in **seconds from judgment to effect** across *all* peers.  
-6. Never publish private family/agent path trees in public articles.  
-7. Rehearse a multi-peer proof (Java set → Python agent read → BFF mirror) before the next “just restart it” meeting.
+1. Process identity only — never Connect tokens in SPA bundles.  
+2. One profile tree for Java, Python, React Node, Angular Node.  
+3. Browser = mirror (SSE/API you control).  
+4. Fail closed on dangerous paths when the leaf is missing.  
+5. Measure **seconds from judgment to every peer**, not “we have four SDKs.”  
+6. Never publish private path trees in public articles.
 
 | Do | Don't |
 |----|-------|
-| One profile tree for Java/Python/React/Angular/agents | Four config systems |
-| Local get on hot path | Poll hub per request |
-| Live skill/MCP/budget gates | Restart to flip a flag |
-| UI as mirror via your API | Browser as hub participant |
+| Hold tokens on server processes | Embed tokens in Web bundles |
+| Share one Team profile | Per-language folklore flags |
+| Prove multi-peer in two tabs | Claim “fullstack” with one README |
 
 ---
 
 ## The moral
 
-**People should not have to ship a release to make a decision** — and agents should not die to learn a new skill, gate, or budget.
+**People should not have to ship a release to make a decision** — and Web, Server, and Users should not need three different truths to collaborate.
 
-Identity is **where the process runs**. The mesh is **one living tree**. Java, Python, React, Angular, and agents are peers. Change `percent`. Watch every honest peer obey. Keep the release train for real code.
+The product magic is simple to say and rare to build: **one Team tree, many peers, real time.**
+
+Pain we retire: *canaries that only flip one tier while clients keep old behavior*.
 
 ---
 
 ## The lie we stop telling
 
-“We’ll align the stack in the next multi-service deploy.”
+“We’ll sync the frontend after the backend deploy.”
 
-No. We’ll put **fullstack canary percent** on the hub, put **identity** on each process, let agents stay warm, and let every SDK speak the same leaf while the world is still on fire.
+No. We’ll put **fullstack canary percent** on the hub, put identity on every process peer, and let the browser mirror the Team — so collaboration is a leaf change, not a release train.
 
 ---
 
-*Runnable: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/canary-fullstack-live](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/canary-fullstack-live)*
+*Example: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/canary-fullstack-live](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/canary-fullstack-live)*

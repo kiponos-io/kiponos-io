@@ -1,0 +1,7 @@
+{
+  "name": "kiponos-fullstack-incident-kill-react",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node peer.mjs" },
+  "dependencies": { "@kiponos/react": "latest" }
+}

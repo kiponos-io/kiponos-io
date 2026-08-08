@@ -1,17 +1,13 @@
-package io.kiponos.examples.mesh;
+    package io.kiponos.examples.mesh;
+    import org.junit.jupiter.api.Test;
+    import static org.junit.jupiter.api.Assertions.*;
+    class CanaryFullstackLiveAppLogicTest {
+        @Test void hubKeyStable() {
+            assertEquals("canary-percent", CanaryFullstackLiveApp.KEY);
+            assertEquals("5", CanaryFullstackLiveApp.DEFAULT);
+            assertTrue(CanaryFullstackLiveApp.PATH_LABEL.contains("canary-percent"));
+        }
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+@Test void defaultParses() { assertTrue(Integer.parseInt("5") >= 0); }
 
-class CanaryFullstackLiveAppLogicTest {
-    @Test
-    void hubKeyIsStable() {
-        assertEquals("percent", CanaryFullstackLiveApp.KEY);
-        assertFalse(CanaryFullstackLiveApp.KEY.isBlank());
     }
-
-    @Test
-    void defaultIsNonEmpty() {
-        assertFalse(CanaryFullstackLiveApp.DEFAULT.isBlank());
-    }
-}

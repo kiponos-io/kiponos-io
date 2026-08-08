@@ -1,0 +1,7 @@
+{
+  "name": "kiponos-client-server-mirror-live-react",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node peer.mjs" },
+  "dependencies": { "@kiponos/react": "latest" }
+}

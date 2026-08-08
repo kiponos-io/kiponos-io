@@ -1,17 +1,13 @@
-package io.kiponos.examples.mesh;
+    package io.kiponos.examples.mesh;
+    import org.junit.jupiter.api.Test;
+    import static org.junit.jupiter.api.Assertions.*;
+    class ClientServerMirrorLiveAppLogicTest {
+        @Test void hubKeyStable() {
+            assertEquals("truth", ClientServerMirrorLiveApp.KEY);
+            assertEquals("steady", ClientServerMirrorLiveApp.DEFAULT);
+            assertTrue(ClientServerMirrorLiveApp.PATH_LABEL.contains("truth"));
+        }
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+@Test void defaultNonBlank() { assertFalse("steady".isBlank()); }
 
-class ClientServerMirrorLiveAppLogicTest {
-    @Test
-    void hubKeyIsStable() {
-        assertEquals("status", ClientServerMirrorLiveApp.KEY);
-        assertFalse(ClientServerMirrorLiveApp.KEY.isBlank());
     }
-
-    @Test
-    void defaultIsNonEmpty() {
-        assertFalse(ClientServerMirrorLiveApp.DEFAULT.isBlank());
-    }
-}

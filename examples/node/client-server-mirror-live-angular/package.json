@@ -1,0 +1,7 @@
+{
+  "name": "kiponos-client-server-mirror-live-angular",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node peer.mjs" },
+  "dependencies": { "@kiponos/angular": "latest" }
+}
