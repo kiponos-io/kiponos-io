@@ -1,0 +1,7 @@
+{
+  "name": "kiponos-quad-sdk-live-mesh-angular",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node peer.mjs" },
+  "dependencies": { "@kiponos/angular": "latest" }
+}

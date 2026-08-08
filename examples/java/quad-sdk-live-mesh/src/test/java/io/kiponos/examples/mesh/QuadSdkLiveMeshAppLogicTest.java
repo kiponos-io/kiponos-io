@@ -1,17 +1,13 @@
-package io.kiponos.examples.mesh;
+    package io.kiponos.examples.mesh;
+    import org.junit.jupiter.api.Test;
+    import static org.junit.jupiter.api.Assertions.*;
+    class QuadSdkLiveMeshAppLogicTest {
+        @Test void hubKeyStable() {
+            assertEquals("mode", QuadSdkLiveMeshApp.KEY);
+            assertEquals("steady", QuadSdkLiveMeshApp.DEFAULT);
+            assertTrue(QuadSdkLiveMeshApp.PATH_LABEL.contains("mode"));
+        }
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+@Test void defaultNonBlank() { assertFalse("steady".isBlank()); }
 
-class QuadSdkLiveMeshAppLogicTest {
-    @Test
-    void hubKeyIsStable() {
-        assertEquals("mode", QuadSdkLiveMeshApp.KEY);
-        assertFalse(QuadSdkLiveMeshApp.KEY.isBlank());
     }
-
-    @Test
-    void defaultIsNonEmpty() {
-        assertFalse(QuadSdkLiveMeshApp.DEFAULT.isBlank());
-    }
-}
