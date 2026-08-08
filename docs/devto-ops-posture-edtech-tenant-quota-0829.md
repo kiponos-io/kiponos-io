@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live per-tenant quota via Kiponos Python SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-tenant-quota-0829.md
-main_image: https://files.catbox.moe/usxgy9.jpg
+main_image: https://iili.io/CrtfL2s.jpg
 ---
 
 **The Aha:** `quotaPerMin` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

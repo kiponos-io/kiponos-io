@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live connection pool ceiling via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-pool-max-0805.md
-main_image: https://files.catbox.moe/7m29gg.jpg
+main_image: https://iili.io/CrtKi5x.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

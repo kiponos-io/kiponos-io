@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-partner-timeout-0839.md
-main_image: https://files.catbox.moe/tkl0r8.jpg
+main_image: https://iili.io/CrtKr0u.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

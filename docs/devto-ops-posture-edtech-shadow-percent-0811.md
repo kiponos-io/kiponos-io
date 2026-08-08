@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live shadow traffic share via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-shadow-percent-0811.md
-main_image: https://files.catbox.moe/4s0u4w.jpg
+main_image: https://iili.io/CrtfGmQ.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

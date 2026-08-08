@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live SLO warn burn bps via Kiponos Python SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-slo-warn-bps-0831.md
-main_image: https://files.catbox.moe/0ji5ol.jpg
+main_image: https://iili.io/CrtfwEF.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

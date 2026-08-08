@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-scroll-timeout-0844.md
-main_image: https://files.catbox.moe/aeb63u.jpg
+main_image: https://iili.io/Crtf17j.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

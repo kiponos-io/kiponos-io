@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live scheduler misfire threshold via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-misfire-ms-0845.md
-main_image: https://files.catbox.moe/c6jzx0.jpg
+main_image: https://iili.io/CrtKaHv.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

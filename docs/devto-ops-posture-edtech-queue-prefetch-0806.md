@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live consumer prefetch via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-queue-prefetch-0806.md
-main_image: https://files.catbox.moe/ivy832.jpg
+main_image: https://iili.io/CrtfFzN.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

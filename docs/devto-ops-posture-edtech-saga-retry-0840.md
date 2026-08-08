@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live saga step retry budget via Kiponos Python SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-saga-retry-0840.md
-main_image: https://files.catbox.moe/e4np7j.jpg
+main_image: https://iili.io/Crtfcru.jpg
 ---
 
 **The Aha:** `sagaMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
