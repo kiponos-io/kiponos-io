@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live feature kill switch via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-feature-kill-0577.md
-main_image: https://files.catbox.moe/zfpo5s.jpg
+main_image: https://iili.io/C4Aai5N.jpg
 ---
 
 **The Aha:** `killSwitch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live degradation mode via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-degrade-mode-0578.md
-main_image: https://files.catbox.moe/5n526s.jpg
+main_image: https://iili.io/C4Aar0v.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

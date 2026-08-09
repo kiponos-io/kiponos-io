@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live canary traffic share via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-canary-percent-0560.md
-main_image: https://files.catbox.moe/x0k1us.jpg
+main_image: https://iili.io/C4AaMib.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

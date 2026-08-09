@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-backoff-ms-0553.md
-main_image: https://files.catbox.moe/4lfkkm.jpg
+main_image: https://iili.io/C4AauiG.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live CORS max-age via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-cors-max-age-0596.md
-main_image: https://files.catbox.moe/in7zq9.jpg
+main_image: https://iili.io/C4AavzF.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

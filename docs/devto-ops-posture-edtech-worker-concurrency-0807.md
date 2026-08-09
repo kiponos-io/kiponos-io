@@ -4,7 +4,7 @@ published: false
 tags: java, education, architecture, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — edtech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-edtech-worker-concurrency-0807.md
-main_image: https://files.catbox.moe/cazt3d.jpg
+main_image: https://iili.io/C4AaxDX.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

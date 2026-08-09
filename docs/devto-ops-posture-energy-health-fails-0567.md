@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live health fail threshold via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-health-fails-0567.md
-main_image: https://files.catbox.moe/m52hlw.jpg
+main_image: https://iili.io/C4AaZzX.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

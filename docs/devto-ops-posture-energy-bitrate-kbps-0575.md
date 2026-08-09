@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-bitrate-kbps-0575.md
-main_image: https://files.catbox.moe/n17po8.jpg
+main_image: https://iili.io/C4Aa7Ul.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

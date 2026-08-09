@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live idempotency window via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-idempotency-win-0598.md
-main_image: https://files.catbox.moe/69lg9b.jpg
+main_image: https://iili.io/C4Aayg4.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

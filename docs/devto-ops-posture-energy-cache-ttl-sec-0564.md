@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live cache TTL seconds via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-cache-ttl-sec-0564.md
-main_image: https://files.catbox.moe/dw43h3.jpg
+main_image: https://iili.io/C4Aa0b9.jpg
 ---
 
 **The Aha:** `ttlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

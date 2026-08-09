@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live batch chunk size via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-batch-chunk-0572.md
-main_image: https://files.catbox.moe/fr4e1f.jpg
+main_image: https://iili.io/C4AaRff.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
