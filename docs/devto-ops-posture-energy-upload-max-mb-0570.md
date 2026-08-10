@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live upload size ceiling MB via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-upload-max-mb-0570.md
-main_image: https://files.catbox.moe/5x6766.jpg
+main_image: https://iili.io/C4rvOJV.jpg
 ---
 
 **The Aha:** `uploadMaxMb` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

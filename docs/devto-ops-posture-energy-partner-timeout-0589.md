@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live partner API timeout via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-partner-timeout-0589.md
-main_image: https://files.catbox.moe/nky66h.jpg
+main_image: https://iili.io/C4reZ2p.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

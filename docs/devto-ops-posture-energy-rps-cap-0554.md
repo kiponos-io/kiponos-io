@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live ingress RPS ceiling via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-rps-cap-0554.md
-main_image: https://files.catbox.moe/idhi0s.jpg
+main_image: https://iili.io/C4rkbKx.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

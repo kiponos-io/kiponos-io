@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live consumer prefetch via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-queue-prefetch-0556.md
-main_image: https://files.catbox.moe/ji2uul.jpg
+main_image: https://iili.io/C4rkzCb.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

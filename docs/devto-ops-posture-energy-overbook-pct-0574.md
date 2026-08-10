@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live overbooking percent via Kiponos Java SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-overbook-pct-0574.md
-main_image: https://files.catbox.moe/2sy8j9.jpg
+main_image: https://iili.io/C4rev2V.jpg
 ---
 
 **The Aha:** `overbookPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

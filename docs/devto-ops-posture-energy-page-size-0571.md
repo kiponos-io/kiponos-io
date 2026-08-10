@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live pagination page size via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-page-size-0571.md
-main_image: https://files.catbox.moe/zh8mu9.jpg
+main_image: https://iili.io/C4reUp1.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

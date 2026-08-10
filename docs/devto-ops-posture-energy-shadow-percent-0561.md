@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live shadow traffic share via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-shadow-percent-0561.md
-main_image: https://files.catbox.moe/vwb3a9.jpg
+main_image: https://iili.io/C4rvJN1.jpg
 ---
 
 **The Aha:** `shadowPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

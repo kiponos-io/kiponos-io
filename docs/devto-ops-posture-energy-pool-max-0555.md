@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live connection pool ceiling via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-pool-max-0555.md
-main_image: https://files.catbox.moe/kq1wuc.jpg
+main_image: https://iili.io/C4rk9Qs.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

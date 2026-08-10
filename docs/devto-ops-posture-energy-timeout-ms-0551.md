@@ -4,7 +4,7 @@ published: false
 tags: java, energy, architecture, kiponos
 description: "Live outbound call timeout via Kiponos Python SDK — energy posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-energy-timeout-ms-0551.md
-main_image: https://files.catbox.moe/3ah8yl.jpg
+main_image: https://iili.io/C4rvYl4.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
