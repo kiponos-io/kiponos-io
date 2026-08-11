@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live alert critical threshold via Kiponos Python SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-alert-crit-0082.md
-main_image: https://files.catbox.moe/obzvdg.jpg
+main_image: https://iili.io/C6zWw8P.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-circuit-failures-0059.md
-main_image: https://files.catbox.moe/7mq40t.jpg
+main_image: https://iili.io/C6zXuOF.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

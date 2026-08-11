@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live circuit open duration via Kiponos Python SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-circuit-open-ms-0058.md
-main_image: https://files.catbox.moe/6zaps8.jpg
+main_image: https://iili.io/C6zXllp.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

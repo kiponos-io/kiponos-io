@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live UI/API debounce via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-debounce-ms-0097.md
-main_image: https://files.catbox.moe/fj7t6d.jpg
+main_image: https://iili.io/C6zXSe9.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

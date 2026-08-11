@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live graceful drain window via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-drain-ms-0066.md
-main_image: https://files.catbox.moe/snjy9k.jpg
+main_image: https://iili.io/C6zXyXa.jpg
 ---
 
 **The Aha:** `gracefulShutdownMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live JWT clock skew leeway via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-jwt-leeway-sec-0069.md
-main_image: https://files.catbox.moe/47e518.jpg
+main_image: https://iili.io/C6zh1Bj.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live canary traffic share via Kiponos Python SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-canary-percent-0060.md
-main_image: https://files.catbox.moe/34psaa.jpg
+main_image: https://iili.io/C6zXxUB.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

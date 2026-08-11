@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live degradation mode via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-degrade-mode-0078.md
-main_image: https://files.catbox.moe/7dzmsh.jpg
+main_image: https://iili.io/C6zXDe1.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
