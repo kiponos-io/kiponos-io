@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live outbound call timeout via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-timeout-ms-0401.md
-main_image: https://files.catbox.moe/ccm47o.jpg
+main_image: https://iili.io/Ci5D2Ia.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

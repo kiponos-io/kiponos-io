@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live fraud velocity cap via Kiponos Python SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-velocity-cap-0423.md
-main_image: https://files.catbox.moe/64zy3e.jpg
+main_image: https://iili.io/Ci79COP.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

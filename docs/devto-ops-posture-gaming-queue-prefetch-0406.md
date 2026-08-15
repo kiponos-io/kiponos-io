@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live consumer prefetch via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-queue-prefetch-0406.md
-main_image: https://files.catbox.moe/mgu2t7.jpg
+main_image: https://iili.io/Ci5vs7p.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live saga step retry budget via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-saga-retry-0440.md
-main_image: https://files.catbox.moe/nmzb3m.jpg
+main_image: https://iili.io/Ci5r4Jj.jpg
 ---
 
 **The Aha:** `sagaMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

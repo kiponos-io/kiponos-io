@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live SLO warn burn bps via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-slo-warn-bps-0431.md
-main_image: https://files.catbox.moe/gklvsa.jpg
+main_image: https://iili.io/Ci5sXwv.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

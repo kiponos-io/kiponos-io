@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live retry budget via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-retry-max-0402.md
-main_image: https://files.catbox.moe/fu38p3.jpg
+main_image: https://iili.io/Ci5Uq0b.jpg
 ---
 
 **The Aha:** `maxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

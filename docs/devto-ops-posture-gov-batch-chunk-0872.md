@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live batch chunk size via Kiponos Java SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-batch-chunk-0872.md
-main_image: https://files.catbox.moe/a5gojr.jpg
+main_image: https://iili.io/Ci7x5Ou.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
