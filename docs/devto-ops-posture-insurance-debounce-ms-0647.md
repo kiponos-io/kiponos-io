@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live UI/API debounce via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-debounce-ms-0647.md
-main_image: https://files.catbox.moe/5bsg67.jpg
+main_image: https://iili.io/Cstym0u.jpg
 ---
 
 **The Aha:** `debounceMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

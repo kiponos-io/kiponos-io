@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live media bitrate ceiling via Kiponos Java SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-bitrate-kbps-0625.md
-main_image: https://files.catbox.moe/mwoeut.jpg
+main_image: https://iili.io/CstyRcb.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
