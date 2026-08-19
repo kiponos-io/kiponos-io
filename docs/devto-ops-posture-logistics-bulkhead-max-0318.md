@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live bulkhead concurrency via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-bulkhead-max-0318.md
-main_image: https://files.catbox.moe/yh5xau.jpg
+main_image: https://iili.io/CLiQ6jS.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
