@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live scheduler misfire threshold via Kiponos Python SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-misfire-ms-0495.md
-main_image: https://files.catbox.moe/r0tvmy.jpg
+main_image: https://iili.io/CLVV5tj.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
