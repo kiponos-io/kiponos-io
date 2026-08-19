@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live retry budget via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-retry-max-0302.md
-main_image: https://files.catbox.moe/399kif.jpg
+main_image: https://iili.io/CLppfgj.jpg
 ---
 
 **The Aha:** `maxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
