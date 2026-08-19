@@ -4,7 +4,7 @@ published: false
 tags: java, iot, devops, kiponos
 description: "Live worker concurrency via Kiponos Python SDK — iot posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-iot-worker-concurrency-0457.md
-main_image: https://files.catbox.moe/82cnlq.jpg
+main_image: https://iili.io/CLPGqjn.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
