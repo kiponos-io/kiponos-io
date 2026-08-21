@@ -4,7 +4,7 @@ published: false
 tags: java, machinelearning, devops, kiponos
 description: "Live health fail threshold via Kiponos Java SDK — mlops posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mlops-health-fails-0967.md
-main_image: https://files.catbox.moe/6zxb3f.jpg
+main_image: https://iili.io/CQL1EJt.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
