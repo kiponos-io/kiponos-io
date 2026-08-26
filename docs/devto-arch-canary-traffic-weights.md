@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live canary traffic weights via Kiponos for progressive delivery."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-canary-traffic-weights.md
-main_image: https://files.catbox.moe/9vi7un.jpg
+main_image: https://iili.io/CDZPfaV.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

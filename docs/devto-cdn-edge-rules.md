@@ -4,7 +4,7 @@ published: true
 tags: java, networking, devops, kiponos
 description: "Change cache TTLs, origin weights, and geo routing rules in Java CDN control services without edge config pushes. Kiponos local reads, WebSocket deltas."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-cdn-edge-rules.md
-main_image: https://files.catbox.moe/i8rg0m.jpg
+main_image: https://iili.io/CDZssCg.jpg
 ---
 
 **The Aha:** `cacheTtlSec` is not a property-file trophy. It is **incident posture** for CDN edge rules — and posture that waits for a jar is already late.

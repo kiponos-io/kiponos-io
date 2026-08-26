@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "When to use feature flags vs a live config hub like Kiponos."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-feature-flags-vs-config-hub.md
-main_image: https://files.catbox.moe/y5ugzw.jpg
+main_image: https://iili.io/CDZPplR.jpg
 ---
 
 **The Aha:** `rps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

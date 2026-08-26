@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live health fail threshold via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-health-fails-0267.md
-main_image: https://files.catbox.moe/trb68x.jpg
+main_image: https://iili.io/CtfgYUF.jpg
 ---
 
 **The Aha:** `failThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -1,5 +1,5 @@
 ---
-main_image: https://litter.catbox.moe/2l7x1l.jpg
+main_image: https://iili.io/CDZ6eEv.jpg
 title: "We Opened the Kiponos Hub to Angular — Live Config Without Redeploy (Announcement)"
 published: true
 tags: angular, typescript, devops, websocket, opensource

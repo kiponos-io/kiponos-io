@@ -4,7 +4,7 @@ published: true
 tags: java, accounting, architecture, kiponos
 description: "Tune accrual thresholds, close calendars, and posting hold rules in Java ERP services during month-end crunch — Kiponos WebSocket deltas, zero-latency reads."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-accounting-month-end.md
-main_image: https://files.catbox.moe/l631hl.jpg
+main_image: https://iili.io/CDZ4ve9.jpg
 ---
 
 **The Aha:** `closeWindowOpen` is not a property-file trophy. It is **incident posture** for accounting close — and posture that waits for a jar is already late.

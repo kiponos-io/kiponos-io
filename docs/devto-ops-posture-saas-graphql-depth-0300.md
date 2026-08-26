@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live GraphQL query depth via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-graphql-depth-0300.md
-main_image: https://files.catbox.moe/hf4j2i.jpg
+main_image: https://iili.io/CtfgAiB.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

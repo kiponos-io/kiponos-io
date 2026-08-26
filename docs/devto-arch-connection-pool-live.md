@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live pool ceilings via Kiponos — relieve stampede without a redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-connection-pool-live.md
-main_image: https://files.catbox.moe/ccs13f.jpg
+main_image: https://iili.io/CDZP4SV.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

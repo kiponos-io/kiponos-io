@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, observability, kiponos
 description: "Live SLO/alert thresholds via Kiponos so on-call can retune without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-observability-thresholds.md
-main_image: https://files.catbox.moe/cn3pj9.jpg
+main_image: https://iili.io/CDZiUzX.jpg
 ---
 
 **The Aha:** `errorRateWarn` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

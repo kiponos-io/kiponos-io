@@ -4,7 +4,7 @@ published: false
 tags: distributed, architecture, java, devops
 description: Run the same Java binary in eu-west and us-east with identical config tree shapes. When the hub link partitions, bound staleness and safe defaults beat silent drift. Kiponos SDK architecture guide.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-multi-region-active-active.md
-main_image: https://files.catbox.moe/68lli5.jpg
+main_image: https://iili.io/CDZiGb1.jpg
 ---
 
 Tuesday 14:07 UTC. **eu-west-1** and **us-east-1** both serve card authorizations. Fraud analysts in Dublin raise `block_score` after a BIN attack. Within seconds, US pods pick up the change. EU pods do not — a transient **cross-region backbone partition** severed their WebSocket to the hub twelve minutes earlier.

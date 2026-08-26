@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, microservices, kiponos
 description: "Live strangler routing weights via Kiponos during migration."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-strangler-fig-migration.md
-main_image: https://files.catbox.moe/7u3q12.jpg
+main_image: https://iili.io/CDZsYhX.jpg
 ---
 
 **The Aha:** `legacyWeight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

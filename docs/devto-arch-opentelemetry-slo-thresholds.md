@@ -4,7 +4,7 @@ published: false
 tags: python, observability, slo, devops
 description: Error-budget burn-rate windows and paging thresholds trapped in Prometheus YAML or OTel collector config need live tuning during incidents. Kiponos feeds SLO evaluators — change burn windows without editing alert rules.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-opentelemetry-slo-thresholds.md
-main_image: https://files.catbox.moe/87bzmo.jpg
+main_image: https://iili.io/CDZs9qb.jpg
 cover_image: /home/moshe/work/kiponos-io/docs/devto-cover-arch-opentelemetry-slo.jpg
 ---
 

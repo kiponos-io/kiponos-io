@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "fullstack canary percent live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-canary-fullstack-live.md
-main_image: https://iili.io/CSnvqDG.jpg
+main_image: https://iili.io/CDZsUvV.jpg
 ---
 
 **The Aha:** fullstack canary percent is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

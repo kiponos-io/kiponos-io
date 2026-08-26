@@ -4,7 +4,7 @@ published: true
 tags: java, banking, security, kiponos
 description: "Change credit score cutoffs, DTI limits, and product-specific approval rules in Java origination services while applications keep flowing. Kiponos local reads, "
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-banking-loan-approval.md
-main_image: https://files.catbox.moe/7sylk3.jpg
+main_image: https://iili.io/CDZswQe.jpg
 ---
 
 **The Aha:** `approvalScore` is not a property-file trophy. It is **incident posture** for retail banking — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "live max tokens per turn live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agent-budget-token-live.md
-main_image: https://iili.io/CSnvoil.jpg
+main_image: https://iili.io/CDZ4P0Q.jpg
 ---
 
 **The Aha:** live max tokens per turn is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

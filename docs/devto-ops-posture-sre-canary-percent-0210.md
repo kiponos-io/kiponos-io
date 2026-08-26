@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live canary traffic share via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-canary-percent-0210.md
-main_image: https://files.catbox.moe/91ibla.jpg
+main_image: https://iili.io/Ctvqk5x.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

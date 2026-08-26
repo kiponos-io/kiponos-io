@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, gitops, kiponos
 description: "Where GitOps ends and a live config hub begins for app posture."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-gitops-vs-live-config.md
-main_image: https://files.catbox.moe/g2pen5.jpg
+main_image: https://iili.io/CDZinUl.jpg
 ---
 
 **The Aha:** `canaryPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

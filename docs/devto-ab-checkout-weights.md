@@ -4,7 +4,7 @@ published: true
 tags: java, ecommerce, devops, kiponos
 description: "Rebalance checkout experiment variants during live traffic without redeploying your Java storefront. Kiponos delivers variant weights via WebSocket deltas with "
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ab-checkout-weights.md
-main_image: https://files.catbox.moe/dlkkmj.jpg
+main_image: https://iili.io/CDZ4eJS.jpg
 ---
 
 **The Aha:** `variantWeight` is not a property-file trophy. It is **incident posture** for checkout experiments — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, devops, architecture, kiponos
 description: "Live broker prefetch for consumers via Kiponos example aha-generated-knob-005 (hub key knob-5)."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-aha-generated-knob-005.md
-main_image: https://files.catbox.moe/4k3gef.jpg
+main_image: https://iili.io/CDZ6lBj.jpg
 ---
 
 **The Aha:** `knob-5` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

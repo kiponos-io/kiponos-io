@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live bulkhead concurrency via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-bulkhead-max-0218.md
-main_image: https://files.catbox.moe/9emwqk.jpg
+main_image: https://iili.io/Ctvqals.jpg
 ---
 
 **The Aha:** `bulkheadMax` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

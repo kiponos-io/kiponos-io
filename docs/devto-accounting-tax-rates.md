@@ -4,7 +4,7 @@ published: true
 tags: java, accounting, architecture, kiponos
 description: "Serve VAT, sales tax, and withholding rates from a live Kiponos tree in Java billing engines. Tax team updates jurisdictions without redeploying rate tables."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-accounting-tax-rates.md
-main_image: https://files.catbox.moe/2jkgcw.jpg
+main_image: https://iili.io/CDZ4Uzu.jpg
 ---
 
 **The Aha:** `taxRateBps` is not a property-file trophy. It is **incident posture** for multi-jurisdiction tax — and posture that waits for a jar is already late.

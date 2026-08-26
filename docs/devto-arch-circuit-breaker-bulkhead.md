@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, resilience, kiponos
 description: "Live circuit thresholds and bulkhead limits via Kiponos."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-arch-circuit-breaker-bulkhead.md
-main_image: https://files.catbox.moe/sh1p55.jpg
+main_image: https://iili.io/CDZP5ap.jpg
 ---
 
 **The Aha:** `failureRate` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

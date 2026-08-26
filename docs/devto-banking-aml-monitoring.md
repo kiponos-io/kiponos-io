@@ -4,7 +4,7 @@ published: true
 tags: java, banking, security, kiponos
 description: "Live AML velocity limits, CTR thresholds, and SAR triggers in Java transaction monitoring. Kiponos WebSocket deltas with zero-latency reads on every screened ev"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-banking-aml-monitoring.md
-main_image: https://files.catbox.moe/574r3o.jpg
+main_image: https://iili.io/CDZsVv2.jpg
 ---
 
 **The Aha:** `amlThreshold` is not a property-file trophy. It is **incident posture** for AML monitoring — and posture that waits for a jar is already late.
