@@ -53,3 +53,11 @@ node peer.mjs --serve   # BFF; SPA fetches /posture
 ```
 
 Repo: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+
+## Published (medium)
+
+Agent Frameworks Gave Us Tools. They Did Not Give Us a Live Hub.
+
+https://medium.com/@devops_16625/agent-frameworks-gave-us-tools-they-did-not-give-us-a-live-hub-e1440e0a11b4
+
+Same Team leaf as this example — no cross-post of the essay body.
