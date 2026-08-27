@@ -51,3 +51,11 @@ KIPONOS_LIVE=1 python3 peer.py   # optional live hub
 ```
 
 Repo: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+
+## Published (devto)
+
+Grok Build Still Restarted MCP to Flip a Write Tool. The Shopping Admin Did Not Need That.
+
+https://dev.to/kiponos/grok-build-still-restarted-mcp-to-flip-a-write-tool-the-shopping-admin-did-not-need-that-3n70
+
+Same Team leaf as this example — no cross-post of the essay body.
