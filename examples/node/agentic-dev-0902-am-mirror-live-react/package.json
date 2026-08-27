@@ -1,0 +1,13 @@
+{
+  "name": "kiponos-agentic-dev-0902-am-mirror-live-react",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node peer.mjs",
+    "test": "node --test test-logic.mjs",
+    "serve": "node peer.mjs --serve"
+  },
+  "dependencies": {
+    "@kiponos/react": "latest"
+  }
+}

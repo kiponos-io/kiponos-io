@@ -4,27 +4,48 @@ import io.kiponos.sdk.Kiponos;
 import io.kiponos.sdk.configs.Folder;
 
 /**
- * Cursor (or peer agent) session posture shared on the hub
- * Hub leaf: examples/agentic-cursor-session-shared-state/session-posture
- * Default: focus=admin-wall,shopping-pause=off
- * Pain: second agent cannot inherit live posture without paste/restart
+ * Cursor session posture on a live hub
+ * Product: admin-dashboard · Agent host: Cursor
+ * Hub leaf: examples/agentic-cursor-session-shared-state/session-posture (default focus=admin-wall,shopping-pause=off)
+ * Pain: Second agent host needed a paste buffer to see the same war-room posture
+ *
+ * Four SDK peers share this leaf: Java, Python, React-Node, Angular-Node.
+ * Never put Connect tokens in a SPA.
  */
 public final class AgenticCursorSessionSharedStateApp {
     public static final String KEY = "session-posture";
     public static final String DEFAULT = "focus=admin-wall,shopping-pause=off";
     public static final String FOLDER = "agentic-cursor-session-shared-state";
 
+    public record Decision(String value, String action, boolean proceed) {}
+
     public static void main(String[] args) throws Exception {
         Kiponos k = Kiponos.createForCurrentTeam();
         try {
             Folder p = ensure(k);
-            String v = read(p, KEY, DEFAULT);
-            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + v);
-            // hot path: local get — Claude Code / Grok Build peers read same leaf live
-            Thread.sleep(1200L);
+            String v = args.length > 0 ? args[0] : read(p, KEY, DEFAULT);
+            Decision d = decide(v);
+            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + d.value());
+            System.out.println("action=" + d.action() + " proceed=" + d.proceed());
+            // next MCP / tool call sees dashboard edits — no host restart
+            Thread.sleep(400L);
         } finally {
             k.disconnect();
         }
+    }
+
+    public static Decision decide(String raw) {
+        String v = norm(raw);
+        boolean paused = v.toLowerCase().contains("shopping-pause=on")
+                || v.toLowerCase().contains("pause=on");
+        return new Decision(v, paused ? "incident_pause_active" : "share_session_posture", !paused);
+    }
+
+    static String norm(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return DEFAULT;
+        }
+        return raw.trim();
     }
 
     static Folder ensure(Kiponos k) {

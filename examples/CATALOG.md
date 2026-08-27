@@ -290,3 +290,17 @@ examples/java/<id>/
 10. `03-library-embedded-defaults`  
 
 Full backlog = sections A–E above (~80+ intended modules over time).
+
+---
+
+## K. Agentic wave (four SDKs per article, 2026-08-27 → 2026-10-26)
+
+Each calendar id has **Java + Python + React-Node BFF + Angular-Node BFF** on one Team leaf.
+Index: [`AGENTIC-WAVE.md`](AGENTIC-WAVE.md). Tokens never in the SPA.
+
+| SDK | Path |
+|-----|------|
+| Java | `examples/java/agentic-*` |
+| Python | `examples/python/agentic-*` |
+| React server | `examples/node/agentic-*-react` |
+| Angular server | `examples/node/agentic-*-angular` |

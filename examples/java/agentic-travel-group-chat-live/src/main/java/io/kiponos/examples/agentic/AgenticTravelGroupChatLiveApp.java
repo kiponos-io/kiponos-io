@@ -4,27 +4,48 @@ import io.kiponos.sdk.Kiponos;
 import io.kiponos.sdk.configs.Folder;
 
 /**
- * Travel Coordinator App — live group-chat mute leaf
- * Hub leaf: examples/agentic-travel-group-chat-live/chat-mute
- * Default: none
- * Pain: mute a flooding channel without killing the agent / MCP session
+ * Travel group-chat mute without killing the agent
+ * Product: travel · Agent host: Claude Code
+ * Hub leaf: examples/agentic-travel-group-chat-live/chat-mute (default none)
+ * Pain: Killing the agent host to stop a flooded travel group chat
+ *
+ * Four SDK peers share this leaf: Java, Python, React-Node, Angular-Node.
+ * Never put Connect tokens in a SPA.
  */
 public final class AgenticTravelGroupChatLiveApp {
     public static final String KEY = "chat-mute";
     public static final String DEFAULT = "none";
     public static final String FOLDER = "agentic-travel-group-chat-live";
 
+    public record Decision(String value, String action, boolean proceed) {}
+
     public static void main(String[] args) throws Exception {
         Kiponos k = Kiponos.createForCurrentTeam();
         try {
             Folder p = ensure(k);
-            String v = read(p, KEY, DEFAULT);
-            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + v);
-            // hot path: local get — write-tools honor mute without MCP reboot
-            Thread.sleep(1200L);
+            String v = args.length > 0 ? args[0] : read(p, KEY, DEFAULT);
+            Decision d = decide(v);
+            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + d.value());
+            System.out.println("action=" + d.action() + " proceed=" + d.proceed());
+            // next MCP / tool call sees dashboard edits — no host restart
+            Thread.sleep(400L);
         } finally {
             k.disconnect();
         }
+    }
+
+    public static Decision decide(String raw) {
+        String v = norm(raw);
+        boolean muted = !(v.equalsIgnoreCase("none") || v.equalsIgnoreCase("off")
+                || v.equalsIgnoreCase(""));
+        return new Decision(v, muted ? "mute_sends_keep_session" : "group_chat_sends_live", !muted);
+    }
+
+    static String norm(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return DEFAULT;
+        }
+        return raw.trim();
     }
 
     static Folder ensure(Kiponos k) {

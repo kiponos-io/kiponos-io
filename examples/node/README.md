@@ -23,3 +23,7 @@ Browser SPA  ↔  your Node BFF (createFromEnv)  ↔  Kiponos hub
 ```
 
 Java peers: `examples/java/react-sdk-hub-peer`, `examples/java/angular-sdk-hub-peer`.
+
+## Agentic wave
+
+`examples/node/agentic-*-react` and `agentic-*-angular` — Node BFFs (`@kiponos/react/server`, `@kiponos/angular/server`). `npm test` is offline; `node peer.mjs --serve` exposes `GET /posture`. See [`../AGENTIC-WAVE.md`](../AGENTIC-WAVE.md).

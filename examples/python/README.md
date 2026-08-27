@@ -12,6 +12,10 @@ Parity demos for the Java public examples under `examples/java/`.
 
 Each folder: pure logic tests (`pytest`) + optional live hub via `agent-kit` when `KIPONOS_*` is set.
 
+## Agentic wave
+
+`examples/python/agentic-*` — one Python peer per calendar article, same leaf as Java / React-Node / Angular-Node. See [`../AGENTIC-WAVE.md`](../AGENTIC-WAVE.md).
+
 ```bash
 cd examples/python/pattern-strategy-live-router
 python3 -m pytest -q

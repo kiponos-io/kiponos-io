@@ -5,25 +5,47 @@ import io.kiponos.sdk.configs.Folder;
 
 /**
  * The live hub agent frameworks do not ship
+ * Product: admin-dashboard · Agent host: Cursor
  * Hub leaf: examples/agentic-frameworks-missing-hub/shared-truth (default live)
- * Pain: Tools and MCP without a live shared tree still force restarts
+ * Pain: Agent frameworks shipped tools but not a live hub
+ *
+ * Four SDK peers share this leaf: Java, Python, React-Node, Angular-Node.
+ * Never put Connect tokens in a SPA.
  */
 public final class AgenticFrameworksMissingHubApp {
     public static final String KEY = "shared-truth";
     public static final String DEFAULT = "live";
     public static final String FOLDER = "agentic-frameworks-missing-hub";
 
+    public record Decision(String value, String action, boolean proceed) {}
+
     public static void main(String[] args) throws Exception {
         Kiponos k = Kiponos.createForCurrentTeam();
         try {
             Folder p = ensure(k);
-            String v = read(p, KEY, DEFAULT);
-            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + v);
-            // hot path: local get — next MCP/tool call sees dashboard edits without restart
-            Thread.sleep(1200L);
+            String v = args.length > 0 ? args[0] : read(p, KEY, DEFAULT);
+            Decision d = decide(v);
+            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + d.value());
+            System.out.println("action=" + d.action() + " proceed=" + d.proceed());
+            // next MCP / tool call sees dashboard edits — no host restart
+            Thread.sleep(400L);
         } finally {
             k.disconnect();
         }
+    }
+
+    public static Decision decide(String raw) {
+        String v = norm(raw);
+        boolean live = v.equalsIgnoreCase("live") || v.equalsIgnoreCase("yes")
+                || v.equalsIgnoreCase("on");
+        return new Decision(v, live ? "peers_share_live_hub" : "refuse_stale_host_argv", live);
+    }
+
+    static String norm(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return DEFAULT;
+        }
+        return raw.trim();
     }
 
     static Folder ensure(Kiponos k) {

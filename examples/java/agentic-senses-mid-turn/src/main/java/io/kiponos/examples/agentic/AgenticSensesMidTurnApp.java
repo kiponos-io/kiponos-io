@@ -5,25 +5,47 @@ import io.kiponos.sdk.configs.Folder;
 
 /**
  * Senses as live hub leaves — mid-turn decisions
+ * Product: senses · Agent host: Grok Build
  * Hub leaf: examples/agentic-senses-mid-turn/priority (default P3)
- * Pain: Agent finishes a turn on stale network truth because the sense lived in a file
+ * Pain: Agent finishes a turn on stale sense truth because the probe lived in a file
+ *
+ * Four SDK peers share this leaf: Java, Python, React-Node, Angular-Node.
+ * Never put Connect tokens in a SPA.
  */
 public final class AgenticSensesMidTurnApp {
     public static final String KEY = "priority";
     public static final String DEFAULT = "P3";
     public static final String FOLDER = "agentic-senses-mid-turn";
 
+    public record Decision(String value, String action, boolean proceed) {}
+
     public static void main(String[] args) throws Exception {
         Kiponos k = Kiponos.createForCurrentTeam();
         try {
             Folder p = ensure(k);
-            String v = read(p, KEY, DEFAULT);
-            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + v);
-            // hot path: local get — next MCP/tool call sees dashboard edits without restart
-            Thread.sleep(1200L);
+            String v = args.length > 0 ? args[0] : read(p, KEY, DEFAULT);
+            Decision d = decide(v);
+            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + d.value());
+            System.out.println("action=" + d.action() + " proceed=" + d.proceed());
+            // next MCP / tool call sees dashboard edits — no host restart
+            Thread.sleep(400L);
         } finally {
             k.disconnect();
         }
+    }
+
+    public static Decision decide(String raw) {
+        String v = norm(raw);
+        String u = v.toUpperCase();
+        boolean abort = u.startsWith("P0") || u.startsWith("P1");
+        return new Decision(v, abort ? "abort_mid_turn_no_restart" : "continue_turn", !abort);
+    }
+
+    static String norm(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return DEFAULT;
+        }
+        return raw.trim();
     }
 
     static Folder ensure(Kiponos k) {

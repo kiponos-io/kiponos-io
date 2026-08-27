@@ -2,32 +2,51 @@
 
 MCP tools that read a live hub — no host restart
 
-Live hub leaf for **tools-allow** — change it without restarting Java services, Python agents, or MCP hosts (Grok Build, Cursor, Claude Code).
+**Product scene:** shopping  
+**Agent host:** MCP host  
+**Pain:** Restarting Grok Build / Cursor / Claude Code MCP just to flip a write tool
 
-## Hub
+Hub leaf (same Team tree for every SDK):
 
 ```text
 examples/agentic-mcp-live-tools/tools-allow = search,read
 ```
 
-Pain: Restarting Grok Build / Cursor / Claude Code MCP just to flip a write tool
+Hot path: **local `get()`** after WebSocket bootstrap. Flip the leaf on the
+[Kiponos.io](https://kiponos.io) dashboard — Grok Build / Cursor / Claude Code
+do **not** restart MCP to honor it.
 
-## Run
+## Four peers (one leaf)
+
+| SDK | Path | How to run |
+|-----|------|------------|
+| Java | `examples/java/agentic-mcp-live-tools` | `./gradlew test run` |
+| Python | `examples/python/agentic-mcp-live-tools` | `python3 -m pytest -q && python3 peer.py` |
+| React (Node BFF) | `examples/node/agentic-mcp-live-tools-react` | `npm install && npm test && node peer.mjs` |
+| Angular (Node BFF) | `examples/node/agentic-mcp-live-tools-angular` | `npm install && npm test && node peer.mjs` |
+
+React / Angular **server** entries (`createFromEnv`) hold Connect tokens.
+The SPA talks to **your BFF** (`node peer.mjs --serve` → `GET /posture`).
+Never put `KIPONOS_ID` / `KIPONOS_ACCESS` in the browser.
+
+## Connect
+
+Copy tokens from kiponos.io → **Connect**:
+
+```bash
+export KIPONOS_ID=…          # not committed
+export KIPONOS_ACCESS=…
+export KIPONOS="['my-app']['v1.0.0']['dev']['base']"
+```
+
+Java also accepts `kiponos.local.env` next to `build.gradle` (gitignored).
+
+## This peer (java)
 
 ```bash
 cd examples/java/agentic-mcp-live-tools
-cp kiponos.local.env.example kiponos.local.env   # from kiponos.io → Connect
+cp kiponos.local.env.example kiponos.local.env
 ./gradlew test run
 ```
 
-## Peers
-
-| Peer | Role |
-|------|------|
-| Java | this example — `Kiponos.createForCurrentTeam()` |
-| Python | `Kiponos.connect()` agent / MCP tool |
-| React | `@kiponos/react` **server** peer (`createFromEnv`) — never browser tokens |
-| Angular | `@kiponos/angular` **server** peer — same moral |
-
-Medium draft (if any): `docs/examples/medium-drafts/agentic-mcp-live-tools.md`  
-dev.to essay (if any): `docs/devto-agentic-mcp-live-tools.md`
+Repo: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)

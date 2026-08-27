@@ -5,14 +5,30 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AgenticMetadataChosenTreeAppLogicTest {
     @Test
-    void hubKeyIsStable() {
+    void hubLeafIsStable() {
         assertEquals("owner-agent", AgenticMetadataChosenTreeApp.KEY);
         assertEquals("agentic-metadata-chosen-tree", AgenticMetadataChosenTreeApp.FOLDER);
-        assertFalse(AgenticMetadataChosenTreeApp.KEY.isBlank());
+        assertEquals("travel-coordinator", AgenticMetadataChosenTreeApp.DEFAULT);
     }
 
     @Test
-    void defaultIsNonEmpty() {
-        assertFalse(AgenticMetadataChosenTreeApp.DEFAULT.isBlank());
+    void defaultPathProceeds() {
+        var d = AgenticMetadataChosenTreeApp.decide(null);
+        assertEquals("travel-coordinator", d.value());
+        assertEquals("honor_chosen_owner", d.action());
+        assertTrue(d.proceed());
+    }
+
+    @Test
+    void liveSample() {
+        var d = AgenticMetadataChosenTreeApp.decide("travel-coordinator");
+        assertTrue(d.proceed());
+        assertEquals("honor_chosen_owner", d.action());
+    }
+
+    @Test
+    void gatedSample() {
+        var dflt = AgenticMetadataChosenTreeApp.decide("travel-coordinator");
+        assertTrue(dflt.proceed());
     }
 }

@@ -1,0 +1,35 @@
+package io.kiponos.examples.agentic;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class AgenticMed0925MiChatMuteAppLogicTest {
+    @Test
+    void hubLeafIsStable() {
+        assertEquals("chat-mute", AgenticMed0925MiChatMuteApp.KEY);
+        assertEquals("agentic-med-0925-mi-chat-mute", AgenticMed0925MiChatMuteApp.FOLDER);
+        assertEquals("none", AgenticMed0925MiChatMuteApp.DEFAULT);
+    }
+
+    @Test
+    void defaultPathProceeds() {
+        var d = AgenticMed0925MiChatMuteApp.decide(null);
+        assertEquals("none", d.value());
+        assertEquals("group_chat_sends_live", d.action());
+        assertTrue(d.proceed());
+    }
+
+    @Test
+    void liveSample() {
+        var d = AgenticMed0925MiChatMuteApp.decide("none");
+        assertTrue(d.proceed());
+        assertEquals("group_chat_sends_live", d.action());
+    }
+
+    @Test
+    void gatedSample() {
+        var blocked = AgenticMed0925MiChatMuteApp.decide("ops-late-bags");
+        assertFalse(blocked.proceed());
+        assertEquals("mute_sends_keep_session", blocked.action());
+    }
+}

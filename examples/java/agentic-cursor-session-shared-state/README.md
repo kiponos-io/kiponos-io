@@ -1,32 +1,52 @@
 # agentic-cursor-session-shared-state
 
-Shared Cursor / coding-agent session posture on the Kiponos hub
+Cursor session posture on a live hub
 
-Live hub leaf for **session-posture** — a second agent (Claude Code / Grok Build) picks up the same live keys without paste, restart, or MCP reboot.
+**Product scene:** admin dashboard  
+**Agent host:** Cursor  
+**Pain:** Second agent host needed a paste buffer to see the same war-room posture
 
-## Hub
+Hub leaf (same Team tree for every SDK):
 
 ```text
 examples/agentic-cursor-session-shared-state/session-posture = focus=admin-wall,shopping-pause=off
 ```
 
-Pain: Admin dashboard live wall + Shopping App incident pause stay trapped in one IDE session
+Hot path: **local `get()`** after WebSocket bootstrap. Flip the leaf on the
+[Kiponos.io](https://kiponos.io) dashboard — Grok Build / Cursor / Claude Code
+do **not** restart MCP to honor it.
 
-## Run
+## Four peers (one leaf)
+
+| SDK | Path | How to run |
+|-----|------|------------|
+| Java | `examples/java/agentic-cursor-session-shared-state` | `./gradlew test run` |
+| Python | `examples/python/agentic-cursor-session-shared-state` | `python3 -m pytest -q && python3 peer.py` |
+| React (Node BFF) | `examples/node/agentic-cursor-session-shared-state-react` | `npm install && npm test && node peer.mjs` |
+| Angular (Node BFF) | `examples/node/agentic-cursor-session-shared-state-angular` | `npm install && npm test && node peer.mjs` |
+
+React / Angular **server** entries (`createFromEnv`) hold Connect tokens.
+The SPA talks to **your BFF** (`node peer.mjs --serve` → `GET /posture`).
+Never put `KIPONOS_ID` / `KIPONOS_ACCESS` in the browser.
+
+## Connect
+
+Copy tokens from kiponos.io → **Connect**:
+
+```bash
+export KIPONOS_ID=…          # not committed
+export KIPONOS_ACCESS=…
+export KIPONOS="['my-app']['v1.0.0']['dev']['base']"
+```
+
+Java also accepts `kiponos.local.env` next to `build.gradle` (gitignored).
+
+## This peer (java)
 
 ```bash
 cd examples/java/agentic-cursor-session-shared-state
-cp kiponos.local.env.example kiponos.local.env   # from kiponos.io → Connect
+cp kiponos.local.env.example kiponos.local.env
 ./gradlew test run
 ```
 
-## Peers
-
-| Peer | Role |
-|------|------|
-| Java | this example — `Kiponos.createForCurrentTeam()` |
-| Python | `Kiponos.connect()` agent peer |
-| React | `@kiponos/react` **server** peer (`createFromEnv`) — never browser tokens |
-| Angular | `@kiponos/angular` **server** peer — same moral |
-
-dev.to essay: `docs/devto-agentic-cursor-session-shared-state.md`
+Repo: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)

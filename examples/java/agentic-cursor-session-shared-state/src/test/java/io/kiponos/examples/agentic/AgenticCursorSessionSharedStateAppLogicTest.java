@@ -5,14 +5,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AgenticCursorSessionSharedStateAppLogicTest {
     @Test
-    void hubKeyIsStable() {
+    void hubLeafIsStable() {
         assertEquals("session-posture", AgenticCursorSessionSharedStateApp.KEY);
         assertEquals("agentic-cursor-session-shared-state", AgenticCursorSessionSharedStateApp.FOLDER);
-        assertFalse(AgenticCursorSessionSharedStateApp.KEY.isBlank());
+        assertEquals("focus=admin-wall,shopping-pause=off", AgenticCursorSessionSharedStateApp.DEFAULT);
     }
 
     @Test
-    void defaultIsNonEmpty() {
-        assertFalse(AgenticCursorSessionSharedStateApp.DEFAULT.isBlank());
+    void defaultPathProceeds() {
+        var d = AgenticCursorSessionSharedStateApp.decide(null);
+        assertEquals("focus=admin-wall,shopping-pause=off", d.value());
+        assertEquals("share_session_posture", d.action());
+        assertTrue(d.proceed());
+    }
+
+    @Test
+    void liveSample() {
+        var d = AgenticCursorSessionSharedStateApp.decide("focus=admin-wall,shopping-pause=off");
+        assertTrue(d.proceed());
+        assertEquals("share_session_posture", d.action());
+    }
+
+    @Test
+    void gatedSample() {
+        var blocked = AgenticCursorSessionSharedStateApp.decide("focus=admin-wall,shopping-pause=on");
+        assertFalse(blocked.proceed());
+        assertEquals("incident_pause_active", blocked.action());
     }
 }

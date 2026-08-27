@@ -22,6 +22,21 @@ Never commit real tokens. Placeholders stay in git; local env wins.
 
 Each example has a `README.md` (problem → Kiponos fix → run) and tests. Prefer the catalog when choosing which scenario matches your stack.
 
+## Agentic wave (Java + Python + React + Angular)
+
+Four SDK peers **per article** on the same Team leaf — Grok Build / Cursor / Claude Code
+read live posture without restarting MCP. SPA never holds Connect tokens
+(React/Angular examples are **Node BFFs**).
+
+See [AGENTIC-WAVE.md](AGENTIC-WAVE.md).
+
+```bash
+cd examples/java/<id> && ./gradlew test
+cd examples/python/<id> && python3 -m pytest -q
+cd examples/node/<id>-react && npm test
+cd examples/node/<id>-angular && npm test
+```
+
 ## Python parity
 
 See `examples/python/` — Super Pattern demos with pure logic tests and optional live hub via `agent-kit`.
