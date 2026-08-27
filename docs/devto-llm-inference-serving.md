@@ -4,7 +4,7 @@ published: true
 tags: java, machinelearning, devops, kiponos
 description: "Change temperature, max tokens, model routing weights, and rate limits on live Python inference workers without restarts. Kiponos WebSocket deltas, zero-latency"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-llm-inference-serving.md
-main_image: https://files.catbox.moe/n1iaiq.jpg
+main_image: https://iili.io/CbUdu9a.jpg
 ---
 
 **The Aha:** `temperature` is not a property-file trophy. It is **incident posture** for LLM serving — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: true
 tags: java, devops, testing, kiponos
 description: "Control pytest shard count, per-suite timeouts, and retry policy from a Kiponos profile. Change CI behavior mid-pipeline without editing workflow YAML."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ci-test-tuning.md
-main_image: https://files.catbox.moe/ifp0w3.jpg
+main_image: https://iili.io/CbUJrGI.jpg
 ---
 
 **The Aha:** `parallelism` is not a property-file trophy. It is **incident posture** for CI pipelines — and posture that waits for a jar is already late.

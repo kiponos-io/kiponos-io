@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "live trace sample percent live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-obs-trace-sample-mesh.md
-main_image: https://iili.io/CSnkyVR.jpg
+main_image: https://iili.io/CbU275u.jpg
 ---
 
 **The Aha:** live trace sample percent is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

@@ -4,7 +4,7 @@ published: true
 tags: java, gaming, devops, kiponos
 description: "Tune drop rates, spawn multipliers, and event rewards on running Java game shards without restarts. Kiponos delivers balance patches via WebSocket deltas with z"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-game-server-balance.md
-main_image: https://files.catbox.moe/tngzui.jpg
+main_image: https://iili.io/CbUdfZQ.jpg
 ---
 
 **The Aha:** `lootWeight` is not a property-file trophy. It is **incident posture** for live game economy — and posture that waits for a jar is already late.

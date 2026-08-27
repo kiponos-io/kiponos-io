@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "live agent handoff ticket live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-multi-agent-collab-bus.md
-main_image: https://iili.io/CSnkbDJ.jpg
+main_image: https://iili.io/CbU2Cbf.jpg
 ---
 
 **The Aha:** live agent handoff ticket is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

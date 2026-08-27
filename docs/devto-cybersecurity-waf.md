@@ -4,7 +4,7 @@ published: true
 tags: java, security, devops, kiponos
 description: "Adjust WAF scores, block thresholds, and OWASP rule sensitivity in Java security gateways at runtime. Kiponos WebSocket deltas with zero-latency reads per reque"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-cybersecurity-waf.md
-main_image: https://files.catbox.moe/wswv2d.jpg
+main_image: https://iili.io/CbUJZuf.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property-file trophy. It is **incident posture** for WAF / security rules — and posture that waits for a jar is already late.

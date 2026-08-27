@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "BFF-mirrored status leaf live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-client-server-mirror-live.md
-main_image: https://iili.io/CSnvAJ9.jpg
+main_image: https://iili.io/CbUJsvs.jpg
 ---
 
 **The Aha:** BFF-mirrored status leaf is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

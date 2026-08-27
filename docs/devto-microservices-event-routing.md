@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, architecture, kiponos
 description: "Change which topics, consumer groups, and dead-letter routes your Java services use at runtime. Kiponos WebSocket deltas with zero-latency local reads on every "
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-event-routing.md
-main_image: https://files.catbox.moe/e166i8.jpg
+main_image: https://iili.io/CbU23lt.jpg
 ---
 
 **The Aha:** `topicRoute` is not a property-file trophy. It is **incident posture** for event bus routing — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: true
 tags: java, logistics, devops, kiponos
 description: "Change route cost weights, SLA penalties, and depot capacity limits in Python fleet optimizers while vehicles are on the road. Kiponos local reads, WebSocket de"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-logistics-routing.md
-main_image: https://files.catbox.moe/2xo4es.jpg
+main_image: https://iili.io/CbUdVAG.jpg
 ---
 
 **The Aha:** `maxDetourKm` is not a property-file trophy. It is **incident posture** for fleet routing — and posture that waits for a jar is already late.

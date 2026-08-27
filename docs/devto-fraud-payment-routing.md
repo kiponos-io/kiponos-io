@@ -4,7 +4,7 @@ published: true
 tags: java, fintech, security, kiponos
 description: "Change fraud scores, routing rules, and block thresholds in your payment service while transactions keep flowing. Kiponos Java SDK reads live values locally wit"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fraud-payment-routing.md
-main_image: https://files.catbox.moe/lzraul.jpg
+main_image: https://iili.io/CbUdHF9.jpg
 ---
 
 **The Aha:** `fraudScoreCutoff` is not a property-file trophy. It is **incident posture** for payment fraud routing — and posture that waits for a jar is already late.

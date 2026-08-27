@@ -4,7 +4,7 @@ published: true
 tags: java, iot, devops, kiponos
 description: "Calibrate alert thresholds and sampling rates across an IoT fleet without redeploying edge agents. Kiponos Python SDK reads live values locally with zero latenc"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-iot-sensor-calibration.md
-main_image: https://files.catbox.moe/viceuc.jpg
+main_image: https://iili.io/CbUdzcF.jpg
 ---
 
 **The Aha:** `threshold` is not a property-file trophy. It is **incident posture** for edge calibration — and posture that waits for a jar is already late.

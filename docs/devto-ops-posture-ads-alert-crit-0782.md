@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live alert critical threshold via Kiponos Java SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-alert-crit-0782.md
-main_image: https://files.catbox.moe/5a7orl.jpg
+main_image: https://iili.io/CbU2abj.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: true
 tags: java, microservices, architecture, kiponos
 description: "Services coordinate through a live shared config hub — handoff flags, capacity signals, and workflow state with zero-latency local reads. No inter-service confi"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-microservices-collaboration.md
-main_image: https://files.catbox.moe/xvnh3m.jpg
+main_image: https://iili.io/CbUdZUF.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property-file trophy. It is **incident posture** for service mesh collaboration — and posture that waits for a jar is already late.

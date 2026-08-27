@@ -4,7 +4,7 @@ published: true
 tags: java, insurance, architecture, kiponos
 description: "Adjust auto-decline scores, referral bands, and product-specific underwriting rules in Java policy engines at runtime. Kiponos zero-latency reads on every quote"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-insurance-underwriting.md
-main_image: https://files.catbox.moe/m1b27m.jpg
+main_image: https://iili.io/CbUdn6P.jpg
 ---
 
 **The Aha:** `scoreCutoff` is not a property-file trophy. It is **incident posture** for insurance underwriting — and posture that waits for a jar is already late.

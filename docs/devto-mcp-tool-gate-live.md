@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "live MCP tool allow-list live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-mcp-tool-gate-live.md
-main_image: https://iili.io/CSnv9Pp.jpg
+main_image: https://iili.io/CbUdNPS.jpg
 ---
 
 **The Aha:** live MCP tool allow-list is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

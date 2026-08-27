@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "fullstack path kill flag live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-fullstack-incident-kill.md
-main_image: https://iili.io/CSnkpov.jpg
+main_image: https://iili.io/CbUdd8u.jpg
 ---
 
 **The Aha:** fullstack path kill flag is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

@@ -4,7 +4,7 @@ published: true
 tags: java, energy, architecture, kiponos
 description: "Tune dispatch ceilings, reserve margins, and demand-response triggers in Python grid orchestration while load fluctuates. Kiponos WebSocket deltas, zero-latency"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-energy-grid.md
-main_image: https://files.catbox.moe/j9f0ym.jpg
+main_image: https://iili.io/CbUJDZl.jpg
 ---
 
 **The Aha:** `dispatchLimitMw` is not a property-file trophy. It is **incident posture** for grid load dispatch — and posture that waits for a jar is already late.

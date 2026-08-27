@@ -4,7 +4,7 @@ published: true
 tags: java, healthcare, architecture, kiponos
 description: "Update queue routing, acuity thresholds, and department capacity rules in live Java triage systems without downtime. Kiponos delivers local zero-latency config "
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-hospital-triage-routing.md
-main_image: https://files.catbox.moe/17rgai.jpg
+main_image: https://iili.io/CbUdCMB.jpg
 ---
 
 **The Aha:** `triageRoute` is not a property-file trophy. It is **incident posture** for ED routing — and posture that waits for a jar is already late.
