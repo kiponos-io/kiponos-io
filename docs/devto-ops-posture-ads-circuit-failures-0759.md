@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live circuit trip count via Kiponos Java SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-circuit-failures-0759.md
-main_image: https://files.catbox.moe/l59e4q.jpg
+main_image: https://iili.io/Cm1UCVs.jpg
 ---
 
 **The Aha:** `failureThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

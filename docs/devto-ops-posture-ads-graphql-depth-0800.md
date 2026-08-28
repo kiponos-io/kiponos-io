@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live GraphQL query depth via Kiponos Python SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-graphql-depth-0800.md
-main_image: https://files.catbox.moe/aatoed.jpg
+main_image: https://iili.io/Cm1gLj1.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

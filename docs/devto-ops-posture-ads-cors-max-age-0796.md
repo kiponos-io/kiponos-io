@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live CORS max-age via Kiponos Python SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-cors-max-age-0796.md
-main_image: https://files.catbox.moe/r9st4b.jpg
+main_image: https://iili.io/Cm1UeqJ.jpg
 ---
 
 **The Aha:** `corsMaxAgeSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

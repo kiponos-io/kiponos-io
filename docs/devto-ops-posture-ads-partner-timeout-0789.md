@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-partner-timeout-0789.md
-main_image: https://files.catbox.moe/tq0sbg.jpg
+main_image: https://iili.io/Cm1PPKg.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

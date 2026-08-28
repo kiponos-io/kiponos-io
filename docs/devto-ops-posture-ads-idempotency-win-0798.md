@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live idempotency window via Kiponos Python SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-idempotency-win-0798.md
-main_image: https://files.catbox.moe/mekx7u.jpg
+main_image: https://iili.io/Cm1rWoF.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live scheduler misfire threshold via Kiponos Java SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-misfire-ms-0795.md
-main_image: https://files.catbox.moe/jcd2fb.jpg
+main_image: https://iili.io/Cm16X3J.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

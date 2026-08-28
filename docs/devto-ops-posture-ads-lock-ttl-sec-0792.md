@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live distributed lock TTL via Kiponos Java SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-lock-ttl-sec-0792.md
-main_image: https://files.catbox.moe/p8kwi1.jpg
+main_image: https://iili.io/Cm14rmB.jpg
 ---
 
 **The Aha:** `lockTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

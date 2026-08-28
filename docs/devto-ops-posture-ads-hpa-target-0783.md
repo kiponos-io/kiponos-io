@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live HPA CPU target percent via Kiponos Java SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-hpa-target-0783.md
-main_image: https://files.catbox.moe/25cmwb.jpg
+main_image: https://iili.io/Cm1r5Mu.jpg
 ---
 
 **The Aha:** `hpaTarget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

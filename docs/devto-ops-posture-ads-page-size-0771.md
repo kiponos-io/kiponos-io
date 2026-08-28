@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live pagination page size via Kiponos Java SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-page-size-0771.md
-main_image: https://files.catbox.moe/wx45z3.jpg
+main_image: https://iili.io/Cm1PwKu.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
