@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpFGwDN.jpg
+main_image: https://iili.io/CpuQw8J.jpg
 title: "Cursor Finished the Turn Blind — MCP write tool gated live on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos

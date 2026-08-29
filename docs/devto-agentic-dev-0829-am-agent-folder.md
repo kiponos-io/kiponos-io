@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cp9HUwQ.jpg
+main_image: https://iili.io/CpuZ8Rj.jpg
 title: "Claude Code Finished the Turn Blind — Agents choose a metadata folder on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos

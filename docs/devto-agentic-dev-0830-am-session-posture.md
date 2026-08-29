@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cp9HtHJ.jpg
+main_image: https://iili.io/CpuZt5J.jpg
 title: "MCP host Finished the Turn Blind — Session posture shared across hosts on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos

@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpJnGCg.jpg
+main_image: https://iili.io/Cputfef.jpg
 title: "MCP host Finished the Turn Blind — Token budget mid-session on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos

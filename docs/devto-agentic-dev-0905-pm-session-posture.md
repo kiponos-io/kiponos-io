@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpIvTX4.jpg
+main_image: https://iili.io/CpuZIHJ.jpg
 title: "Grok Build Finished the Turn Blind — Session posture shared across hosts on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos

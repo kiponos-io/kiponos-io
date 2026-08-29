@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cp9HG9f.jpg
+main_image: https://iili.io/CpuZ0Ss.jpg
 title: "MCP host Finished the Turn Blind — Group-chat mute without host kill on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos
