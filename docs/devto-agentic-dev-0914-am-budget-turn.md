@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpDTq5G.jpg
+main_image: https://iili.io/CyJSyj2.jpg
 title: "Claude Code Finished the Turn Blind — Token budget mid-session on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos

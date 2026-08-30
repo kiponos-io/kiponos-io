@@ -1,5 +1,5 @@
 ---
-main_image: https://n.uguu.se/dtRGzxAn.jpg
+main_image: https://iili.io/CyJU24e.jpg
 title: "Cursor Finished the Turn Blind — Agents choose a metadata folder on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos

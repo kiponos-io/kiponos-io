@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpZJjJn.jpg
+main_image: https://iili.io/CyJSZ2s.jpg
 title: "Grok Build Finished the Turn Blind — Sense priority mid-turn on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos

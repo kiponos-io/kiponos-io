@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpcjzSp.jpg
+main_image: https://iili.io/CyJUgcu.jpg
 title: "MCP host Finished the Turn Blind — Sense priority mid-turn on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos

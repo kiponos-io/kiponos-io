@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cp6flln.jpg
+main_image: https://iili.io/CyJgwUg.jpg
 title: "Claude Code Finished the Turn Blind — Skill enable set without restart on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos

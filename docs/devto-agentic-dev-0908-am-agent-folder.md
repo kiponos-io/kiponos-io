@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpGWIjI.jpg
+main_image: https://iili.io/CyJUmcg.jpg
 title: "Grok Build Finished the Turn Blind — Agents choose a metadata folder on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos

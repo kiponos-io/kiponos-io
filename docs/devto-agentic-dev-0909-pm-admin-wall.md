@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CpOpI3b.jpg
+main_image: https://iili.io/CyJgzN4.jpg
 title: "Grok Build Finished the Turn Blind — Admin wall tile without SPA tokens on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos

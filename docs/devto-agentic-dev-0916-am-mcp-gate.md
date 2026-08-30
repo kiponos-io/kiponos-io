@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cy9qBOx.jpg
+main_image: https://iili.io/CyJU58J.jpg
 title: "Grok Build Finished the Turn Blind — MCP write tool gated live on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos
