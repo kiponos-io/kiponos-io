@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CycV47s.jpg
+main_image: https://iili.io/CywTZQ4.jpg
 title: "Claude Code Finished the Turn Blind — Mirror Phone live device leaf on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos

@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CyYFWss.jpg
+main_image: https://iili.io/CywTwkg.jpg
 title: "Cursor Finished the Turn Blind — Shopping incident pause as a leaf on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos

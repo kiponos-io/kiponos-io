@@ -4,7 +4,7 @@ published: false
 tags: java, advertising, devops, kiponos
 description: "Live spot bid ceiling cents via Kiponos Python SDK — ads posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-ads-spot-bid-cents-0784.md
-main_image: https://files.catbox.moe/t5isv0.jpg
+main_image: https://iili.io/Cywulat.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

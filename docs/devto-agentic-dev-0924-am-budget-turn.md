@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cy1LSgS.jpg
+main_image: https://iili.io/CywI5OJ.jpg
 title: "Grok Build Finished the Turn Blind — Token budget mid-session on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos

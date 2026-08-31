@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CyEUWKX.jpg
+main_image: https://iili.io/CywIliN.jpg
 title: "MCP host Finished the Turn Blind — Agents choose a metadata folder on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos

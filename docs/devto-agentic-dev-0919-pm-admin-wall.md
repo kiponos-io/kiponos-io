@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CyncTR2.jpg
+main_image: https://iili.io/CywT729.jpg
 title: "Claude Code Finished the Turn Blind — Admin wall tile without SPA tokens on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos

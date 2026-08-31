@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/Cyw2tUl.jpg
+main_image: https://iili.io/CywIQqB.jpg
 title: "Claude Code Finished the Turn Blind — Shopping incident pause as a leaf on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos

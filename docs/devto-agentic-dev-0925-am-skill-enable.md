@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CyG5JiF.jpg
+main_image: https://iili.io/CywIVJn.jpg
 title: "Cursor Finished the Turn Blind — Skill enable set without restart on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos
