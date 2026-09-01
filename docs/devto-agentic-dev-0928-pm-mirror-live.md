@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CyekUrv.jpg
+main_image: https://iili.io/n9AXbaI.jpg
 title: "MCP host Finished the Turn Blind — Mirror Phone live device leaf on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos

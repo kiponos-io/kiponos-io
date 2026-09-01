@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/CyP2RyP.jpg
+main_image: https://iili.io/n9Ah7cB.jpg
 title: "Claude Code Finished the Turn Blind — Group-chat mute without host kill on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos

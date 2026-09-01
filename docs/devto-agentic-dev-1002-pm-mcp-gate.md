@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n99hOcg.jpg
+main_image: https://iili.io/n9AjKxa.jpg
 title: "MCP host Finished the Turn Blind — MCP write tool gated live on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos
