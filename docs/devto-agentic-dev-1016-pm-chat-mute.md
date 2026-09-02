@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n9s0fgp.jpg
+main_image: https://iili.io/n9bux14.jpg
 title: "Cursor Finished the Turn Blind — Group-chat mute without host kill on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos

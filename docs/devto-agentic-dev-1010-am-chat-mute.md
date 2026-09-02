@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n9EsuVI.jpg
+main_image: https://iili.io/n9but3l.jpg
 title: "Grok Build Finished the Turn Blind — Group-chat mute without host kill on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos

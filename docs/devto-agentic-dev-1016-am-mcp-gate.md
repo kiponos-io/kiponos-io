@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n9iZ5TN.jpg
+main_image: https://h.uguu.se/ZyCgHEVD.jpg
 title: "Claude Code Finished the Turn Blind — MCP write tool gated live on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos

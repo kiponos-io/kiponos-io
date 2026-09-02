@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live scheduler misfire threshold via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-misfire-ms-0095.md
-main_image: https://files.catbox.moe/za5ij2.jpg
+main_image: https://d.uguu.se/EXTsKHgj.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

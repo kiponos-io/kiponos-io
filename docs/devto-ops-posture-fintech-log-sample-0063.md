@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live log sample per thousand via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-log-sample-0063.md
-main_image: https://files.catbox.moe/3p4zis.jpg
+main_image: https://n.uguu.se/rmmZabzU.jpg
 ---
 
 **The Aha:** `logSamplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
