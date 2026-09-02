@@ -1,5 +1,5 @@
 ---
-main_image: https://h.uguu.se/oCVJeKPx.jpg
+main_image: https://iili.io/nHAjK67.jpg
 title: "Cursor Finished the Turn Blind — Session posture shared across hosts on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos
