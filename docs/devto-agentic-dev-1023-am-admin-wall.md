@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nHRHvmF.jpg
+main_image: https://iili.io/nHNzVYN.jpg
 title: "Cursor Finished the Turn Blind — Admin wall tile without SPA tokens on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos

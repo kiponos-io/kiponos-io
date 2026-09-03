@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nH0qc4p.jpg
+main_image: https://iili.io/nHNxRxs.jpg
 title: "Claude Code Finished the Turn Blind — Session posture shared across hosts on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos

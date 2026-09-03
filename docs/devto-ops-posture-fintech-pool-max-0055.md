@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live connection pool ceiling via Kiponos Python SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-pool-max-0055.md
-main_image: https://files.catbox.moe/6jyor6.jpg
+main_image: https://iili.io/nHNI1te.jpg
 ---
 
 **The Aha:** `maxPool` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

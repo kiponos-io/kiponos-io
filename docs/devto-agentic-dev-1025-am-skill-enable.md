@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nHcwa72.jpg
+main_image: https://iili.io/nHNzZ6x.jpg
 title: "MCP host Finished the Turn Blind — Skill enable set without restart on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos

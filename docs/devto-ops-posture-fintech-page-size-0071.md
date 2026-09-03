@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live pagination page size via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-page-size-0071.md
-main_image: https://files.catbox.moe/tdxen9.jpg
+main_image: https://iili.io/nHNITns.jpg
 ---
 
 **The Aha:** `pageSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

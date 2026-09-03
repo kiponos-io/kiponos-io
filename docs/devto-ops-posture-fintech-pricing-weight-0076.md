@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live pricing / promo weight via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-pricing-weight-0076.md
-main_image: https://files.catbox.moe/y37faq.jpg
+main_image: https://iili.io/nHNIjSV.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nHdh0xI.jpg
+main_image: https://iili.io/nHNxmIn.jpg
 title: "Cursor Finished the Turn Blind — Token budget mid-session on the Senses Path"
 published: false
 tags: java, python, devops, ai, kiponos
