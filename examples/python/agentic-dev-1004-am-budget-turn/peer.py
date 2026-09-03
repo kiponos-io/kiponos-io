@@ -47,6 +47,13 @@ def _live(d: dict) -> None:
     k = Kiponos.connect(quiet=True)
     try:
         k.ensure_path("examples/agentic-dev-1004-am-budget-turn")
+
+        def _on_change(key, value, folders=(), source="", delta=None):
+            # dashboard edit → in-memory tree; MCP host does not restart
+            print("on_change", "/".join(folders + (key,)), "=", value)
+
+        if hasattr(k, "on_change"):
+            k.on_change(_on_change)
         live = k.get(PATH, DEFAULT)
         got = decide(str(live) if live is not None else DEFAULT)
         print("live", PATH, "=", got["value"], "action=", got["action"])
