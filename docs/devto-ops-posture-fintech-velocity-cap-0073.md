@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live fraud velocity cap via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-velocity-cap-0073.md
-main_image: https://files.catbox.moe/ob7rs0.jpg
+main_image: https://iili.io/nJ7n13b.jpg
 ---
 
 **The Aha:** `velocityCap` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

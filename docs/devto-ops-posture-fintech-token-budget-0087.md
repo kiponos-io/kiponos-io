@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live token budget per request via Kiponos Python SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-token-budget-0087.md
-main_image: https://files.catbox.moe/w8r9y8.jpg
+main_image: https://iili.io/nJ7nz3G.jpg
 ---
 
 **The Aha:** `tokenBudget` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

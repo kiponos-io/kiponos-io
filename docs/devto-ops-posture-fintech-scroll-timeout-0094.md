@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live search scroll timeout via Kiponos Java SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-scroll-timeout-0094.md
-main_image: https://files.catbox.moe/sya4wp.jpg
+main_image: https://iili.io/nJ7CUQ9.jpg
 ---
 
 **The Aha:** `scrollTimeoutSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

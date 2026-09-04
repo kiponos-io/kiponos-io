@@ -4,7 +4,7 @@ published: false
 tags: java, fintech, security, kiponos
 description: "Live saga step retry budget via Kiponos Python SDK — fintech posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-fintech-saga-retry-0090.md
-main_image: https://files.catbox.moe/8uqekx.jpg
+main_image: https://iili.io/nJ7Cekl.jpg
 ---
 
 **The Aha:** `sagaMaxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
