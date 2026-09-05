@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-partner-timeout-0439.md
-main_image: https://files.catbox.moe/dd7gbk.jpg
+main_image: https://iili.io/nd2pXpt.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live idempotency window via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-idempotency-win-0448.md
-main_image: https://files.catbox.moe/stgtju.jpg
+main_image: https://iili.io/nd2pKk7.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

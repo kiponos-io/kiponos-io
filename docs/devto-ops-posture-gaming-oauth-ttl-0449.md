@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live OAuth token TTL via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-oauth-ttl-0449.md
-main_image: https://files.catbox.moe/8frhq0.jpg
+main_image: https://iili.io/nd2pAYB.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

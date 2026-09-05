@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live overbooking percent via Kiponos Python SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-overbook-pct-0424.md
-main_image: https://files.catbox.moe/gjmebp.jpg
+main_image: https://iili.io/nd2pM2p.jpg
 ---
 
 **The Aha:** `overbookPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

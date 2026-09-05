@@ -4,7 +4,7 @@ published: false
 tags: java, gaming, devops, kiponos
 description: "Live circuit open duration via Kiponos Java SDK — gaming posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gaming-circuit-open-ms-0408.md
-main_image: https://files.catbox.moe/iz0o21.jpg
+main_image: https://iili.io/nd2mN0Q.jpg
 ---
 
 **The Aha:** `waitOpenMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
