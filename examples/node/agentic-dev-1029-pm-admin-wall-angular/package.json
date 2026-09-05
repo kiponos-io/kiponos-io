@@ -1,0 +1,13 @@
+{
+  "name": "kiponos-agentic-dev-1029-pm-admin-wall-angular",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node peer.mjs",
+    "test": "node --test test-logic.mjs",
+    "serve": "node peer.mjs --serve"
+  },
+  "dependencies": {
+    "@kiponos/angular": "latest"
+  }
+}
