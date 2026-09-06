@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/ndedzZJ.jpg
+main_image: https://iili.io/nd4MmFV.jpg
 title: "Grok Build Finished the Turn Blind — Shopping incident pause as a leaf on the Travel Path"
 published: false
 tags: java, python, devops, ai, kiponos

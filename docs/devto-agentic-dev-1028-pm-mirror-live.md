@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/ndeKqiJ.jpg
+main_image: https://iili.io/nd4VfPR.jpg
 title: "Cursor Finished the Turn Blind — Mirror Phone live device leaf on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos

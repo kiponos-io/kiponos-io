@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/ndedBv1.jpg
+main_image: https://iili.io/nd4MtMx.jpg
 title: "Cursor Finished the Turn Blind — Sense priority mid-turn on the Admin Dashboard Path"
 published: false
 tags: java, python, devops, ai, kiponos
