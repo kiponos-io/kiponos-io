@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[senses wall] -->|set compact-mode| hub[Kiponos hub]
-  hub -->|delta WS| gb[Cursor process]
-  gb -->|get compact-mode| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3dGEtj.png)
 
 The model still calls tools. The wrapper reads `compact-mode` **before** the call. No schema dump policy in argv.
 
