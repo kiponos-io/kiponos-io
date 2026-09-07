@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[senses wall] -->|set mcp-drain| hub[Kiponos hub]
-  hub -->|delta WS| gb[MCP host process]
-  gb -->|get mcp-drain| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3CKfHl.png)
 
 The model still calls tools. The wrapper reads `mcp-drain` **before** the call. No schema dump policy in argv.
 
