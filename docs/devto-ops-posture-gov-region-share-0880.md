@@ -4,7 +4,7 @@ published: false
 tags: java, architecture, devops, kiponos
 description: "Live region traffic share via Kiponos Python SDK — gov posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-gov-region-share-0880.md
-main_image: https://files.catbox.moe/swrkjg.jpg
+main_image: https://iili.io/n20a23X.jpg
 ---
 
 **The Aha:** `regionShare` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
