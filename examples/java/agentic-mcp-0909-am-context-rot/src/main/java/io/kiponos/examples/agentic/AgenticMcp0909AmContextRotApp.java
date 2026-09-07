@@ -1,0 +1,70 @@
+package io.kiponos.examples.agentic;
+
+import io.kiponos.sdk.Kiponos;
+import io.kiponos.sdk.configs.Folder;
+
+/**
+ * Context Rot Hit at 25% of the Window and Grok Build Started Forgetting the Plan
+ * Product: senses · Agent host: Cursor
+ * Hub leaf: examples/agentic-mcp-0909-am-context-rot/compact-mode (default off)
+ * Pain: Context rot after 25% of the window
+ *
+ * Four SDK peers share this leaf: Java, Python, React-Node, Angular-Node.
+ * Never put Connect tokens in a SPA.
+ */
+public final class AgenticMcp0909AmContextRotApp {
+    public static final String KEY = "compact-mode";
+    public static final String DEFAULT = "off";
+    public static final String FOLDER = "agentic-mcp-0909-am-context-rot";
+
+    public record Decision(String value, String action, boolean proceed) {}
+
+    public static void main(String[] args) throws Exception {
+        Kiponos k = Kiponos.createForCurrentTeam();
+        try {
+            Folder p = ensure(k);
+            String v = args.length > 0 ? args[0] : read(p, KEY, DEFAULT);
+            Decision d = decide(v);
+            System.out.println("examples/" + FOLDER + "/" + KEY + "=" + d.value());
+            System.out.println("action=" + d.action() + " proceed=" + d.proceed());
+            // next MCP / tool call sees dashboard edits — no host restart
+            Thread.sleep(400L);
+        } finally {
+            k.disconnect();
+        }
+    }
+
+    public static Decision decide(String raw) {
+        String v = norm(raw);
+        boolean live = v.equalsIgnoreCase("yes") || v.equalsIgnoreCase("live")
+                || v.equalsIgnoreCase("on") || v.equalsIgnoreCase("true");
+        return new Decision(v, live ? "compact_on" : "full_dump", live);
+    }
+
+    static String norm(String raw) {
+        if (raw == null || raw.isBlank()) {
+            return DEFAULT;
+        }
+        return raw.trim();
+    }
+
+    static Folder ensure(Kiponos k) {
+        Folder f = k.getRootFolder()
+                .folderOrCreate("examples")
+                .folderOrCreate(FOLDER);
+        if (!f.hasKey(KEY)) {
+            f.set(KEY, DEFAULT);
+        }
+        return f;
+    }
+
+    static String read(Folder p, String key, String def) {
+        if (!p.hasKey(key)) {
+            return def;
+        }
+        String r = p.get(key);
+        return r == null || r.isBlank() ? def : r.trim();
+    }
+
+    private AgenticMcp0909AmContextRotApp() {}
+}
