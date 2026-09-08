@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[travel-coordinator wall] -->|set code-mode| hub[Kiponos hub]
-  hub -->|delta WS| gb[Claude Code process]
-  gb -->|get code-mode| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n36P3SR.png)
 
 The model still calls tools. The wrapper reads `code-mode` **before** the call. No schema dump policy in argv.
 
