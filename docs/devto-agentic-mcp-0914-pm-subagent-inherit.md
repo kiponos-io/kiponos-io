@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[shopping-admin wall] -->|set inherit-posture| hub[Kiponos hub]
-  hub -->|delta WS| gb[MCP host process]
-  gb -->|get inherit-posture| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3ahsF1.png)
 
 The model still calls tools. The wrapper reads `inherit-posture` **before** the call. No schema dump policy in argv.
 
