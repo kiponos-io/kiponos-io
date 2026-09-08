@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[travel-coordinator wall] -->|set shared-truth| hub[Kiponos hub]
-  hub -->|delta WS| gb[Cursor process]
-  gb -->|get shared-truth| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3zHoKb.png)
 
 The model still calls tools. The wrapper reads `shared-truth` **before** the call. No schema dump policy in argv.
 
