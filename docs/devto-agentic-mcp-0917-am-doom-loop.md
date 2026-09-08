@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[shopping-admin wall] -->|set retry-max| hub[Kiponos hub]
-  hub -->|delta WS| gb[Cursor process]
-  gb -->|get retry-max| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3ryqZl.png)
 
 The model still calls tools. The wrapper reads `retry-max` **before** the call. No schema dump policy in argv.
 
