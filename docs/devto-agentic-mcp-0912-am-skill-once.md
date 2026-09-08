@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[admin-dashboard wall] -->|set enabled-set| hub[Kiponos hub]
-  hub -->|delta WS| gb[Grok Build process]
-  gb -->|get enabled-set| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3nkQpt.png)
 
 The model still calls tools. The wrapper reads `enabled-set` **before** the call. No schema dump policy in argv.
 
