@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhC7e.jpg
+main_image: https://iili.io/n3uEd12.jpg
 title: "MCP Log Spam Flooded the Turn. Muting Required Killing the Server"
 published: false
 tags: ai, mcp, devops, java, kiponos

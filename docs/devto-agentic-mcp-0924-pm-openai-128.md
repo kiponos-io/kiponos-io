@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhgG2.jpg
+main_image: https://iili.io/n3uEsQj.jpg
 title: "128 Tools Is a Hard API Max. Production Needed 12, Live"
 published: false
 tags: ai, mcp, devops, java, kiponos

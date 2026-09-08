@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhK1S.jpg
+main_image: https://iili.io/n3u1Den.jpg
 title: "I Wanted 10% of Turns to See the New MCP Server. I Got 100% or a Restart"
 published: false
 tags: ai, mcp, devops, java, kiponos

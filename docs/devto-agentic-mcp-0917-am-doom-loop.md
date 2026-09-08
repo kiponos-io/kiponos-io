@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yGk8b.jpg
+main_image: https://iili.io/n3u0LAu.jpg
 title: "The MCP Doom Loop: Fail, Retry, More Tokens, Worse Model, Repeat"
 published: false
 tags: ai, mcp, devops, java, kiponos

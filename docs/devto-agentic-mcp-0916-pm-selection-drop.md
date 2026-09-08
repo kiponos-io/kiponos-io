@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yEwYJ.jpg
+main_image: https://iili.io/n3u0PS9.jpg
 title: "Tool Selection Accuracy Fell from 43% to 14% When I Connected 'Just One More' Server"
 published: false
 tags: ai, mcp, devops, java, kiponos

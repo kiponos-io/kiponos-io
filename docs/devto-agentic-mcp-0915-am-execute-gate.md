@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ylVBn.jpg
+main_image: https://iili.io/n3u0Cve.jpg
 title: "Plan Mode Was Fine. Execute Needed a Live Gate When MCP Write Came Back"
 published: false
 tags: ai, mcp, devops, java, kiponos

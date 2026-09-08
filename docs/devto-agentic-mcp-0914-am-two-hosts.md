@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yauTP.jpg
+main_image: https://iili.io/n3ulOLQ.jpg
 title: "Cursor Had the New Tool Roster. Grok Build Started Earlier and Still Called Write"
 published: false
 tags: ai, mcp, devops, java, kiponos

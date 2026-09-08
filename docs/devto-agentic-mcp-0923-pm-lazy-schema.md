@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhGQR.jpg
+main_image: https://iili.io/n3uEV2I.jpg
 title: "GitHub MCP Alone Was 26k Tokens. I Did Not Need All 35 Tools for This Turn"
 published: false
 tags: ai, mcp, devops, java, kiponos

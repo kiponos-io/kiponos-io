@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yViva.jpg
+main_image: https://iili.io/n3u1qVR.jpg
 title: "The MCP Spec Author Said Clients Should Defer Tools. Mine Didn't. I Still Needed a Knob"
 published: false
 tags: ai, mcp, devops, java, kiponos

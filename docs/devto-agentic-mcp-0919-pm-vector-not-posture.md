@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yh9mG.jpg
+main_image: https://iili.io/n3u1NfV.jpg
 title: "We Embedded Every Agent Turn. The Write-Gate Still Lived in argv"
 published: false
 tags: ai, mcp, devops, java, kiponos

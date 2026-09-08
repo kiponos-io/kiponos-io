@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhlpa.jpg
+main_image: https://iili.io/n3uEchJ.jpg
 title: "The War Room Had Four Agent Windows and Four Different MCP Rosters"
 published: false
 tags: ai, mcp, devops, java, kiponos

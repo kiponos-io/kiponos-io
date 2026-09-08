@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yYdWg.jpg
+main_image: https://iili.io/n3ul5es.jpg
 title: "The Agent Wrote Itself a Skill and Doubled Token Use Without Improving Accuracy"
 published: false
 tags: ai, mcp, devops, java, kiponos

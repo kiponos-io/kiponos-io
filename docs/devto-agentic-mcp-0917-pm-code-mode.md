@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yM6b4.jpg
+main_image: https://iili.io/n3u1dHF.jpg
 title: "Cloudflare Shipped Code Mode Because MCP Ate 1.17M Tokens. I Needed That Switch Live"
 published: false
 tags: ai, mcp, devops, java, kiponos

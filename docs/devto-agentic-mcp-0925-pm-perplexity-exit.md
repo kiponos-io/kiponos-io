@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhsyu.jpg
+main_image: https://iili.io/n3uGxun.jpg
 title: "Perplexity Walked Away From MCP Over Overhead. The Hub Still Has to Exist"
 published: false
 tags: ai, mcp, devops, java, kiponos

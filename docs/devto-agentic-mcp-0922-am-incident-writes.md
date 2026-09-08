@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhABV.jpg
+main_image: https://iili.io/n3uEoLx.jpg
 title: "Shopping Freeze Was On. The MCP Write Tool Did Not Get the Memo"
 published: false
 tags: ai, mcp, devops, java, kiponos

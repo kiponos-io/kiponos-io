@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yWyoQ.jpg
+main_image: https://iili.io/n3u1xSt.jpg
 title: "MCP OAuth Hurt. I Almost Put the Token in a Live Key. Don't."
 published: false
 tags: ai, mcp, devops, java, kiponos

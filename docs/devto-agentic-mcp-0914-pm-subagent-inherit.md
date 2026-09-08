@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ycEKb.jpg
+main_image: https://iili.io/n3ult4I.jpg
 title: "The Subagent Spawned Without the Parent's MCP Allow-List"
 published: false
 tags: ai, mcp, devops, java, kiponos

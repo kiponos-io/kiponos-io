@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhzIj.jpg
+main_image: https://iili.io/n3uEK79.jpg
 title: "The Turn Budget Hit Zero Because GitHub MCP Already Spent It on Schemas"
 published: false
 tags: ai, mcp, devops, java, kiponos

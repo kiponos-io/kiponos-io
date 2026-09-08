@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhdX4.jpg
+main_image: https://iili.io/n3u1s0N.jpg
 title: "Real-Time State Is Now a Primitive — MCP Just Forgot to Ship It"
 published: false
 tags: ai, mcp, devops, java, kiponos

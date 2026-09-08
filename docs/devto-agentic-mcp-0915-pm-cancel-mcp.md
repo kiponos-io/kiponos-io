@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2y0w6g.jpg
+main_image: https://iili.io/n3u0uCQ.jpg
 title: "The Long-Running MCP Task Had No Cancel. I Killed the Host"
 published: false
 tags: ai, mcp, devops, java, kiponos

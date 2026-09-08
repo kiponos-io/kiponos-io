@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2y1hOl.jpg
+main_image: https://iili.io/n3u0w8X.jpg
 title: "MCP Config.toml Was Correct. The Process Had Started With Yesterday's Tools"
 published: false
 tags: ai, mcp, devops, java, kiponos

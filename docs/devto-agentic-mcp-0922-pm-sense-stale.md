@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhY21.jpg
+main_image: https://iili.io/n3uER71.jpg
 title: "Senses Fired P1 Mid-Turn. Grok Build Finished the MCP Call Anyway"
 published: false
 tags: ai, mcp, devops, java, kiponos

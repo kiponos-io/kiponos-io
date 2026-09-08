@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yXDgt.jpg
+main_image: https://iili.io/n3u1EJ9.jpg
 title: "LaunchDarkly Does Not Restart Grok Build. It Also Does Not Sit on the Tool Call."
 published: false
 tags: ai, mcp, devops, java, kiponos

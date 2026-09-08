@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhNvn.jpg
+main_image: https://iili.io/n3uEwIs.jpg
 title: "Cursor's 40-Tool Cap Is a Hint. Treat It as a Live Ceiling, Not a Surprise"
 published: false
 tags: ai, mcp, devops, java, kiponos

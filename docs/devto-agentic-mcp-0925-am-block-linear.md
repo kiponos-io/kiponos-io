@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yh637.jpg
+main_image: https://iili.io/n3uEyyF.jpg
 title: "Block Rebuilt Linear MCP Three Times for the Same Schema Tax"
 published: false
 tags: ai, mcp, devops, java, kiponos
