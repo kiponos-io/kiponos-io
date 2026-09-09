@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[senses wall] -->|set schema-budget| hub[Kiponos hub]
-  hub -->|delta WS| gb[MCP host process]
-  gb -->|get schema-budget| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/nFv6D8v.png)
 
 The model still calls tools. The wrapper reads `schema-budget` **before** the call. No schema dump policy in argv.
 
