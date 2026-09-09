@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[senses wall] -->|set priority| hub[Kiponos hub]
-  hub -->|delta WS| gb[MCP host process]
-  gb -->|get priority| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/nF9odAl.png)
 
 The model still calls tools. The wrapper reads `priority` **before** the call. No schema dump policy in argv.
 
