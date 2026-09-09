@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[shopping-admin wall] -->|set incident-pause| hub[Kiponos hub]
-  hub -->|delta WS| gb[Claude Code process]
-  gb -->|get incident-pause| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/n3yICEF.png)
 
 The model still calls tools. The wrapper reads `incident-pause` **before** the call. No schema dump policy in argv.
 
