@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjOKB.jpg
+main_image: https://iili.io/nFFGFHu.jpg
 title: "I Installed a Grok Plugin for MCP. Enabling It Still Required a Restart"
 published: false
 tags: ai, mcp, devops, java, kiponos

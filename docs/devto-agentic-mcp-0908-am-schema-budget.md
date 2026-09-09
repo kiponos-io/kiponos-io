@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIqwG.jpg
+main_image: https://iili.io/nFFMaku.jpg
 title: "Three MCP Servers Ate 72% of the Window Before Grok Build Saw the Prompt"
 published: false
 tags: ai, mcp, devops, java, kiponos

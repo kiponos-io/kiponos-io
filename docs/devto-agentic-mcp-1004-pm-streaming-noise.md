@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywBDb.jpg
+main_image: https://iili.io/nFFGrOb.jpg
 title: "Streaming MCP Results Felt Fast and Still Drowned the Window"
 published: false
 tags: ai, mcp, devops, java, kiponos

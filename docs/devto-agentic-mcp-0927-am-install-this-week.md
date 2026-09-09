@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjKZv.jpg
+main_image: https://iili.io/nFFEMwx.jpg
 title: "The Cardinal Rule Is Install Only What This Week Needs. I Needed It Live on Monday"
 published: false
 tags: ai, mcp, devops, java, kiponos

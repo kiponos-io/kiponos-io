@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywxiQ.jpg
+main_image: https://iili.io/nFFGssV.jpg
 title: "Two Agents, One Repo, Two MCP Writes. Nobody Owned the Folder"
 published: false
 tags: ai, mcp, devops, java, kiponos

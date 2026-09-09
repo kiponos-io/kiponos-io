@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yhbCQ.jpg
+main_image: https://iili.io/nFFElae.jpg
 title: "16% Task Completion With a Fat MCP Toolset Is Not a Model Failure"
 published: false
 tags: ai, mcp, devops, java, kiponos

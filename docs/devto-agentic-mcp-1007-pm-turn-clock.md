@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywNzG.jpg
+main_image: https://iili.io/nFFMuB2.jpg
 title: "The Incident Clock Is the Turn Budget. MCP Schemas Should Not Be Allowed to Steal It"
 published: false
 tags: ai, mcp, devops, java, kiponos

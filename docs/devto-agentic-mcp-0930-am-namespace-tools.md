@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjVwb.jpg
+main_image: https://iili.io/nFFG9PS.jpg
 title: "Grok Namespaces MCP as server__tool. The Allow-List Must Be Live at That Grain"
 published: false
 tags: ai, mcp, devops, java, kiponos

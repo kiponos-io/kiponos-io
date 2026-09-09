@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywHil.jpg
+main_image: https://iili.io/nFFGhbf.jpg
 title: "Claude Code Deferred MCP Tools. My Other Host Did Not. One Leaf, Both Behave"
 published: false
 tags: ai, mcp, devops, java, kiponos

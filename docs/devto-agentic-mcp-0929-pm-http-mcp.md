@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjG9e.jpg
+main_image: https://iili.io/nFFEbt4.jpg
 title: "Remote HTTP MCP Authenticated Fine. I Still Restarted to Hide One Tool"
 published: false
 tags: ai, mcp, devops, java, kiponos

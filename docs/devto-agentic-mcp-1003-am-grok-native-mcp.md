@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjDRn.jpg
+main_image: https://iili.io/nFFGGUX.jpg
 title: "Grok Build Speaks MCP Natively. It Still Starts With a Frozen Server List"
 published: false
 tags: ai, mcp, devops, java, kiponos

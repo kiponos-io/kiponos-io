@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywG0N.jpg
+main_image: https://iili.io/nFFM3qN.jpg
 title: "MCP Wants Stateless Transport at Hyperscale. Your Agent Still Has Sticky Process Memory"
 published: false
 tags: ai, mcp, devops, java, kiponos

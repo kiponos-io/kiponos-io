@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywlWv.jpg
+main_image: https://iili.io/nFFMdsp.jpg
 title: "The TUI Said Press r to Refresh MCP. That Is Not Multi-Tab Live State"
 published: false
 tags: ai, mcp, devops, java, kiponos

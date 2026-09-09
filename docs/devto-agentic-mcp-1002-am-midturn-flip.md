@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjPPp.jpg
+main_image: https://iili.io/nFFGRRa.jpg
 title: "The User Said Mid-Turn: No More Writes. MCP Did Not Hear Until Restart"
 published: false
 tags: ai, mcp, devops, java, kiponos

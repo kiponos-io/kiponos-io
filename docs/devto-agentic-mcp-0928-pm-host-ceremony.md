@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjuus.jpg
+main_image: https://iili.io/nFFEiFt.jpg
 title: "The Ceremony Is Always the Same: Kill Host, Edit JSON, Restart, Lose the Turn"
 published: false
 tags: ai, mcp, devops, java, kiponos

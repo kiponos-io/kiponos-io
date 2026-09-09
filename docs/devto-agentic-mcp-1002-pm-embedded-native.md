@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjQSt.jpg
+main_image: https://iili.io/nFFGcVp.jpg
 title: "Stop Bolting State Onto Agents. Real-Time Nested Config Is Native Now"
 published: false
 tags: ai, mcp, devops, java, kiponos

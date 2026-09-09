@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjxat.jpg
+main_image: https://iili.io/nFFESwv.jpg
 title: "Eight Parallel Subagents, Eight Frozen Copies of tools-allow"
 published: false
 tags: ai, mcp, devops, java, kiponos

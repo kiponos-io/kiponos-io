@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yj8HF.jpg
+main_image: https://iili.io/nFFGfNj.jpg
 title: "AWS Named the Two Failures: Bloat and Confusion. Both Are Live Leaves"
 published: false
 tags: ai, mcp, devops, java, kiponos

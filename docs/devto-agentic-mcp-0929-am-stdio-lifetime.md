@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yj0c7.jpg
+main_image: https://iili.io/nFFEZ9s.jpg
 title: "stdio MCP Is a Child Process. Treating It Like a Sidecar Without a Drain Is How Ports Die"
 published: false
 tags: ai, mcp, devops, java, kiponos

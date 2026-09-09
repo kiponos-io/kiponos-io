@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjBGp.jpg
+main_image: https://iili.io/nFFENF1.jpg
 title: "AGENTS.md, SKILL.md, Rules Files — Three Places, Zero Live Fan-Out"
 published: false
 tags: ai, mcp, devops, java, kiponos

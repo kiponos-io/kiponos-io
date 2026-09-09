@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yj4ov.jpg
+main_image: https://iili.io/nFFGIl1.jpg
 title: "I Asked MCP How Many Jira Tickets. It Pasted Them All and Guessed 47"
 published: false
 tags: ai, mcp, devops, java, kiponos

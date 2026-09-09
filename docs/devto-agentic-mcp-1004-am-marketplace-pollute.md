@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yw3U7.jpg
+main_image: https://iili.io/nFFGv07.jpg
 title: "Skills Context Pollution Is MCP Bloat With a Friendlier Name"
 published: false
 tags: ai, mcp, devops, java, kiponos

@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yjJ8F.jpg
+main_image: https://iili.io/nFFE08u.jpg
 title: "Looking Up One Linear Issue via MCP Cost 65× a curl. I Capped It Live"
 published: false
 tags: ai, mcp, devops, java, kiponos

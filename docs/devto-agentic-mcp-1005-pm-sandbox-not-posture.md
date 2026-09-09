@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywYba.jpg
+main_image: https://iili.io/nFFGbdF.jpg
 title: "E2B Sandbox Executed the Code. The Policy to Run It Lived in a Sticky Note"
 published: false
 tags: ai, mcp, devops, java, kiponos

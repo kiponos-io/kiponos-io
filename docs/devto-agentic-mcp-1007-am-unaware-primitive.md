@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2ywWJt.jpg
+main_image: https://iili.io/nFFMCes.jpg
 title: "The Part the Dev Community Has Not Named Yet: Live Nested State as a Language Primitive"
 published: false
 tags: ai, mcp, devops, java, kiponos
