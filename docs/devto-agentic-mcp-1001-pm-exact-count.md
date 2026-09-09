@@ -60,13 +60,7 @@ Profile shape: `['my-app']['v1.0.0']['dev']['base']`. The leaf in this story is 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  wall[travel-coordinator wall] -->|set result-cap| hub[Kiponos hub]
-  hub -->|delta WS| gb[Grok Build process]
-  gb -->|get result-cap| tool[MCP / Skill / tool wrapper]
-  tool -->|allow or deny| world[External system]
-```
+![Architecture diagram](https://iili.io/nF88tJp.png)
 
 The model still calls tools. The wrapper reads `result-cap` **before** the call. No schema dump policy in argv.
 
