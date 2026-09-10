@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIoMl.jpg
+main_image: https://iili.io/nFL7r5F.jpg
 title: "Cursor Caps at 40 Tools. I Still Restarted MCP to Hide the 41st"
 published: false
 tags: ai, mcp, devops, java, kiponos

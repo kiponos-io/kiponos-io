@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIEKB.jpg
+main_image: https://iili.io/nFLYPY7.jpg
 title: "MCP Loaded Every Schema. Skills Only Load a One-Line Blurb. I Needed Both Live"
 published: false
 tags: ai, mcp, devops, java, kiponos

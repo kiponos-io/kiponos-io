@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yRQIe.jpg
+main_image: https://iili.io/nFLaLcN.jpg
 title: "MCP vs CLI vs Skills: The Internet Said MCP Is Dead. The Missing Piece Was a Hub"
 published: false
 tags: ai, mcp, devops, java, kiponos

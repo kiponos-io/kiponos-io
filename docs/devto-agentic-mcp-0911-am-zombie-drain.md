@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIhNa.jpg
+main_image: https://iili.io/nFLadyF.jpg
 title: "The MCP Subprocess Outlived the Crash and Held the Port Until I Wrote a Janitor"
 published: false
 tags: ai, mcp, devops, java, kiponos

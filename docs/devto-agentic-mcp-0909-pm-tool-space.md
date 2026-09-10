@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yI7wb.jpg
+main_image: https://iili.io/nFLYlmg.jpg
 title: "Tool-Space Interference: Adding Slack MCP Made GitHub Calls Worse"
 published: false
 tags: ai, mcp, devops, java, kiponos

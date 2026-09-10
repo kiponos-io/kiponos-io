@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2y7K9S.jpg
+main_image: https://iili.io/nFLcfR9.jpg
 title: "A Marketplace Skill Runs in the Agent's Laptop. I Needed a Live Trust Set"
 published: false
 tags: ai, mcp, devops, java, kiponos

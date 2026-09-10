@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yAgHP.jpg
+main_image: https://iili.io/nFLaecB.jpg
 title: "The Skill File Was the Source of Truth Until the Host Had Already Started"
 published: false
 tags: ai, mcp, devops, java, kiponos

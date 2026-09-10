@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIR9e.jpg
+main_image: https://iili.io/nFLYC79.jpg
 title: "Context Rot Hit at 25% of the Window and Grok Build Started Forgetting the Plan"
 published: false
 tags: ai, mcp, devops, java, kiponos

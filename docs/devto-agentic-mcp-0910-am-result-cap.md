@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIlMQ.jpg
+main_image: https://iili.io/nFLYNkX.jpg
 title: "One MCP Tool Returned 557k Tokens and Swamped the Rest of the Turn"
 published: false
 tags: ai, mcp, devops, java, kiponos

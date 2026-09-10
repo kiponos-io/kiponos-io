@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n2yIePp.jpg
+main_image: https://iili.io/nFLaYG4.jpg
 title: "I Restarted Grok Build to Deny the MCP Write Tool Mid-Incident"
 published: false
 tags: ai, mcp, devops, java, kiponos
