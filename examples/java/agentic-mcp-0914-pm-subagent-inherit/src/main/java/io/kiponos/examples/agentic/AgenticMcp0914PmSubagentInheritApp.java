@@ -1,6 +1,7 @@
 package io.kiponos.examples.agentic;
 
 import io.kiponos.sdk.Kiponos;
+import io.kiponos.sdk.data.ConfigValUpdatedResponse;
 import io.kiponos.sdk.configs.Folder;
 
 /**
@@ -23,6 +24,10 @@ public final class AgenticMcp0914PmSubagentInheritApp {
         Kiponos k = Kiponos.createForCurrentTeam();
         try {
             Folder p = ensure(k);
+            k.afterValueUpdated((ConfigValUpdatedResponse ev) -> {
+                if (ev == null || ev.getKey() == null) { return; }
+                // live leaf examples/agentic-mcp-0914-pm-subagent-inherit — next decide() is in-memory, no MCP restart
+            });
             String v = args.length > 0 ? args[0] : read(p, KEY, DEFAULT);
             Decision d = decide(v);
             System.out.println("examples/" + FOLDER + "/" + KEY + "=" + d.value());
