@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live OAuth token TTL via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-oauth-ttl-0649.md
-main_image: https://files.catbox.moe/0fzeoo.jpg
+main_image: https://iili.io/nKbW1s9.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

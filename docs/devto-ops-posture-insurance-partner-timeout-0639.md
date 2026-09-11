@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live partner API timeout via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-partner-timeout-0639.md
-main_image: https://files.catbox.moe/cq3q3a.jpg
+main_image: https://iili.io/nKbX2XS.jpg
 ---
 
 **The Aha:** `partnerTimeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

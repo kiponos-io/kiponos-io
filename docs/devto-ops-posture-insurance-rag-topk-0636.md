@@ -4,7 +4,7 @@ published: false
 tags: java, insurance, architecture, kiponos
 description: "Live RAG top-k via Kiponos Python SDK — insurance posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-insurance-rag-topk-0636.md
-main_image: https://files.catbox.moe/y1jxtv.jpg
+main_image: https://iili.io/nKbXLyx.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
