@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nfoW1fI.jpg
+main_image: https://h.uguu.se/WorRwkug.jpg
 title: "Grok Build Finished the Turn Blind — Skill enable set without restart on the Shopping Path"
 published: false
 tags: java, python, devops, ai, kiponos

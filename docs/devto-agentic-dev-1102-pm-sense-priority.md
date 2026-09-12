@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nfxRqKv.jpg
+main_image: https://h.uguu.se/JFrvRVgy.jpg
 title: "Claude Code Finished the Turn Blind — Sense priority mid-turn on the Mirror Phone Path"
 published: false
 tags: java, python, devops, ai, kiponos
