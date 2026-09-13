@@ -88,10 +88,13 @@ Ship the judgment path once. Leave the jar alone.
 
 *Example + tests: [https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-builder-live-defaults](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-builder-live-defaults)*
 
+That is the GoF-versus-live cut for `page-size`.
+
 <!-- medium-img: diagram-pattern-builder-live-defaults-gof-vs-live.png -->
+
+That is the hub-flow cut: one leaf, every peer.
+
 <!-- medium-img: diagram-pattern-builder-live-defaults-hub-flow.png -->
-
-
 ---
 
 ## Why this still matters on a quiet Tuesday
@@ -108,5 +111,29 @@ Live posture is not a license for chaos. It is a contract:
 - a one-line revert that does not require a hero  
 
 When those four exist, the Super Pattern stops being a demo and becomes how the system grows older without growing brittle.
+<!-- kiponos-expanded: editor-words -->
+
+## War-room addendum — pattern builder live defaults
+
+I have sat in a 04:46 bridge where `page-size` was already decided in a sentence and the process still served last week's jar. Someone offered the usual escape: we will cut a PR. A PR. While the room is already paying for the old number.
+
+That is not architecture. That is a delayed email with extra ceremony.
+
+Quiet Tuesdays are worse than incidents. Incidents at least force a decision. On a quiet day the tax hides in four services, three regions, and a wiki nobody trusts. Live posture is the contract: a named path, clamps, audit, one-line revert.
+
+I have always believed people should not have to ship a release to make a decision the business already made out loud. With Kiponos on the same tree as the peers that must obey it, the session stays. The leaf moves.
 
 
+## The example
+
+Clone the golden tree and run it. The article is the nerve; the repo is the product.
+
+
+## Operational checklist
+
+1. Name the hub path so humans find `page-size` under pressure.
+2. Default safely when the hub is unreachable.
+3. Allowlist writers (dashboard roles + automation identities).
+4. Log the **decision**, not every get.
+5. Rehearse the flip in staging.
+6. Document the one-line revert.

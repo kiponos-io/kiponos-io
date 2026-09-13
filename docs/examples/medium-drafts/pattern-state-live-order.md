@@ -54,10 +54,13 @@ Python: `examples/python/pattern-state-live-order/`
 
 *Example: [pattern-state-live-order](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-state-live-order)*
 
+That is the GoF-versus-live cut for `draft`.
+
 <!-- medium-img: diagram-pattern-state-live-order-gof-vs-live.png -->
+
+That is the hub-flow cut: one leaf, every peer.
+
 <!-- medium-img: diagram-pattern-state-live-order-hub-flow.png -->
-
-
 ---
 
 ## Why this still matters on a quiet Tuesday
@@ -87,4 +90,19 @@ When those four exist, the Super Pattern stops being a demo and becomes how the 
 7. Record from→to + reason code in the incident timeline.
 
 Boring checklists survive 3am. Clever ones do not.
+<!-- kiponos-expanded: editor-words -->
 
+## War-room addendum — pattern state live order
+
+I have sat in a 01:48 bridge where `draft` was already decided in a sentence and the process still served last week's jar. Someone offered the usual escape: we will cut a PR. A PR. While the room is already paying for the old number.
+
+That is not architecture. That is a delayed email with extra ceremony.
+
+Quiet Tuesdays are worse than incidents. Incidents at least force a decision. On a quiet day the tax hides in four services, three regions, and a wiki nobody trusts. Live posture is the contract: a named path, clamps, audit, one-line revert.
+
+I have always believed people should not have to ship a release to make a decision the business already made out loud. With Kiponos on the same tree as the peers that must obey it, the session stays. The leaf moves.
+
+
+## The example
+
+Clone the golden tree and run it. The article is the nerve; the repo is the product.

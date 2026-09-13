@@ -89,5 +89,36 @@ Ship the judgment path once. Leave the order of judgment in the hub.
 
 *Example + tests: [github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-chain-live-fraud](https://github.com/kiponos-io/kiponos-io/tree/master/examples/java/pattern-chain-live-fraud)*
 
+That is the GoF-versus-live cut for `order`.
+
 <!-- medium-img: diagram-pattern-chain-live-fraud-gof-vs-live.png -->
+
+That is the hub-flow cut: one leaf, every peer.
+
 <!-- medium-img: diagram-pattern-chain-live-fraud-hub-flow.png -->
+<!-- kiponos-expanded: editor-words -->
+
+## War-room addendum — pattern chain live fraud
+
+I have sat in a 03:25 bridge where `order` was already decided in a sentence and the process still served last week's jar. Someone offered the usual escape: we will cut a PR. A PR. While the room is already paying for the old number.
+
+That is not architecture. That is a delayed email with extra ceremony.
+
+Quiet Tuesdays are worse than incidents. Incidents at least force a decision. On a quiet day the tax hides in four services, three regions, and a wiki nobody trusts. Live posture is the contract: a named path, clamps, audit, one-line revert.
+
+I have always believed people should not have to ship a release to make a decision the business already made out loud. With Kiponos on the same tree as the peers that must obey it, the session stays. The leaf moves.
+
+
+## The example
+
+Clone the golden tree and run it. The article is the nerve; the repo is the product.
+
+
+## Operational checklist
+
+1. Name the hub path so humans find `order` under pressure.
+2. Default safely when the hub is unreachable.
+3. Allowlist writers (dashboard roles + automation identities).
+4. Log the **decision**, not every get.
+5. Rehearse the flip in staging.
+6. Document the one-line revert.
