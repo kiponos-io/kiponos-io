@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nq4BY0B.jpg
+main_image: https://iili.io/nqDTuql.jpg
 title: "I Have Sat Next to the Travel Wall While Mcp Tool Gates Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos

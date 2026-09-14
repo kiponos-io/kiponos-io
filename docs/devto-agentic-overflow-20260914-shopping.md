@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nq4BAWx.jpg
+main_image: https://iili.io/nqDIOil.jpg
 title: "I Have Sat Next to the Shopping Wall While Token Budgets Mid-Run Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
