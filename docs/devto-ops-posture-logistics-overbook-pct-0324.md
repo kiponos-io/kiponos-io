@@ -4,7 +4,7 @@ published: false
 tags: java, logistics, devops, kiponos
 description: "Live overbooking percent via Kiponos Java SDK — logistics posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-logistics-overbook-pct-0324.md
-main_image: https://iili.io/CLmzQXs.jpg
+main_image: https://d.uguu.se/KwUWJhjZ.jpg
 ---
 
 **The Aha:** `overbookPercent` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

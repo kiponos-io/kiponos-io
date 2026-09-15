@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nCJvfbS.jpg
+main_image: https://n.uguu.se/jsbXzWBH.jpg
 title: "I Have Sat Next to the Senses Wall While Agent Handoff Without Restart Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
