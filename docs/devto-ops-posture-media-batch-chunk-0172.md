@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live batch chunk size via Kiponos Python SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-batch-chunk-0172.md
-main_image: https://files.catbox.moe/0ie8dc.jpg
+main_image: https://iili.io/nn7liVp.jpg
 ---
 
 **The Aha:** `chunkSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

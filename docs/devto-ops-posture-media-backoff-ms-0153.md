@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-backoff-ms-0153.md
-main_image: https://files.catbox.moe/vf8g9r.jpg
+main_image: https://iili.io/nn7lVHu.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
