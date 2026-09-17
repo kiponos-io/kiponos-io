@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live inference batch size via Kiponos Python SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-inference-batch-0185.md
-main_image: https://files.catbox.moe/1tn61m.jpg
+main_image: https://iili.io/noIaO9n.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

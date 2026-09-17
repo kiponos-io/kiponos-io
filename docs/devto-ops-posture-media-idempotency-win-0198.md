@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live idempotency window via Kiponos Python SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-idempotency-win-0198.md
-main_image: https://files.catbox.moe/mrhns0.jpg
+main_image: https://iili.io/noIa1wJ.jpg
 ---
 
 **The Aha:** `idempotencyWindowSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

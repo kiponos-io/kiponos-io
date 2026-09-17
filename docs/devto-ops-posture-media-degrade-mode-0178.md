@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live degradation mode via Kiponos Python SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-degrade-mode-0178.md
-main_image: https://files.catbox.moe/8pkp5n.jpg
+main_image: https://iili.io/noIYV29.jpg
 ---
 
 **The Aha:** `degradeMode` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
