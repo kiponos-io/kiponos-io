@@ -4,7 +4,7 @@ published: false
 tags: java, streaming, devops, kiponos
 description: "Live trace sample per thousand via Kiponos Python SDK — media posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-media-trace-sample-0162.md
-main_image: https://files.catbox.moe/m4vci6.jpg
+main_image: https://iili.io/nIFdexs.jpg
 ---
 
 **The Aha:** `samplePerThousand` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

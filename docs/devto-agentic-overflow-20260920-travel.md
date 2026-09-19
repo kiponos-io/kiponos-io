@@ -1,13 +1,13 @@
 ---
-main_image: https://iili.io/nIFduKQ.jpg
+main_image: https://iili.io/nIiBDX4.jpg
 title: "I Have Sat Next to the Travel Wall While Mcp Tool Gates Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Cursor kept finishing the turn blind on travel-coordinator wall. MCP tool gates as live posture on the travel wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260919-travel.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260920-travel.md
 ---
 
-I have sat next to the travel-coordinator wall at 02:14 while Cursor was *this close* to doing the wrong thing.
+I have sat next to the travel-coordinator wall at 14:12 while Cursor was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
-| We'll catch it next turn | The travel-coordinator wall already knew this turn |
-| Restart Cursor — it is cheap | Cheap until 02:14 ate the overbook thread the agent already paid for |
 | The skill file is the source of truth | Skills instruct. They do not fan out |
 | Put the SDK in the SPA | Connect tokens do not belong in a browser |
+| Feature flags cover this | Flags are another product, another delay |
+| Paste the new tools-allow into chat | Two agents, two pastes, two lies |
 
 ## The Aha: local get, live write, host stays up
 
@@ -126,7 +126,7 @@ The Cursor **process** does not recycle. The **next** tool call already sees the
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Cursor reboot | Simple at 09:00 | The freeze is at 02:14 |
+| Env file + Cursor reboot | Simple at 09:00 | The freeze is at 14:12 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Cursor |
@@ -151,7 +151,7 @@ Cursor is good at calling tools. It is not a control plane. Killing it to flip `
 
 ## What the travel operator actually said
 
-At 02:14 someone said, out loud: **mute writes on the noisy room — keep reads**. That sentence is the whole product. If it cannot land in the running Cursor process in seconds, you do not have posture. You have a wiki.
+At 14:12 someone said, out loud: **mute writes on the noisy room — keep reads**. That sentence is the whole product. If it cannot land in the running Cursor process in seconds, you do not have posture. You have a wiki.
 
 
 ## Getting started (15 minutes)
