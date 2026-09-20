@@ -1,13 +1,13 @@
 ---
-main_image: https://iili.io/nImHCsR.jpg
+main_image: https://iili.io/nTiaLPf.jpg
 title: "I Have Sat Next to the Mirror Phone Wall While Sre Degradation Pause Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Claude Code kept finishing the turn blind on mirror-phone wall. SRE degradation pause as live posture on the mirror-phone wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260920-mirror-phone.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260921-mirror-phone.md
 ---
 
-I have sat next to the mirror-phone wall at 03:07 while Claude Code was *this close* to doing the wrong thing.
+I have sat next to the mirror-phone wall at 00:40 while Claude Code was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
-| Restart Claude Code — it is cheap | Cheap until 03:07 ate live device context and the current tool call |
-| The skill file is the source of truth | Skills instruct. They do not fan out |
 | Put the SDK in the SPA | Connect tokens do not belong in a browser |
 | Feature flags cover this | Flags are another product, another delay |
+| Paste the new incident-pause into chat | Two agents, two pastes, two lies |
+| We'll catch it next turn | The mirror-phone wall already knew this turn |
 
 ## The Aha: local get, live write, host stays up
 
@@ -126,7 +126,7 @@ The Claude Code **process** does not recycle. The **next** tool call already see
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Claude Code reboot | Simple at 09:00 | The freeze is at 03:07 |
+| Env file + Claude Code reboot | Simple at 09:00 | The freeze is at 00:40 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Claude Code |
