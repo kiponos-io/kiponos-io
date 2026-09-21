@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live OAuth token TTL via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-oauth-ttl-1199.md
-main_image: https://files.catbox.moe/nccgin.jpg
+main_image: https://iili.io/nTtZ0iv.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live outbox poll interval via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-outbox-poll-ms-1191.md
-main_image: https://files.catbox.moe/9hphil.jpg
+main_image: https://iili.io/nTtZEfR.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

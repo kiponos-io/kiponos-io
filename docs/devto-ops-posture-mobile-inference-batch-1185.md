@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live inference batch size via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-inference-batch-1185.md
-main_image: https://files.catbox.moe/pjjn2a.jpg
+main_image: https://iili.io/nTtZfR9.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
