@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live spot bid ceiling cents via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-spot-bid-cents-1184.md
-main_image: https://files.catbox.moe/vlrml3.jpg
+main_image: https://iili.io/nu1BtTB.jpg
 ---
 
 **The Aha:** `spotBidCents` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live consumer prefetch via Kiponos Python SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-queue-prefetch-1156.md
-main_image: https://files.catbox.moe/vsaywz.jpg
+main_image: https://iili.io/nu1B3X9.jpg
 ---
 
 **The Aha:** `prefetch` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

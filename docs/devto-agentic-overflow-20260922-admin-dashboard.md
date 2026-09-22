@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/nuRbvou.jpg
+main_image: https://iili.io/nu1qU0J.jpg
 title: "I Have Sat Next to the Admin Dashboard Wall While One War-Room Headline Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos

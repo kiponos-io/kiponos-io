@@ -4,7 +4,7 @@ published: false
 tags: java, mobile, architecture, kiponos
 description: "Live RAG top-k via Kiponos Java SDK — mobile posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-mobile-rag-topk-1186.md
-main_image: https://files.catbox.moe/hcdp5x.jpg
+main_image: https://iili.io/nu1BFse.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
