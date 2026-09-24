@@ -1,10 +1,10 @@
 ---
-main_image: https://h.uguu.se/YKJpfBTs.jpg
+main_image: https://iili.io/nRJFWG9.jpg
 title: "I Have Sat Next to the Travel Wall While Mcp Tool Gates Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Cursor kept finishing the turn blind on travel-coordinator wall. MCP tool gates as live posture on the travel wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260924-travel.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260925-travel.md
 ---
 
 I have sat next to the travel-coordinator wall at 21:03 while Cursor was *this close* to doing the wrong thing.

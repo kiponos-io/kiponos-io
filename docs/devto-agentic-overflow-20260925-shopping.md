@@ -1,13 +1,13 @@
 ---
-main_image: https://d.uguu.se/XvReQXzo.jpg
+main_image: https://iili.io/nRJFEj2.jpg
 title: "I Have Sat Next to the Shopping Wall While Token Budgets Mid-Run Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Grok Build kept finishing the turn blind on shopping-admin wall. token budgets mid-run as live posture on the shopping wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260924-shopping.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260925-shopping.md
 ---
 
-I have sat next to the shopping-admin wall at 22:19 while Grok Build was *this close* to doing the wrong thing.
+I have sat next to the shopping-admin wall at 00:40 while Grok Build was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -126,7 +126,7 @@ The Grok Build **process** does not recycle. The **next** tool call already sees
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Grok Build reboot | Simple at 09:00 | The freeze is at 22:19 |
+| Env file + Grok Build reboot | Simple at 09:00 | The freeze is at 00:40 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Grok Build |
@@ -141,17 +141,17 @@ The Grok Build **process** does not recycle. The **next** tool call already sees
 | One-off local script, no peers | A hub is overkill |
 | Browser-only “SDK in the SPA” | Forbidden — tokens leak or defaults lie |
 
-## What the shopping operator actually said
-
-At 22:19 someone said, out loud: **disable inventory writes — keep search**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
-
-## Pair `max-tokens` with a sister dial
-
-`max-tokens` rarely moves alone on the shopping-admin wall. Pair it with a timeout, a mute, or a pause so you do not fix token budgets mid-run as live posture on the shopping wall by inventing a second incident.
-
 ## Rehearsal beats slides
 
 In staging: set a painful `max-tokens`, prove Grok Build recovers without a host kill, prove clamps reject nonsense, prove last-known-good when the hub is firewalled. That drill ends half the architecture arguments about token budgets mid-run as live posture on the shopping wall.
+
+## Why Grok Build is the wrong restart target
+
+Grok Build is good at calling tools. It is not a control plane. Killing it to flip `max-tokens` teaches the on-call that judgment requires a process ID. The shopping-admin wall already disagrees.
+
+## What the shopping operator actually said
+
+At 00:40 someone said, out loud: **disable inventory writes — keep search**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
 
 
 ## Getting started (15 minutes)
