@@ -1,13 +1,13 @@
 ---
-main_image: https://iili.io/nRf41LJ.jpg
+main_image: https://iili.io/nRVCWJI.jpg
 title: "I Have Sat Next to the Mirror Phone Wall While Sre Degradation Pause Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Claude Code kept finishing the turn blind on mirror-phone wall. SRE degradation pause as live posture on the mirror-phone wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260925-mirror-phone.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260926-mirror-phone.md
 ---
 
-I have sat next to the mirror-phone wall at 22:19 while Claude Code was *this close* to doing the wrong thing.
+I have sat next to the mirror-phone wall at 21:03 while Claude Code was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
-| Restart Claude Code — it is cheap | Cheap until 22:19 ate live device context and the current tool call |
+| Paste the new incident-pause into chat | Two agents, two pastes, two lies |
+| We'll catch it next turn | The mirror-phone wall already knew this turn |
+| Restart Claude Code — it is cheap | Cheap until 21:03 ate live device context and the current tool call |
 | The skill file is the source of truth | Skills instruct. They do not fan out |
-| Put the SDK in the SPA | Connect tokens do not belong in a browser |
-| Feature flags cover this | Flags are another product, another delay |
 
 ## The Aha: local get, live write, host stays up
 
@@ -126,7 +126,7 @@ The Claude Code **process** does not recycle. The **next** tool call already see
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Claude Code reboot | Simple at 09:00 | The freeze is at 22:19 |
+| Env file + Claude Code reboot | Simple at 09:00 | The freeze is at 21:03 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Claude Code |
@@ -141,17 +141,17 @@ The Claude Code **process** does not recycle. The **next** tool call already see
 | One-off local script, no peers | A hub is overkill |
 | Browser-only “SDK in the SPA” | Forbidden — tokens leak or defaults lie |
 
-## Why Claude Code is the wrong restart target
-
-Claude Code is good at calling tools. It is not a control plane. Killing it to flip `incident-pause` teaches the on-call that judgment requires a process ID. The mirror-phone wall already disagrees.
-
-## What the mirror phone operator actually said
-
-At 22:19 someone said, out loud: **the phone already knew the posture — the host did not**. That sentence is the whole product. If it cannot land in the running Claude Code process in seconds, you do not have posture. You have a wiki.
-
 ## Pair `incident-pause` with a sister dial
 
 `incident-pause` rarely moves alone on the mirror-phone wall. Pair it with a timeout, a mute, or a pause so you do not fix SRE degradation pause as live posture on the mirror-phone wall by inventing a second incident.
+
+## Rehearsal beats slides
+
+In staging: set a painful `incident-pause`, prove Claude Code recovers without a host kill, prove clamps reject nonsense, prove last-known-good when the hub is firewalled. That drill ends half the architecture arguments about SRE degradation pause as live posture on the mirror-phone wall.
+
+## Why Claude Code is the wrong restart target
+
+Claude Code is good at calling tools. It is not a control plane. Killing it to flip `incident-pause` teaches the on-call that judgment requires a process ID. The mirror-phone wall already disagrees.
 
 
 ## Getting started (15 minutes)
