@@ -1,10 +1,10 @@
 ---
-main_image: https://iili.io/nRe5uyP.jpg
+main_image: https://iili.io/n5JNdg9.jpg
 title: "I Have Sat Next to the Travel Wall While Mcp Tool Gates Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Cursor kept finishing the turn blind on travel-coordinator wall. MCP tool gates as live posture on the travel wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260926-travel.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260927-travel.md
 ---
 
 I have sat next to the travel-coordinator wall at 21:03 while Cursor was *this close* to doing the wrong thing.
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
-| The skill file is the source of truth | Skills instruct. They do not fan out |
-| Put the SDK in the SPA | Connect tokens do not belong in a browser |
-| Feature flags cover this | Flags are another product, another delay |
 | Paste the new tools-allow into chat | Two agents, two pastes, two lies |
+| We'll catch it next turn | The travel-coordinator wall already knew this turn |
+| Restart Cursor — it is cheap | Cheap until 21:03 ate the overbook thread the agent already paid for |
+| The skill file is the source of truth | Skills instruct. They do not fan out |
 
 ## The Aha: local get, live write, host stays up
 
@@ -141,6 +141,10 @@ The Cursor **process** does not recycle. The **next** tool call already sees the
 | One-off local script, no peers | A hub is overkill |
 | Browser-only “SDK in the SPA” | Forbidden — tokens leak or defaults lie |
 
+## Why Cursor is the wrong restart target
+
+Cursor is good at calling tools. It is not a control plane. Killing it to flip `tools-allow` teaches the on-call that judgment requires a process ID. The travel-coordinator wall already disagrees.
+
 ## What the travel operator actually said
 
 At 21:03 someone said, out loud: **mute writes on the noisy room — keep reads**. That sentence is the whole product. If it cannot land in the running Cursor process in seconds, you do not have posture. You have a wiki.
@@ -148,10 +152,6 @@ At 21:03 someone said, out loud: **mute writes on the noisy room — keep reads*
 ## Pair `tools-allow` with a sister dial
 
 `tools-allow` rarely moves alone on the travel-coordinator wall. Pair it with a timeout, a mute, or a pause so you do not fix MCP tool gates as live posture on the travel wall by inventing a second incident.
-
-## Rehearsal beats slides
-
-In staging: set a painful `tools-allow`, prove Cursor recovers without a host kill, prove clamps reject nonsense, prove last-known-good when the hub is firewalled. That drill ends half the architecture arguments about MCP tool gates as live posture on the travel wall.
 
 
 ## Getting started (15 minutes)

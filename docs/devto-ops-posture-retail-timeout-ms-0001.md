@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live outbound call timeout via Kiponos Java SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-timeout-ms-0001.md
-main_image: https://files.catbox.moe/ebut4l.jpg
+main_image: https://iili.io/nReMDBI.jpg
 ---
 
 **The Aha:** `timeoutMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

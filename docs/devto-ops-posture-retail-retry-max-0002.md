@@ -4,7 +4,7 @@ published: false
 tags: java, retail, devops, kiponos
 description: "Live retry budget via Kiponos Python SDK — retail posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-retail-retry-max-0002.md
-main_image: https://files.catbox.moe/qnstoy.jpg
+main_image: https://iili.io/nRea1Fj.jpg
 ---
 
 **The Aha:** `maxAttempts` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
