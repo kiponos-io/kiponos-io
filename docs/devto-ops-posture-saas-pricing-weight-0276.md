@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live pricing / promo weight via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-pricing-weight-0276.md
-main_image: https://files.catbox.moe/we7fd5.jpg
+main_image: https://iili.io/n5o1Xje.jpg
 ---
 
 **The Aha:** `weight` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

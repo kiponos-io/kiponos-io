@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live SLO warn burn bps via Kiponos Python SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-slo-warn-bps-0281.md
-main_image: https://files.catbox.moe/dg9z4s.jpg
+main_image: https://iili.io/n5oExou.jpg
 ---
 
 **The Aha:** `errorBudgetWarnBps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

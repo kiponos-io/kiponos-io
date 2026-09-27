@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live WAF sensitivity 1-5 via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-waf-sensitivity-0288.md
-main_image: https://files.catbox.moe/l4nib4.jpg
+main_image: https://iili.io/n5oE4J2.jpg
 ---
 
 **The Aha:** `wafSensitivity` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

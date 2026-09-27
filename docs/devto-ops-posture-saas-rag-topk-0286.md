@@ -4,7 +4,7 @@ published: false
 tags: java, saas, architecture, kiponos
 description: "Live RAG top-k via Kiponos Java SDK — saas posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-saas-rag-topk-0286.md
-main_image: https://files.catbox.moe/hto4f0.jpg
+main_image: https://iili.io/n5o1O6x.jpg
 ---
 
 **The Aha:** `topK` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

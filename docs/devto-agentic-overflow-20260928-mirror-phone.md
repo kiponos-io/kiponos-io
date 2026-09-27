@@ -1,10 +1,10 @@
 ---
-main_image: https://iili.io/n5o1fhg.jpg
+main_image: https://iili.io/n5DCPDl.jpg
 title: "I Have Sat Next to the Mirror Phone Wall While Sre Degradation Pause Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Claude Code kept finishing the turn blind on mirror-phone wall. SRE degradation pause as live posture on the mirror-phone wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260927-mirror-phone.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260928-mirror-phone.md
 ---
 
 I have sat next to the mirror-phone wall at 02:14 while Claude Code was *this close* to doing the wrong thing.
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
+| Paste the new incident-pause into chat | Two agents, two pastes, two lies |
+| We'll catch it next turn | The mirror-phone wall already knew this turn |
 | Restart Claude Code — it is cheap | Cheap until 02:14 ate live device context and the current tool call |
 | The skill file is the source of truth | Skills instruct. They do not fan out |
-| Put the SDK in the SPA | Connect tokens do not belong in a browser |
-| Feature flags cover this | Flags are another product, another delay |
 
 ## The Aha: local get, live write, host stays up
 
