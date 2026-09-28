@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live media bitrate ceiling via Kiponos Python SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-bitrate-kbps-1025.md
-main_image: https://files.catbox.moe/0njah3.jpg
+main_image: https://iili.io/n7Cc2Np.jpg
 ---
 
 **The Aha:** `bitrateKbps` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
