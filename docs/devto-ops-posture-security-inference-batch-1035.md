@@ -4,7 +4,7 @@ published: false
 tags: java, security, devops, kiponos
 description: "Live inference batch size via Kiponos Java SDK — security posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-security-inference-batch-1035.md
-main_image: https://files.catbox.moe/v2uv9i.jpg
+main_image: https://iili.io/nY26LCl.jpg
 ---
 
 **The Aha:** `batchSize` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

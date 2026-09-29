@@ -1,13 +1,13 @@
 ---
-main_image: https://iili.io/nY2Vq7t.jpg
+main_image: https://iili.io/nYeDIiQ.jpg
 title: "I Have Sat Next to the Senses Wall While Agent Handoff Without Restart Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Cursor kept finishing the turn blind on senses wall. agent handoff without restart as live posture on the senses wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260929-senses.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260930-senses.md
 ---
 
-I have sat next to the senses wall at 21:03 while Cursor was *this close* to doing the wrong thing.
+I have sat next to the senses wall at 18:45 while Cursor was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
+| Put the SDK in the SPA | Connect tokens do not belong in a browser |
 | Feature flags cover this | Flags are another product, another delay |
 | Paste the new handoff into chat | Two agents, two pastes, two lies |
 | We'll catch it next turn | The senses wall already knew this turn |
-| Restart Cursor — it is cheap | Cheap until 21:03 ate the turn budget and the open investigation |
 
 ## The Aha: local get, live write, host stays up
 
@@ -126,7 +126,7 @@ The Cursor **process** does not recycle. The **next** tool call already sees the
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Cursor reboot | Simple at 09:00 | The freeze is at 21:03 |
+| Env file + Cursor reboot | Simple at 09:00 | The freeze is at 18:45 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Cursor |
@@ -141,17 +141,17 @@ The Cursor **process** does not recycle. The **next** tool call already sees the
 | One-off local script, no peers | A hub is overkill |
 | Browser-only “SDK in the SPA” | Forbidden — tokens leak or defaults lie |
 
+## Why Cursor is the wrong restart target
+
+Cursor is good at calling tools. It is not a control plane. Killing it to flip `handoff` teaches the on-call that judgment requires a process ID. The senses wall already disagrees.
+
 ## What the senses operator actually said
 
-At 21:03 someone said, out loud: **priority is a leaf, not a restart**. That sentence is the whole product. If it cannot land in the running Cursor process in seconds, you do not have posture. You have a wiki.
+At 18:45 someone said, out loud: **priority is a leaf, not a restart**. That sentence is the whole product. If it cannot land in the running Cursor process in seconds, you do not have posture. You have a wiki.
 
 ## Pair `handoff` with a sister dial
 
 `handoff` rarely moves alone on the senses wall. Pair it with a timeout, a mute, or a pause so you do not fix agent handoff without restart as live posture on the senses wall by inventing a second incident.
-
-## Rehearsal beats slides
-
-In staging: set a painful `handoff`, prove Cursor recovers without a host kill, prove clamps reject nonsense, prove last-known-good when the hub is firewalled. That drill ends half the architecture arguments about agent handoff without restart as live posture on the senses wall.
 
 
 ## Getting started (15 minutes)

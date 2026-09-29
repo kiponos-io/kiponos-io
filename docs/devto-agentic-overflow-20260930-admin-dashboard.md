@@ -1,10 +1,10 @@
 ---
-main_image: https://iili.io/nY2M6zb.jpg
+main_image: https://iili.io/nYeDxxj.jpg
 title: "I Have Sat Next to the Admin Dashboard Wall While One War-Room Headline Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Grok Build kept finishing the turn blind on admin-dashboard wall. one war-room headline as live posture on the admin-dashboard wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260929-admin-dashboard.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260930-admin-dashboard.md
 ---
 
 I have sat next to the admin-dashboard wall at 18:45 while Grok Build was *this close* to doing the wrong thing.
@@ -141,17 +141,17 @@ The Grok Build **process** does not recycle. The **next** tool call already sees
 | One-off local script, no peers | A hub is overkill |
 | Browser-only “SDK in the SPA” | Forbidden — tokens leak or defaults lie |
 
-## What the admin dashboard operator actually said
-
-At 18:45 someone said, out loud: **the tile is not a rumor. it is the same tree**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
-
-## Pair `headline` with a sister dial
-
-`headline` rarely moves alone on the admin-dashboard wall. Pair it with a timeout, a mute, or a pause so you do not fix one war-room headline as live posture on the admin-dashboard wall by inventing a second incident.
-
 ## Rehearsal beats slides
 
 In staging: set a painful `headline`, prove Grok Build recovers without a host kill, prove clamps reject nonsense, prove last-known-good when the hub is firewalled. That drill ends half the architecture arguments about one war-room headline as live posture on the admin-dashboard wall.
+
+## Why Grok Build is the wrong restart target
+
+Grok Build is good at calling tools. It is not a control plane. Killing it to flip `headline` teaches the on-call that judgment requires a process ID. The admin-dashboard wall already disagrees.
+
+## What the admin dashboard operator actually said
+
+At 18:45 someone said, out loud: **the tile is not a rumor. it is the same tree**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
 
 
 ## Getting started (15 minutes)

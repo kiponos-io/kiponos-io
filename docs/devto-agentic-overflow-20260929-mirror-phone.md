@@ -1,5 +1,5 @@
 ---
-main_image: https://iili.io/n7QnR0Q.jpg
+main_image: https://iili.io/nY2NGCg.jpg
 title: "I Have Sat Next to the Mirror Phone Wall While Sre Degradation Pause Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
