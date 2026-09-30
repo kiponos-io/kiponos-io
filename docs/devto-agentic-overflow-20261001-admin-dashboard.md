@@ -1,13 +1,13 @@
 ---
-main_image: https://iili.io/nYiweUX.jpg
+main_image: https://iili.io/naMwtd7.jpg
 title: "I Have Sat Next to the Admin Dashboard Wall While One War-Room Headline Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Grok Build kept finishing the turn blind on admin-dashboard wall. one war-room headline as live posture on the admin-dashboard wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20260930-admin-dashboard.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20261001-admin-dashboard.md
 ---
 
-I have sat next to the admin-dashboard wall at 18:45 while Grok Build was *this close* to doing the wrong thing.
+I have sat next to the admin-dashboard wall at 03:07 while Grok Build was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -43,10 +43,10 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 
 | Belief | Production |
 |--------|------------|
+| The skill file is the source of truth | Skills instruct. They do not fan out |
+| Put the SDK in the SPA | Connect tokens do not belong in a browser |
 | Feature flags cover this | Flags are another product, another delay |
 | Paste the new headline into chat | Two agents, two pastes, two lies |
-| We'll catch it next turn | The admin-dashboard wall already knew this turn |
-| Restart Grok Build — it is cheap | Cheap until 18:45 ate the operator's last ten minutes of diagnosis |
 
 ## The Aha: local get, live write, host stays up
 
@@ -126,7 +126,7 @@ The Grok Build **process** does not recycle. The **next** tool call already sees
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Grok Build reboot | Simple at 09:00 | The freeze is at 18:45 |
+| Env file + Grok Build reboot | Simple at 09:00 | The freeze is at 03:07 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Grok Build |
@@ -151,7 +151,7 @@ Grok Build is good at calling tools. It is not a control plane. Killing it to fl
 
 ## What the admin dashboard operator actually said
 
-At 18:45 someone said, out loud: **the tile is not a rumor. it is the same tree**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
+At 03:07 someone said, out loud: **the tile is not a rumor. it is the same tree**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
 
 
 ## Getting started (15 minutes)

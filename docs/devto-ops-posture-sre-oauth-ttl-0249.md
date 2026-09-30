@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live OAuth token TTL via Kiponos Python SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-oauth-ttl-0249.md
-main_image: https://files.catbox.moe/sfi8uv.jpg
+main_image: https://iili.io/nYiOzjj.jpg
 ---
 
 **The Aha:** `tokenTtlSec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
