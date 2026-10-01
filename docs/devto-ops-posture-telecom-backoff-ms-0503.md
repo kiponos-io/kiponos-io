@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live retry backoff base via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-backoff-ms-0503.md
-main_image: https://files.catbox.moe/h17o03.jpg
+main_image: https://iili.io/navYZzu.jpg
 ---
 
 **The Aha:** `backoffMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

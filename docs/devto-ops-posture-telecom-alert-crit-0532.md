@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live alert critical threshold via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-alert-crit-0532.md
-main_image: https://files.catbox.moe/9hkyrl.jpg
+main_image: https://iili.io/navYi57.jpg
 ---
 
 **The Aha:** `critThreshold` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

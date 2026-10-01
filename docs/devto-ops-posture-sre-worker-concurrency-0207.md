@@ -4,7 +4,7 @@ published: false
 tags: java, sre, devops, kiponos
 description: "Live worker concurrency via Kiponos Java SDK — sre posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-sre-worker-concurrency-0207.md
-main_image: https://files.catbox.moe/bnyvxj.jpg
+main_image: https://iili.io/nav7yAX.jpg
 ---
 
 **The Aha:** `workers` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
