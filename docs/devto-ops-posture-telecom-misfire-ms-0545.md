@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live scheduler misfire threshold via Kiponos Java SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-misfire-ms-0545.md
-main_image: https://files.catbox.moe/a5xykb.jpg
+main_image: https://iili.io/ncmJxgS.jpg
 ---
 
 **The Aha:** `misfireThresholdMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

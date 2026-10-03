@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live GraphQL query depth via Kiponos Python SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-graphql-depth-0150.md
-main_image: https://files.catbox.moe/qe0iid.jpg
+main_image: https://iili.io/ncmdOZb.jpg
 ---
 
 **The Aha:** `maxDepth` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

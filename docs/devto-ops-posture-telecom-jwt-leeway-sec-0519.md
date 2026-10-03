@@ -4,7 +4,7 @@ published: false
 tags: java, telecom, sre, kiponos
 description: "Live JWT clock skew leeway via Kiponos Python SDK — telecom posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-telecom-jwt-leeway-sec-0519.md
-main_image: https://iili.io/nczESaI.jpg
+main_image: https://iili.io/ncmJqXf.jpg
 ---
 
 **The Aha:** `leewaySec` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.

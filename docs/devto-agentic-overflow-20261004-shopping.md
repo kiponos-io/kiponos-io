@@ -1,13 +1,13 @@
 ---
-main_image: https://iili.io/ncmHZba.jpg
+main_image: https://iili.io/nlaCuaf.jpg
 title: "I Have Sat Next to the Shopping Wall While Token Budgets Mid-Run Waited for a Restart"
 published: false
 tags: java, python, devops, ai, kiponos
 description: "Grok Build kept finishing the turn blind on shopping-admin wall. token budgets mid-run as live posture on the shopping wall is a live hub leaf."
-canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20261003-shopping.md
+canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-agentic-overflow-20261004-shopping.md
 ---
 
-I have sat next to the shopping-admin wall at 11:41 while Grok Build was *this close* to doing the wrong thing.
+I have sat next to the shopping-admin wall at 22:19 while Grok Build was *this close* to doing the wrong thing.
 
 Not a model failure. A **posture** failure.
 
@@ -46,7 +46,7 @@ That is the missing piece: **the framework gave you tools. It did not give you a
 | Feature flags cover this | Flags are another product, another delay |
 | Paste the new max-tokens into chat | Two agents, two pastes, two lies |
 | We'll catch it next turn | The shopping-admin wall already knew this turn |
-| Restart Grok Build — it is cheap | Cheap until 11:41 ate cart forensics and the open SKU thread |
+| Restart Grok Build — it is cheap | Cheap until 22:19 ate cart forensics and the open SKU thread |
 
 ## The Aha: local get, live write, host stays up
 
@@ -126,7 +126,7 @@ The Grok Build **process** does not recycle. The **next** tool call already sees
 
 | Approach | Honest fit | Why it still restarts |
 |----------|------------|------------------------|
-| Env file + Grok Build reboot | Simple at 09:00 | The freeze is at 11:41 |
+| Env file + Grok Build reboot | Simple at 09:00 | The freeze is at 22:19 |
 | Skill markdown as policy | Good instructions | Not a live bus |
 | Redis poll inside the tool | Shared, but RTT on the hot path | You invented a hub with worse UX |
 | Feature-flag SaaS | Product experiments | Rarely session-safe for Grok Build |
@@ -151,7 +151,7 @@ Grok Build is good at calling tools. It is not a control plane. Killing it to fl
 
 ## What the shopping operator actually said
 
-At 11:41 someone said, out loud: **disable inventory writes — keep search**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
+At 22:19 someone said, out loud: **disable inventory writes — keep search**. That sentence is the whole product. If it cannot land in the running Grok Build process in seconds, you do not have posture. You have a wiki.
 
 
 ## Getting started (15 minutes)
