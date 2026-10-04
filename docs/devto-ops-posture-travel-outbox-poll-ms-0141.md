@@ -4,7 +4,7 @@ published: false
 tags: java, travel, architecture, kiponos
 description: "Live outbox poll interval via Kiponos Python SDK — travel posture without redeploy."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-ops-posture-travel-outbox-poll-ms-0141.md
-main_image: https://files.catbox.moe/asiuvw.jpg
+main_image: https://iili.io/nlM7xxS.jpg
 ---
 
 **The Aha:** `outboxPollMs` is not a property file trophy. It is **incident posture** — and posture that waits for a jar is already late.
