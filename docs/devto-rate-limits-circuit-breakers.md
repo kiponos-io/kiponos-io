@@ -4,7 +4,7 @@ published: true
 tags: java, architecture, devops, kiponos
 description: "Tune per-tenant rate limits and circuit breaker thresholds while your API gateway keeps serving traffic. Kiponos Java SDK delivers local reads with zero latency"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-rate-limits-circuit-breakers.md
-main_image: https://files.catbox.moe/uiggaj.jpg
+main_image: https://iili.io/n0nTUzB.jpg
 ---
 
 **The Aha:** `rps` is not a property-file trophy. It is **incident posture** for API protection — and posture that waits for a jar is already late.

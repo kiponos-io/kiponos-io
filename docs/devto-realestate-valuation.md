@@ -4,7 +4,7 @@ published: true
 tags: java, architecture, devops, kiponos
 description: "Tune feature weights, comp-radius, and cap rates in Python AVM services while appraisers and models run. Kiponos local reads, WebSocket deltas — no model redepl"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-realestate-valuation.md
-main_image: https://files.catbox.moe/gt1fik.jpg
+main_image: https://iili.io/n0nu0EF.jpg
 ---
 
 **The Aha:** `modelWeight` is not a property-file trophy. It is **incident posture** for real-estate models — and posture that waits for a jar is already late.

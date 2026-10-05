@@ -4,7 +4,7 @@ published: false
 tags: java, springboot, architecture, devops
 description: Senior Spring teams still restart pods to change timeouts, pool sizes, and resilience thresholds. This guide maps @ConfigurationProperties limits and wires Kiponos for zero-latency reads on the request path.
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-springboot-beyond-refresh-scope.md
-main_image: https://files.catbox.moe/ffnuj2.jpg
+main_image: https://iili.io/n0nRBf9.jpg
 ---
 
 You shipped Spring Boot 3 with `@ConfigurationProperties`, Spring Cloud Config, and `@RefreshScope`. Production still pages you because **changing `resilience4j.circuitbreaker.instances.payments.failureRateThreshold` requires a context refresh** — and refresh is not free on a saturated JVM.

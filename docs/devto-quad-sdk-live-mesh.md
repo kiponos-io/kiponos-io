@@ -4,7 +4,7 @@ published: false
 tags: java, python, kiponos, devops
 description: "shared mesh posture mode live across Java, Python, React, Angular and agents — no restart."
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-quad-sdk-live-mesh.md
-main_image: https://iili.io/CSnkiKB.jpg
+main_image: https://iili.io/n0nTxHv.jpg
 ---
 
 **The Aha:** shared mesh posture mode is not a properties-file trophy. It is **mesh posture** — and posture that waits for four redeploys is already late.

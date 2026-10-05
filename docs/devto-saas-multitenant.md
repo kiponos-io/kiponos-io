@@ -4,7 +4,7 @@ published: true
 tags: java, saas, architecture, kiponos
 description: "Per-tenant feature flags, seat limits, and API quotas in Java SaaS apps — live Kiponos tree with local reads. Sales upgrades a tenant without redeploying Helm v"
 canonical_url: https://github.com/kiponos-io/kiponos-io/blob/master/docs/devto-saas-multitenant.md
-main_image: https://files.catbox.moe/z65ex6.jpg
+main_image: https://iili.io/n0nAetV.jpg
 ---
 
 **The Aha:** `entitlement` is not a property-file trophy. It is **incident posture** for multi-tenant SaaS — and posture that waits for a jar is already late.
