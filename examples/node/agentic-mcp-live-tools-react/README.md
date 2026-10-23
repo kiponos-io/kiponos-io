@@ -61,3 +61,8 @@ Grok Build Still Restarted MCP to Flip a Write Tool. The Shopping Admin Did Not 
 https://dev.to/kiponos/grok-build-still-restarted-mcp-to-flip-a-write-tool-the-shopping-admin-did-not-need-that-3n70
 
 Same Team leaf as this example — no cross-post of the essay body.
+
+## BFF client (react)
+
+`node peer.mjs --serve` then `node bff-client.mjs http://127.0.0.1:<port>`.
+The SPA must not hold `KIPONOS_ID` / `KIPONOS_ACCESS`.
