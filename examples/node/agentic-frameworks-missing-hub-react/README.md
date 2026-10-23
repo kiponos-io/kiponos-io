@@ -61,3 +61,8 @@ Agent Frameworks Gave Us Tools. They Did Not Give Us a Live Hub.
 https://medium.com/@devops_16625/agent-frameworks-gave-us-tools-they-did-not-give-us-a-live-hub-e1440e0a11b4
 
 Same Team leaf as this example — no cross-post of the essay body.
+
+## BFF client (react)
+
+`node peer.mjs --serve` then `node bff-client.mjs http://127.0.0.1:<port>`.
+The SPA must not hold `KIPONOS_ID` / `KIPONOS_ACCESS`.
