@@ -53,3 +53,8 @@ node peer.mjs --serve   # BFF; SPA fetches /posture
 ```
 
 Repo: [github.com/kiponos-io/kiponos-io](https://github.com/kiponos-io/kiponos-io)
+
+## BFF client (react)
+
+`node peer.mjs --serve` then `node bff-client.mjs http://127.0.0.1:<port>`.
+The SPA must not hold `KIPONOS_ID` / `KIPONOS_ACCESS`.
