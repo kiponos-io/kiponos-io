@@ -8,7 +8,7 @@ from __future__ import annotations
 import os
 import time
 
-# pip install kiponos  (or local agent-kit)
+# pip install kiponos
 try:
     from kiponos import Kiponos
 except ImportError:  # pragma: no cover

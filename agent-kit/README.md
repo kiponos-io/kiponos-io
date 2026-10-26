@@ -13,11 +13,19 @@ Dashboard and agents share one config tree over WebSocket. Change a value in the
 ## Install
 
 ```bash
+pip install kiponos        # SDK (import kiponos) + kiponos-mcp + kiponos-cli
+```
+
+> Looking for the classic SDK? That is the separate `kiponos-pysdk` package (`from kiponos_pysdk import KiponosClient`).
+
+To also install the agent skill, or to work from a checkout:
+
+```bash
 cd agent-kit   # this directory
 ./install.sh
 ```
 
-Or manually:
+Or manually from source:
 
 ```bash
 pip install -e .
