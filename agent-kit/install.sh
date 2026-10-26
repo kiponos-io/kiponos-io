@@ -10,6 +10,8 @@ usage() {
   cat <<'EOF'
 Usage: ./install.sh [TARGET...]
 
+Recommended (no clone needed):  pip install kiponos
+
 Default: pip install -e .  +  grok-user, cursor-user, claude-user skills
 
 Targets:
