@@ -118,7 +118,9 @@ def trading_halted() -> bool:
 
 Limits: a silently dead network path is only noticed via the ping keepalive, so in
 the worst case reads stay "fresh" for about `ping_interval + ping_timeout` after the
-link died (30 s by default; lower `ping_interval` for tighter kill switches).
+link died (30 s by default; lower `ping_interval` / `ping_timeout` for tighter kill switches).
+This relies on the server answering WebSocket pings; if it does not, a half-open link
+is only noticed when TCP gives up.
 
 ### Typed getters with range checks
 
