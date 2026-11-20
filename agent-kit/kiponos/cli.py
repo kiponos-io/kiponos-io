@@ -36,6 +36,7 @@ def main(argv: list[str] | None = None) -> int:
                     json.dumps(
                         {
                             "ok": True,
+                            "state": k.state.value,
                             "team_id": k.team_id,
                             "profile": k.profile,
                             "root_keys": len(k.list_keys()),

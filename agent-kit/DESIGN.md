@@ -37,6 +37,10 @@ A **Skill** alone documents usage but dies with the session. A raw **SDK** is co
 | `delete_key` | Remove key |
 | `on_change(cb)` | Live deltas (worker off listener thread) |
 | `close()` / context manager | Lifecycle |
+| `state` / `on_state_change` / `wait_ready` | Connection state (0.3) |
+| `staleness_seconds` / `last_sync_time` / `require_fresh` / `get(..., max_staleness=)` | Fail-closed reads (0.3) |
+| `get_int` / `get_float` / `get_bool` | Typed reads with range checks (0.3) |
+| `backup_path` / `offline_startup` | Opt-in last-known-good backup (0.3) |
 
 Auth: `KIPONOS_ID`, `KIPONOS_ACCESS`, profile `KIPONOS`.  
 Wire: same as Java ReadyMode (`sdk-save-config-prop`, team topics, …).
