@@ -22,3 +22,8 @@ test("ok sample", () => {
 test("gated sample", () => {
   assert.equal(decide("research,notify").proceed, true);
 });
+
+test("four peers", () => {
+  const d = decide(null);
+  assert.equal(d.peers.length, 4);
+});
