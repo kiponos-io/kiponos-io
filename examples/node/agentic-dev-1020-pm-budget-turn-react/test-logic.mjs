@@ -23,3 +23,8 @@ test("gated sample", () => {
   assert.equal(decide("0").proceed, false);
   assert.equal(decide("0").action, "stop_turn_budget");
 });
+
+test("four peers", () => {
+  const d = decide(null);
+  assert.equal(d.peers.length, 4);
+});
