@@ -23,3 +23,8 @@ test("gated sample", () => {
   assert.equal(decide("ops-late-bags").proceed, false);
   assert.equal(decide("ops-late-bags").action, "mute_sends_keep_session");
 });
+
+test("four peers", () => {
+  const d = decide(null);
+  assert.equal(d.peers.length, 4);
+});
