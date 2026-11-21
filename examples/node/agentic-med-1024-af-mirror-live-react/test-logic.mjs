@@ -23,3 +23,8 @@ test("gated sample", () => {
   assert.equal(decide("no").proceed, false);
   assert.equal(decide("no").action, "route_other_mirror_device");
 });
+
+test("four peers", () => {
+  const d = decide(null);
+  assert.equal(d.peers.length, 4);
+});
