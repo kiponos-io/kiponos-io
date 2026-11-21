@@ -20,3 +20,8 @@ def test_gated_sample():
     d = decide('focus=admin-wall,shopping-pause=on')
     assert d['proceed'] is False
     assert d['action'] == 'incident_pause_active'
+
+def test_peers_include_all_sdks():
+    d = decide(None)
+    for p in ("java", "python", "react-node", "angular-node"):
+        assert p in d["peers"]
