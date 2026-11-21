@@ -20,3 +20,8 @@ def test_gated_sample():
     d = decide('P1')
     assert d['proceed'] is False
     assert d['action'] == 'abort_mid_turn_no_restart'
+
+def test_peers_include_all_sdks():
+    d = decide(None)
+    for p in ("java", "python", "react-node", "angular-node"):
+        assert p in d["peers"]
