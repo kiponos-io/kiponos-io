@@ -23,3 +23,8 @@ test("gated sample", () => {
   assert.equal(decide("search,read,write").proceed, false);
   assert.equal(decide("search,read,write").action, "deny_write_no_mcp_restart");
 });
+
+test("four peers", () => {
+  const d = decide(null);
+  assert.equal(d.peers.length, 4);
+});
