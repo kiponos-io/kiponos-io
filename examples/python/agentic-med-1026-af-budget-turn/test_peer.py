@@ -20,3 +20,8 @@ def test_gated_sample():
     d = decide('0')
     assert d['proceed'] is False
     assert d['action'] == 'stop_turn_budget'
+
+def test_peers_include_all_sdks():
+    d = decide(None)
+    for p in ("java", "python", "react-node", "angular-node"):
+        assert p in d["peers"]
