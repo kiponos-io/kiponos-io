@@ -20,3 +20,8 @@ def test_gated_sample():
     d = decide('idle')
     assert d['proceed'] is False
     assert d['action'] == 'admin_wall_idle'
+
+def test_peers_include_all_sdks():
+    d = decide(None)
+    for p in ("java", "python", "react-node", "angular-node"):
+        assert p in d["peers"]
