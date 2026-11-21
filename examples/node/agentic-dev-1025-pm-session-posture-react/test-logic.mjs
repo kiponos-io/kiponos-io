@@ -23,3 +23,8 @@ test("gated sample", () => {
   assert.equal(decide("focus=admin-wall,shopping-pause=on").proceed, false);
   assert.equal(decide("focus=admin-wall,shopping-pause=on").action, "incident_pause_active");
 });
+
+test("four peers", () => {
+  const d = decide(null);
+  assert.equal(d.peers.length, 4);
+});
