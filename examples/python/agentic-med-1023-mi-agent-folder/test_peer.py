@@ -19,3 +19,8 @@ def test_ok_sample():
 def test_gated_sample():
     d = decide('travel-coordinator')
     assert d['proceed'] is True
+
+def test_peers_include_all_sdks():
+    d = decide(None)
+    for p in ("java", "python", "react-node", "angular-node"):
+        assert p in d["peers"]
