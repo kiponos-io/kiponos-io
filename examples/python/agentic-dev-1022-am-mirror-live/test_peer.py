@@ -20,3 +20,8 @@ def test_gated_sample():
     d = decide('no')
     assert d['proceed'] is False
     assert d['action'] == 'route_other_mirror_device'
+
+def test_peers_include_all_sdks():
+    d = decide(None)
+    for p in ("java", "python", "react-node", "angular-node"):
+        assert p in d["peers"]
