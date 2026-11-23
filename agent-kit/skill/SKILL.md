@@ -8,7 +8,7 @@ description: >
   when the kiponos MCP server is connected; otherwise use the Python SDK CLI.
 metadata:
   author: kiponos-io
-  version: "0.2.0"
+  version: "0.3.0"
   homepage: https://kiponos.io
   bundle: kiponos-agent-kit
 ---
