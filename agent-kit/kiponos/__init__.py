@@ -3,15 +3,26 @@
 Canonical wire protocol matches the Java SDK (Boot 3 ReadyMode).
 """
 
-from .client import Kiponos, KiponosError, ConnectionError, TimeoutError
+from .client import (
+    AuthError,
+    ConnectionError,
+    ConnectionState,
+    Kiponos,
+    KiponosError,
+    StaleConfigError,
+    TimeoutError,
+)
 from .paths import join_json_path, parse_path, profile_to_base_path
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 __all__ = [
     "Kiponos",
     "KiponosError",
     "ConnectionError",
     "TimeoutError",
+    "AuthError",
+    "StaleConfigError",
+    "ConnectionState",
     "join_json_path",
     "parse_path",
     "profile_to_base_path",
